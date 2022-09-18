@@ -1,0 +1,17 @@
+{
+  "extends": "tsconfig/tsconfig.ui.json",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      ".": ["."]
+    }
+  },
+  "include": [".", ".eslintrc.js", ".storybook/**/*"],
+  "exclude": ["dist", "build", "node_modules"],
+  // Storybook
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}

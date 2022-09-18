@@ -1,0 +1,4 @@
+{
+  "extends": "tsconfig/tsconfig.base.json",
+  "include": [".", ".eslintrc.js", ".commitlintrc.ts"]
+}

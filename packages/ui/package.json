@@ -1,0 +1,21 @@
+{
+  "name": "ui",
+  "version": "0.0.0",
+  "main": "./src/index.tsx",
+  "types": "./src/index.tsx",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint --max-warnings 0 .",
+    "lint-fix": "eslint --fix .",
+    "tsc": "tsc -p tsconfig.json",
+    "test": "jest --verbose",
+    "test-watch": "jest --verbose --watch",
+    "test-coverage": "jest --coverage --verbose",
+    "storybook": "start-storybook -p 6200",
+    "storybook-build": "build-storybook",
+    "update-dependencies": "npx npm-check-updates -u"
+  },
+  "devDependencies": {
+    "tsconfig": "*"
+  }
+}
