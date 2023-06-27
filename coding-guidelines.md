@@ -197,7 +197,7 @@ Test can be run through npm scripts, but it's highly encouraged to use [Jest Run
 code --install-extension firsttris.vscode-jest-runner
 ```
 
-- All test descriptions should follow naming convention as `it('should ... when ...')`.
+- All test descriptions follows naming convention as `it('should ... when ...')` ([eslint rule](https://github.com/mkosir/turborepo-boilerplate/blob/main/packages/config-eslint/index.js#L49)).
 - Snapshot tests are not allowed (except if truly needed in design system library).
 
 ## Conventions enforced by automated tooling
