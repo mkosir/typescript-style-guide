@@ -1,6 +1,6 @@
 # Coding Guidelines
 
-Coding guidelines as of conventions (sometimes arbitrary) and best practices are used to create consistent, maintainable code.
+Coding guidelines as set of conventions (sometimes arbitrary) and best practices are used to create consistent, maintainable code.
 
 Since "consistency is the key" majority of rules is enforced by automated tooling as ESLint, TypeScript, Prettier, etc.  
 Still certain design and architectural decisions must be followed which are covered with described conventions bellow.
