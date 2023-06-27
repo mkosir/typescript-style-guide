@@ -1,4 +1,4 @@
-# Guidelines
+# Coding Guidelines
 
 Since "consistency is the key" majority of rules is enforced by automated tooling as ESLint, TypeScript, Prettier, etc.  
 Still certain design and architectural decisions must be followed which are covered with described conventions bellow.
