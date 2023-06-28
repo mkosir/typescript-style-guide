@@ -9,8 +9,10 @@ Still certain design and architectural decisions must be followed which are cove
 
 - **Code is organized and grouped by feature.** Place code as close to where it's relevant as possible.
 - Strive for data immutability.
-- Client global state is discouraged. If truly needed use Zustand (no Redux).
-- Use named exports. In case of exceptions [eslint rule](https://github.com/mkosir/turborepo-boilerplate/blob/main/packages/config-eslint/index.js#L78) is disabled (e.g. Next.js pages)
+- Use of server-state library is encouraged ([react-query](https://tanstack.com/query/latest)).
+- use of client-state library for global state is not allowed.  
+  Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state user settings (e.g. `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) (no Redux).
+- Use named exports. In case of exceptions disable [eslint rule](https://github.com/mkosir/turborepo-boilerplate/blob/main/packages/config-eslint/index.js#L78) (e.g. Next.js pages).
 
 ## Code Collocation
 
@@ -64,9 +66,10 @@ apps/
 └─ ...
 ```
 
-- `common` folder is responsible for implementations that are truly used across application, where it should be used sparingly since codebase tries to follow grouped by feature project structure as much as possible
 - `modules` folder is responsible for implementation of each individual page (routed from `pages` folder)
 - `pages` folder serves as a router, where its only responsibility is to define routes
+- `common` folder is responsible for implementations that are truly used across application.  
+  Since its a "global folder" it should be used sparingly (codebase tries to follow grouped by feature project structure as much as possible).
 
 ## Data immutability
 
@@ -75,19 +78,18 @@ Mutations should be used sparingly in cases when necessary: complex objects, per
 
 ## Functions
 
-Since React components are also functions, convention should be followed as much as possible.
+Since React components and hooks are also functions, convention should be followed as much as possible.
 
 - Function should have single responsibility.
-- Function should be stateless where for the same input arguments they return same value every single time.
+- Function should be stateless (not to be confused with React state) where the same input arguments return same value every single time.
 - Function should accept at least one argument and return data.
 - Function should not have side effects, but be pure. It's implementation should not modify or access variable value outside its local environment (global state, fetching etc.).
 
-Sometimes **potential** exceptions are react components and hooks.
-
 <details>
-<summary>Exception examples</summary>
+<summary>Potential exceptions of react components and hooks</summary>
 
 ```ts
+// No input arguments.
 const Logo = () => {
   return (
     <svg width="100" height="100">
@@ -99,6 +101,7 @@ const Logo = () => {
   );
 };
 
+// Parent React component with side effects.
 const ProductsPage = () => {
   const { data: products } = useFetchProducts();
 
@@ -111,6 +114,7 @@ const ProductsPage = () => {
   );
 };
 
+// React hook with side effects.
 const useGetUsers: UseGeUsers = ({ country, isActive }) =>
   useQuery(["fetchUsers", { country, isActive }], () =>
     fetchUsers({ country, isActive })
@@ -118,6 +122,14 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 ```
 
 </details>
+
+## Variables
+
+- Create const assertion (`as const`) whenever object or array should be immutable and inferred as a literal type.
+  - type is narrowed
+  - object and array gets `readonly` properties
+- Prefer object const assertion over enum.
+- Prefer using `null` instead of `undefined`, to explicitly state it has no value (assignment, return type).
 
 ## Naming
 
@@ -129,17 +141,16 @@ There is no convention on cache invalidation, but for the second hardest thing, 
 - Functions - Camel case (`filterProductsByType`, `useGetProducts`)
 - Variables
   - Locals (`products`, `productsFiltered`)
-  - Booleans are prefixed with `is`, `has` (`isProduct`)
+  - Booleans are prefixed with `is`, `has` etc. (`isProduct`)
   - Constants (`PRODUCT_ID`)
-  - Enums are singular with values as constants
+  - Object constants are singular
     ```ts
-    enum OrderStatus {
-      PENDING,
-      FULFILLED,
-      ERROR,
-    }
+    const OrderStatus = {
+      pending: "pending",
+      fulfilled: "fulfilled",
+      error: "error",
+    } as const;
     ```
-  - Prefer using `null` instead of `undefined`, to explicitly state it has no value (assignment, return type).
 
 ## React Components
 
@@ -169,7 +180,6 @@ There is no convention on cache invalidation, but for the second hardest thing, 
   ```
   ProductItem/
   ├─ index.tsx
-  ├─ styled.tsx
   ├─ ProductItem.stories.tsx
   └─ ProductItem.test.tsx
   ```
@@ -179,7 +189,7 @@ There is no convention on cache invalidation, but for the second hardest thing, 
   ```
   Button/
   ├─ index.tsx
-  ├─ styled.tsx
+  ├─ styled.tsx (optional)
   ├─ Button.stories.tsx
   └─ Button.test.tsx
   ```
@@ -188,8 +198,10 @@ There is no convention on cache invalidation, but for the second hardest thing, 
 
 - Prop drilling should not become an issue, if it does [break out your render method](https://kentcdodds.com/blog/prop-drilling#how-can-we-avoid-problems-with-prop-drilling) and keep in mind that React components are functions, which should have single responsibility.
 - Component composition is not allowed.
-- Global state is not allowed.
 - Fetching of data is only allowed in container components.
+- Use of server-state library is encouraged ([react-query](https://tanstack.com/query/latest)).
+- use of client-state library for global state is not allowed.  
+  Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state user settings (e.g. `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) (no Redux).
 
 ## Tests
 
@@ -200,25 +212,20 @@ code --install-extension firsttris.vscode-jest-runner
 ```
 
 - All test descriptions follows naming convention as `it('should ... when ...')` ([eslint rule](https://github.com/mkosir/turborepo-boilerplate/blob/main/packages/config-eslint/index.js#L49)).
-- Snapshot tests are not allowed (except if truly needed in design system library).
+- Snapshot tests are not allowed in order to avoid fragility, regular updates of it, to have all the tests "green".  
+  Exceptions can be made, with strong rational behind it , where its output is short/clear intent, whats actually being tested (e.g. design system library critical elements that shouldn't deviate).
 
 ## Conventions enforced by automated tooling
 
 List and reasoning of some conventions enforced by automated tooling:
 
-- Whole monorepo codebase is written in TypeScript strict mode with enabled ESlint [Strict Configuration](https://typescript-eslint.io/docs/linting/configs#strict)
-- All types are defined with `type` alias. In case of rare exceptions (extending third-party types) `interface` can be used with disabling linter:
-
-  ```ts
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-  ```
-
-- Arrays are defined with `generic` syntax.
+- Whole codebase is written in TypeScript strict mode with enabled ESlint [Strict Configuration](https://typescript-eslint.io/docs/linting/configs#strict).
+- Use named exports. In case of exceptions disable [eslint rule](https://github.com/mkosir/turborepo-boilerplate/blob/main/packages/config-eslint/index.js#L78) (e.g. Next.js pages).
+- All types are defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).  
+  In case of exceptions, most commonly declaration merging (extending third-party library types - [example](https://github.com/mkosir/trpc-api-boilerplate/blob/main/src/utils/types/process-env.ts#L14)), use `interface` and disable linter.
+- Array types are defined with `generic` syntax ([eslint rule](https://typescript-eslint.io/rules/array-type/#generic)).
 
   ```ts
   const x: Array<string> = ["a", "b"];
   const y: ReadonlyArray<string> = ["a", "b"];
   ```
-
-- Use named exports. In case of exceptions [eslint rule](https://github.com/mkosir/turborepo-boilerplate/blob/main/packages/config-eslint/index.js#L78) is disabled (e.g. Next.js pages)
-- All test descriptions follows naming convention as `it('should ... when ...')`.
