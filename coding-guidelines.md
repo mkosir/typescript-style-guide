@@ -1,6 +1,6 @@
 # Coding Guidelines
 
-Coding guidelines as set of conventions (sometimes arbitrary) and best practices are used to create consistent, maintainable code.
+Coding guidelines as set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
 
 Since "consistency is the key" majority of rules is enforced by automated tooling as ESLint, TypeScript, Prettier, etc.  
 Still certain design and architectural decisions must be followed which are covered with described conventions bellow.
@@ -13,7 +13,7 @@ Still certain design and architectural decisions must be followed which are cove
 - Use of server-state library is encouraged ([react-query](https://tanstack.com/query/latest)).
 - Use of client-state library for global state is not allowed.  
   Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state user settings (e.g. `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) (no Redux).
-- Use named exports. In case of exceptions disable [eslint rule](https://github.com/mkosir/turborepo-boilerplate/blob/main/packages/config-eslint/index.js#L78) (e.g. Next.js pages).
+- Use named exports. In case of exceptions disable [eslint rule](https://github.com/mkosir/frontend-monorepo-boilerplate/blob/main/packages/config-eslint/index.js#L78) (e.g. Next.js pages).
 
 ## Code Collocation
 
@@ -197,7 +197,13 @@ There is no convention on cache invalidation, but for the second hardest thing, 
 
 ### Passing Data
 
-- Prop drilling should not become an issue, if it does [break out your render method](https://kentcdodds.com/blog/prop-drilling#how-can-we-avoid-problems-with-prop-drilling) and keep in mind that React components are functions, which should have single responsibility.
+- Prop drilling should not become an issue, if it does [break out your render method](https://kentcdodds.com/blog/prop-drilling#how-can-we-avoid-problems-with-prop-drilling).
+- When defining event handler (callback) prop, prefix it with `on*` (e.g. `onClick`) and actual handler implementation function with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
+
+  ```ts
+  <MyComponent onClick={handleClick} />
+  ```
+
 - Component composition is not allowed.
 - Fetching of data is only allowed in container components.
 - Use of server-state library is encouraged ([react-query](https://tanstack.com/query/latest)).
@@ -206,13 +212,13 @@ There is no convention on cache invalidation, but for the second hardest thing, 
 
 ## Tests
 
-Test can be run through npm scripts, but it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) VS code extension so any monorepo app/package single test can be run [instantly](https://github.com/mkosir/turborepo-boilerplate-multiple-ui/raw/main/misc/vscode-jest-runner.gif).
+Test can be run through npm scripts, but it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) VS code extension so any monorepo app/package single test can be run [instantly](https://github.com/mkosir/typescript-react-guidelines/raw/main/misc/vscode-jest-runner.gif).
 
 ```shell
 code --install-extension firsttris.vscode-jest-runner
 ```
 
-- All test descriptions follows naming convention as `it('should ... when ...')` ([eslint rule](https://github.com/mkosir/turborepo-boilerplate/blob/main/packages/config-eslint/index.js#L49)).
+- All test descriptions follows naming convention as `it('should ... when ...')` ([eslint rule](https://github.com/mkosir/frontend-monorepo-boilerplate/blob/main/packages/config-eslint/index.js#L49)).
 - Snapshot tests are not allowed in order to avoid fragility, regular updates of it, to have all the tests "green".  
   Exceptions can be made, with strong rational behind it , where its output is short/clear intent, whats actually being tested (e.g. design system library critical elements that shouldn't deviate).
 
@@ -221,7 +227,7 @@ code --install-extension firsttris.vscode-jest-runner
 List and reasoning of some conventions enforced by automated tooling:
 
 - Whole codebase is written in TypeScript strict mode with enabled ESlint [Strict Configuration](https://typescript-eslint.io/docs/linting/configs#strict).
-- Use named exports. In case of exceptions disable [eslint rule](https://github.com/mkosir/turborepo-boilerplate/blob/main/packages/config-eslint/index.js#L78) (e.g. Next.js pages).
+- Use named exports. In case of exceptions disable [eslint rule](https://github.com/mkosir/frontend-monorepo-boilerplate/blob/main/packages/config-eslint/index.js#L78) (e.g. Next.js pages).
 - All types are defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).  
   In case of exceptions, most commonly declaration merging (extending third-party library types - [example](https://github.com/mkosir/trpc-api-boilerplate/blob/main/src/utils/types/process-env.ts#L14)), use `interface` and disable linter.
 - Array types are defined with `generic` syntax ([eslint rule](https://typescript-eslint.io/rules/array-type/#generic)).
