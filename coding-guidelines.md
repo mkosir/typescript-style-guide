@@ -148,14 +148,20 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 Strive to keep naming conventions consistent and readable, because another person will maintain the code you have written.  
 There is no convention on cache invalidation, but for the second hardest thing, bellow conventions should be followed:
 
-- React components - Pascal case (`ProductItem`, `ProductsPage`)
-- Prop Types - component name with "Props" postfix `[ComponentName]Props` - Pascal case (`ProductItemProps`, `ProductsPageProps`)
-- Functions - Camel case (`filterProductsByType`, `useGetProducts`)
-- Variables
-  - Locals (`products`, `productsFiltered`)
-  - Booleans are prefixed with `is`, `has` etc. (`isProduct`)
-  - Constants (`PRODUCT_ID`)
-  - Object constants are singular
+- #### React components
+  Pascal case (`ProductItem`, `ProductsPage`)
+- #### Prop Types
+  React component name following "Props" postfix `[ComponentName]Props` - (`ProductItemProps`, `ProductsPageProps`)
+- #### Functions
+  Camel case (`filterProductsByType`, `useGetProducts`)
+- #### Variables
+  - #### Locals (`products`, `productsFiltered`)
+  - ##### Booleans
+    Prefixed with `is`, `has` etc. (`isProduct`)
+  - ##### Constants
+    `PRODUCT_ID`
+  - #### Object constants
+    Singular and capitalized.
     ```ts
     const OrderStatus = {
       pending: "pending",
@@ -163,6 +169,23 @@ There is no convention on cache invalidation, but for the second hardest thing, 
       error: "error",
     } as const;
     ```
+- #### Generics
+
+  A name followed by the capital letter T ( `RequestT`, `FooBarT`).
+  Avoid naming generics with one character, the more variables we introduce, the easier it is to mistake them.
+
+  ```ts
+  type Wrapped<ValueT extends string | number> = { value: ValueT };
+  const wrappedValue: Wrapped = { value: 10 };
+
+  function createPair<FirstT, SecondT>(
+    first: FirstT,
+    second: SecondT
+  ): [FirstT, SecondT] {
+    return [first, second];
+  }
+  const pair = createPair(1, "a");
+  ```
 
 ## React Components
 
