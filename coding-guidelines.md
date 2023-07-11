@@ -172,18 +172,15 @@ There is no convention on cache invalidation, but for the second hardest thing, 
 - #### Generics
 
   A name followed by the capital letter T ( `RequestT`, `FooBarT`).  
-  Avoid naming generics with one character, the more variables we introduce, the easier it is to mistake them.
+  Avoid naming generics with one character (`T`, `K` etc.), the more variables we introduce, the easier it is to mistake them.
 
   ```ts
-  type Wrapped<ValueT extends string | number> = { value: ValueT };
-  const wrappedValue: Wrapped = { value: 10 };
-
-  function createPair<FirstT, SecondT>(
+  const createPair = <FirstT, SecondT extends string>(
     first: FirstT,
     second: SecondT
-  ): [FirstT, SecondT] {
+  ): [FirstT, SecondT] => {
     return [first, second];
-  }
+  };
   const pair = createPair(1, "a");
   ```
 
