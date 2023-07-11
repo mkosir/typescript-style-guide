@@ -132,6 +132,17 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 - Prefer object const assertion over enum.
 - Prefer using `null` instead of `undefined`, to explicitly state it has no value (assignment, return type).
 
+## Types
+
+- All types are defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).  
+  In case of exceptions, most commonly declaration merging (extending third-party library types - [example](https://github.com/mkosir/trpc-api-boilerplate/blob/main/src/utils/types/process-env.ts#L14)), use `interface` and disable linter.
+- Array types are defined with `generic` syntax ([eslint rule](https://typescript-eslint.io/rules/array-type/#generic)).
+
+  ```ts
+  const x: Array<string> = ["a", "b"];
+  const y: ReadonlyArray<string> = ["a", "b"];
+  ```
+
 ## Naming
 
 Strive to keep naming conventions consistent and readable, because another person will maintain the code you have written.  
@@ -224,15 +235,7 @@ code --install-extension firsttris.vscode-jest-runner
 
 ## Conventions enforced by automated tooling
 
-List and reasoning of some conventions enforced by automated tooling:
+Some highlighted conventions enforced by automated tooling:
 
 - Whole codebase is written in TypeScript strict mode with enabled ESlint [Strict Configuration](https://typescript-eslint.io/docs/linting/configs#strict).
 - Use named exports. In case of exceptions disable [eslint rule](https://github.com/mkosir/frontend-monorepo-boilerplate/blob/main/packages/config-eslint/index.js#L78) (e.g. Next.js pages).
-- All types are defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).  
-  In case of exceptions, most commonly declaration merging (extending third-party library types - [example](https://github.com/mkosir/trpc-api-boilerplate/blob/main/src/utils/types/process-env.ts#L14)), use `interface` and disable linter.
-- Array types are defined with `generic` syntax ([eslint rule](https://typescript-eslint.io/rules/array-type/#generic)).
-
-  ```ts
-  const x: Array<string> = ["a", "b"];
-  const y: ReadonlyArray<string> = ["a", "b"];
-  ```
