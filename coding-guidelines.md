@@ -171,7 +171,7 @@ There is no convention on cache invalidation, but for the second hardest thing, 
     ```
 - #### Generics
 
-  A name followed by the capital letter T ( `RequestT`, `FooBarT`).
+  A name followed by the capital letter T ( `RequestT`, `FooBarT`).  
   Avoid naming generics with one character, the more variables we introduce, the easier it is to mistake them.
 
   ```ts
