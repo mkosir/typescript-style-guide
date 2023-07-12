@@ -187,6 +187,34 @@ While it's often hard to find the best names, try optimize code for the reader a
 
 ## React Components
 
+### Props
+
+Strive to have majority of props required and not optional.  
+Especially when creating new component for first/single use case majority of props should be required. When component starts covering more use cases, introduce optional props.  
+There are potential exceptions, where component API needs to implement optional props from start (e.g. shared components covering multiple use cases, UI design system components - button `isDisabled` etc.)
+
+To eliminate optional props, when possible use **discriminated type**, which will decrease complexity on component API and only necessary/required props will be passed.
+
+```ts
+type StatusSuccess = {
+  status: 'success';
+  data: Products;
+};
+
+type StatusLoading = {
+  status: 'loading';
+};
+
+type StatusError = {
+  status: 'error';
+  error: string;
+};
+
+type StatusProps = StatusSuccess | StatusLoading | StatusError;
+
+export const Status = (status: StatusProps) => {...
+```
+
 ### Component Types
 
 - Container:
