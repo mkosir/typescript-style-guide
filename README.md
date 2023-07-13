@@ -6,6 +6,6 @@ Guidelines assume, but are not limited to tech stack:
 
 - TypeScript
 - React
-- Monorepo (optional)
+- Monorepo usage (optional)
 
-[Coding Guidelines](./coding-guidelines.md)
+## [Coding Guidelines](./coding-guidelines.md)
