@@ -7,7 +7,7 @@ Still certain design and architectural decisions must be followed which are cove
 
 ## TLDR
 
-- **Code is organized and grouped by feature.** Place code as close to where it's relevant as possible.
+- **Code is organized and grouped by feature.** Collocate code as close as possible to where it's relevant.
 - Strive for data immutability.
 - Strive for functions to be pure, stateless and have single responsibility.
 - Use of server-state library is encouraged ([react-query](https://tanstack.com/query/latest)).
@@ -18,7 +18,7 @@ Still certain design and architectural decisions must be followed which are cove
 ## Code Collocation
 
 - Every application or package in monorepo has project files/folders organized and grouped by **feature**.
-- **Place code as close to where it's relevant as possible.**
+- **Collocate code as close as possible to where it's relevant.**
 - Deep folder nesting does not represent an issue.
 - [Relevant article](https://kentcdodds.com/blog/colocation) on code collocation.
 
