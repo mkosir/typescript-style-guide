@@ -1,43 +1,44 @@
-# Coding Guidelines - TypeScript & React
+# TypeScript & React Style Guide
 
-Concise coding guidelines provides a comprehensive set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code written in TypeScript and React library.
+TypeScript & React Style Guide provides concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
 
-## Content
+## Table of Contents
 
-- [Coding Guidelines - TypeScript & React](#coding-guidelines-typeScript-&-react)
-  - [Content](#content)
-  - [Guidelines](#guidelines)
-  - [TLDR](#tldr)
-  - [Code Collocation](#code-collocation)
-  - [Project Structure](#project-structure)
-  - [Data immutability](#data-immutability)
+- [Introduction](#introduction)
+- [TLDR](#tldr)
+- [Code Collocation](#code-collocation)
+- [Project Structure](#project-structure)
+- [Data immutability](#data-immutability)
+- [Functions](#functions)
+- [Variables](#variables)
+- [Types](#types)
+- [Naming](#naming)
+  - [React components](#react-components)
+  - [Prop Types](#prop-types)
   - [Functions](#functions)
   - [Variables](#variables)
-  - [Types](#types)
-  - [Naming](#naming)
-    - [React components](#react-components)
-    - [Prop Types](#prop-types)
-    - [Functions](#functions)
-    - [Variables](#variables)
-    - [Variables](#variables)
-      - [Locals](#locals)
-      - [Booleans](#booleans)
-      - [Constants](#constants)
-      - [Object constants](#object-constants)
-      - [Generics](#generics)
-  - [React Components](#react-components)
-    - [Props](#props)
-    - [Component Types](#component-types)
-    - [Passing Data](#passing-data)
-  - [Tests](#tests)
-  - [Conventions enforced by automated tooling](#conventions-enforced-by-automated-tooling)
+  - [Variables](#variables)
+    - [Locals](#locals)
+    - [Booleans](#booleans)
+    - [Constants](#constants)
+    - [Object constants](#object-constants)
+    - [Generics](#generics)
+- [React Components](#react-components)
+  - [Props](#props)
+  - [Component Types](#component-types)
+  - [Passing Data](#passing-data)
+- [Tests](#tests)
+- [Conventions enforced by automated tooling](#conventions-enforced-by-automated-tooling)
 
-## Guidelines
+## Introduction
 
 Since "consistency is the key" majority of rules is enforced by automated tooling as ESLint, TypeScript, Prettier, etc.  
 Still certain design and architectural decisions must be followed which are covered with described conventions bellow.
 
-Guidelines assume, but are not limited to tech stack using TypeScript programming language with React library.
+Guidelines assume, but are not limited to using TypeScript programming language with React library.
+
+Note: TypeScript >v5 and typescript-eslint >v6 with[`strict-type-checked`](https://typescript-eslint.io/linting/configs/#strict-type-checked) and
+[`stylistic-type-checked`](https://typescript-eslint.io/linting/configs/#stylistic-type-checked) configurations enabled.
 
 ## TLDR
 
