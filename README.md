@@ -37,11 +37,7 @@ Concise coding guidelines provides a comprehensive set of conventions (sometimes
 Since "consistency is the key" majority of rules is enforced by automated tooling as ESLint, TypeScript, Prettier, etc.  
 Still certain design and architectural decisions must be followed which are covered with described conventions bellow.
 
-Guidelines assume, but are not limited to tech stack:
-
-- TypeScript
-- React
-- Monorepo usage (optional)
+Guidelines assume, but are not limited to tech stack using TypeScript programming language with React library.
 
 ## TLDR
 
@@ -295,7 +291,7 @@ export const Status = (status: StatusProps) => {...
   └─ ProductItem.test.tsx
   ```
 - UI - Design system
-  - Reusable/generic types of components used throughout whole monorepo.
+  - Reusable/generic types of components used throughout whole codebase.
   - Expected file/folder structure:
   ```
   Button/
