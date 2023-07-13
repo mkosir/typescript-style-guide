@@ -35,7 +35,7 @@ TypeScript & React Style Guide provides concise set of conventions (sometimes ar
 Since "consistency is the key" majority of rules is enforced by automated tooling as ESLint, TypeScript, Prettier, etc.  
 Still certain design and architectural decisions must be followed which are covered with described conventions bellow.
 
-Guidelines assume, but are not limited to using TypeScript programming language with React library.
+Guide assume, but are not limited to using TypeScript programming language with React library.
 
 Note: TypeScript >v5 and typescript-eslint >v6 with[`strict-type-checked`](https://typescript-eslint.io/linting/configs/#strict-type-checked) and
 [`stylistic-type-checked`](https://typescript-eslint.io/linting/configs/#stylistic-type-checked) configurations enabled.
@@ -319,7 +319,7 @@ export const Status = (status: StatusProps) => {...
 
 ## Tests
 
-Test can be run through npm scripts, but it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) VS code extension so any monorepo app/package single test can be run [instantly](https://github.com/mkosir/typescript-react-guidelines/raw/main/misc/vscode-jest-runner.gif).
+Test can be run through npm scripts, but it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) VS code extension so any monorepo app/package single test can be run [instantly](https://github.com/mkosir/typescript-react-guide/raw/main/misc/vscode-jest-runner.gif).
 
 ```shell
 code --install-extension firsttris.vscode-jest-runner
