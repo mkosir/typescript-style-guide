@@ -196,7 +196,7 @@ There are potential exceptions, where component API needs to implement optional 
 To eliminate optional props, when possible use **discriminated type**, which will decrease complexity on component API and only necessary/required props will be passed.
 
 ```ts
-// ❌ Avoid optional props as component API
+// ❌ Avoid optional props as they increase complexity of component API
 type StatusProps = {
   data?: Products;
   title?: string;
