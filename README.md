@@ -1,6 +1,6 @@
 # Coding Guidelines - TypeScript & React
 
-Brief coding guidelines as set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
+Concise coding guidelines as set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
 
 Guidelines assume, but are not limited to tech stack:
 
