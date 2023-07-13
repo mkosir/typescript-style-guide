@@ -196,13 +196,24 @@ There are potential exceptions, where component API needs to implement optional 
 To eliminate optional props, when possible use **discriminated type**, which will decrease complexity on component API and only necessary/required props will be passed.
 
 ```ts
+// ❌ Avoid optional props as component API
+type StatusProps = {
+  data?: Products;
+  title?: string;
+  time?: number;
+  error?: string;
+};
+
+// ✅ Use discriminated union type for clear intent on component usage
 type StatusSuccess = {
   status: 'success';
   data: Products;
+  title: string;
 };
 
 type StatusLoading = {
   status: 'loading';
+  time: number;
 };
 
 type StatusError = {
@@ -280,7 +291,7 @@ code --install-extension firsttris.vscode-jest-runner
 
 - All test descriptions follows naming convention as `it('should ... when ...')` ([eslint rule](https://github.com/mkosir/frontend-monorepo-boilerplate/blob/main/packages/config-eslint/index.js#L49)).
 - Snapshot tests are not allowed in order to avoid fragility, regular updates of it, to have all the tests "green".  
-  Exceptions can be made, with strong rational behind it , where its output is short/clear intent, whats actually being tested (e.g. design system library critical elements that shouldn't deviate).
+  Exceptions can be made, with strong rational behind it , where test output is short/clear intent, whats actually being tested (e.g. design system library critical elements that shouldn't deviate).
 
 ## Conventions enforced by automated tooling
 
@@ -288,3 +299,4 @@ Some highlighted conventions enforced by automated tooling:
 
 - Whole codebase is written in TypeScript strict mode with enabled ESlint [Strict Configuration](https://typescript-eslint.io/docs/linting/configs#strict).
 - Use named exports. In case of exceptions disable [eslint rule](https://github.com/mkosir/frontend-monorepo-boilerplate/blob/main/packages/config-eslint/index.js#L78) (e.g. Next.js pages).
+- If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it. `@ts-ignore` is not allowed ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)).
