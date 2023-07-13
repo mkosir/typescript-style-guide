@@ -172,8 +172,8 @@ While it's often hard to find the best names, try optimize code for the reader a
     ```
 - #### Generics
 
-  A name followed by the capital letter T ( `RequestT`, `FooBarT`).  
-  Avoid naming generics with one character (`T`, `K` etc.), the more variables we introduce, the easier it is to mistake them.
+  A name is followed by the capital letter T `RequestT`, `FooBarT` (similar as [Google style guide](https://google.github.io/styleguide/javaguide.html#s5.2.8-type-variable-names)).  
+  Avoid (popular convention) naming generics with one character `T`, `K` etc., the more variables we introduce, the easier it is to mistake them.
 
   ```ts
   const createPair = <FirstT, SecondT extends string>(
