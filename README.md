@@ -333,7 +333,7 @@ code --install-extension firsttris.vscode-jest-runner
 
 ## ESlint & typescript-eslint rules
 
-Guide listed [ESlint](https://github.com/eslint/eslint) & [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint) rules:
+List of [ESlint](https://github.com/eslint/eslint) & [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint) rules used through guide with reference links:
 
 - Entire codebase is written in TypeScript with typescript-eslint [`strict-type-checked`](https://typescript-eslint.io/linting/configs/#strict-type-checked) and
   [`stylistic-type-checked`](https://typescript-eslint.io/linting/configs/#stylistic-type-checked) configurations enabled.
