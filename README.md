@@ -26,7 +26,7 @@
   - [Component Types](#component-types)
   - [Passing Data](#passing-data)
 - [Tests](#tests)
-- [Conventions enforced by automated tooling](#conventions-enforced-by-automated-tooling)
+- [ESlint & typescript-eslint rules](#eslint-&-typescript-eslint-rules)
 
 ## Introduction
 
