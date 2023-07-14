@@ -1,7 +1,5 @@
 # TypeScript & React Style Guide
 
-TypeScript & React Style Guide provides concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
-
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -32,13 +30,13 @@ TypeScript & React Style Guide provides concise set of conventions (sometimes ar
 
 ## Introduction
 
+TypeScript & React Style Guide provides concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
+
 Since "consistency is the key" majority of rules are enforced by automated tooling as ESLint, TypeScript, Prettier, etc.  
 Still certain design and architectural decisions must be followed which are covered with described conventions bellow.
 
-Guide assume, but is not limited to using TypeScript programming language with React library.
-
-Note: TypeScript >v5 and typescript-eslint >v6 with[`strict-type-checked`](https://typescript-eslint.io/linting/configs/#strict-type-checked) and
-[`stylistic-type-checked`](https://typescript-eslint.io/linting/configs/#stylistic-type-checked) configurations enabled.
+This guide assumes you are using [TypeScript v5](https://github.com/microsoft/TypeScript) with [typescript-eslint v6](https://github.com/typescript-eslint/typescript-eslint) with [`strict-type-checked`](https://typescript-eslint.io/linting/configs/#strict-type-checked) and
+[`stylistic-type-checked`](https://typescript-eslint.io/linting/configs/#stylistic-type-checked) configurations enabled. It assumes you are using, but is not limited to [React](https://github.com/facebook/react) UI library.
 
 ## TLDR
 
