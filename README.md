@@ -331,7 +331,7 @@ As mentioned React components are functions, where [respective rules apply](#fun
 
 Test can be run through npm scripts, but it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) VS code extension so any monorepo app/package single test can be run [instantly](https://github.com/mkosir/typescript-react-style-guide/raw/main/misc/vscode-jest-runner.gif).
 
-```shell
+```sh
 code --install-extension firsttris.vscode-jest-runner
 ```
 
