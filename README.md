@@ -319,7 +319,7 @@ export const Status = (status: StatusProps) => {...
 
 ## Tests
 
-Test can be run through npm scripts, but it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) VS code extension so any monorepo app/package single test can be run [instantly](https://github.com/mkosir/typescript-react-guide/raw/main/misc/vscode-jest-runner.gif).
+Test can be run through npm scripts, but it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) VS code extension so any monorepo app/package single test can be run [instantly](https://github.com/mkosir/typescript-react-style-guide/raw/main/misc/vscode-jest-runner.gif).
 
 ```shell
 code --install-extension firsttris.vscode-jest-runner
