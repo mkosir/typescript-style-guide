@@ -32,10 +32,10 @@ TypeScript & React Style Guide provides concise set of conventions (sometimes ar
 
 ## Introduction
 
-Since "consistency is the key" majority of rules is enforced by automated tooling as ESLint, TypeScript, Prettier, etc.  
+Since "consistency is the key" majority of rules are enforced by automated tooling as ESLint, TypeScript, Prettier, etc.  
 Still certain design and architectural decisions must be followed which are covered with described conventions bellow.
 
-Guide assume, but are not limited to using TypeScript programming language with React library.
+Guide assume, but is not limited to using TypeScript programming language with React library.
 
 Note: TypeScript >v5 and typescript-eslint >v6 with[`strict-type-checked`](https://typescript-eslint.io/linting/configs/#strict-type-checked) and
 [`stylistic-type-checked`](https://typescript-eslint.io/linting/configs/#stylistic-type-checked) configurations enabled.
