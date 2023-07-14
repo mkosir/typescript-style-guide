@@ -165,9 +165,9 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 ## Types
 
-- All types are defined with `type` alias - [[eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)].  
+- All types are defined with `type` alias. [eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)  
   In case of exceptions, most commonly declaration merging (extending third-party library types - [example](https://github.com/mkosir/trpc-api-boilerplate/blob/main/src/utils/types/process-env.ts#L14)), use `interface` and disable linter.
-- Array types are defined with `generic` syntax [[eslint rule](https://typescript-eslint.io/rules/array-type/#generic)].
+- Array types are defined with `generic` syntax - [eslint rule](https://typescript-eslint.io/rules/array-type/#generic).
 
   ```ts
   const x: Array<string> = ["a", "b"];
