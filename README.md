@@ -44,7 +44,7 @@ This guide requires you to use [TypeScript v5](https://github.com/microsoft/Type
 - Strive for functions to be pure, stateless and have single responsibility.
 - Use of server-state library is encouraged ([react-query](https://tanstack.com/query/latest)).
 - Use of client-state library for global state is discouraged.  
-  Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state user settings (e.g. `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) (no Redux).
+  Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) (no Redux).
 - Use named exports. In case of exceptions disable [eslint rule](https://github.com/mkosir/frontend-monorepo-boilerplate/blob/main/packages/config-eslint/index.js#L78) (e.g. Next.js pages).
 
 ## Code Collocation
