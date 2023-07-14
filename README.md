@@ -26,7 +26,7 @@
   - [Component Types](#component-types)
   - [Passing Data](#passing-data)
 - [Tests](#tests)
-- [ESlint & typescript-eslint rules](#eslint-&-typescript-eslint-rules)
+- [ESlint & typescript-eslint rules](#eslint--typescript-eslint-rules)
 
 ## Introduction
 
