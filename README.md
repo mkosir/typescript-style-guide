@@ -187,6 +187,12 @@ While it's often hard to find the best names, try optimize code for the reader a
   Pascal case (`ProductItem`, `ProductsPage`)
 - #### Prop Types
   React component name following "Props" postfix `[ComponentName]Props` - (`ProductItemProps`, `ProductsPageProps`)
+- #### Callback Props
+  When defining event handler (callback) prop, prefix it with `on*` (e.g. `onClick`) and handler implementation function with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
+
+  ```ts
+  <MyComponent onClick={handleClick} />
+  ```
 - #### Functions
   Camel case (`filterProductsByType`, `useGetProducts`)
 - #### Variables
@@ -306,12 +312,6 @@ As mentioned React components are functions, where [respective rules apply](#fun
 ### Passing Data
 
 - Prop drilling should not become an issue, if it does [break out your render method](https://kentcdodds.com/blog/prop-drilling#how-can-we-avoid-problems-with-prop-drilling).
-- When defining event handler (callback) prop, prefix it with `on*` (e.g. `onClick`) and handler implementation function with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
-
-  ```ts
-  <MyComponent onClick={handleClick} />
-  ```
-
 - Component composition is not allowed.
 - Fetching of data is only allowed in container components.
 - Use of server-state library is encouraged ([react-query](https://tanstack.com/query/latest)).
