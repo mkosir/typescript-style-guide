@@ -188,7 +188,7 @@ While it's often hard to find the best names, try optimize code for the reader a
 - #### Prop Types
   React component name following "Props" postfix `[ComponentName]Props` - (`ProductItemProps`, `ProductsPageProps`)
 - #### Callback Props
-  When defining event handler (callback) prop, prefix it with `on*` (e.g. `onClick`) and handler implementation function with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
+  Event handler (callback) prop are defined with prefix `on*` (e.g. `onClick`) and handler implementation function with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
 
   ```ts
   <MyComponent onClick={handleClick} />
