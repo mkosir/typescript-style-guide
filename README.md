@@ -13,20 +13,19 @@
 - [Naming](#naming)
   - [React components](#react-components)
   - [Prop Types](#prop-types)
-  - [Functions](#functions)
-  - [Variables](#variables)
-  - [Variables](#variables)
+  - [Functions](#functions-1)
+  - [Variables](#variables-1)
     - [Locals](#locals)
     - [Booleans](#booleans)
     - [Constants](#constants)
     - [Object constants](#object-constants)
     - [Generics](#generics)
-- [React Components](#react-components)
+- [React Components](#react-components-1)
   - [Props](#props)
   - [Component Types](#component-types)
   - [Passing Data](#passing-data)
 - [Tests](#tests)
-- [ESlint & typescript-eslint rules](#eslint--typescript-eslint-rules)
+- [ESlint & typescript-eslint rules list](#eslint--typescript-eslint-rules-list)
 
 ## Introduction
 
@@ -331,7 +330,7 @@ code --install-extension firsttris.vscode-jest-runner
 - Snapshot tests are not allowed in order to avoid fragility, regular updates of it, to have all the tests "green".  
   Exceptions can be made, with strong rational behind it , where test output is short/clear intent, whats actually being tested (e.g. design system library critical elements that shouldn't deviate).
 
-## ESlint & typescript-eslint rules
+## ESlint & typescript-eslint rules list
 
 List of [ESlint](https://github.com/eslint/eslint) & [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint) rules used through guide with reference links:
 
