@@ -31,7 +31,7 @@
 
 TypeScript & React Style Guide provides concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
 
-Since "consistency is the key" majority of rules are enforced by automated tooling as ESLint, TypeScript, Prettier, etc.  Still certain (opinionated) design and architectural decisions must be followed which are covered with described conventions bellow.
+Since "consistency is the key" majority of rules are enforced by automated tooling as ESLint, TypeScript, Prettier, etc. Still certain (opinionated) design and architectural decisions must be followed which are covered with described conventions bellow.
 
 This guide requires you to use [TypeScript v5](https://github.com/microsoft/TypeScript) and [typescript-eslint v6](https://github.com/typescript-eslint/typescript-eslint) with [`strict-type-checked`](https://typescript-eslint.io/linting/configs/#strict-type-checked),
 [`stylistic-type-checked`](https://typescript-eslint.io/linting/configs/#stylistic-type-checked) configurations enabled. It assumes you are using, but is not limited to [React](https://github.com/facebook/react) UI library.
@@ -177,7 +177,7 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 ## Naming
 
 Setting aside convention on cache invalidation, but for the second hardest thing, clear naming with important context should be provided.  
-Strive to keep naming conventions consistent and readable, because another person will maintain the code you have written.  
+Strive to keep naming conventions consistent and readable, because another person will maintain the code you have written.
 
 Named exports must be used to keep variables, functions etc. names consistent across the whole codebase ([eslint rule](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md)).
 
@@ -188,11 +188,13 @@ While it's often hard to find the best names, try optimize code for the reader a
 - #### Prop Types
   React component name following "Props" postfix `[ComponentName]Props` - (`ProductItemProps`, `ProductsPageProps`)
 - #### Callback Props
+
   Event handler (callback) prop are defined with prefix `on*` (e.g. `onClick`) and handler implementation function with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
 
   ```tsx
   <MyComponent onClick={handleClick} />
   ```
+
 - #### Functions
   Camel case (`filterProductsByType`, `useGetProducts`)
 - #### Variables
@@ -217,6 +219,13 @@ While it's often hard to find the best names, try optimize code for the reader a
     Avoid (popular convention) naming generics with one character `T`, `K` etc., the more variables we introduce, the easier it is to mistake them.
 
     ```ts
+    // ❌ Avoid naming generics with one character
+    const createPair = <T, K extends string>(first: T, second: K): [T, K] => {
+      return [first, second];
+    };
+    const pair = createPair(1, "a");
+
+    // ✅ Name is followed by the capital letter T
     const createPair = <FirstT, SecondT extends string>(
       first: FirstT,
       second: SecondT
