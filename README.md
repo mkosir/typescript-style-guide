@@ -190,7 +190,7 @@ While it's often hard to find the best names, try optimize code for the reader a
 - #### Callback Props
   Event handler (callback) prop are defined with prefix `on*` (e.g. `onClick`) and handler implementation function with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
 
-  ```ts
+  ```tsx
   <MyComponent onClick={handleClick} />
   ```
 - #### Functions
