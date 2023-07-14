@@ -303,7 +303,7 @@ export const Status = (status: StatusProps) => {...
 ### Passing Data
 
 - Prop drilling should not become an issue, if it does [break out your render method](https://kentcdodds.com/blog/prop-drilling#how-can-we-avoid-problems-with-prop-drilling).
-- When defining event handler (callback) prop, prefix it with `on*` (e.g. `onClick`) and actual handler implementation function with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
+- When defining event handler (callback) prop, prefix it with `on*` (e.g. `onClick`) and handler implementation function with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
 
   ```ts
   <MyComponent onClick={handleClick} />
@@ -327,10 +327,11 @@ code --install-extension firsttris.vscode-jest-runner
 - Snapshot tests are not allowed in order to avoid fragility, regular updates of it, to have all the tests "green".  
   Exceptions can be made, with strong rational behind it , where test output is short/clear intent, whats actually being tested (e.g. design system library critical elements that shouldn't deviate).
 
-## Conventions enforced by automated tooling
+## ESlint & typescript-eslint rules
 
-Some highlighted conventions enforced by automated tooling:
+Guide listed [ESlint](https://github.com/eslint/eslint) & [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint) rules:
 
-- Whole codebase is written in TypeScript strict mode with enabled ESlint [Strict Configuration](https://typescript-eslint.io/docs/linting/configs#strict).
+- Whole codebase is written in TypeScript with typescript-eslint [`strict-type-checked`](https://typescript-eslint.io/linting/configs/#strict-type-checked) and
+  [`stylistic-type-checked`](https://typescript-eslint.io/linting/configs/#stylistic-type-checked) configurations enabled.
 - Use named exports. In case of exceptions disable [eslint rule](https://github.com/mkosir/frontend-monorepo-boilerplate/blob/main/packages/config-eslint/index.js#L78) (e.g. Next.js pages).
 - If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it. `@ts-ignore` is not allowed ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)).
