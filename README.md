@@ -174,6 +174,9 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
   const y: ReadonlyArray<string> = ["a", "b"];
   ```
 
+- If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)).  
+  `@ts-ignore` is not allowed, while `@ts-expect-error` can be used with provided description ([eslint rule](https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description)).
+
 ## Naming
 
 Setting aside convention on cache invalidation, but for the second hardest thing, clear naming with important context should be provided.  
@@ -356,11 +359,3 @@ As mentioned React components are functions, where [respective rules apply](#fun
   ```
 - Snapshot tests are discouraged in order to avoid fragility, which leads to "just update it" turn of mind, to achieve all the tests pass.  
   Exceptions can be made, with strong rational behind it, where test output has short and clear intent, whats actually being tested (e.g. design system library critical elements that shouldn't deviate).
-
-## ESlint & typescript-eslint rules list
-
-List of [ESlint](https://github.com/eslint/eslint) & [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint) rules used through guide with reference links:
-
-- Entire codebase is written in TypeScript with typescript-eslint [`strict-type-checked`](https://typescript-eslint.io/linting/configs/#strict-type-checked) and
-  [`stylistic-type-checked`](https://typescript-eslint.io/linting/configs/#stylistic-type-checked) configurations enabled.
-- If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)). `@ts-ignore` is not allowed. ([example](github.com))
