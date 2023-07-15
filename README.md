@@ -218,7 +218,7 @@ While it's often hard to find the best names, try optimize code for consistency 
   - #### Constants
     `PRODUCT_ID`
   - #### Object constants
-    Singular and capitalized.
+    Singular, capitalized with const assertion and satisfying type (if there is one).
     ```ts
     const ORDER_STATUS = {
       pending: "pending",
