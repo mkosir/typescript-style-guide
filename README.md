@@ -211,7 +211,8 @@ While it's often hard to find the best names, try optimize code for consistency 
   Camel case (`filterProductsByType`, `useGetProducts`)
 - #### Variables
 
-  - #### Locals (`products`, `productsFiltered`)
+  - #### Locals
+    Camel case - `products`, `productsFiltered`
   - #### Booleans
     Prefixed with `is`, `has` etc. (`isProduct`)
   - #### Constants
