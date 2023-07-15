@@ -191,7 +191,7 @@ overrides: [
 ];
 ```
 
-While it's often hard to find the best names, try optimize code for the reader and consistency by following rules:
+While it's often hard to find the best names, try optimize code for consistency and the reader by following rules:
 
 - #### React components
   Pascal case (`ProductItem`, `ProductsPage`)
