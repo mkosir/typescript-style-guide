@@ -182,13 +182,13 @@ Strive to keep naming conventions consistent and readable, because another perso
 Named exports must be used to keep variables, functions etc. names consistent across the whole codebase ([eslint rule](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md)).  
 In case of exceptions e.g. Next.js pages, disable rule:
 
-```json
+```ts
 overrides: [
   {
     files: ["src/pages/**/*"],
     rules: { "import/no-default-export": "off" },
   },
-]
+];
 ```
 
 While it's often hard to find the best names, try optimize code for the reader and consistency by following rules:
