@@ -179,7 +179,8 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 Setting aside convention on cache invalidation, but for the second hardest thing, clear naming with important context should be provided.  
 Strive to keep naming conventions consistent and readable, because another person will maintain the code you have written.
 
-Named exports must be used to keep variables, functions etc. names consistent across the whole codebase ([eslint rule](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md)).
+Named exports must be used to keep variables, functions etc. names consistent across the whole codebase ([eslint rule](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md)).  
+In case of exceptions e.g. Next.js pages, disable rule ([example](https://github.com/mkosir/frontend-monorepo-boilerplate/blob/main/packages/config-eslint/index.js#L78)).
 
 While it's often hard to find the best names, try optimize code for the reader and consistency by following rules:
 
@@ -353,5 +354,4 @@ List of [ESlint](https://github.com/eslint/eslint) & [typescript-eslint](https:/
 
 - Entire codebase is written in TypeScript with typescript-eslint [`strict-type-checked`](https://typescript-eslint.io/linting/configs/#strict-type-checked) and
   [`stylistic-type-checked`](https://typescript-eslint.io/linting/configs/#stylistic-type-checked) configurations enabled.
-- Use named exports ([eslint rule](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md)). In case of exceptions e.g. Next.js pages, disable rule ([example](https://github.com/mkosir/frontend-monorepo-boilerplate/blob/main/packages/config-eslint/index.js#L78)).
 - If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)). `@ts-ignore` is not allowed. ([example](github.com))
