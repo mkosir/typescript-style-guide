@@ -210,9 +210,9 @@ While it's often hard to find the best names, try optimize code for consistency 
 - #### Variables
 
   - #### Locals (`products`, `productsFiltered`)
-  - ##### Booleans
+  - #### Booleans
     Prefixed with `is`, `has` etc. (`isProduct`)
-  - ##### Constants
+  - #### Constants
     `PRODUCT_ID`
   - #### Object constants
     Singular and capitalized.
