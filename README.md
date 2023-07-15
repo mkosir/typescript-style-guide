@@ -25,7 +25,6 @@
   - [Component Types](#component-types)
   - [Passing Data](#passing-data)
 - [Tests](#tests)
-- [ESlint & typescript-eslint rules list](#eslint--typescript-eslint-rules-list)
 
 ## Introduction
 
@@ -196,7 +195,7 @@ overrides: [
 
 While it's often hard to find the best names, try optimize code for consistency and the reader by following rules:
 
-- #### React components
+- #### React Components
   Pascal case (`ProductItem`, `ProductsPage`)
 - #### Prop Types
   React component name following "Props" postfix `[ComponentName]Props` - (`ProductItemProps`, `ProductsPageProps`)
