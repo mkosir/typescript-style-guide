@@ -188,7 +188,7 @@ overrides: [
     files: ["src/pages/**/*"],
     rules: { "import/no-default-export": "off" },
   },
-];
+],
 ```
 
 While it's often hard to find the best names, try optimize code for consistency and the reader by following rules:
@@ -350,7 +350,7 @@ As mentioned React components are functions, where [respective rules apply](#fun
   'jest/valid-title': [
     'error',
     {
-      mustMatch: {it: [/should.*when/u.source, "Test title must include 'should' and 'when'"],},
+      mustMatch: { it: [/should.*when/u.source, "Test title must include 'should' and 'when'"] },
     },
   ],
   ```
