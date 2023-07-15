@@ -44,7 +44,7 @@ This guide requires you to use [TypeScript v5](https://github.com/microsoft/Type
 - Use of server-state library is encouraged ([react-query](https://tanstack.com/query/latest)).
 - Use of client-state library for global state is discouraged.  
   Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) (no Redux).
-- Use named exports. In case of exceptions disable [eslint rule](https://github.com/mkosir/frontend-monorepo-boilerplate/blob/main/packages/config-eslint/index.js#L78) (e.g. Next.js pages).
+- Use named exports. In case of exceptions e.g. Next.js pages, disable [eslint rule](https://github.com/mkosir/typescript-react-style-guide#naming).
 
 ## Code Collocation
 
@@ -180,7 +180,16 @@ Setting aside convention on cache invalidation, but for the second hardest thing
 Strive to keep naming conventions consistent and readable, because another person will maintain the code you have written.
 
 Named exports must be used to keep variables, functions etc. names consistent across the whole codebase ([eslint rule](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md)).  
-In case of exceptions e.g. Next.js pages, disable rule ([example](https://github.com/mkosir/frontend-monorepo-boilerplate/blob/main/packages/config-eslint/index.js#L78)).
+In case of exceptions e.g. Next.js pages, disable rule:
+
+```json
+overrides: [
+  {
+    files: ["src/pages/**/*"],
+    rules: { "import/no-default-export": "off" },
+  },
+]
+```
 
 While it's often hard to find the best names, try optimize code for the reader and consistency by following rules:
 
