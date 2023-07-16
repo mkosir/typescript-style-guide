@@ -162,7 +162,8 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
   - type is narrowed
   - object and array gets `readonly` properties
 - Prefer object const assertion over enum.
-- Prefer using `null` instead of `undefined`, to explicitly state it has no value (assignment, return type).
+- Prefer using `null` instead of `undefined`, to explicitly state it has no value - assignment, return type etc.
+  Reach out for `undefined` assignment when e.g. trying to exclude fields in: forms, request payload, querying database ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined)) etc.
 
 ## Types
 
