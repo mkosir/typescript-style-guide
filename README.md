@@ -341,7 +341,7 @@ As mentioned React components are functions, where [respective rules apply](#fun
 ### Passing Data
 
 - Prop drilling should not become an issue, if it does [break out your render method](https://kentcdodds.com/blog/prop-drilling#how-can-we-avoid-problems-with-prop-drilling).
-- Component composition is not allowed.
+- Component composition is discouraged.
 - Fetching of data is only allowed in container components.
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
 - use of client-state library for global state is discouraged.  
