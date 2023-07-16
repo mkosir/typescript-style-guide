@@ -112,7 +112,7 @@ Mutations should be used sparingly in cases when necessary: complex objects, per
 Since React components and hooks are also functions, convention should be followed as much as possible.
 
 - Function should have single responsibility.
-- Function should be stateless (not to be confused with React state) where the same input arguments return same value every single time.
+- Function should be stateless where the same input arguments return same value every single time.
 - Function should accept at least one argument and return data.
 - Function should not have side effects, but be pure. It's implementation should not modify or access variable value outside its local environment (global state, fetching etc.).
 
