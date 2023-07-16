@@ -46,7 +46,7 @@ This guide requires you to use:
 - **Code is organized and grouped by feature.** Collocate code as close as possible to where it's relevant.
 - Strive for data immutability.
 - Strive for functions to be pure, stateless and have single responsibility.
-- Use of server-state library is encouraged ([react-query](https://tanstack.com/query/latest)).
+- Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
 - Use of client-state library for global state is discouraged.  
   Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) (no Redux).
 - Use named exports. In case of exceptions e.g. Next.js pages, disable [eslint rule](https://github.com/mkosir/typescript-react-style-guide#naming).
@@ -343,7 +343,7 @@ As mentioned React components are functions, where [respective rules apply](#fun
 - Prop drilling should not become an issue, if it does [break out your render method](https://kentcdodds.com/blog/prop-drilling#how-can-we-avoid-problems-with-prop-drilling).
 - Component composition is not allowed.
 - Fetching of data is only allowed in container components.
-- Use of server-state library is encouraged ([react-query](https://tanstack.com/query/latest)).
+- Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
 - use of client-state library for global state is discouraged.  
   Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state user settings (e.g. `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) (no Redux).
 
