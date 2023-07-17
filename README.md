@@ -115,12 +115,30 @@ Mutations should be used sparingly in cases when necessary: complex objects, per
 
 ## Functions
 
-Since React components and hooks are also functions, convention should be followed as much as possible.
+Since React components and hooks are also functions, convention that takes a lot of good parts from basic functional programming concepts should be followed as much as possible.
 
 - Function should have single responsibility.
 - Function should be stateless where the same input arguments return same value every single time.
 - Function should accept at least one argument and return data.
 - Function should not have side effects, but be pure. It's implementation should not modify or access variable value outside its local environment (global state, fetching etc.).
+- To keep function readable and easily extensible for the future (adding/removing args), strive to have single object as the function arg, instead of multiple args.  
+  As exception this not applies when having only one primitive single arg (simple functions e.g. isNumber(value), implementing currying etc.).
+
+  ```ts
+  // ❌ Avoid having multiple arguments
+  transformUserInput("client", false, 60, 120, null, true, 2000);
+
+  // ✅ Use options object as argument
+  transformUserInput({
+    method: "client",
+    isValidated: false,
+    minLines: 60,
+    maxLines: 120,
+    defaultInput: null,
+    shouldLog: true,
+    timeout: 2000,
+  });
+  ```
 
 <details>
 <summary>Potential exceptions of react components and hooks</summary>
@@ -342,7 +360,7 @@ As mentioned React components are functions, where [respective rules apply](#fun
 ### Passing Data
 
 - Prop drilling should not become an issue, if it does [break out your render method](https://kentcdodds.com/blog/prop-drilling#how-can-we-avoid-problems-with-prop-drilling).
-- Component composition is discouraged.
+- Component composition is discouraged. Exception can be made, with strong rational behind it, where its being emphasized how component API improved (performance improvement, better app scalability etc.)
 - Fetching of data is only allowed in container components.
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
 - use of client-state library for global state is discouraged.  
