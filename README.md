@@ -11,15 +11,17 @@
 - [Variables](#variables)
 - [Types](#types)
 - [Naming](#naming)
-  - [React components](#react-components)
-  - [Prop Types](#prop-types)
-  - [Functions](#functions-1)
-  - [Variables](#variables-1)
-    - [Locals](#locals)
-    - [Booleans](#booleans)
-    - [Constants](#constants)
-    - [Object constants](#object-constants)
-    - [Generics](#generics)
+  - [Named Export](#named-export)
+  - [Naming Conventions](#naming-conventions)
+    - [React Components](#react-components)
+    - [Prop Types](#prop-types)
+    - [Functions](#functions-1)
+    - [Variables](#variables-1)
+      - [Locals](#locals)
+      - [Booleans](#booleans)
+      - [Constants](#constants)
+      - [Object constants](#object-constants)
+      - [Generics](#generics)
 - [React Components](#react-components-1)
   - [Props](#props)
   - [Component Types](#component-types)
@@ -49,7 +51,7 @@ This guide requires you to use:
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
 - Use of client-state library for global state is discouraged.  
   Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) (no Redux).
-- Use named exports. In case of exceptions e.g. Next.js pages, disable [eslint rule](https://github.com/mkosir/typescript-react-style-guide#naming).
+- Use named exports. In case of exceptions e.g. Next.js pages, disable [eslint rule](https://github.com/mkosir/typescript-react-style-guide#named-export).
 
 ## Code Collocation
 
@@ -191,25 +193,57 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 - All types are defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).  
   In case of exceptions, most commonly declaration merging (extending third-party library types - [example](https://github.com/mkosir/trpc-api-boilerplate/blob/main/src/utils/types/process-env.ts#L14)), use `interface` and disable linter.
+
+  ```ts
+  // ❌ Avoid interface definitions
+  interface UserInfo {
+    name: string;
+  }
+
+  // ✅ Use type definition
+  type UserInfo = {
+    name: string;
+  };
+  ```
+
 - Array types are defined with `generic` syntax ([eslint rule](https://typescript-eslint.io/rules/array-type/#generic)).
 
   ```ts
+  // ❌ Avoid
+  const x: string[] = ["a", "b"];
+  const y: readonly string[] = ["a", "b"];
+
+  // ✅ Use
   const x: Array<string> = ["a", "b"];
   const y: ReadonlyArray<string> = ["a", "b"];
   ```
 
-- If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)).  
-  `@ts-ignore` is not allowed, while `@ts-expect-error` can be used with provided description ([eslint rule](https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description)).
+- If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)). If at any future point suppressed line becomes error-free, TypeSciprt compiler will indicate it.  
+   `@ts-ignore` is not allowed, while `@ts-expect-error` can be used with provided description ([eslint rule](https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description)).
+
+  ```ts
+  // ❌ Avoid @ts-ignore
+  // @ts-ignore
+  const result = doSomething("hello");
+
+  // ✅ Use @ts-expect-error with description
+  // @ts-expect-error: the library definition is wrong
+  const result = doSomething("hello");
+  ```
 
 ## Naming
 
 Setting aside convention on cache invalidation, but for the second hardest thing, clear naming with important context should be provided.  
 Strive to keep naming conventions consistent and readable, because another person will maintain the code you have written.
 
-Named exports must be used to keep variables, functions etc. names consistent across the entire codebase ([eslint rule](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md)).  
+### Named Export
+
+Named exports must be used to keep variables, functions... names consistent across the entire codebase ([eslint rule](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md)).  
 In case of exceptions e.g. Next.js pages, disable rule:
 
 ```ts
+// .eslintrc
+...
 overrides: [
   {
     files: ["src/pages/**/*"],
@@ -217,6 +251,8 @@ overrides: [
   },
 ],
 ```
+
+### Naming Conventions
 
 While it's often hard to find the best names, try optimize code for consistency and the reader by following rules:
 
@@ -226,9 +262,13 @@ While it's often hard to find the best names, try optimize code for consistency 
   React component name following "Props" postfix `[ComponentName]Props` - (`ProductItemProps`, `ProductsPageProps`)
 - #### Callback Props
 
-  Event handler (callback) prop are defined with prefix `on*` (e.g. `onClick`) and handler implementation function with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
+  Event handler (callback) props are defined with prefix `on*` (e.g. `onClick`) and handler implementation function with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
 
   ```tsx
+  // ❌ Avoid inconsistent callback prop naming
+  <MyComponent userClick={actionUserClick} />
+
+  // ✅ Use prop prefix 'on*' and handler prefix 'handle*'
   <MyComponent onClick={handleClick} />
   ```
 
