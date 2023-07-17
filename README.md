@@ -274,7 +274,8 @@ type StatusProps = {
   error?: string;
 };
 
-// ✅ Strive to have majority of props required, or if that's not possible, use discriminated union type for clear intent on component usage
+// ✅ Strive to have majority of props required, or if that's not possible,
+// use discriminated union type for clear intent on component usage
 type StatusSuccess = {
   status: 'success';
   data: Products;
