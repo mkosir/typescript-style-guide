@@ -1,0 +1,12 @@
+name: 'New issue'
+description: 'File an issue'
+body:
+  - type: 'textarea'
+    id: 'description'
+    attributes:
+      label: 'Description'
+      description: 'Description of an issue.'
+      placeholder: |
+        Bug description
+    validations:
+      required: true
