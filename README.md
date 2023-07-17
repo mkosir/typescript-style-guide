@@ -5,7 +5,6 @@
 - [Introduction](#introduction)
 - [TLDR](#tldr)
 - [Code Collocation](#code-collocation)
-- [Project Structure](#project-structure)
 - [Data immutability](#data-immutability)
 - [Functions](#functions)
 - [Variables](#variables)
@@ -26,6 +25,7 @@
   - [Props](#props)
   - [Component Types](#component-types)
   - [Passing Data](#passing-data)
+- [Project Structure](#project-structure)
 - [Tests](#tests)
 
 ## Introduction
@@ -59,56 +59,6 @@ This guide requires you to use:
 - **Collocate code as close as possible to where it's relevant.**
 - Deep folder nesting does not represent an issue.
 - [Relevant article](https://kentcdodds.com/blog/colocation) on code collocation.
-
-## Project Structure
-
-Every application has following file/folder structure:
-
-```shell
-apps/
-├─ product-manager/
-│  ├─ common/
-│  │  ├─ components/
-│  │  │  ├─ ProductTitle/
-│  │  │  ├─ ...
-│  │  │  └─ index.tsx
-│  │  ├─ consts/
-│  │  │  ├─ paths.ts
-│  │  │  └─ ...
-│  │  └─ types/
-│  ├─ modules/
-│  │  ├─ HomePage/
-│  │  ├─ ProductAddPage/
-│  │  ├─ ProductPage/
-│  │  ├─ ProductsPage/
-│  │  │  ├─ api/
-│  │  │  │  └─ useGetProducts/
-│  │  │  ├─ components/
-│  │  │  │  ├─ ProductItem/
-│  │  │  │  ├─ ProductsStatistics/
-│  │  │  │  └─ ...
-│  │  │  ├─ utils/
-│  │  │  │  └─ filterProductsByType/
-│  │  │  └─ index.tsx
-│  │  ├─ ...
-│  │  └─ index.tsx
-│  └─ pages/
-│     ├─ products/
-│     │  ├─ [id].tsx
-│     │  ├─ add.tsx
-│     │  ├─ index.tsx
-│     ├─ _app.tsx
-│     ├─ index.tsx
-│     └─ ...
-├─ warehouse/
-├─ admin-dashboard/
-└─ ...
-```
-
-- `modules` folder is responsible for implementation of each individual page (routed from `pages` folder)
-- `pages` folder serves as a router, where its only responsibility is to define routes
-- `common` folder is responsible for implementations that are truly used across application.  
-  Since its a "global folder" it should be used sparingly (codebase tries to follow grouped by feature project structure as much as possible).
 
 ## Data immutability
 
@@ -405,6 +355,56 @@ As mentioned React components are functions, where [respective rules apply](#fun
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
 - use of client-state library for global state is discouraged.  
   Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state user settings (e.g. `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) (no Redux).
+
+## Project Structure
+
+Every application has following file/folder structure:
+
+```shell
+apps/
+├─ product-manager/
+│  ├─ common/
+│  │  ├─ components/
+│  │  │  ├─ ProductTitle/
+│  │  │  ├─ ...
+│  │  │  └─ index.tsx
+│  │  ├─ consts/
+│  │  │  ├─ paths.ts
+│  │  │  └─ ...
+│  │  └─ types/
+│  ├─ modules/
+│  │  ├─ HomePage/
+│  │  ├─ ProductAddPage/
+│  │  ├─ ProductPage/
+│  │  ├─ ProductsPage/
+│  │  │  ├─ api/
+│  │  │  │  └─ useGetProducts/
+│  │  │  ├─ components/
+│  │  │  │  ├─ ProductItem/
+│  │  │  │  ├─ ProductsStatistics/
+│  │  │  │  └─ ...
+│  │  │  ├─ utils/
+│  │  │  │  └─ filterProductsByType/
+│  │  │  └─ index.tsx
+│  │  ├─ ...
+│  │  └─ index.tsx
+│  └─ pages/
+│     ├─ products/
+│     │  ├─ [id].tsx
+│     │  ├─ add.tsx
+│     │  ├─ index.tsx
+│     ├─ _app.tsx
+│     ├─ index.tsx
+│     └─ ...
+├─ warehouse/
+├─ admin-dashboard/
+└─ ...
+```
+
+- `modules` folder is responsible for implementation of each individual page (routed from `pages` folder)
+- `pages` folder serves as a router, where its only responsibility is to define routes
+- `common` folder is responsible for implementations that are truly used across application.  
+  Since its a "global folder" it should be used sparingly (codebase tries to follow grouped by feature project structure as much as possible).
 
 ## Tests
 
