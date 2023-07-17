@@ -235,7 +235,7 @@ While it's often hard to find the best names, try optimize code for consistency 
     ```
   - #### Generics
 
-    A name is followed by the capital letter T `RequestT`, `FooBarT` (similar as [Google style guide](https://google.github.io/styleguide/javaguide.html#s5.2.8-type-variable-names)).  
+    A name starts with the capital letter T `TRequest`, `TFooBar` (similar as [Google style guide](https://google.github.io/styleguide/javaguide.html#s5.2.8-type-variable-names) or [.Net internal](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-5.0) implementation).  
     Avoid (popular convention) naming generics with one character `T`, `K` etc., the more variables we introduce, the easier it is to mistake them.
 
     ```ts
@@ -245,11 +245,11 @@ While it's often hard to find the best names, try optimize code for consistency 
     };
     const pair = createPair(1, "a");
 
-    // ✅ Name is followed by the capital letter T
-    const createPair = <FirstT, SecondT extends string>(
-      first: FirstT,
-      second: SecondT
-    ): [FirstT, SecondT] => {
+    // ✅ Name starts with the capital letter T
+    const createPair = <TFirst, TSecond extends string>(
+      first: TFirst,
+      second: TSecond
+    ): [TFirst, TSecond] => {
       return [first, second];
     };
     const pair = createPair(1, "a");
@@ -349,10 +349,10 @@ As mentioned React components are functions, where [respective rules apply](#fun
 
 ## Tests
 
-- Test can be run through npm scripts, but it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) VS code extension so any monorepo app/package single test can be run [instantly](https://github.com/mkosir/typescript-react-style-guide/raw/main/misc/vscode-jest-runner.gif).
+- Test can be run through npm scripts, but it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=Tfirstris.vscode-jest-runner) VS code extension so any monorepo app/package single test can be run [instantly](https://github.com/mkosir/typescript-react-style-guide/raw/main/misc/vscode-jest-runner.gif).
 
   ```sh
-  code --install-extension firsttris.vscode-jest-runner
+  code --install-extension Tfirstris.vscode-jest-runner
   ```
 
 - All test descriptions follows naming convention as `it('should ... when ...')`. [Eslint rule](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/valid-title.md) with regex:
