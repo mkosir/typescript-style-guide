@@ -351,11 +351,11 @@ As mentioned React components are functions, where [respective rules apply](#fun
 ### Passing Data
 
 - Prop drilling should not become an issue, if it does [break out your render method](https://kentcdodds.com/blog/prop-drilling#how-can-we-avoid-problems-with-prop-drilling).
-- Component composition is discouraged. Exception can be made, with strong rational behind it, where its being emphasized how component API improved (performance improvement, better app scalability etc.)
+- Component composition is discouraged. Exceptions can be made, with strong rational behind it, where its being emphasized how component API improved (performance improvement, better app scalability etc.)
 - Fetching of data is only allowed in container components.
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
 - use of client-state library for global state is discouraged.  
-  Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state user settings (e.g. `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) (no Redux).
+  Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings - `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) (no Redux).
 
 ## Project Structure
 
