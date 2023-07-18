@@ -67,14 +67,15 @@ Mutations should be used sparingly in cases when necessary: complex objects, per
 
 ## Functions
 
-Since React components and hooks are also functions, convention that takes a lot of good parts from basic functional programming concepts should be followed as much as possible.
+Since React components and hooks are also functions, a lot of basic concepts from functional programming applies.
+Conventions should be followed as much as possible:
 
 - Function should have single responsibility.
 - Function should be stateless where the same input arguments return same value every single time.
 - Function should accept at least one argument and return data.
 - Function should not have side effects, but be pure. It's implementation should not modify or access variable value outside its local environment (global state, fetching etc.).
 - To keep function readable and easily extensible for the future (adding/removing args), strive to have single object as the function arg, instead of multiple args.  
-  As exception this not applies when having only one primitive single arg (simple functions e.g. isNumber(value), implementing currying etc.).
+  As exception this not applies when having only one primitive single arg (e.g. simple functions isNumber(value), implementing currying etc.).
 
   ```ts
   // ❌ Avoid having multiple arguments
@@ -405,6 +406,8 @@ apps/
 - `pages` folder serves as a router, where its only responsibility is to define routes
 - `common` folder is responsible for implementations that are truly used across application.  
   Since its a "global folder" it should be used sparingly (codebase tries to follow grouped by feature project structure as much as possible).
+
+In case Nextjs is being used as React framework, `pages` folder serves as a router, where its only responsibility is to define routes.
 
 ## Tests
 
