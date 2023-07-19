@@ -268,12 +268,15 @@ While it's often hard to find the best names, try optimize code for consistency 
 
 - #### Functions
 
-  Camel case (`filterProductsByType`, `useGetProducts`)
+  Camel case  
+  `filterProductsByType`, `useGetProducts`
 
 - #### React Components
-  Pascal case (`ProductItem`, `ProductsPage`)
+  Pascal case  
+  `ProductItem`, `ProductsPage`
 - #### Prop Types
-  React component name following "Props" postfix `[ComponentName]Props` - (`ProductItemProps`, `ProductsPageProps`)
+  React component name following "Props" postfix  
+  `[ComponentName]Props` - `ProductItemProps`, `ProductsPageProps`
 - #### Callback Props
 
   Event handler (callback) props are defined with prefix `on*` (e.g. `onClick`) and handler implementation function with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
