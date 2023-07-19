@@ -13,20 +13,23 @@
 - [Naming](#naming)
   - [Named Export](#named-export)
   - [Naming Conventions](#naming-conventions)
-    - [React Components](#react-components)
-    - [Prop Types](#prop-types)
-    - [Functions](#functions-1)
     - [Variables](#variables-1)
       - [Locals](#locals)
       - [Booleans](#booleans)
       - [Constants](#constants)
       - [Object constants](#object-constants)
       - [Generics](#generics)
+    - [Functions](#functions-1)
+    - [React Components](#react-components)
+    - [Prop Types](#prop-types)
+    - [Callback Props](#callback-props)
+    - [React Hooks](#react-hooks)
 - [React Components](#react-components-1)
   - [Props](#props)
   - [Component Types](#component-types)
   - [Passing Data](#passing-data)
 - [Project Structure](#project-structure)
+  - [Folder Structure](#folder-structure)
 - [Tests](#tests)
 
 ## Introduction
@@ -415,7 +418,7 @@ As mentioned React components are functions, where [respective rules apply](#fun
 
 Project structure strongly derives conventions as described in [Code Collocation](#code-collocation).
 
-### File/Folder Structure
+### Folder Structure
 
 Example monorepo project, where every application has following file/folder structure:
 
