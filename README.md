@@ -224,8 +224,6 @@ overrides: [
 
 While it's often hard to find the best names, try optimize code for consistency and the reader by following rules:
 
-- #### Functions
-  Camel case (`filterProductsByType`, `useGetProducts`)
 - #### Variables
 
   - #### Locals
@@ -264,6 +262,10 @@ While it's often hard to find the best names, try optimize code for consistency 
     };
     const pair = createPair(1, "a");
     ```
+
+- #### Functions
+
+  Camel case (`filterProductsByType`, `useGetProducts`)
 
 - #### React Components
   Pascal case (`ProductItem`, `ProductsPage`)
