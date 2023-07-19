@@ -378,7 +378,7 @@ As mentioned React components are functions, where [respective rules apply](#fun
 
 Project structure strongly derives conventions as described in [Code Collocation](#code-collocation).
 
-### File/Folder structure
+### File/Folder Structure
 
 Example monorepo project, where every application has following file/folder structure:
 
