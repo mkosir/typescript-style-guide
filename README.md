@@ -406,25 +406,16 @@ apps/
 │  │  │  └─ index.tsx
 │  │  ├─ ...
 │  │  └─ index.tsx
-│  └─ pages/
-│     ├─ products/
-│     │  ├─ [id].tsx
-│     │  ├─ add.tsx
-│     │  ├─ index.tsx
-│     ├─ _app.tsx
-│     ├─ index.tsx
-│     └─ ...
 ├─ warehouse/
 ├─ admin-dashboard/
 └─ ...
 ```
 
 - `modules` folder is responsible for implementation of each individual page (routed from `pages` folder)
-- `pages` folder serves as a router, where its only responsibility is to define routes
 - `common` folder is responsible for implementations that are truly used across application.  
   Since its a "global folder" it should be used sparingly (codebase tries to follow grouped by feature project structure as much as possible).
 
-In case Nextjs is being used as React framework, `pages` folder serves as a router, where its only responsibility is to define routes.
+In case Nextjs is being used as React framework, `pages` folder serves only as a router, where its responsibility is to define routes. Same approach applies for other frameworks with file-system based router.
 
 ## Tests
 
