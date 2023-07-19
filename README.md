@@ -3,6 +3,7 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [About Guide](#about-guide)
 - [TLDR](#tldr)
 - [Code Collocation](#code-collocation)
 - [Data immutability](#data-immutability)
@@ -32,11 +33,12 @@
 
 TypeScript & React Style Guide provides concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
 
-As any code style guide is opinionated, this is no different as it tries to set conventions that govern our code.
-
 Since "consistency is the key" majority of rules are enforced by automated tooling as ESLint, TypeScript, Prettier, etc. Still certain opinionated design and architectural decisions must be followed which are covered with described conventions bellow.
 
-This guide requires you to use:
+## About Guide
+
+As any code style guide is opinionated, this is no different as it tries to set conventions that govern our code.  
+Guide requires you to use:
 
 - [TypeScript v5](https://github.com/microsoft/TypeScript)
 - [typescript-eslint v6](https://github.com/typescript-eslint/typescript-eslint) with [`strict-type-checked`](https://typescript-eslint.io/linting/configs/#strict-type-checked),
