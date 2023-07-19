@@ -65,7 +65,7 @@ Guide requires you to use:
 ## Data immutability
 
 Majority of the data should be immutable (use `Readonly`, `ReadonlyArray`, always return new array, object etc). To keep cognitive load low for future developers try to keep data objects small.  
-Mutations should be used sparingly in cases when necessary: complex objects, performance reasoning etc.
+As an exception mutations should be used sparingly in cases where necessary: complex objects, performance reasoning etc.
 
 ## Functions
 
@@ -415,7 +415,7 @@ apps/
 - `common` folder is responsible for implementations that are truly used across application.  
   Since its a "global folder" it should be used sparingly (codebase tries to follow grouped by feature project structure as much as possible).
 
-In case Nextjs is being used as React framework, `pages` folder serves only as a router, where its responsibility is to define routes. Same approach applies for other frameworks with file-system based router.
+In case Nextjs is being used as React framework, `pages` folder serves only as a router, where its responsibility is to define routes (no business logic implementation). Same approach applies for other frameworks with file-system based router.
 
 ## Tests
 
