@@ -394,6 +394,7 @@ apps/
 │  │  ├─ consts/
 │  │  │  ├─ paths.ts
 │  │  │  └─ ...
+│  │  ├─ hooks/
 │  │  └─ types/
 │  ├─ modules/
 │  │  ├─ HomePage/
@@ -420,7 +421,8 @@ apps/
 ```
 
 - `modules` folder is responsible for implementation of each individual page, where all custom features for that page are being implemented (components, hooks, utils functions etc.).
-- `common` folder is responsible for implementations that are truly used across application. Since its a "global folder" it should be used sparingly.
+- `common` folder is responsible for implementations that are truly used across application. Since its a "global folder" it should be used sparingly.  
+  If same component e.g. `common/components/ProductTitle` starts being used on more the one page, it shall be moved to common folder.
 
 In case Nextjs is being used as React framework, `pages` folder serves only as a router, where its responsibility is to define routes (no business logic implementation). Same approach applies for other frameworks with file-system based router.
 
