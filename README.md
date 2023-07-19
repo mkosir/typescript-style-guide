@@ -135,9 +135,24 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 ## Variables
 
-- Create const assertion (`as const`) whenever object or array should be immutable and inferred as a literal type.
+- Strive to use const assertion (`as const`) as:
+
   - type is narrowed
-  - object and array gets `readonly` properties
+  - object gets `readonly` properties
+  - array becomes `readonly` tuple
+
+    ```ts
+    // ❌ Avoid declaring constants without const assertion
+    const BASE_LOCATION = { x: 50, y: 130 }; // Type { x: number; y: number; }
+    BASE_LOCATION.x = 10;
+    const BASE_LOCATION = [50, 130]; // Type number[]
+    BASE_LOCATION.push(10);
+
+    // ✅ Use const assertion
+    const BASE_LOCATION = { x: 50, y: 130 } as const; // Type '{ readonly x: 50; readonly y: 130; }'
+    const BASE_LOCATION = [50, 130] as const; // Type 'readonly [10, 20]'
+    ```
+
 - Prefer object const assertion over enum.
 - Prefer using `null` instead of `undefined`, to explicitly state it has no value - assignment, return type etc.
   Reach out for `undefined` assignment when e.g. trying to exclude fields in: forms, request payload, querying database ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined)) etc.
