@@ -69,7 +69,7 @@ As an exception mutations should be used sparingly in cases where necessary: com
 
 ## Functions
 
-Since React components and hooks are also functions, a lot of basic concepts from functional programming applies.
+Since React components and hooks are also functions, a lot of basic concepts from functional programming applies.  
 Conventions should be followed as much as possible:
 
 - Function should have single responsibility.
