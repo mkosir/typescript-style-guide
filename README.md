@@ -227,10 +227,13 @@ While it's often hard to find the best names, try optimize code for consistency 
 - #### Variables
 
   - #### Locals
-    Camel case - `products`, `productsFiltered`
+    Camel case  
+    `products`, `productsFiltered`
   - #### Booleans
-    Prefixed with `is`, `has` etc. (`isProduct`)
+    Prefixed with `is`, `has` etc.  
+    `isDisabled`, `hasProduct`
   - #### Constants
+    Capitalized  
     `PRODUCT_ID`
   - #### Object constants
     Singular, capitalized with const assertion and optionally satisfies type (if there is one).
