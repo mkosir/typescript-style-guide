@@ -224,22 +224,6 @@ overrides: [
 
 While it's often hard to find the best names, try optimize code for consistency and the reader by following rules:
 
-- #### React Components
-  Pascal case (`ProductItem`, `ProductsPage`)
-- #### Prop Types
-  React component name following "Props" postfix `[ComponentName]Props` - (`ProductItemProps`, `ProductsPageProps`)
-- #### Callback Props
-
-  Event handler (callback) props are defined with prefix `on*` (e.g. `onClick`) and handler implementation function with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
-
-  ```tsx
-  // ❌ Avoid inconsistent callback prop naming
-  <MyComponent userClick={actionUserClick} />
-
-  // ✅ Use prop prefix 'on*' and handler prefix 'handle*'
-  <MyComponent onClick={handleClick} />
-  ```
-
 - #### Functions
   Camel case (`filterProductsByType`, `useGetProducts`)
 - #### Variables
@@ -280,6 +264,22 @@ While it's often hard to find the best names, try optimize code for consistency 
     };
     const pair = createPair(1, "a");
     ```
+
+- #### React Components
+  Pascal case (`ProductItem`, `ProductsPage`)
+- #### Prop Types
+  React component name following "Props" postfix `[ComponentName]Props` - (`ProductItemProps`, `ProductsPageProps`)
+- #### Callback Props
+
+  Event handler (callback) props are defined with prefix `on*` (e.g. `onClick`) and handler implementation function with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
+
+  ```tsx
+  // ❌ Avoid inconsistent callback prop naming
+  <MyComponent userClick={actionUserClick} />
+
+  // ✅ Use prop prefix 'on*' and handler prefix 'handle*'
+  <MyComponent onClick={handleClick} />
+  ```
 
 ## React Components
 
