@@ -222,7 +222,7 @@ overrides: [
 
 ### Naming Conventions
 
-While it's often hard to find the best names, try optimize code for consistency and the reader by following rules:
+While it's often hard to find the best names, try optimize code for consistency and future reader by following rules:
 
 - #### Variables
 
