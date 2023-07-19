@@ -269,7 +269,7 @@ While it's often hard to find the best names, try optimize code for consistency 
 - #### Functions
 
   Camel case  
-  `filterProductsByType`, `useGetProducts`
+  `filterProductsByType`, `formatCurrency`
 
 - #### React Components
   Pascal case  
@@ -287,6 +287,23 @@ While it's often hard to find the best names, try optimize code for consistency 
 
   // ✅ Use prop prefix 'on*' and handler prefix 'handle*'
   <MyComponent onClick={handleClick} />
+  ```
+
+- #### React Hooks
+
+  Camel case, prefix with 'use' ([eslint rule](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)), use the `[value, setValue] = useState()` convention ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md#rule-details))  
+  `useGetProducts`, `useWindowResize`
+
+  ```ts
+  // ❌ Avoid inconsistent useState hook naming
+  const [userName, setUser] = useState();
+  const [color, updateColor] = useState();
+  const [visible, setVisible] = useState();
+
+  // ✅ Use
+  const [name, setName] = useState();
+  const [color, setColor] = useState();
+  const [isActive, setIsActive] = useState();
   ```
 
 ## React Components
