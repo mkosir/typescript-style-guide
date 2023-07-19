@@ -292,7 +292,7 @@ While it's often hard to find the best names, try optimize code for consistency 
 - #### React Hooks
 
   Camel case, prefix with 'use' ([eslint rule](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)), use the `[value, setValue] = useState()` convention ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md#rule-details))  
-  `useGetProducts`, `useWindowResize`
+   `useGetProducts`, `useWindowResize`
 
   ```ts
   // ❌ Avoid inconsistent useState hook naming
@@ -304,6 +304,18 @@ While it's often hard to find the best names, try optimize code for consistency 
   const [name, setName] = useState();
   const [color, setColor] = useState();
   const [isActive, setIsActive] = useState();
+  ```
+
+  Custom hook must always return an object:
+
+  ```ts
+  // ❌ Avoid
+  const [products, errors] = useGetProducts();
+  const [fontSizes] = useTheme();
+
+  // ✅ Use
+  const { products, errors } = useGetProducts();
+  const { fontSizes } = useTheme();
   ```
 
 ## React Components
