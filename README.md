@@ -472,13 +472,9 @@ In case Nextjs is being used as React framework, `pages` folder serves only as a
 
 ## Tests
 
-- Test can be run through npm scripts, but it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=Tfirstris.vscode-jest-runner) VS code extension so any monorepo app/package single test can be run [instantly](https://github.com/mkosir/typescript-react-style-guide/raw/main/misc/vscode-jest-runner.gif).
+- All test descriptions must follow naming convention as `it('should ... when ...')`.  
+  [Eslint rule](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/valid-title.md#mustmatch--mustnotmatch) implements regex:
 
-  ```sh
-  code --install-extension Tfirstris.vscode-jest-runner
-  ```
-
-- All test descriptions follows naming convention as `it('should ... when ...')`. [Eslint rule](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/valid-title.md) with regex:
   ```ts
   'jest/valid-title': [
     'error',
@@ -487,5 +483,12 @@ In case Nextjs is being used as React framework, `pages` folder serves only as a
     },
   ],
   ```
+
+- Test can be run through npm scripts, but it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=Tfirstris.vscode-jest-runner) VS code extension so any monorepo app/package single test can be run [instantly](https://github.com/mkosir/typescript-react-style-guide/raw/main/misc/vscode-jest-runner.gif).
+
+  ```sh
+  code --install-extension Tfirstris.vscode-jest-runner
+  ```
+
 - Snapshot tests are discouraged in order to avoid fragility, which leads to "just update it" turn of mind, to achieve all the tests pass.  
   Exceptions can be made, with strong rational behind it, where test output has short and clear intent, whats actually being tested (e.g. design system library critical elements that shouldn't deviate).
