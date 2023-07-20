@@ -366,7 +366,7 @@ export const Status = (status: StatusProps) => {...
 ```
 
 An exaggerated example where implementing 10 React components (or functions) with 5 required props each, is better then implementing one "can do it all" function which accepts 50 optional props.  
-As mentioned React components are functions, where [respective rules apply](#functions), if it becomes to complex it probably should be broken into smaller pieces.
+As mentioned React components are functions, where [respective conventions apply](#functions), if it becomes to complex it probably should be broken into smaller pieces.
 
 ### Component Types
 
