@@ -525,3 +525,7 @@ In case Nextjs is being used as React framework, `pages` folder serves only as a
 
 - Snapshot tests are discouraged in order to avoid fragility, which leads to "just update it" turn of mind, to achieve all the tests pass.  
   Exceptions can be made, with strong rational behind it, where test output has short and clear intent, whats actually being tested (e.g. design system library critical elements that shouldn't deviate).
+
+## Contributing
+
+All contributions are welcome!
