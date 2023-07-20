@@ -484,6 +484,16 @@ In case Nextjs is being used as React framework, `pages` folder serves only as a
   ],
   ```
 
+  ```ts
+  // ❌ Avoid
+  it("accepts ISO date format where date is parsed and formatted as YYYY-MM");
+  it("after title is confirmed user description is rendered");
+
+  // ✅ Name test description as it('should ... when ...')
+  it("should return parsed date as YYYY-MM when input is in ISO date format");
+  it("should render user description when title is confirmed");
+  ```
+
 - Test can be run through npm scripts, but it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=Tfirstris.vscode-jest-runner) VS code extension so any monorepo app/package single test can be run [instantly](https://github.com/mkosir/typescript-react-style-guide/raw/main/misc/vscode-jest-runner.gif).
 
   ```sh
