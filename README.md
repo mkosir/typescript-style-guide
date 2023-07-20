@@ -18,8 +18,8 @@
       - [Booleans](#booleans)
       - [Constants](#constants)
       - [Object constants](#object-constants)
-      - [Generics](#generics)
     - [Functions](#functions-1)
+    - [Generics](#generics)
     - [React Components](#react-components)
     - [Prop Types](#prop-types)
     - [Callback Props](#callback-props)
@@ -247,32 +247,33 @@ While it's often hard to find the best names, try optimize code for consistency 
       error: "error",
     } as const satisfies OrderStatus;
     ```
-  - #### Generics
-
-    A name starts with the capital letter T `TRequest`, `TFooBar` (similar as [Google style guide](https://google.github.io/styleguide/javaguide.html#s5.2.8-type-variable-names) or [.Net internal](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-5.0) implementation).  
-    Avoid (popular convention) naming generics with one character `T`, `K` etc., the more variables we introduce, the easier it is to mistake them.
-
-    ```ts
-    // ❌ Avoid naming generics with one character
-    const createPair = <T, K extends string>(first: T, second: K): [T, K] => {
-      return [first, second];
-    };
-    const pair = createPair(1, "a");
-
-    // ✅ Name starts with the capital letter T
-    const createPair = <TFirst, TSecond extends string>(
-      first: TFirst,
-      second: TSecond
-    ): [TFirst, TSecond] => {
-      return [first, second];
-    };
-    const pair = createPair(1, "a");
-    ```
 
 - #### Functions
 
   Camel case  
   `filterProductsByType`, `formatCurrency`
+
+- #### Generics
+
+  A name starts with the capital letter T `TRequest`, `TFooBar` (similar as [Google style guide](https://google.github.io/styleguide/javaguide.html#s5.2.8-type-variable-names) or [.Net internal](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-5.0) implementation).  
+   Avoid (popular convention) naming generics with one character `T`, `K` etc., the more variables we introduce, the easier it is to mistake them.
+
+  ```ts
+  // ❌ Avoid naming generics with one character
+  const createPair = <T, K extends string>(first: T, second: K): [T, K] => {
+    return [first, second];
+  };
+  const pair = createPair(1, "a");
+
+  // ✅ Name starts with the capital letter T
+  const createPair = <TFirst, TSecond extends string>(
+    first: TFirst,
+    second: TSecond
+  ): [TFirst, TSecond] => {
+    return [first, second];
+  };
+  const pair = createPair(1, "a");
+  ```
 
 - #### React Components
   Pascal case  
