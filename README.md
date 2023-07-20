@@ -6,7 +6,7 @@
 - [About Guide](#about-guide)
 - [TLDR](#tldr)
 - [Code Collocation](#code-collocation)
-- [Data immutability](#data-immutability)
+- [Data Immutability](#data-immutability)
 - [Functions](#functions)
 - [Variables](#variables)
 - [Types](#types)
@@ -65,7 +65,7 @@ Guide requires you to use:
 - Deep folder nesting does not represent an issue.
 - [Relevant article](https://kentcdodds.com/blog/colocation) on code collocation.
 
-## Data immutability
+## Data Immutability
 
 Majority of the data should be immutable (use `Readonly`, `ReadonlyArray`, always return new array, object etc). To keep cognitive load low for future developers try to keep data objects small.  
 As an exception mutations should be used sparingly in cases where necessary: complex objects, performance reasoning etc.
