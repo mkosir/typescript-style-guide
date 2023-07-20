@@ -26,11 +26,15 @@
     - [React Hooks](#react-hooks)
 - [React Components](#react-components-1)
   - [Props](#props)
+    - [Using Props Type](#using-props-type)
+    - [Required \& Optional Props](#required--optional-props)
+    - [Using Discriminated Type](#using-discriminated-type)
   - [Component Types](#component-types)
   - [Passing Data](#passing-data)
 - [Project Structure](#project-structure)
   - [Folder Structure](#folder-structure)
 - [Tests](#tests)
+- [Contributing](#contributing)
 
 ## Introduction
 
