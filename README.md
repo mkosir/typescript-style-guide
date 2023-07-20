@@ -64,8 +64,7 @@ Style Guide requires you to use:
 
 - Every application or package in monorepo has project files/folders organized and grouped by **feature**.
 - **Collocate code as close as possible to where it's relevant.**
-- Deep folder nesting does not represent an issue.
-- [Relevant article](https://kentcdodds.com/blog/colocation) on code collocation.
+- Deep folder nesting should not represent an issue.
 
 ## Data Immutability
 
