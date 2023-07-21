@@ -10,7 +10,7 @@
 - [Variables](#variables)
   - [Const Assertion](#const-assertion)
   - [Enums](#enums)
-  - [null & undefined](#null--undefined)
+  - [Null & Undefined](#null--undefined)
 - [Types](#types)
   - [Type Definition](#type-definition)
   - [Array Types](#array-types)
@@ -171,7 +171,7 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 - ### Enums
   Prefer object const assertion over enum.
-- ### null & undefined
+- ### Null & Undefined
   Prefer using `null` instead of `undefined`, to explicitly state it has no value - assignment, return type etc.  
   Reach out for `undefined` assignment when e.g. trying to exclude fields in: forms, request payload, querying database ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined)) etc.
 
@@ -179,7 +179,8 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 - #### Type Definition
 
-  All types are defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).
+  All types are defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).  
+  Both are nearly equivalent, so to choose one is mostly arbitrary decision to achieve consistency.
 
   ```ts
   // ❌ Avoid interface definitions
