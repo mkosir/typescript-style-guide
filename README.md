@@ -151,7 +151,9 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 ## Variables
 
-- Strive to use const assertion (`as const`) as:
+- ### Const Assertion
+
+  Strive to use const assertion (`as const`):
 
   - type is narrowed
   - object gets `readonly` properties
@@ -169,8 +171,10 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
     const BASE_LOCATION = [50, 130] as const; // Type 'readonly [10, 20]'
     ```
 
-- Prefer object const assertion over enum.
-- Prefer using `null` instead of `undefined`, to explicitly state it has no value - assignment, return type etc.
+- ### Enums
+  Prefer object const assertion over enum.
+- ### null & undefined
+  Prefer using `null` instead of `undefined`, to explicitly state it has no value - assignment, return type etc.
   Reach out for `undefined` assignment when e.g. trying to exclude fields in: forms, request payload, querying database ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined)) etc.
 
 ## Types
