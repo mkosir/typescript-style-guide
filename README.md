@@ -37,6 +37,10 @@
 - [Project Structure](#project-structure)
   - [Folder Structure](#folder-structure)
 - [Tests](#tests)
+  - [Description](#description)
+  - [Isolation](#isolation)
+  - [Tooling Extension](#tooling-extension)
+  - [Snapshot](#snapshot)
 - [Contributing](#contributing)
 
 ## Introduction
@@ -522,7 +526,7 @@ In case Nextjs is being used as React framework, `pages` folder serves only as a
 
 Unit and integration tests convetions:
 
-- ### Test Description
+- ### Description
 
   All test descriptions must follow naming convention as `it('should ... when ...')`.  
   [Eslint rule](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/valid-title.md#mustmatch--mustnotmatch) implements regex:
@@ -546,7 +550,7 @@ Unit and integration tests convetions:
   it("should render user description when title is confirmed");
   ```
 
-- ### Test Isolation
+- ### Isolation
 
   All tests must be setup and implemented to run as standalone in isolation, where they don't depend on order of execution of other tests.
 
