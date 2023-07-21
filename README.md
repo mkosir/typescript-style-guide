@@ -174,7 +174,7 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 - ### Enums
   Prefer object const assertion over enum.
 - ### null & undefined
-  Prefer using `null` instead of `undefined`, to explicitly state it has no value - assignment, return type etc.
+  Prefer using `null` instead of `undefined`, to explicitly state it has no value - assignment, return type etc.  
   Reach out for `undefined` assignment when e.g. trying to exclude fields in: forms, request payload, querying database ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined)) etc.
 
 ## Types
