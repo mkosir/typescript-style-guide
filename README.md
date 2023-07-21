@@ -247,7 +247,10 @@ Strive to keep naming conventions consistent and readable, because another perso
 
 ### Named Export
 
-Named exports must be used to keep variables, functions... names consistent across the entire codebase ([eslint rule](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md)).  
+Named exports must be used to ensure that all imports follow a uniform pattern.  
+This keeps variables, functions... names consistent across the entire codebase ([eslint rule](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md)).  
+Named exports have the benefit of erroring when import statements try to import something that hasn't been declared.
+
 In case of exceptions e.g. Next.js pages, disable rule:
 
 ```ts
