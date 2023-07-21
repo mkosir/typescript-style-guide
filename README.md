@@ -232,6 +232,11 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
   const result = doSomething("hello");
   ```
 
+- #### Type & Non-nullability Assertions
+
+  Type assertions `brand as BrandType` and non-nullability assertions `brand!.name` are unsafe. Both only silence TypeScript compiler and increase the risk of crashing application at runtime.  
+  They can only be used as last resort exceptions (e.g. third party library types mismatch etc.) with strong rational why being introduced into codebase.
+
 ## Naming
 
 Setting aside convention on cache invalidation, but for the second hardest thing, clear naming with important context should be provided.  
@@ -552,7 +557,7 @@ Unit and integration tests convetions:
 
 - ### Isolation
 
-  All tests must be setup and implemented to run as standalone in isolation, where they don't depend on order of execution of other tests.
+  All tests must be setup and implemented to run as standalone in isolation, where they don't depend on other tests order of execution.
 
 - ### Tooling Extension
 
