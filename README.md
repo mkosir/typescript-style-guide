@@ -488,7 +488,7 @@ export const Status = (status: StatusProps) => {...
 
 ### Imports
 
-Import paths can be relative, starting with `./` or `../`, or the can be absolute `common/components`.
+Import paths can be relative, starting with `./` or `../`, or they can be absolute `common/components`.
 
 Relative imports `./myCustomHook` must be used when importing files within the same feature, as it allows moving feature across the codebase without introducing changes in these imports.  
 Absolute imports `common/components` must be used in all other cases.
