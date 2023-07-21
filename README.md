@@ -5,7 +5,6 @@
 - [Introduction](#introduction)
 - [About Guide](#about-guide)
 - [TLDR](#tldr)
-- [Code Collocation](#code-collocation)
 - [Data Immutability](#data-immutability)
 - [Functions](#functions)
 - [Variables](#variables)
@@ -38,8 +37,10 @@
     - [Using Discriminated Type](#using-discriminated-type)
   - [Component Types](#component-types)
   - [Passing Data](#passing-data)
-- [Project Structure](#project-structure)
-  - [Folder Structure](#folder-structure)
+- [Source Organization](#source-organization)
+  - [Code Collocation](#code-collocation)
+  - [Imports](#imports)
+  - [Project Structure](#project-structure)
 - [Tests](#tests)
   - [Description](#description)
   - [Isolation](#isolation)
@@ -74,12 +75,6 @@ Style Guide requires you to use:
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
 - Use of client-state library for global state is discouraged.
 - Use named exports.
-
-## Code Collocation
-
-- Every application or package in monorepo has project files/folders organized and grouped by **feature**.
-- **Collocate code as close as possible to where it's relevant.**
-- Deep folder nesting should not represent an issue.
 
 ## Data Immutability
 
@@ -483,11 +478,22 @@ export const Status = (status: StatusProps) => {...
 - use of client-state library for global state is discouraged.  
   Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings - `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) (not Redux, Mobx etc.).
 
-## Project Structure
+## Source Organization
 
-Project structure strongly derives conventions as described in [Code Collocation](#code-collocation).
+### Code Collocation
 
-### Folder Structure
+- Every application or package in monorepo has project files/folders organized and grouped by **feature**.
+- **Collocate code as close as possible to where it's relevant.**
+- Deep folder nesting should not represent an issue.
+
+### Imports
+
+Import paths can be relative, starting with `./` or `../`, or the can be absolute `common/components`.
+
+Relative imports `./myCustomHook` must be used when importing files within the same feature, as it allows moving feature across the codebase without introducing changes in these imports.  
+Absolute imports `common/components` must be used when in all other cases.
+
+### Project Structure
 
 Example monorepo project, where every application has following file/folder structure:
 
