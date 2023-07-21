@@ -167,8 +167,9 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 ## Types
 
-- All types are defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).  
-  In case of exceptions `interface` is used with disabled linter (e.g. declaration merging - extending third-party library types [example](https://github.com/mkosir/trpc-api-boilerplate/blob/main/src/utils/types/process-env.ts#L14)).
+- #### Type Definition
+
+  All types are defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).
 
   ```ts
   // ❌ Avoid interface definitions
@@ -182,7 +183,22 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
   };
   ```
 
-- Array types are defined with `generic` syntax ([eslint rule](https://typescript-eslint.io/rules/array-type/#generic)).
+  In case of exceptions use `interface` and disable lint rule. E.g. declaration merging, extending third-party library types etc.
+
+  ```ts
+  declare namespace NodeJS {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+  export interface ProcessEnv {
+      NODE_ENV: 'development' | 'production;
+      PORT: string;
+    }
+  }
+
+  ```
+
+- #### Array Types
+
+  Array types must be defined with `generic` syntax ([eslint rule](https://typescript-eslint.io/rules/array-type/#generic)).
 
   ```ts
   // ❌ Avoid
@@ -194,7 +210,9 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
   const y: ReadonlyArray<string> = ["a", "b"];
   ```
 
-- If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)). If at any future point suppressed line becomes error-free, TypeSciprt compiler will indicate it.  
+- #### Type Error
+
+  If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)). If at any future point suppressed line becomes error-free, TypeSciprt compiler will indicate it.  
    `@ts-ignore` is not allowed, while `@ts-expect-error` can be used with provided description ([eslint rule](https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description)).
 
   ```ts
