@@ -221,9 +221,22 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
   const y: ReadonlyArray<string> = ["a", "b"];
   ```
 
+- #### Return Types
+
+  Including return type annotations is not required but highly encouraged ([eslint rule](https://typescript-eslint.io/rules/explicit-function-return-type/)).
+
+  Consider benefits when explicitly typing the return value of a function:
+
+  - Return values makes it clear and easy to understand to any calling code what type is returned.
+  - In the case where there is no return value, the calling code doesn't try to use the undefined value when it shouldn't.
+  - Surface potential type errors faster in the future if there are code changes that change the return type of the function.
+  - Easier to refactor, since it ensures that the return value is assigned to a variable of the correct type.
+  - Similar to writing tests before implementation (TDD), defining function arguments and return type, gives you the opportunity to discuss the feature functionality and its interface ahead of implementation.
+  - Although type inference is very convenient, adding return types can save TypeScript compiler a lot of work.
+
 - #### Type Error
 
-  If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)). If at any future point suppressed line becomes error-free, TypeSciprt compiler will indicate it.  
+  If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)). If at any future point suppressed line becomes error-free, TypeScript compiler will indicate it.  
    `@ts-ignore` is not allowed, while `@ts-expect-error` can be used with provided description ([eslint rule](https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description)).
 
   ```ts
@@ -245,7 +258,7 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
   `any` data type must not be used as it represents literally “any” value that TypeScript defaults to and skips type checking since it cannot infer the type. As such, any is dangerous, it can mask severe programming errors.
 
-  If error cannot be resolved as safer option use type `unknown` since it does not allow dereferencing all properties or as last resort use `@ts-expect-error` ([Type Error](#type-error)).
+  If error truly cannot be resolved as safer option use type `unknown` since it does not allow dereferencing all properties or as last resort use `@ts-expect-error` ([Type Error](#type-error)).
 
 ## Naming
 
