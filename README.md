@@ -225,7 +225,7 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 - #### Return Types
 
-  Including return type annotations is not required but highly encouraged ([eslint rule](https://typescript-eslint.io/rules/explicit-function-return-type/)).
+  Including return type annotations is not required but it is highly encouraged ([eslint rule](https://typescript-eslint.io/rules/explicit-function-return-type/)).
 
   Consider benefits when explicitly typing the return value of a function:
 
