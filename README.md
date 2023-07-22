@@ -347,8 +347,8 @@ While it's often hard to find the best names, try optimize code for consistency 
   `[ComponentName]Props` - `ProductItemProps`, `ProductsPageProps`
 - #### Callback Props
 
-  Event handler (callback) props are defined with prefix `on*` (e.g. `onClick`).  
-  Event handler implementation functions are defined with prefix `handle*` (e.g. `handleClick`) - ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
+  Event handler (callback) props are defined with prefix `on*` - e.g. `onClick`.  
+  Event handler implementation functions are defined with prefix `handle*` - e.g. `handleClick` ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
 
   ```tsx
   // ❌ Avoid inconsistent callback prop naming
