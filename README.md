@@ -81,7 +81,7 @@ Style Guide requires you to use:
 ## Data Immutability
 
 Majority of the data should be immutable (use `Readonly`, `ReadonlyArray`, always return new array, object etc). To keep cognitive load low for future developers try to keep data objects small.  
-As an exception mutations should be used sparingly in cases where necessary: complex objects, performance reasoning etc.
+As an exception mutations should be used sparingly in cases where truly necessary: complex objects, performance reasoning etc.
 
 ## Functions
 
