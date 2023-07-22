@@ -241,6 +241,12 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
   Type assertions `brand as BrandType` and non-nullability assertions `brand!.name` are unsafe. Both only silence TypeScript compiler and increase the risk of crashing application at runtime.  
   They can only be used as last resort exceptions (e.g. third party library types mismatch etc.) with strong rational why being introduced into codebase.
 
+- #### any
+
+  `any` data type must not be used as it represents literally “any” value that TypeScript defaults to and skips type checking since it cannot infer the type. As such, any is dangerous, it can mask severe programming errors.
+
+  If error cannot be resolved as safer option use type `unknown` since it does not allow dereferencing all properties or as last resort use `@ts-expect-error` ([Type Error](#type-error)).
+
 ## Naming
 
 Setting aside convention on cache invalidation, but for the second hardest thing, clear naming with important context should be provided.  
