@@ -352,10 +352,12 @@ While it's often hard to find the best names, try optimize code for consistency 
 
   ```tsx
   // ❌ Avoid inconsistent callback prop naming
-  <MyComponent userClick={actionUserClick} />
+  <Button click={actionClick} />
+  <MyComponent userSelectedOccurred={triggerUser} />
 
   // ✅ Use prop prefix 'on*' and handler prefix 'handle*'
-  <MyComponent onClick={handleClick} />
+  <Button onClick={handleClick} />
+  <MyComponent onUserSelected={handleUserSelected} />
   ```
 
 - #### React Hooks
