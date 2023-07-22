@@ -362,8 +362,7 @@ While it's often hard to find the best names, try optimize code for consistency 
 
 - #### React Hooks
 
-  Camel case, prefixed with 'use' ([eslint rule](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)), symmetrically convention as `[value, setValue] = useState()` ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md#rule-details))  
-   `useGetProducts`, `useWindowResize`
+  Camel case, prefixed as 'use' ([eslint rule](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)), symmetrically convention as `[value, setValue] = useState()` ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md#rule-details))
 
   ```ts
   // ❌ Avoid inconsistent useState hook naming
