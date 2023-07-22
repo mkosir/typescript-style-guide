@@ -264,7 +264,8 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 ## Naming
 
-Setting aside convention on cache invalidation, but for the second hardest thing, clear naming with important context should be provided.  
+Setting aside convention on cache invalidation, but for the second hardest thing, clear naming with important context should be provided.
+
 Strive to keep naming conventions consistent and readable, because another person will maintain the code you have written.
 
 ### Named Export
