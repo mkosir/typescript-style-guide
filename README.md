@@ -60,8 +60,6 @@ As any code style guide is opinionated, this is no different as it tries to set 
 
 Since "consistency is the key", style guide strives to enforce majority of the rules by using automated tooling as ESLint, TypeScript, Prettier, etc. Still certain opinionated design and architectural decisions must be followed which are covered with described conventions bellow.
 
-<!-- This style guide uses [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119) terminology when using the phrases _must_, _must not_, _should_, _should not_, and _may_. -->
-
 Style Guide requires you to use:
 
 - [TypeScript v5](https://github.com/microsoft/TypeScript)
