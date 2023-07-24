@@ -44,8 +44,8 @@
   - [Imports](#imports)
   - [Project Structure](#project-structure)
 - [Tests](#tests)
-  - [Description](#description)
   - [Isolation](#isolation)
+  - [Description](#description)
   - [Tooling Extension](#tooling-extension)
   - [Snapshot](#snapshot)
 - [Contributing](#contributing)
@@ -571,6 +571,10 @@ In case Nextjs is being used as React framework, `pages` folder serves only as a
 
 Unit and integration tests convetions:
 
+- ### Isolation
+
+  All tests must be setup and implemented to run as standalone in isolation, where they don't depend on other tests order of execution.
+
 - ### Description
 
   All test descriptions must follow naming convention as `it('should ... when ...')`.  
@@ -594,10 +598,6 @@ Unit and integration tests convetions:
   it("should return parsed date as YYYY-MM when input is in ISO date format");
   it("should render user description when title is confirmed");
   ```
-
-- ### Isolation
-
-  All tests must be setup and implemented to run as standalone in isolation, where they don't depend on other tests order of execution.
 
 - ### Tooling Extension
 
