@@ -411,7 +411,7 @@ const averageUsersPerMinute = noOfUsers / minutes;
 const filteredUsers = frontendFiltering(selectedUsernames);
 
 // Use Fourier transformation to minimize information loss - https://github.com/dntj/jsfft#usage.
-const frequencies = data.FFT();
+const frequencies = signal.FFT();
 ```
 
 ## React Components
