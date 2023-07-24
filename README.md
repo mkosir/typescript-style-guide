@@ -389,7 +389,7 @@ While it's often hard to find the best names, try optimize code for consistency 
 
 ### Comments
 
-Comments in general should be avoided. Try to write clear code and name things what they are before adding comments .
+Comments in general should be avoided. Try to write clear code and name things what they are before adding comments.
 
 As an exception use comments only when you need to add context or explain choices that cannot be expressed through code.  
 Comments should always be complete sentences. As rule of a thumb try to explain `why` in comments, not `how` and `what`.
@@ -399,14 +399,14 @@ Comments should always be complete sentences. As rule of a thumb try to explain 
 // convert to minutes
 const m = s * 60;
 // avg users per minute
-const mvAvg = u / m;
+const myAvg = u / m;
 
 // ✅ Use
 const SECONDS_IN_MINUTE = 60;
 const minutes = seconds * SECONDS_IN_MINUTE;
 const averageUsersPerMinute = noOfUsers / minutes;
 
-// TODO: Filtering should be moved to the backend once their API changes are released.
+// TODO: Filtering should be moved to the backend once API changes are released.
 // Issue/PR - https://github.com/repo/pulls/55124
 const filteredUsers = frontendFiltering(selectedUsernames);
 ```
