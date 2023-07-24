@@ -44,6 +44,7 @@
   - [Imports](#imports)
   - [Project Structure](#project-structure)
 - [Tests](#tests)
+  - [What To Test](#what-to-test)
   - [Isolation](#isolation)
   - [Description](#description)
   - [Tooling Extension](#tooling-extension)
@@ -569,7 +570,23 @@ In case Nextjs is being used as React framework, `pages` folder serves only as a
 
 ## Tests
 
-Unit and integration tests convetions:
+Unit and integration tests conventions:
+
+- ### What To Test
+
+  Automated test comes with benefits that helps us write better code and makes it easy to refactor, while we can catch bugs earlier, which gives higher confidence application is working as intended.  
+  We also need to consider trade-offs of what and how to test so writing and maintaining tests doesn't slow the team down.
+
+  ✅ Do:
+
+  - Strive to test core units of business logic (e.g. given some user input, they receive the expected output for a process).
+
+  ❌ Don't:
+
+  - Don't test implementation details. When refactoring code, tests shouldn't change.
+  - Don't re-test the library/framework.
+  - Don't mandate 100% code coverage for applications.
+  - Don't test just to test.
 
 - ### Isolation
 
