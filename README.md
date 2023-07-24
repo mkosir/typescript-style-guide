@@ -32,6 +32,7 @@
     - [Prop Types](#prop-types)
     - [Callback Props](#callback-props)
     - [React Hooks](#react-hooks)
+  - [Comments](#comments)
 - [React Components](#react-components-1)
   - [Props](#props)
     - [Using Props Type](#using-props-type)
@@ -385,6 +386,30 @@ While it's often hard to find the best names, try optimize code for consistency 
   const { products, errors } = useGetProducts();
   const { fontSizes } = useTheme();
   ```
+
+### Comments
+
+Comments in general should be avoided. Try to write clear code before adding comments and name things what they are.
+
+As an exception use comments only when you need to add context or explain choices that cannot be expressed through code.  
+Comments should always be complete sentences. As rule of a thumb try to explain `why` in comments, not `how` and `what`.
+
+```ts
+// ❌ Avoid
+// convert to minutes
+const m = s * 60;
+// avg users per minute
+const mvAvg = u / m;
+
+// ✅ Use
+const SECONDS_IN_MINUTE = 60;
+const minutes = seconds * SECONDS_IN_MINUTE;
+const averageUsersPerMinute = noOfUsers / minutes;
+
+// TODO: Filtering should be moved to the backend once their API changes are released.
+// Issue/PR - https://github.com/repo/pulls/55124
+const filteredUsers = frontendFiltering(selectedUsernames);
+```
 
 ## React Components
 
