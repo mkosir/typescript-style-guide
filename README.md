@@ -577,9 +577,11 @@ Automated test comes with benefits that helps us write better code and makes it 
 ✅ Do:
 
 - Design test to be short, simple, and delightful to work with. One should look at a test and get the intent instantly.
-- Strive to write tests in a way your app/package is used, meaning test business logic (e.g. given some user input, they receive the expected output for a process).
+- Strive to write tests in a way your app/package is used, meaning test business logic.  
+  E.g. given some user input, they receive the expected output for a process.
 - All tests must be setup and implemented to run as standalone in isolation, where they don't depend on other tests order of execution.
-- Make tests resilient to changes, query HTML elements based on attributes that are unlikely to change.
+- Make tests resilient to changes, query HTML elements based on attributes that are unlikely to change.  
+  Order of priority must be followed as specified in [Testing Library](https://testing-library.com/docs/queries/about/#priority) - [role](https://testing-library.com/docs/queries/byrole), [label](https://testing-library.com/docs/queries/bylabeltext), [placeholder](https://testing-library.com/docs/queries/byplaceholdertext), [text contents](https://testing-library.com/docs/queries/bytext), [display value](https://testing-library.com/docs/queries/bydisplayvalue), [alt text](https://testing-library.com/docs/queries/byalttext), [title](https://testing-library.com/docs/queries/bytitle), [test ID](https://testing-library.com/docs/queries/bytestid).
 
 ❌ Don't:
 
