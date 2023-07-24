@@ -574,8 +574,8 @@ Unit and integration tests conventions:
 
 - ### What To Test
 
-  Automated test comes with benefits that helps us write better code and makes it easy to refactor, while we can catch bugs earlier, which gives higher confidence application is working as intended.  
-  Consider trade-offs of what and how to test so writing and maintaining tests doesn't slow the team down.
+  Automated test comes with benefits that helps us write better code and makes it easy to refactor, while bugs are caught earlier in the process.
+  Consider trade-offs as what and how to test to achieve confidence that application is working as intended, while writing and maintaining tests doesn't slow the team down.
 
   ✅ Do:
 
