@@ -43,13 +43,12 @@
   - [Code Collocation](#code-collocation)
   - [Imports](#imports)
   - [Project Structure](#project-structure)
-- [Tests](#tests)
-  - [What To Test](#what-to-test)
-  - [Isolation](#isolation)
-  - [Description](#description)
-  - [Tooling Extension](#tooling-extension)
-  - [Snapshot](#snapshot)
-- [Contributing](#contributing)
+  - [Tests - Unit \& Integration](#tests---unit--integration)
+    - [What \& How To Test](#what--how-to-test)
+    - [Test Description](#test-description)
+    - [Tooling Extension](#tooling-extension)
+    - [Snapshot](#snapshot)
+  - [Contributing](#contributing)
 
 ## Introduction
 
@@ -568,65 +567,63 @@ apps/
 
 In case Nextjs is being used as React framework, `pages` folder serves only as a router, where its responsibility is to define routes (no business logic implementation). Same approach applies for other frameworks with file-system based router.
 
-## Tests
+## Tests - Unit & Integration
 
-Unit and integration tests conventions:
+### What & How To Test
 
-- ### What To Test
+Automated test comes with benefits that helps us write better code and makes it easy to refactor, while bugs are caught earlier in the process.  
+ Consider trade-offs of what and how to test to achieve confidence application is working as intended, while writing and maintaining tests doesn't slow the team down.
 
-  Automated test comes with benefits that helps us write better code and makes it easy to refactor, while bugs are caught earlier in the process.  
-  Consider trade-offs of what and how to test to achieve confidence application is working as intended, while writing and maintaining tests doesn't slow the team down.
+✅ Do:
 
-  ✅ Do:
+- Design test to be short, simple, and delightful to work with. One should look at a test and get the intent instantly.
+- Strive to test core units of business logic (e.g. given some user input, they receive the expected output for a process).
+- All tests must be setup and implemented to run as standalone in isolation, where they don't depend on other tests order of execution.
+- To make tests resilient to changes, query HTML elements based on attributes that are unlikely to change.
 
-  - Strive to test core units of business logic (e.g. given some user input, they receive the expected output for a process).
+❌ Don't:
 
-  ❌ Don't:
+- Don't test implementation details. When refactoring code, tests shouldn't change.
+- Don't re-test the library/framework.
+- Don't mandate 100% code coverage for applications.
+- Don't test just to test.
 
-  - Don't test implementation details. When refactoring code, tests shouldn't change.
-  - Don't re-test the library/framework.
-  - Don't mandate 100% code coverage for applications.
-  - Don't test just to test.
+### Test Description
 
-- ### Isolation
+All test descriptions must follow naming convention as `it('should ... when ...')`.  
+ [Eslint rule](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/valid-title.md#mustmatch--mustnotmatch) implements regex:
 
-  All tests must be setup and implemented to run as standalone in isolation, where they don't depend on other tests order of execution.
+```ts
+'jest/valid-title': [
+  'error',
+  {
+    mustMatch: { it: [/should.*when/u.source, "Test title must include 'should' and 'when'"] },
+  },
+],
+```
 
-- ### Description
+```ts
+// ❌ Avoid
+it("accepts ISO date format where date is parsed and formatted as YYYY-MM");
+it("after title is confirmed user description is rendered");
 
-  All test descriptions must follow naming convention as `it('should ... when ...')`.  
-  [Eslint rule](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/valid-title.md#mustmatch--mustnotmatch) implements regex:
+// ✅ Name test description as it('should ... when ...')
+it("should return parsed date as YYYY-MM when input is in ISO date format");
+it("should render user description when title is confirmed");
+```
 
-  ```ts
-  'jest/valid-title': [
-    'error',
-    {
-      mustMatch: { it: [/should.*when/u.source, "Test title must include 'should' and 'when'"] },
-    },
-  ],
-  ```
+### Tooling Extension
 
-  ```ts
-  // ❌ Avoid
-  it("accepts ISO date format where date is parsed and formatted as YYYY-MM");
-  it("after title is confirmed user description is rendered");
+Test can be run through npm scripts, but to improve development experience it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=Tfirstris.vscode-jest-runner) VS code extension so any single test can be run [instantly](https://github.com/mkosir/typescript-react-style-guide/raw/main/misc/vscode-jest-runner.gif), especially if testing app/package in larger codebase (monorepo).
 
-  // ✅ Name test description as it('should ... when ...')
-  it("should return parsed date as YYYY-MM when input is in ISO date format");
-  it("should render user description when title is confirmed");
-  ```
+```sh
+code --install-extension Tfirstris.vscode-jest-runner
+```
 
-- ### Tooling Extension
+### Snapshot
 
-  Test can be run through npm scripts, but to improve development experience it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=Tfirstris.vscode-jest-runner) VS code extension so any single test can be run [instantly](https://github.com/mkosir/typescript-react-style-guide/raw/main/misc/vscode-jest-runner.gif), especially if testing app/package in larger codebase (monorepo).
-
-  ```sh
-  code --install-extension Tfirstris.vscode-jest-runner
-  ```
-
-- ### Snapshot
-  Snapshot tests are discouraged in order to avoid fragility, which leads to "just update it" turn of mind, to achieve all the tests pass.  
-  Exceptions can be made, with strong rational behind it, where test output has short and clear intent, whats actually being tested (e.g. design system library critical elements that shouldn't deviate).
+Snapshot tests are discouraged in order to avoid fragility, which leads to "just update it" turn of mind, to achieve all the tests pass.  
+ Exceptions can be made, with strong rational behind it, where test output has short and clear intent, whats actually being tested (e.g. design system library critical elements that shouldn't deviate).
 
 ## Contributing
 
