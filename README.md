@@ -407,7 +407,7 @@ const minutes = seconds * SECONDS_IN_MINUTE;
 const averageUsersPerMinute = noOfUsers / minutes;
 
 // TODO: Filtering should be moved to the backend once API changes are released.
-// Issue/PR - https://github.com/repo/pulls/55124
+// Issue/PR - https://github.com/foo/repo/pulls/55124
 const filteredUsers = frontendFiltering(selectedUsernames);
 
 // Use Fourier transformation to minimize information loss - https://github.com/dntj/jsfft#usage.
