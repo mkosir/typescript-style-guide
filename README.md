@@ -412,13 +412,6 @@ const filteredUsers = frontendFiltering(selectedUsernames);
 
 // Use Fourier transformation to minimize information loss - https://github.com/dntj/jsfft#usage.
 const frequencies = data.FFT();
-// Implement a low-pass filter using the in-place mapper.
-frequencies.map((frequency, i, n) => {
-  if (i > n / 5 && i < (4 * n) / 5) {
-    frequency.real = 0;
-    frequency.imag = 0;
-  }
-});
 ```
 
 ## React Components
