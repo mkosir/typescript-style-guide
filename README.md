@@ -577,9 +577,9 @@ Automated test comes with benefits that helps us write better code and makes it 
 ✅ Do:
 
 - Design test to be short, simple, and delightful to work with. One should look at a test and get the intent instantly.
-- Strive to test core units of business logic (e.g. given some user input, they receive the expected output for a process).
+- Strive to write tests in a way your app/package is used, meaning test business logic (e.g. given some user input, they receive the expected output for a process).
 - All tests must be setup and implemented to run as standalone in isolation, where they don't depend on other tests order of execution.
-- To make tests resilient to changes, query HTML elements based on attributes that are unlikely to change.
+- Make tests resilient to changes, query HTML elements based on attributes that are unlikely to change.
 
 ❌ Don't:
 
