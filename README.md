@@ -43,12 +43,12 @@
   - [Code Collocation](#code-collocation)
   - [Imports](#imports)
   - [Project Structure](#project-structure)
-  - [Tests - Unit \& Integration](#tests---unit--integration)
-    - [What \& How To Test](#what--how-to-test)
-    - [Test Description](#test-description)
-    - [Tooling Extension](#tooling-extension)
-    - [Snapshot](#snapshot)
-  - [Contributing](#contributing)
+- [Tests - Unit \& Integration](#tests---unit--integration)
+  - [What \& How To Test](#what--how-to-test)
+  - [Test Description](#test-description)
+  - [Tooling Extension](#tooling-extension)
+  - [Snapshot](#snapshot)
+- [Contributing](#contributing)
 
 ## Introduction
 
