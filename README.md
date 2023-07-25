@@ -661,4 +661,5 @@ Snapshot tests are discouraged in order to avoid fragility, which leads to "just
 
 ## Contributing
 
-All contributions are welcome!
+All contributions are welcome!  
+Open a [PR](.github/pull_request_template.md), [issue](https://github.com/mkosir/typescript-react-style-guide/issues/new/choose) or [discussion](https://github.com/mkosir/typescript-react-style-guide/discussions/new/choose).
