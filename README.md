@@ -71,10 +71,10 @@ Style Guide requires you to use:
 ## TLDR
 
 - **Code is organized and grouped by feature.** Collocate code as close as possible to where it's relevant.
-- Strive for data immutability. &#10544
+- Strive for data immutability. &#10544;
 - Strive for functions to be pure, stateless and have single responsibility.
 - Strive for functions to implement majority of arguments/props as required (avoid optional).
-- Embrace const assertions. &#2930
+- Embrace const assertions. &#2930;
 - Strong emphasis to keep naming conventions consistent and readable.
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
 - Use of client-state library for global state is discouraged.
