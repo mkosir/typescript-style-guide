@@ -71,8 +71,6 @@ Style Guide requires you to use:
 ## TLDR
 
 - **Code is organized and grouped by feature.** Collocate code as close as possible to where it's relevant.
-- Strive for data immutability. [↓](https://github.com/mkosir/typescript-react-style-guide#data-immutability)
-- Strive for data immutability. [&#8628;](https://github.com/mkosir/typescript-react-style-guide#data-immutability)
 - Strive for data immutability. [&#11107;](https://github.com/mkosir/typescript-react-style-guide#data-immutability)
 - Strive for functions to be pure, stateless and have single responsibility.
 - Strive for functions to implement majority of arguments/props as required (avoid optional).
