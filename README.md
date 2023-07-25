@@ -73,6 +73,7 @@ Style Guide requires you to use:
 - **Code is organized and grouped by feature.** Collocate code as close as possible to where it's relevant.
 - Strive for data immutability.
 - Strive for functions to be pure, stateless and have single responsibility.
+- Embrace const assertions.
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
 - Use of client-state library for global state is discouraged.
 - Use named exports.
@@ -257,8 +258,7 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 - #### any
 
-  `any` data type must not be used as it represents literally “any” value that TypeScript defaults to and skips type checking since it cannot infer the type. As such, any is dangerous, it can mask severe programming errors.
-
+  `any` data type must not be used as it represents literally “any” value that TypeScript defaults to and skips type checking since it cannot infer the type. As such, any is dangerous, it can mask severe programming errors.  
   If error truly cannot be resolved as safer option use type `unknown` since it does not allow dereferencing all properties or as last resort use `@ts-expect-error` ([Type Error](#type-error)).
 
 ## Naming
