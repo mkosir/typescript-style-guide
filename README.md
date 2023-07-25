@@ -74,7 +74,7 @@ Style Guide requires you to use:
 - Strive for data immutability. ↘️
 - Strive for functions to be pure, stateless and have single responsibility.
 - Strive for functions to implement majority of arguments/props as required (avoid optional).
-- Embrace const assertions. ⤵
+- Embrace const assertions. ⤵ U+2930
 - Strong emphasis to keep naming conventions consistent and readable.
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
 - Use of client-state library for global state is discouraged.
