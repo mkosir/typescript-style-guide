@@ -410,7 +410,7 @@ const averageUsersPerMinute = noOfUsers / minutes;
 // Issue/PR - https://github.com/foo/repo/pulls/55124
 const filteredUsers = frontendFiltering(selectedUsernames);
 
-// Use Fourier transformation to minimize information loss - https://github.com/dntj/jsfft#usage.
+// Use Fourier transformation to minimize information loss - https://github.com/dntj/jsfft#usage
 const frequencies = signal.FFT();
 ```
 
@@ -605,7 +605,7 @@ Automated test comes with benefits that helps us write better code and makes it 
 ✅ Do:
 
 - Design test to be short, simple, and delightful to work with. One should look at a test and get the intent instantly.
-- Strive to write tests in a way your app/package is used, meaning test business logic.  
+- Strive to write tests in a way your app/package is used by a user, meaning test business logic.  
   E.g. given some user input, they receive the expected output for a process.
 - All tests must be setup and implemented to run as standalone in isolation, where they don't depend on other tests order of execution.
 - Make tests resilient to changes, query HTML elements based on attributes that are unlikely to change.  
