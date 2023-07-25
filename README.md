@@ -434,10 +434,10 @@ type FooProps = {
 export const Foo: React.FC<FooProps> = ({ name, score }) => {
 
 // ✅ Use props argument with type
-type FooProps = {
+type FooProps = Readonly<{
   name: string;
   score: number;
-};
+}>;
 
 export const Foo = ({ name, score }: FooProps) => {...
 ```
