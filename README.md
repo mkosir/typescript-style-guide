@@ -53,7 +53,7 @@
 
 ## Introduction
 
-TypeScript & React Style Guide provides concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
+TypeScript & React Style Guide provides a concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
 
 ## About Guide
 
