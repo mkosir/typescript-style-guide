@@ -72,7 +72,7 @@ Style Guide requires you to use:
 
 - **Code is organized and grouped by feature.** Collocate code as close as possible to where it's relevant.→
 - Strive for data immutability. &#10549;
-- Strive for data immutability. &#10609;
+- Strive for data immutability. &#10609;↓
 - Strive for functions to be pure, stateless and have single responsibility. &#8628;
 - Strive for functions to implement majority of arguments/props as required (avoid optional).→
 - Embrace const assertions.
