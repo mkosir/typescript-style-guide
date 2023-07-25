@@ -444,7 +444,7 @@ export const Foo = ({ name, score }: FooProps) => {...
 
 #### Required & Optional Props
 
-Strive to have majority of props required and not optional.  
+Strive to have majority of props required and use optional sparingly.  
 Especially when creating new component for first/single use case majority of props should be required. When component starts covering more use cases, introduce optional props.  
 There are potential exceptions, where component API needs to implement optional props from the start (e.g. shared components covering multiple use cases, UI design system components - button `isDisabled` etc.)
 
