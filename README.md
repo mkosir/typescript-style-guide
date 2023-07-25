@@ -73,7 +73,7 @@ Style Guide requires you to use:
 - **Code is organized and grouped by feature.** Collocate code as close as possible to where it's relevant. [&#11107;](https://github.com/mkosir/typescript-react-style-guide#code-collocation)
 - Strive for data immutability. [&#11107;](https://github.com/mkosir/typescript-react-style-guide#data-immutability)
 - Strive for functions to be pure, stateless and have single responsibility. [&#11107;](https://github.com/mkosir/typescript-react-style-guide#functions)
-- Strive for functions to implement majority of arguments/props as required (avoid optional). [&#11107;](https://github.com/mkosir/typescript-react-style-guide#required--optional-props)
+- Strive for functions to implement majority of arguments/props as required (use optional sparingly). [&#11107;](https://github.com/mkosir/typescript-react-style-guide#required--optional-props)
 - Embrace const assertions. [&#11107;](https://github.com/mkosir/typescript-react-style-guide#const-assertion)
 - Strong emphasis to keep naming conventions consistent and readable. [&#11107;](https://github.com/mkosir/typescript-react-style-guide#naming-conventions)
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...). [&#11107;](https://github.com/mkosir/typescript-react-style-guide#passing-data)
