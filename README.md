@@ -444,11 +444,12 @@ export const Foo = ({ name, score }: FooProps) => {...
 
 #### Required & Optional Props
 
-Strive to have majority of props required and use optional sparingly.  
+**Strive to have majority of props required and use optional sparingly**.
+
 Especially when creating new component for first/single use case majority of props should be required. When component starts covering more use cases, introduce optional props.  
 There are potential exceptions, where component API needs to implement optional props from the start (e.g. shared components covering multiple use cases, UI design system components - button `isDisabled` etc.)
 
-An exaggerated example where implementing 10 React components (or functions) with 5 required props each, is better then implementing one "can do it all" function which accepts 50 optional props.  
+An exaggerated example where implementing 10 React components (or functions) with 5 required props each, is better then implementing one "can do it all" function that accepts 50 optional props.  
 As mentioned React components are functions, where [respective conventions apply](#functions), if it becomes to complex it probably should be broken into smaller pieces.
 
 #### Using Discriminated Type
