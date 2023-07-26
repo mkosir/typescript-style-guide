@@ -185,8 +185,7 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 - #### Type Definition
 
-  All types are defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).  
-  Both are nearly equivalent, so to choose one is mostly arbitrary decision to achieve consistent codebase.
+  All types must be defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).
 
   ```ts
   // ❌ Avoid interface definitions
