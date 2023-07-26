@@ -53,7 +53,7 @@
 
 ## Introduction
 
-TypeScript & React Style Guide provides concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
+TypeScript & React Style Guide provides a concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
 
 ## About Guide
 
@@ -434,10 +434,10 @@ type FooProps = {
 export const Foo: React.FC<FooProps> = ({ name, score }) => {
 
 // ✅ Use props argument with type
-type FooProps = {
+type FooProps = Readonly<{
   name: string;
   score: number;
-};
+}>;
 
 export const Foo = ({ name, score }: FooProps) => {...
 ```
