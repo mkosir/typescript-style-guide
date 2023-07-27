@@ -679,7 +679,7 @@ it("should render user description when title is confirmed");
 
 ### Tooling Extension
 
-Test can be run through npm scripts, but to improve development experience it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=Tfirstris.vscode-jest-runner) VS code extension so any single test can be run [instantly](https://github.com/mkosir/typescript-react-style-guide/raw/main/misc/vscode-jest-runner.gif), especially if testing app/package in larger codebase (monorepo).
+Test can be run through npm scripts, but to improve development experience it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=Tfirstris.vscode-jest-runner) VS code extension so any single test can be run [instantly](https://github.com/mkosir/typescript-style-guide/raw/main/misc/vscode-jest-runner.gif), especially if testing app/package in larger codebase (monorepo).
 
 ```sh
 code --install-extension Tfirstris.vscode-jest-runner
