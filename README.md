@@ -226,6 +226,24 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
   const y: ReadonlyArray<string> = ["a", "b"];
   ```
 
+- #### Type Inference
+
+  When possible strive to use type inference. Declare explicit types when you must.
+
+  ```ts
+  // ❌ Avoid declaring types, when they can be inferred
+  const [name, setName] = useState<string>("");
+  const [isActive, setIsActive] = useState<boolean>(false);
+
+  // ✅ Use type inference or declare explicit types when you must
+  const [name, setName] = useState(""); // Type 'string'
+  const [isActive, setIsActive] = useState(false); // Type 'boolean'
+
+  type UserRole = "admin" | "guest";
+  const [userRole, setUserRole] = useState<UserRole>("admin"); // Type 'UserRole'
+  const [users, setUsers] = useState<ReadonlyArray<User>>([]); // Type 'readonly User[]'
+  ```
+
 - #### Return Types
 
   Including return type annotations is highly encouraged, altought not required ([eslint rule](https://typescript-eslint.io/rules/explicit-function-return-type/)).
