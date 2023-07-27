@@ -227,16 +227,20 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
   const y: ReadonlyArray<string> = ["a", "b"];
   ```
 
-- #### Type Inference
+- #### Type Annotation & Inference
 
-  When possible strive to use type inference. Declare explicit types when you must.
+  Just because you don't need to add types, doesn't mean you shouldn't. Explicit type annotations increase code readability and intent, but still in some cases inference has its place.
+
+  It should be taken with a grain of salt, but use type inference "when possible" and annotate types "when you must".
 
   ```ts
-  // ❌ Avoid declaring types, when they can be inferred
+  // ❌ Avoid annotating types, when they can be inferred
+  const color: string = "blue";
   const [name, setName] = useState<string>("");
   const [isActive, setIsActive] = useState<boolean>(false);
 
-  // ✅ Use type inference or declare explicit types when you must
+  // ✅ Use type inference or annotate explicit types when you must
+  const COLOR = "blue"; // Type 'blue'
   const [name, setName] = useState(""); // Type 'string'
   const [isActive, setIsActive] = useState(false); // Type 'boolean'
 
