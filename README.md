@@ -1,7 +1,5 @@
 # TypeScript Style Guide
 
-d
-
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -578,7 +576,7 @@ Absolute imports `common/components` must be used in all other cases.
 
 ### Project Structure
 
-Example monorepo project, where every application has following file/folder structure:
+Example frontend monorepo project, where every application has following file/folder structure:
 
 ```shell
 apps/
