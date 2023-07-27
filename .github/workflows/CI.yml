@@ -14,8 +14,8 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Disable jekyll
-        run: touch .nojekyll
+      # - name: Disable jekyll
+      #   run: touch .nojekyll
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
