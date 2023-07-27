@@ -622,6 +622,14 @@ Automated test comes with benefits that helps us write better code and makes it 
 - Don't mandate 100% code coverage for applications.
 - Don't test just to test.
 
+  ```ts
+  // ❌ Avoid
+  it("should render user list", () => {
+    render(<UserList />);
+    expect(screen.getByText("Users List")).toBeInTheDocument();
+  });
+  ```
+
 ### Test Description
 
 All test descriptions must follow naming convention as `it('should ... when ...')`.  
