@@ -1,7 +1,5 @@
 # TypeScript Style Guide
 
-d
-
 ## Table of Contents
 
 - [Introduction](#introduction)
