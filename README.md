@@ -14,6 +14,7 @@
 - [Types](#types)
   - [Type Definition](#type-definition)
   - [Array Types](#array-types)
+  - [Type Inference](#type-inference)
   - [Return Types](#return-types)
   - [Type Error](#type-error)
   - [Type & Non-nullability Assertions](#type--non-nullability-assertions)
