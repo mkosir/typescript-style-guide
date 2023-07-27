@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
   - name: Ask a question
-    url: https://github.com/mkosir/typescript-react-style-guide/discussions
+    url: https://github.com/mkosir/typescript-style-guide/discussions
     about: Ask questions and discuss topics with other community members
