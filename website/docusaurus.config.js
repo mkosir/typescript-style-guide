@@ -6,7 +6,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "My Site",
+  // title: "TypeScript Style Guide",
+  title: " ",
   tagline: "Dinosaurs are cool",
   favicon: "img/favicon.ico",
 
@@ -38,6 +39,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: "/", // Serve the docs at the site's root
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -58,20 +60,20 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "My Site",
+        title: "TypeScript Style Guide",
         logo: {
-          alt: "My Site Logo",
+          alt: "logo",
           src: "img/logo.svg",
         },
         items: [
+          // {
+          //   type: "docSidebar",
+          //   sidebarId: "tutorialSidebar",
+          //   position: "left",
+          //   label: "Tutorial dsf",
+          // },
           {
-            type: "docSidebar",
-            sidebarId: "tutorialSidebar",
-            position: "left",
-            label: "Tutorial",
-          },
-          {
-            href: "https://github.com/facebook/docusaurus",
+            href: "https://github.com/mkosir/typescript-style-guide",
             label: "GitHub",
             position: "right",
           },
@@ -79,18 +81,18 @@ const config = {
       },
       footer: {
         style: "dark",
-        links: [
-          {
-            title: "More",
-            items: [
-              {
-                label: "GitHub",
-                href: "https://github.com/mkosir/typescript-style-guide",
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        // links: [
+        //   {
+        //     title: "More",
+        //     items: [
+        //       {
+        //         label: "GitHub",
+        //         href: "https://github.com/mkosir/typescript-style-guide",
+        //       },
+        //     ],
+        //   },
+        // ],
+        copyright: `TypeScript Style Guide. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
