@@ -1,5 +1,7 @@
 # ![ts-logo](https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo_30.png) TypeScript Style Guide
 
+<h1><img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo_30.png"> TypeScript Style Guide</h1>
+
 ## Table of Contents
 
 - [Introduction](#introduction)
