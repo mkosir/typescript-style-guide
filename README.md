@@ -2,7 +2,7 @@
 
 <p align="center">TypeScript Style Guide provides a concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.</p>
 
-## Contributing
+### Contributing
 
 All contributions are welcome!  
 Open a [PR](https://github.com/mkosir/typescript-style-guide/blob/main/.github/pull_request_template.md), [issue](https://github.com/mkosir/typescript-style-guide/issues/new/choose) or [discussion](https://github.com/mkosir/typescript-style-guide/discussions/new/choose).
