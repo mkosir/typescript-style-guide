@@ -1,10 +1,15 @@
 # ![ts-logo](https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo_30.png) TypeScript Style Guide
 
-<div align="center"><h1 style=""><img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo_30.png" style="vertical-align:middle"> TypeScript Style Guide</h1></div>
+<div align="center"><h1 style=""><img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo_30.png" style="vertical-align:baseline"> TypeScript Style Guide</h1></div>
+
+## Introduction
+
+TypeScript Style Guide provides a concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
 
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Table of Contents](#table-of-contents)
 - [About Guide](#about-guide)
 - [TLDR](#tldr)
 - [Data Immutability](#data-immutability)
@@ -53,10 +58,6 @@
   - [Tooling Extension](#tooling-extension)
   - [Snapshot](#snapshot)
 - [Contributing](#contributing)
-
-## Introduction
-
-TypeScript Style Guide provides a concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
 
 ## About Guide
 
