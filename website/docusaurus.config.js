@@ -63,7 +63,10 @@ const config = {
         title: "TypeScript Style Guide",
         logo: {
           alt: "logo",
-          src: "img/typescript-logo-50.png",
+          src: "img/typescript-logo-40.png",
+          height: 22,
+          width: 22,
+          style: { height: "auto", "margin-top": 5 },
         },
         items: [
           // {
