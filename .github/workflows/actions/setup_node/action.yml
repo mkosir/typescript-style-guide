@@ -1,0 +1,11 @@
+name: 'setup_node'
+description: 'Setup Node.js ⚙️'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js ⚙️ & Cache dependencies ⚡
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        cache: 'npm'
