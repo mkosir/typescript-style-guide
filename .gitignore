@@ -1,3 +1,17 @@
+node_modules
+coverage
+dist
+compiled
+
 .DS_Store
 .vscode
 .idea
+
+npm-debug.log*
+
+.env
+
+*.tsbuildinfo
+
+.docusaurus
+.cache-loader
