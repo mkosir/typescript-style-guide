@@ -75,17 +75,17 @@ Style Guide requires you to use:
 
 ## TLDR
 
-- **Code is organized and grouped by feature.** Collocate code as close as possible to where it's relevant. [&#11107;](https://github.com/mkosir/typescript-style-guide#code-collocation)
-- Strive for data immutability. [&#11107;](https://github.com/mkosir/typescript-style-guide#data-immutability)
-- Strive for functions to be pure, stateless and have single responsibility. [&#11107;](https://github.com/mkosir/typescript-style-guide#functions)
-- Strive for functions to implement majority of arguments/props as required (use optional sparingly). [&#11107;](https://github.com/mkosir/typescript-style-guide#required--optional-props)
-- Embrace const assertions. [&#11107;](https://github.com/mkosir/typescript-style-guide#const-assertion)
-- Strong emphasis to keep naming conventions consistent and readable. [&#11107;](https://github.com/mkosir/typescript-style-guide#naming-conventions)
-- Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...). [&#11107;](https://github.com/mkosir/typescript-style-guide#passing-data)
-- Use of client-state library for global state is discouraged. [&#11107;](https://github.com/mkosir/typescript-style-guide#passing-data)
-- Use named exports. [&#11107;](https://github.com/mkosir/typescript-style-guide#named-export)
-- Prop drilling should not become an issue. [&#11107;](https://github.com/mkosir/typescript-style-guide#passing-data)
-- Test business logic, not implementation details. [&#11107;](https://github.com/mkosir/typescript-style-guide#what--how-to-test)
+- **Code is organized and grouped by feature.** Collocate code as close as possible to where it's relevant. [&#11107;](https://mkosir.github.io/typescript-style-guide#code-collocation)
+- Strive for data immutability. [&#11107;](https://mkosir.github.io/typescript-style-guide#data-immutability)
+- Strive for functions to be pure, stateless and have single responsibility. [&#11107;](https://mkosir.github.io/typescript-style-guide#functions)
+- Strive for functions to implement majority of arguments/props as required (use optional sparingly). [&#11107;](https://mkosir.github.io/typescript-style-guide#required--optional-props)
+- Embrace const assertions. [&#11107;](https://mkosir.github.io/typescript-style-guide#const-assertion)
+- Strong emphasis to keep naming conventions consistent and readable. [&#11107;](https://mkosir.github.io/typescript-style-guide#naming-conventions)
+- Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...). [&#11107;](https://mkosir.github.io/typescript-style-guide#passing-data)
+- Use of client-state library for global state is discouraged. [&#11107;](https://mkosir.github.io/typescript-style-guide#passing-data)
+- Use named exports. [&#11107;](https://mkosir.github.io/typescript-style-guide#named-export)
+- Prop drilling should not become an issue. [&#11107;](https://mkosir.github.io/typescript-style-guide#passing-data)
+- Test business logic, not implementation details. [&#11107;](https://mkosir.github.io/typescript-style-guide#what--how-to-test)
 
 ## Data Immutability
 
@@ -683,7 +683,7 @@ it("should render user description when title is confirmed");
 
 ### Tooling Extension
 
-Test can be run through npm scripts, but to improve development experience it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=Tfirstris.vscode-jest-runner) VS code extension so any single test can be run [instantly](https://github.com/mkosir/typescript-style-guide/raw/main/misc/vscode-jest-runner.gif), especially if testing app/package in larger codebase (monorepo).
+Test can be run through npm scripts, but to improve development experience it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=Tfirstris.vscode-jest-runner) VS code extension so any single test can be run [instantly](https://mkosir.github.io/typescript-style-guide/raw/main/misc/vscode-jest-runner.gif), especially if testing app/package in larger codebase (monorepo).
 
 ```sh
 code --install-extension Tfirstris.vscode-jest-runner
@@ -697,4 +697,4 @@ Snapshot tests are discouraged in order to avoid fragility, which leads to "just
 ## Contributing
 
 All contributions are welcome!  
-Open a [PR](https://github.com/mkosir/typescript-style-guide/blob/main/.github/pull_request_template.md), [issue](https://github.com/mkosir/typescript-style-guide/issues/new/choose) or [discussion](https://github.com/mkosir/typescript-style-guide/discussions/new/choose).
+Open a [PR](https://mkosir.github.io/typescript-style-guide/blob/main/.github/pull_request_template.md), [issue](https://mkosir.github.io/typescript-style-guide/issues/new/choose) or [discussion](https://mkosir.github.io/typescript-style-guide/discussions/new/choose).
