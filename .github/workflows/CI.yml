@@ -10,14 +10,13 @@ env:
     ./website/build
   CACHE_KEY_BUILD: build-${{ github.sha }}-${{ github.ref_type }}
 
-defaults:
- run:
-  working-directory: ./website
-
 jobs:
   build:
       name: Build 🏗️
       runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: ./website
 
       steps:
         - name: Checkout 🛎️
