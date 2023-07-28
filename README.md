@@ -1,4 +1,4 @@
-# TypeScript Style Guide ![ts-logo](https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo_30.png)
+# ![ts-logo](https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo_30.png) TypeScript Style Guide
 
 ## Table of Contents
 
