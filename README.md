@@ -1,6 +1,4 @@
-# ![ts-logo](https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo_30.png) TypeScript Style Guide
-
-<div align="center"><h1 style=""><img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo_30.png" style="vertical-align:baseline"> TypeScript Style Guide</h1></div>
+<h1 align="center"><img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo_30.png" style="vertical-align:baseline"> TypeScript Style Guide</h1>
 
 ## Introduction
 
