@@ -2,11 +2,16 @@
 title: TypeScript Style Guide
 ---
 
-# ![ts-logo](https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo_30.png) TypeScript Style Guide
+<h1 align="center"><img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo_30.png" style="vertical-align:baseline"> TypeScript Style Guide</h1>
+
+## Introduction
+
+TypeScript Style Guide provides a concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
 
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Table of Contents](#table-of-contents)
 - [About Guide](#about-guide)
 - [TLDR](#tldr)
 - [Data Immutability](#data-immutability)
@@ -55,10 +60,6 @@ title: TypeScript Style Guide
   - [Tooling Extension](#tooling-extension)
   - [Snapshot](#snapshot)
 - [Contributing](#contributing)
-
-## Introduction
-
-TypeScript Style Guide provides a concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
 
 ## About Guide
 
@@ -683,7 +684,7 @@ it("should render user description when title is confirmed");
 
 ### Tooling Extension
 
-Test can be run through npm scripts, but to improve development experience it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=Tfirstris.vscode-jest-runner) VS code extension so any single test can be run [instantly](https://mkosir.github.io/typescript-style-guide/raw/main/misc/vscode-jest-runner.gif), especially if testing app/package in larger codebase (monorepo).
+Test can be run through npm scripts, but to improve development experience it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=Tfirstris.vscode-jest-runner) VS code extension so any single test can be run [instantly](https://github.com/mkosir/typescript-style-guide/raw/main/misc/vscode-jest-runner.gif), especially if testing app/package in larger codebase (monorepo).
 
 ```sh
 code --install-extension Tfirstris.vscode-jest-runner
@@ -697,4 +698,4 @@ Snapshot tests are discouraged in order to avoid fragility, which leads to "just
 ## Contributing
 
 All contributions are welcome!  
-Open a [PR](https://mkosir.github.io/typescript-style-guide/blob/main/.github/pull_request_template.md), [issue](https://mkosir.github.io/typescript-style-guide/issues/new/choose) or [discussion](https://mkosir.github.io/typescript-style-guide/discussions/new/choose).
+Open a [PR](https://github.com/mkosir/typescript-style-guide/blob/main/.github/pull_request_template.md), [issue](https://github.com/mkosir/typescript-style-guide/issues/new/choose) or [discussion](https://github.com/mkosir/typescript-style-guide/discussions/new/choose).
