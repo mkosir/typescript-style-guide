@@ -1,6 +1,10 @@
 name: 'setup_node'
 description: 'Setup Node.js ⚙️'
 
+defaults:
+ run:
+  working-directory: ./website
+
 runs:
   using: 'composite'
   steps:
