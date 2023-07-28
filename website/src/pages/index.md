@@ -2,7 +2,7 @@
 title: TypeScript Style Guide
 ---
 
-<h1 align="center"><img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo-30.png" style="vertical-align:baseline" /> TypeScript Style Guide</h1>
+<h1 align="center"><img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo-30.png" /> TypeScript Style Guide</h1>
 
 ## Introduction
 
