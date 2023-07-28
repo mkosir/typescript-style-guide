@@ -59,7 +59,6 @@ TypeScript Style Guide provides a concise set of conventions (sometimes arbitrar
   - [Test Description](#test-description)
   - [Tooling Extension](#tooling-extension)
   - [Snapshot](#snapshot)
-- [Contributing](#contributing)
 
 ## About Guide
 
@@ -694,8 +693,3 @@ code --install-extension Tfirstris.vscode-jest-runner
 
 Snapshot tests are discouraged in order to avoid fragility, which leads to "just update it" turn of mind, to achieve all the tests pass.  
  Exceptions can be made, with strong rational behind it, where test output has short and clear intent, whats actually being tested (e.g. design system library critical elements that shouldn't deviate).
-
-## Contributing
-
-All contributions are welcome!  
-Open a [PR](https://github.com/mkosir/typescript-style-guide/blob/main/.github/pull_request_template.md), [issue](https://github.com/mkosir/typescript-style-guide/issues/new/choose) or [discussion](https://github.com/mkosir/typescript-style-guide/discussions/new/choose).
