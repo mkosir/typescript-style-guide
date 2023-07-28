@@ -24,7 +24,10 @@ jobs:
           uses: actions/checkout@v3
 
         - name: Setup Node.js ⚙️
-          uses: ./.github/workflows/actions/setup_node
+          uses: actions/setup-node@v3
+          with:
+            node-version: '18.x'
+            cache: 'npm'
 
         - name: Install dependencies 🔧
           run: npm ci
@@ -48,7 +51,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup Node.js ⚙️
-        uses: ./.github/workflows/actions/setup_node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'npm'
 
       - name: Install dependencies 🔧
         run: npm ci
@@ -65,7 +71,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup Node.js ⚙️
-        uses: ./.github/workflows/actions/setup_node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'npm'
 
       - name: Install dependencies 🔧
         run: npm ci
