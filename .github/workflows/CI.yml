@@ -27,6 +27,7 @@ jobs:
           with:
             node-version: '18.x'
             cache: 'npm'
+            cache-dependency-path: "./website"
 
         - name: Install dependencies 🔧
           run: npm ci
@@ -54,6 +55,7 @@ jobs:
         with:
           node-version: '18.x'
           cache: 'npm'
+          cache-dependency-path: "./website"
 
       - name: Install dependencies 🔧
         run: npm ci
@@ -74,6 +76,7 @@ jobs:
         with:
           node-version: '18.x'
           cache: 'npm'
+          cache-dependency-path: "./website"
 
       - name: Install dependencies 🔧
         run: npm ci
