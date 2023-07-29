@@ -578,6 +578,7 @@ export const Status = (status: StatusProps) => {...
     ```
 - UI - Feature specific
   - Representational components that are designed to fulfill feature requirements.
+  - Nested inside container component folder.
   - Should follow functions conventions as much as possible.
   - No API integration.
   - Structure:
@@ -588,7 +589,7 @@ export const Status = (status: StatusProps) => {...
     └─ ProductItem.test.tsx
     ```
 - UI - Design system
-  - Reusable/generic types of components used throughout whole codebase.
+  - Global Reusable/shared components used throughout whole codebase.
   - Structure:
     ```
     Button/
