@@ -190,6 +190,8 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 - #### Type Definition
 
+  TypeScript offers two options for type definitions - `type` and `interface`. As they come with some functional differences, we try to limit syntax difference and pick one for consistency.
+
   All types must be defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).
 
   ```ts
