@@ -1,6 +1,8 @@
 ---
 title: TypeScript Style Guide
 description: TypeScript Style Guide provides a concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
+toc_min_heading_level: 2
+toc_max_heading_level: 4
 ---
 
 <h1 align="center"><img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo-30.png" /> TypeScript Style Guide</h1>
