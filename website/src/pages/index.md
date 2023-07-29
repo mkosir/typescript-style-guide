@@ -585,7 +585,7 @@ export const Status = (status: StatusProps) => {...
 
 - Representational components that are designed to fulfill feature requirements.
 - Nested inside container component folder.
-- Should follow functions conventions as much as possible.
+- Should follow [functions conventions](#functions) as much as possible.
 - No API integration.
 - Structure:
   ```
