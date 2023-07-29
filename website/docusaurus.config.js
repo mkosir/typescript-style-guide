@@ -70,7 +70,7 @@ const config = {
           src: "img/typescript-logo-40.png",
           height: 22,
           width: 22,
-          style: { height: "auto", "margin-top": 5 },
+          style: { height: "auto", marginTop: 5 },
         },
         items: [
           // {

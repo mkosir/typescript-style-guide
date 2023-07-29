@@ -1,5 +1,6 @@
 ---
 title: TypeScript Style Guide
+description: TypeScript Style Guide provides a concise set of conventions (sometimes arbitrary) and best practices used to create consistent, maintainable code.
 ---
 
 <h1 align="center"><img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo-30.png" /> TypeScript Style Guide</h1>
