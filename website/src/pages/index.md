@@ -560,43 +560,48 @@ export const Status = (status: StatusProps) => {...
 
 ### Component Types
 
-- Container:
-  - All container components have postfix "Container" or "Page" `[ComponentName]Container|Page`. Use "Page" postfix to indicate component it's an actual web page.
-  - Each feature has a container component (`AddUserContainer.tsx`, `EditProductContainer.tsx`, `ProductsPage.tsx` etc.)
-  - Includes business logic.
-  - API integration.
-  - Structure:
-    ```
-    ProductsPage/
-    ├─ api/
-    │  └─ useGetProducts/
-    ├─ components/
-    │  └─ ProductItem/
-    ├─ utils/
-    │  └─ filterProductsByType/
-    └─ index.tsx
-    ```
-- UI - Feature specific
-  - Representational components that are designed to fulfill feature requirements.
-  - Nested inside container component folder.
-  - Should follow functions conventions as much as possible.
-  - No API integration.
-  - Structure:
-    ```
-    ProductItem/
-    ├─ index.tsx
-    ├─ ProductItem.stories.tsx
-    └─ ProductItem.test.tsx
-    ```
-- UI - Design system
-  - Global Reusable/shared components used throughout whole codebase.
-  - Structure:
-    ```
-    Button/
-    ├─ index.tsx
-    ├─ Button.stories.tsx
-    └─ Button.test.tsx
-    ```
+#### Container:
+
+- All container components have postfix "Container" or "Page" `[ComponentName]Container|Page`. Use "Page" postfix to indicate component it's an actual web page.
+- Each feature has a container component (`AddUserContainer.tsx`, `EditProductContainer.tsx`, `ProductsPage.tsx` etc.)
+- Includes business logic.
+- API integration.
+- Structure:
+  ```
+  ProductsPage/
+  ├─ api/
+  │  └─ useGetProducts/
+  ├─ components/
+  │  └─ ProductItem/
+  ├─ utils/
+  │  └─ filterProductsByType/
+  └─ index.tsx
+  ```
+
+#### UI - Feature specific
+
+- Representational components that are designed to fulfill feature requirements.
+- Nested inside container component folder.
+- Should follow functions conventions as much as possible.
+- No API integration.
+- Structure:
+  ```
+  ProductItem/
+  ├─ index.tsx
+  ├─ ProductItem.stories.tsx
+  └─ ProductItem.test.tsx
+  ```
+
+#### UI - Design system
+
+- Global Reusable/shared components used throughout whole codebase.
+- Structure:
+  ```
+  Button/
+  ├─ index.tsx
+  ├─ Button.stories.tsx
+  └─ Button.test.tsx
+  ```
 
 ### Passing Data
 
