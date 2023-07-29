@@ -184,6 +184,42 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
   Prefer object const assertion over enum.
 
+  ```ts
+  // ❌ Avoid
+  enum UserRole {
+    GUEST,
+    MODERATOR,
+    ADMINISTRATOR,
+  }
+
+  enum Color {
+    PRIMARY = "#B33930",
+    SECONDARY = "#113A5C",
+    BRAND = "#9C0E7D",
+  }
+
+  // ✅ Use
+  const USER_ROLES = ["guest", "moderator", "administrator"] as const;
+  type UserRole = (typeof USER_ROLES)[number]; // Type "guest" | "moderator" | "administrator"
+
+  // Use satisfies keyword, if UserRole type is already defined - e.g. database schema model
+  type UserRoleDB = ReadonlyArray<"guest" | "moderator" | "administrator">;
+  const USER_ROLES_IN_DROPDOWN = [
+    "guest",
+    "moderator",
+    "administrator",
+  ] as const satisfies UserRoleDB;
+
+  const COLOR = {
+    primary: "#B33930",
+    secondary: "#113A5C",
+    brand: "#9C0E7D",
+  } as const;
+  type Color = typeof COLOR;
+  type ColorKey = keyof Color; // Type "PRIMARY" | "SECONDARY" | "BRAND"
+  type ColorValue = Color[ColorKey]; // Type "#B33930" | "#113A5C" | "#9C0E7D"
+  ```
+
 - ### Null & Undefined
   Prefer using `null` instead of `undefined`, to explicitly state it has no value - assignment, return type etc.  
   Use `undefined` assignment when e.g. trying to exclude fields in: forms, request payload, querying database ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined)) etc.
