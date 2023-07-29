@@ -561,42 +561,41 @@ export const Status = (status: StatusProps) => {...
 ### Component Types
 
 - Container:
-  - All container components have postfix "Container" or "Page" `[ComponentName]Container|Page`
-  - Each feature has a container component (`AddUserContainer.tsx`, `EditProductContainer.tsx`, `ProductsPage.tsx` etc.)
+  - All container components have postfix "Container" `[ComponentName]Container`
+  - Each feature has a container component (`AddUserContainer.tsx`, `EditProductContainer.tsx`, `ProductsContainer.tsx` etc.)
   - Includes business logic.
   - API integration.
   - Expected file/folder structure:
-  ```
-  ProductsPage/
-  ├─ api/
-  │  └─ useGetProducts/
-  ├─ components/
-  │  └─ ProductItem/
-  ├─ utils/
-  │  └─ filterProductsByType/
-  └─ index.tsx
-  ```
+    ```
+    ProductsPage/
+    ├─ api/
+    │  └─ useGetProducts/
+    ├─ components/
+    │  └─ ProductItem/
+    ├─ utils/
+    │  └─ filterProductsByType/
+    └─ index.tsx
+    ```
 - UI - Feature specific
   - Representational components that are designed to fulfill feature requirements.
   - Should follow functions conventions as much as possible.
   - No API integration.
   - Expected file/folder structure:
-  ```
-  ProductItem/
-  ├─ index.tsx
-  ├─ ProductItem.stories.tsx
-  └─ ProductItem.test.tsx
-  ```
+    ```
+    ProductItem/
+    ├─ index.tsx
+    ├─ ProductItem.stories.tsx
+    └─ ProductItem.test.tsx
+    ```
 - UI - Design system
   - Reusable/generic types of components used throughout whole codebase.
   - Expected file/folder structure:
-  ```
-  Button/
-  ├─ index.tsx
-  ├─ styled.tsx (optional)
-  ├─ Button.stories.tsx
-  └─ Button.test.tsx
-  ```
+    ```
+    Button/
+    ├─ index.tsx
+    ├─ Button.stories.tsx
+    └─ Button.test.tsx
+    ```
 
 ### Passing Data
 
