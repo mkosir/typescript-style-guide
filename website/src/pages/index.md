@@ -180,14 +180,14 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
     const BASE_LOCATION = [50, 130] as const; // Type 'readonly [10, 20]'
     ```
 
-- ### Enums
+- ### Enums & Const Assertion
 
-  As enums and const assertions comes with some functional differences ([const-enum-pitfalls](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls), [reverse-mappings](https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings) etc.), we try to limit syntax difference and pick one for consistency.
+  As enums and const assertions comes with some functional differences - [const-enum-pitfalls](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls), [objects vs enums](https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums),[reverse-mappings](https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings) etc., we try to limit syntax difference and pick one for consistency.
 
   Const assertion must be used over enum.
 
   ```ts
-  // ❌ Avoid
+  // ❌ Avoid using enums
   enum UserRole {
     GUEST,
     MODERATOR,
@@ -200,7 +200,7 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
     BRAND = "#9C0E7D",
   }
 
-  // ✅ Use
+  // ✅ Use const assertion
   const USER_ROLES = ["guest", "moderator", "administrator"] as const;
   type UserRole = (typeof USER_ROLES)[number]; // Type "guest" | "moderator" | "administrator"
 
