@@ -565,7 +565,7 @@ export const Status = (status: StatusProps) => {...
   - Each feature has a container component (`AddUserContainer.tsx`, `EditProductContainer.tsx`, `ProductsPage.tsx` etc.)
   - Includes business logic.
   - API integration.
-  - Expected file/folder structure:
+  - Structure:
     ```
     ProductsPage/
     ├─ api/
@@ -580,7 +580,7 @@ export const Status = (status: StatusProps) => {...
   - Representational components that are designed to fulfill feature requirements.
   - Should follow functions conventions as much as possible.
   - No API integration.
-  - Expected file/folder structure:
+  - Structure:
     ```
     ProductItem/
     ├─ index.tsx
@@ -589,7 +589,7 @@ export const Status = (status: StatusProps) => {...
     ```
 - UI - Design system
   - Reusable/generic types of components used throughout whole codebase.
-  - Expected file/folder structure:
+  - Structure:
     ```
     Button/
     ├─ index.tsx
