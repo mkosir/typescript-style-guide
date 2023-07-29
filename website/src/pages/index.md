@@ -120,6 +120,8 @@ Conventions should be followed as much as possible:
   });
   ```
 
+- Strive to have majority of args required and use optional sparingly.
+
 <details>
 <summary>Potential exceptions of react components and hooks</summary>
 
