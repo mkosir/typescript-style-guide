@@ -88,6 +88,7 @@ Style Guide requires you to use:
 - Use of client-state library for global state is discouraged. [&#11107;](#passing-data)
 - Use named exports. [&#11107;](#named-export)
 - Prop drilling should not become an issue. [&#11107;](#passing-data)
+- UI components must only show derived state and send events, nothing more (no business logic). [&#11107;](#component-types)
 - Test business logic, not implementation details. [&#11107;](#what--how-to-test)
 
 ## Data Immutability
