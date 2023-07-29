@@ -182,7 +182,7 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 - ### Enums
 
-  As enums and const assertions comes with some functional differences, we try to limit syntax difference and pick one for consistency.
+  As enums and const assertions comes with some functional differences ([const-enum-pitfalls](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls), [reverse-mappings](https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings) etc.), we try to limit syntax difference and pick one for consistency.
 
   Const assertion must be used over enum.
 
