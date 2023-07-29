@@ -50,7 +50,7 @@ TypeScript Style Guide provides a concise set of conventions (sometimes arbitrar
     - [Using Discriminated Type](#using-discriminated-type)
   - [Component Types](#component-types)
     - [Container](#container)
-    - [UI - Feature specific](#ui---feature-specific)
+    - [UI - Feature](#ui---feature)
     - [UI - Design system](#ui---design-system)
   - [Passing Data](#passing-data)
 - [Source Organization](#source-organization)
@@ -581,7 +581,7 @@ export const Status = (status: StatusProps) => {...
   └─ index.tsx
   ```
 
-#### UI - Feature specific
+#### UI - Feature
 
 - Representational components that are designed to fulfill feature requirements.
 - Nested inside container component folder.
