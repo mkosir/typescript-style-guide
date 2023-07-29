@@ -182,7 +182,9 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 - ### Enums
 
-  Prefer object const assertion over enum.
+  As enums and const assertions comes with some functional differences, we try to limit syntax difference and pick one for consistency.
+
+  Const assertion must be used over enum.
 
   ```ts
   // ❌ Avoid
