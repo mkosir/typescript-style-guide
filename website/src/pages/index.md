@@ -561,7 +561,7 @@ export const Status = (status: StatusProps) => {...
 ### Component Types
 
 - Container:
-  - All container components have postfix "Container" or "Page" `[ComponentName]Container|Page`
+  - All container components have postfix "Container" or "Page" `[ComponentName]Container|Page`. Use "Page" postfix to indicate component it's an actual web page.
   - Each feature has a container component (`AddUserContainer.tsx`, `EditProductContainer.tsx`, `ProductsPage.tsx` etc.)
   - Includes business logic.
   - API integration.
