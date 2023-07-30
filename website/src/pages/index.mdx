@@ -38,7 +38,7 @@ Style Guide requires you to use:
 - **Code is organized and grouped by feature.** Collocate code as close as possible to where it's relevant. [&#11107;](#code-collocation)
 - Strive for data immutability. [&#11107;](#data-immutability)
 - Strive for functions to be pure, stateless and have single responsibility. [&#11107;](#functions)
-- Strive for functions to implement majority of arguments/props as required (use optional sparingly). [&#11107;](#required--optional-props)
+- Strive to have majority of function arguments required (use optional sparingly). [&#11107;](#required--optional-props)
 - Embrace const assertions. [&#11107;](#const-assertion)
 - Strong emphasis to keep naming conventions consistent and readable. [&#11107;](#naming-conventions)
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...). [&#11107;](#passing-data)
@@ -81,7 +81,9 @@ Conventions should be followed as much as possible:
   });
   ```
 
-- Strive to have majority of args required and use optional sparingly.
+- Strive to have majority of args required and use optional sparingly.  
+  If function becomes to complex it probably should be broken into smaller pieces.  
+  An exaggerated example where implementing 10 functions with 5 required args each, is better then implementing one "can do it all" function that accepts 50 optional args.
 
 <details>
 <summary>Potential exceptions of react components and hooks</summary>
@@ -480,8 +482,9 @@ export const Foo = ({ name, score }: FooProps) => {...
 Especially when creating new component for first/single use case majority of props should be required. When component starts covering more use cases, introduce optional props.  
 There are potential exceptions, where component API needs to implement optional props from the start (e.g. shared components covering multiple use cases, UI design system components - button `isDisabled` etc.)
 
-An exaggerated example where implementing 10 React components (or functions) with 5 required props each, is better then implementing one "can do it all" function that accepts 50 optional props.  
-As mentioned React components are functions, where [respective conventions apply](#functions), if it becomes to complex it probably should be broken into smaller pieces.
+As mentioned in function example - implementing 10 React components with 5 required props each, is better then implementing one "can do it all" function that accepts 50 optional props.  
+If component becomes to complex it probably should be broken into smaller pieces.  
+React components are functions, where [respective conventions apply](#functions).
 
 #### Using Discriminated Type
 
