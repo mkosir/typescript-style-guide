@@ -328,102 +328,108 @@ overrides: [
 
 While it's often hard to find the best names, try optimize code for consistency and future reader by following rules:
 
-- #### Variables
+#### Variables
 
-  - #### Locals
-    Camel case  
-    `products`, `productsFiltered`
-  - #### Booleans
-    Prefixed with `is`, `has` etc.  
-    `isDisabled`, `hasProduct`
-  - #### Constants
-    Capitalized  
-    `PRODUCT_ID`
-  - #### Object constants
-    Singular, capitalized with const assertion and optionally satisfies type (if there is one).
-    ```ts
-    const ORDER_STATUS = {
-      pending: "pending",
-      fulfilled: "fulfilled",
-      error: "error",
-    } as const satisfies OrderStatus;
-    ```
-
-- #### Functions
-
+- #### Locals
   Camel case  
-  `filterProductsByType`, `formatCurrency`
+  `products`, `productsFiltered`
+- #### Booleans
+  Prefixed with `is`, `has` etc.  
+  `isDisabled`, `hasProduct`
+- #### Constants
+  Capitalized  
+  `PRODUCT_ID`
+- #### Object constants
 
-- #### Generics
-
-  A name starts with the capital letter T `TRequest`, `TFooBar` (similar as [Google style guide](https://google.github.io/styleguide/javaguide.html#s5.2.8-type-variable-names) or [.Net internal](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-5.0) implementation).  
-   Avoid (popular convention) naming generics with one character `T`, `K` etc., the more variables we introduce, the easier it is to mistake them.
-
-  ```ts
-  // ❌ Avoid naming generics with one character
-  const createPair = <T, K extends string>(first: T, second: K): [T, K] => {
-    return [first, second];
-  };
-  const pair = createPair(1, "a");
-
-  // ✅ Name starts with the capital letter T
-  const createPair = <TFirst, TSecond extends string>(
-    first: TFirst,
-    second: TSecond
-  ): [TFirst, TSecond] => {
-    return [first, second];
-  };
-  const pair = createPair(1, "a");
-  ```
-
-- #### React Components
-  Pascal case  
-  `ProductItem`, `ProductsPage`
-- #### Prop Types
-  React component name following "Props" postfix  
-  `[ComponentName]Props` - `ProductItemProps`, `ProductsPageProps`
-- #### Callback Props
-
-  Event handler (callback) props are prefixed as `on*` - e.g. `onClick`.  
-  Event handler implementation functions are prefixed as `handle*` - e.g. `handleClick` ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
-
-  ```tsx
-  // ❌ Avoid inconsistent callback prop naming
-  <Button click={actionClick} />
-  <MyComponent userSelectedOccurred={triggerUser} />
-
-  // ✅ Use prop prefix 'on*' and handler prefix 'handle*'
-  <Button onClick={handleClick} />
-  <MyComponent onUserSelected={handleUserSelected} />
-  ```
-
-- #### React Hooks
-
-  Camel case, prefixed as 'use' ([eslint rule](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)), symmetrically convention as `[value, setValue] = useState()` ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md#rule-details))
+  Singular, capitalized with const assertion and optionally satisfies type (if there is one).
 
   ```ts
-  // ❌ Avoid inconsistent useState hook naming
-  const [userName, setUser] = useState();
-  const [color, updateColor] = useState();
-  const [visible, setVisible] = useState();
-
-  // ✅ Use
-  const [name, setName] = useState();
-  const [color, setColor] = useState();
-  const [isActive, setIsActive] = useState();
+  const ORDER_STATUS = {
+    pending: "pending",
+    fulfilled: "fulfilled",
+    error: "error",
+  } as const satisfies OrderStatus;
   ```
 
-  Custom hook must always return an object:
+#### Functions
 
-  ```ts
-  // ❌ Avoid
-  const [products, errors] = useGetProducts();
-  const [fontSizes] = useTheme();
+Camel case  
+`filterProductsByType`, `formatCurrency`
 
-  // ✅ Use
-  const { products, errors } = useGetProducts();
-  const { fontSizes } = useTheme();
-  ```
+#### Generics
+
+A name starts with the capital letter T `TRequest`, `TFooBar` (similar as [Google style guide](https://google.github.io/styleguide/javaguide.html#s5.2.8-type-variable-names) or [.Net internal](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-5.0) implementation).  
+ Avoid (popular convention) naming generics with one character `T`, `K` etc., the more variables we introduce, the easier it is to mistake them.
+
+```ts
+// ❌ Avoid naming generics with one character
+const createPair = <T, K extends string>(first: T, second: K): [T, K] => {
+  return [first, second];
+};
+const pair = createPair(1, "a");
+
+// ✅ Name starts with the capital letter T
+const createPair = <TFirst, TSecond extends string>(
+  first: TFirst,
+  second: TSecond
+): [TFirst, TSecond] => {
+  return [first, second];
+};
+const pair = createPair(1, "a");
+```
+
+#### React Components
+
+Pascal case  
+ `ProductItem`, `ProductsPage`
+
+#### Prop Types
+
+React component name following "Props" postfix  
+ `[ComponentName]Props` - `ProductItemProps`, `ProductsPageProps`
+
+#### Callback Props
+
+Event handler (callback) props are prefixed as `on*` - e.g. `onClick`.  
+ Event handler implementation functions are prefixed as `handle*` - e.g. `handleClick` ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md)).
+
+```tsx
+// ❌ Avoid inconsistent callback prop naming
+<Button click={actionClick} />
+<MyComponent userSelectedOccurred={triggerUser} />
+
+// ✅ Use prop prefix 'on*' and handler prefix 'handle*'
+<Button onClick={handleClick} />
+<MyComponent onUserSelected={handleUserSelected} />
+```
+
+#### React Hooks
+
+Camel case, prefixed as 'use' ([eslint rule](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)), symmetrically convention as `[value, setValue] = useState()` ([eslint rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md#rule-details))
+
+```ts
+// ❌ Avoid inconsistent useState hook naming
+const [userName, setUser] = useState();
+const [color, updateColor] = useState();
+const [visible, setVisible] = useState();
+
+// ✅ Use
+const [name, setName] = useState();
+const [color, setColor] = useState();
+const [isActive, setIsActive] = useState();
+```
+
+Custom hook must always return an object:
+
+```ts
+// ❌ Avoid
+const [products, errors] = useGetProducts();
+const [fontSizes] = useTheme();
+
+// ✅ Use
+const { products, errors } = useGetProducts();
+const { fontSizes } = useTheme();
+```
 
 ### Comments
 
