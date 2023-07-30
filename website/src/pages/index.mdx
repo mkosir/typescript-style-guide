@@ -194,110 +194,110 @@ Use `undefined` assignment when e.g. trying to exclude fields in: forms, request
 
 ## Types
 
-- #### Type Definition
+### Type Definition
 
-  TypeScript offers two options for type definitions - `type` and `interface`. As they come with some functional differences, we try to limit syntax difference and pick one for consistency.
+TypeScript offers two options for type definitions - `type` and `interface`. As they come with some functional differences, we try to limit syntax difference and pick one for consistency.
 
-  All types must be defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).
+All types must be defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).
 
-  ```ts
-  // ❌ Avoid interface definitions
-  interface UserInfo {
-    name: string;
+```ts
+// ❌ Avoid interface definitions
+interface UserInfo {
+  name: string;
+}
+
+// ✅ Use type definition
+type UserInfo = {
+  name: string;
+};
+```
+
+In case of exceptions use `interface` and disable lint rule. E.g. declaration merging, extending third-party library types etc.
+
+```ts
+declare namespace NodeJS {
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export interface ProcessEnv {
+    NODE_ENV: 'development' | 'production;
+    PORT: string;
   }
+}
 
-  // ✅ Use type definition
-  type UserInfo = {
-    name: string;
-  };
-  ```
+```
 
-  In case of exceptions use `interface` and disable lint rule. E.g. declaration merging, extending third-party library types etc.
+### Array Types
 
-  ```ts
-  declare namespace NodeJS {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-  export interface ProcessEnv {
-      NODE_ENV: 'development' | 'production;
-      PORT: string;
-    }
-  }
+Array types must be defined with `generic` syntax ([eslint rule](https://typescript-eslint.io/rules/array-type/#generic)).
 
-  ```
+```ts
+// ❌ Avoid
+const x: string[] = ["a", "b"];
+const y: readonly string[] = ["a", "b"];
 
-- #### Array Types
+// ✅ Use
+const x: Array<string> = ["a", "b"];
+const y: ReadonlyArray<string> = ["a", "b"];
+```
 
-  Array types must be defined with `generic` syntax ([eslint rule](https://typescript-eslint.io/rules/array-type/#generic)).
+### Type Annotation & Inference
 
-  ```ts
-  // ❌ Avoid
-  const x: string[] = ["a", "b"];
-  const y: readonly string[] = ["a", "b"];
+Just because you don't need to add types, doesn't mean you shouldn't. Explicit type annotations increase code readability and intent, but still in some cases inference has its place.
 
-  // ✅ Use
-  const x: Array<string> = ["a", "b"];
-  const y: ReadonlyArray<string> = ["a", "b"];
-  ```
+It should be taken with a grain of salt, but use type inference "when possible" and annotate types "when you must".
 
-- #### Type Annotation & Inference
+```ts
+// ❌ Avoid annotating types, when they can be inferred
+const color: string = "blue";
+const [name, setName] = useState<string>("");
+const [isActive, setIsActive] = useState<boolean>(false);
 
-  Just because you don't need to add types, doesn't mean you shouldn't. Explicit type annotations increase code readability and intent, but still in some cases inference has its place.
+// ✅ Use type inference or annotate explicit types when you must
+const COLOR = "blue"; // Type 'blue'
+const [name, setName] = useState(""); // Type 'string'
+const [isActive, setIsActive] = useState(false); // Type 'boolean'
 
-  It should be taken with a grain of salt, but use type inference "when possible" and annotate types "when you must".
+type UserRole = "admin" | "guest";
+const [userRole, setUserRole] = useState<UserRole>("admin"); // Type 'UserRole'
+const [users, setUsers] = useState<ReadonlyArray<User>>([]); // Type 'readonly User[]'
+```
 
-  ```ts
-  // ❌ Avoid annotating types, when they can be inferred
-  const color: string = "blue";
-  const [name, setName] = useState<string>("");
-  const [isActive, setIsActive] = useState<boolean>(false);
+### Return Types
 
-  // ✅ Use type inference or annotate explicit types when you must
-  const COLOR = "blue"; // Type 'blue'
-  const [name, setName] = useState(""); // Type 'string'
-  const [isActive, setIsActive] = useState(false); // Type 'boolean'
+Including return type annotations is highly encouraged, altought not required ([eslint rule](https://typescript-eslint.io/rules/explicit-function-return-type/)).
 
-  type UserRole = "admin" | "guest";
-  const [userRole, setUserRole] = useState<UserRole>("admin"); // Type 'UserRole'
-  const [users, setUsers] = useState<ReadonlyArray<User>>([]); // Type 'readonly User[]'
-  ```
+Consider benefits when explicitly typing the return value of a function:
 
-- #### Return Types
+- Return values makes it clear and easy to understand to any calling code what type is returned.
+- In the case where there is no return value, the calling code doesn't try to use the undefined value when it shouldn't.
+- Surface potential type errors faster in the future if there are code changes that change the return type of the function.
+- Easier to refactor, since it ensures that the return value is assigned to a variable of the correct type.
+- Similar to writing tests before implementation (TDD), defining function arguments and return type, gives you the opportunity to discuss the feature functionality and its interface ahead of implementation.
+- Although type inference is very convenient, adding return types can save TypeScript compiler a lot of work.
 
-  Including return type annotations is highly encouraged, altought not required ([eslint rule](https://typescript-eslint.io/rules/explicit-function-return-type/)).
+### Type Error
 
-  Consider benefits when explicitly typing the return value of a function:
+If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)). If at any future point suppressed line becomes error-free, TypeScript compiler will indicate it.  
+ `@ts-ignore` is not allowed, while `@ts-expect-error` can be used with provided description ([eslint rule](https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description)).
 
-  - Return values makes it clear and easy to understand to any calling code what type is returned.
-  - In the case where there is no return value, the calling code doesn't try to use the undefined value when it shouldn't.
-  - Surface potential type errors faster in the future if there are code changes that change the return type of the function.
-  - Easier to refactor, since it ensures that the return value is assigned to a variable of the correct type.
-  - Similar to writing tests before implementation (TDD), defining function arguments and return type, gives you the opportunity to discuss the feature functionality and its interface ahead of implementation.
-  - Although type inference is very convenient, adding return types can save TypeScript compiler a lot of work.
+```ts
+// ❌ Avoid @ts-ignore
+// @ts-ignore
+const result = doSomething("hello");
 
-- #### Type Error
+// ✅ Use @ts-expect-error with description
+// @ts-expect-error: the library definition is wrong
+const result = doSomething("hello");
+```
 
-  If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)). If at any future point suppressed line becomes error-free, TypeScript compiler will indicate it.  
-   `@ts-ignore` is not allowed, while `@ts-expect-error` can be used with provided description ([eslint rule](https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description)).
+### Type & Non-nullability Assertions
 
-  ```ts
-  // ❌ Avoid @ts-ignore
-  // @ts-ignore
-  const result = doSomething("hello");
+Type assertions `brand as BrandType` and non-nullability assertions `brand!.name` are unsafe. Both only silence TypeScript compiler and increase the risk of crashing application at runtime.  
+ They can only be used as last resort exceptions (e.g. third party library types mismatch etc.) with strong rational why being introduced into codebase.
 
-  // ✅ Use @ts-expect-error with description
-  // @ts-expect-error: the library definition is wrong
-  const result = doSomething("hello");
-  ```
+### any
 
-- #### Type & Non-nullability Assertions
-
-  Type assertions `brand as BrandType` and non-nullability assertions `brand!.name` are unsafe. Both only silence TypeScript compiler and increase the risk of crashing application at runtime.  
-  They can only be used as last resort exceptions (e.g. third party library types mismatch etc.) with strong rational why being introduced into codebase.
-
-- #### any
-
-  `any` data type must not be used as it represents literally “any” value that TypeScript defaults to and skips type checking since it cannot infer the type. As such, any is dangerous, it can mask severe programming errors.  
-  If error truly cannot be resolved as safer option use type `unknown` since it does not allow dereferencing all properties or as last resort use `@ts-expect-error` ([Type Error](#type-error)).
+`any` data type must not be used as it represents literally “any” value that TypeScript defaults to and skips type checking since it cannot infer the type. As such, any is dangerous, it can mask severe programming errors.  
+ If error truly cannot be resolved as safer option use type `unknown` since it does not allow dereferencing all properties or as last resort use `@ts-expect-error` ([Type Error](#type-error)).
 
 ## Naming
 
