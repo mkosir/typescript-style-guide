@@ -125,71 +125,72 @@ const useGetUsers: UseGeUsers = ({ country, isActive }) =>
 
 ## Variables
 
-- ### Const Assertion
+### Const Assertion
 
-  Strive to use const assertion (`as const`):
+Strive to use const assertion (`as const`):
 
-  - type is narrowed
-  - object gets `readonly` properties
-  - array becomes `readonly` tuple
-
-    ```ts
-    // ❌ Avoid declaring constants without const assertion
-    const BASE_LOCATION = { x: 50, y: 130 }; // Type { x: number; y: number; }
-    BASE_LOCATION.x = 10;
-    const BASE_LOCATION = [50, 130]; // Type number[]
-    BASE_LOCATION.push(10);
-
-    // ✅ Use const assertion
-    const BASE_LOCATION = { x: 50, y: 130 } as const; // Type '{ readonly x: 50; readonly y: 130; }'
-    const BASE_LOCATION = [50, 130] as const; // Type 'readonly [10, 20]'
-    ```
-
-- ### Enums & Const Assertion
-
-  As enums and const assertions comes with some functional differences - [const-enum-pitfalls](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls), [objects vs enums](https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums),[reverse-mappings](https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings) etc., we try to limit syntax difference and pick one for consistency.
-
-  Const assertion must be used over enum.
+- type is narrowed
+- object gets `readonly` properties
+- array becomes `readonly` tuple
 
   ```ts
-  // ❌ Avoid using enums
-  enum UserRole {
-    GUEST,
-    MODERATOR,
-    ADMINISTRATOR,
-  }
-
-  enum Color {
-    PRIMARY = "#B33930",
-    SECONDARY = "#113A5C",
-    BRAND = "#9C0E7D",
-  }
+  // ❌ Avoid declaring constants without const assertion
+  const BASE_LOCATION = { x: 50, y: 130 }; // Type { x: number; y: number; }
+  BASE_LOCATION.x = 10;
+  const BASE_LOCATION = [50, 130]; // Type number[]
+  BASE_LOCATION.push(10);
 
   // ✅ Use const assertion
-  const USER_ROLES = ["guest", "moderator", "administrator"] as const;
-  type UserRole = (typeof USER_ROLES)[number]; // Type "guest" | "moderator" | "administrator"
-
-  // Use satisfies keyword, if UserRole type is already defined - e.g. database schema model
-  type UserRoleDB = ReadonlyArray<"guest" | "moderator" | "administrator">;
-  const USER_ROLES_IN_DROPDOWN = [
-    "guest",
-    "moderator",
-    "administrator",
-  ] as const satisfies UserRoleDB;
-
-  const COLOR = {
-    primary: "#B33930",
-    secondary: "#113A5C",
-    brand: "#9C0E7D",
-  } as const;
-  type Color = typeof COLOR;
-  type ColorKey = keyof Color; // Type "PRIMARY" | "SECONDARY" | "BRAND"
-  type ColorValue = Color[ColorKey]; // Type "#B33930" | "#113A5C" | "#9C0E7D"
+  const BASE_LOCATION = { x: 50, y: 130 } as const; // Type '{ readonly x: 50; readonly y: 130; }'
+  const BASE_LOCATION = [50, 130] as const; // Type 'readonly [10, 20]'
   ```
 
-- ### Null & Undefined
-  Prefer using `null` instead of `undefined`, to explicitly state it has no value - assignment, return type etc.  
-  Use `undefined` assignment when e.g. trying to exclude fields in: forms, request payload, querying database ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined)) etc.
+### Enums & Const Assertion
+
+As enums and const assertions comes with some functional differences - [const-enum-pitfalls](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls), [objects vs enums](https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums),[reverse-mappings](https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings) etc., we try to limit syntax difference and pick one for consistency.
+
+Const assertion must be used over enum.
+
+```ts
+// ❌ Avoid using enums
+enum UserRole {
+  GUEST,
+  MODERATOR,
+  ADMINISTRATOR,
+}
+
+enum Color {
+  PRIMARY = "#B33930",
+  SECONDARY = "#113A5C",
+  BRAND = "#9C0E7D",
+}
+
+// ✅ Use const assertion
+const USER_ROLES = ["guest", "moderator", "administrator"] as const;
+type UserRole = (typeof USER_ROLES)[number]; // Type "guest" | "moderator" | "administrator"
+
+// Use satisfies keyword, if UserRole type is already defined - e.g. database schema model
+type UserRoleDB = ReadonlyArray<"guest" | "moderator" | "administrator">;
+const USER_ROLES_IN_DROPDOWN = [
+  "guest",
+  "moderator",
+  "administrator",
+] as const satisfies UserRoleDB;
+
+const COLOR = {
+  primary: "#B33930",
+  secondary: "#113A5C",
+  brand: "#9C0E7D",
+} as const;
+type Color = typeof COLOR;
+type ColorKey = keyof Color; // Type "PRIMARY" | "SECONDARY" | "BRAND"
+type ColorValue = Color[ColorKey]; // Type "#B33930" | "#113A5C" | "#9C0E7D"
+```
+
+### Null & Undefined
+
+Prefer using `null` instead of `undefined`, to explicitly state it has no value - assignment, return type etc.  
+Use `undefined` assignment when e.g. trying to exclude fields in: forms, request payload, querying database ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined)) etc.
 
 ## Types
 
