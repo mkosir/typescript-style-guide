@@ -93,13 +93,13 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       algolia: {
-        // The application ID provided by Algolia
-        appId: "YOUR_APP_ID",
+        // Public application ID provided by Algolia: it is safe to commit it
+        appId: "3CBFIG0U2G",
 
         // Public API key: it is safe to commit it
-        apiKey: "YOUR_SEARCH_API_KEY",
+        apiKey: "c32aa1ae163b2d28ccd2fe42ee3b73be",
 
-        indexName: "YOUR_INDEX_NAME",
+        indexName: "typescript-style-guide",
 
         // Optional: see doc section below
         contextualSearch: true,
