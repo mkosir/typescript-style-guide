@@ -5,8 +5,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/okaidia");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  // title: "TypeScript Style Guide",
-  title: " ",
+  title: "TypeScript Style Guide",
   tagline: "Dinosaurs are cool",
   favicon: "img/favicon.ico",
 
