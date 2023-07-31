@@ -1,8 +1,7 @@
 // @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/okaidia"); // dracula / nightOwl / okaidia / palenight / vsDark
+const darkCodeTheme = require("prism-react-renderer/themes/okaidia");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -54,7 +53,6 @@ const config = {
         defaultMode: "dark",
         respectPrefersColorScheme: false,
       },
-      // Replace with your project's social card
       image: "img/typescript-card.png",
       navbar: {
         title: "TypeScript Style Guide",
@@ -75,17 +73,6 @@ const config = {
       },
       footer: {
         style: "dark",
-        // links: [
-        //   {
-        //     title: "More",
-        //     items: [
-        //       {
-        //         label: "GitHub",
-        //         href: "https://github.com/mkosir/typescript-style-guide",
-        //       },
-        //     ],
-        //   },
-        // ],
         copyright: `TypeScript Style Guide. Built with Docusaurus.`,
       },
       prism: {
@@ -93,29 +80,22 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       algolia: {
-        // Public application ID provided by Algolia: it is safe to commit it
+        // Public application ID provided by Algolia
         appId: "3CBFIG0U2G",
-
-        // Public API key: it is safe to commit it
+        // Public API key
         apiKey: "c32aa1ae163b2d28ccd2fe42ee3b73be",
-
         indexName: "typescript-style-guide",
-
         // Optional: see doc section below
         contextualSearch: true,
-
         // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
         externalUrlRegex: "external\\.com|domain\\.com",
-
         // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
         replaceSearchResultPathname: {
           from: "/docs/", // or as RegExp: /\/docs\//
           to: "/",
         },
-
         // Optional: Algolia search parameters
         searchParameters: {},
-
         // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: "search",
       },
