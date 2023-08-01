@@ -88,6 +88,38 @@ Function conventions should be followed as much as possible (some of the derives
    An exaggerated example where implementing 10 functions with 5 required args each, is better then implementing one "can do it all" function that accepts 50 optional args.
 - When applicable use **discriminated union type** to eliminate optional args, which will decrease complexity on function API and only necessary/required args will be passed depending on its use case.
 
+  ```ts
+  // ❌ Avoid optional args as they increase complexity of function API
+  type StatusParams = {
+    data?: Products;
+    title?: string;
+    time?: number;
+    error?: string;
+  };
+
+  // ✅ Strive to have majority of args required, if that's not possible,
+  // use discriminated union for clear intent on function usage
+  type StatusParamsSuccess = {
+    status: 'success';
+    data: Products;
+    title: string;
+  };
+
+  type StatusParamsLoading = {
+    status: 'loading';
+    time: number;
+  };
+
+  type StatusParamsError = {
+    status: 'error';
+    error: string;
+  };
+
+  type StatusParams = StatusSuccess | StatusLoading | StatusError;
+
+  export const parseStatus = (params: StatusParams) => {...
+  ```
+
 <details>
 <summary>Potential exceptions of react components and hooks</summary>
 
