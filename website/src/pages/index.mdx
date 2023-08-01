@@ -58,8 +58,7 @@ As an exception mutations should be used sparingly in cases where truly necessar
 
 ## Functions
 
-Since React components and hooks are also functions, a lot of basic concepts from functional programming applies.  
-Conventions should be followed as much as possible:
+Function conventions should be followed as much as possible (some of the derives from functional programming basic concepts):
 
 - Function should have single responsibility.
 - Function should be stateless where the same input arguments return same value every single time.
@@ -85,8 +84,9 @@ Conventions should be followed as much as possible:
   ```
 
 - Strive to have majority of args required and use optional sparingly.  
-  If function becomes to complex it probably should be broken into smaller pieces.  
-  An exaggerated example where implementing 10 functions with 5 required args each, is better then implementing one "can do it all" function that accepts 50 optional args.
+   If function becomes to complex it probably should be broken into smaller pieces.  
+   An exaggerated example where implementing 10 functions with 5 required args each, is better then implementing one "can do it all" function that accepts 50 optional args.
+- When applicable use **discriminated type** to eliminate optional args, which will decrease complexity on function API and only necessary/required args will be passed depending on its use case.
 
 <details>
 <summary>Potential exceptions of react components and hooks</summary>
@@ -463,6 +463,8 @@ const frequencies = signal.FFT();
 
 ## React Components
 
+Since React components and hooks are also functions, [respective function conventions](#functions) applies.
+
 ### Props Type
 
 ```tsx
@@ -491,8 +493,7 @@ Especially when creating new component for first/single use case majority of pro
 There are potential exceptions, where component API needs to implement optional props from the start (e.g. shared components covering multiple use cases, UI design system components - button `isDisabled` etc.)
 
 As mentioned in function example - implementing 10 React components with 5 required props each, is better then implementing one "can do it all" function that accepts 50 optional props.  
-If component becomes to complex it probably should be broken into smaller pieces.  
-React components are functions, where [respective conventions apply](#functions).
+If component becomes to complex it probably should be broken into smaller pieces.
 
 **Use Discriminated Type**
 
@@ -507,8 +508,8 @@ type StatusProps = {
   error?: string;
 };
 
-// ✅ Strive to have majority of props required, or if that's not possible,
-// use discriminated union type for clear intent on component usage
+// ✅ Strive to have majority of props required, if that's not possible,
+// use discriminated union for clear intent on component usage
 type StatusSuccess = {
   status: 'success';
   data: Products;
