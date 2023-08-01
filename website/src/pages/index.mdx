@@ -86,7 +86,7 @@ Function conventions should be followed as much as possible (some of the derives
 - Strive to have majority of args required and use optional sparingly.  
    If function becomes to complex it probably should be broken into smaller pieces.  
    An exaggerated example where implementing 10 functions with 5 required args each, is better then implementing one "can do it all" function that accepts 50 optional args.
-- When applicable use **discriminated type** to eliminate optional args, which will decrease complexity on function API and only necessary/required args will be passed depending on its use case.
+- When applicable use **discriminated union type** to eliminate optional args, which will decrease complexity on function API and only necessary/required args will be passed depending on its use case.
 
 <details>
 <summary>Potential exceptions of react components and hooks</summary>
