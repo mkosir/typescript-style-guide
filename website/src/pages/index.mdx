@@ -144,9 +144,9 @@ Strive to use const assertion (`as const`):
 
 ### Enums & Const Assertion
 
-As enums and const assertions comes with some functional differences - [const-enum-pitfalls](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls), [objects vs enums](https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums), [reverse-mappings](https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings) etc., we try to limit syntax difference and pick one for consistency.
-
 Const assertion must be used over enum.
+
+While enums can still cover use cases as const assertion would, we tend to avoid it. Some of the reasonings as mentioned in TypeScript documentation - [Const enum pitfalls](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls), [Objects vs Enums](https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums), [Reverse mappings](https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings)...
 
 ```ts
 // ❌ Avoid using enums
