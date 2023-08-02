@@ -1,1 +1,1 @@
-export * from "./TitleComponent";
+export * from "./MainTitle";
