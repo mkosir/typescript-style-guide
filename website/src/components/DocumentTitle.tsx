@@ -4,15 +4,24 @@ export const DocumentTitle = () => {
   const title = "TypeScript Style Guide";
 
   useEffect(() => {
-    const hash = window.location.hash;
+    const handlePopstate = () => {
+      const hash = window.location.hash;
 
-    if (!hash) {
-      document.title = title;
-      return;
-    }
+      if (!hash) {
+        document.title = title;
+        return;
+      }
 
-    document.title = `${formatHash(hash)} | ${title}`;
-  }, [window.location.href]);
+      document.title = `${formatHash(hash)} | ${title}`;
+    };
+
+    document.title = title;
+
+    window.addEventListener("popstate", handlePopstate);
+    return () => {
+      window.removeEventListener("popstate", handlePopstate);
+    };
+  }, []);
 
   return null;
 };
