@@ -1,11 +1,14 @@
 import React, { ReactNode } from "react";
 import Tilt from "react-parallax-tilt";
+import { useColorMode } from "@docusaurus/theme-common";
 
 type MainTitleProps = {
   children: ReactNode;
 };
 
 export const MainTitle = ({ children }: MainTitleProps) => {
+  const { colorMode } = useColorMode();
+
   return (
     <div
       style={{
@@ -15,15 +18,14 @@ export const MainTitle = ({ children }: MainTitleProps) => {
       }}
     >
       <Tilt
-        tiltMaxAngleX={8}
+        tiltAxis="y"
         tiltMaxAngleY={5}
         transitionSpeed={2500}
-        // glareEnable={true}
-        // glareMaxOpacity={0.1}
-        // glareColor="#ffffff"
-        // glareColor="#296bb3"
-        // glarePosition="all"
-        // glareBorderRadius="5px"
+        glareEnable={true}
+        glareMaxOpacity={0.08}
+        glareColor={colorMode === "dark" ? "#1b8aff" : "#498cd5"}
+        glarePosition="all"
+        glareBorderRadius="9px"
       >
         <div
           style={{ display: "flex", alignItems: "center", columnGap: "6px" }}
