@@ -23,7 +23,7 @@ export const MainTitle = ({ children }: MainTitleProps) => {
         transitionSpeed={2500}
         glareEnable={true}
         glareMaxOpacity={0.08}
-        glareColor={colorMode === "dark" ? "#1b8aff" : "#498cd5"}
+        glareColor={colorMode === "dark" ? "#007cfe" : "#498cd5"}
         glarePosition="all"
         glareBorderRadius="9px"
       >
