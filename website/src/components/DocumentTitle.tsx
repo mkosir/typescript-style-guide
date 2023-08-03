@@ -27,9 +27,7 @@ export const DocumentTitle = () => {
 };
 
 const formatHash = (hash: string) => {
-  const removeHash = hash.substring(1);
-  const hashRemoveDoubleHyphen = removeHash.replace(/--/g, " & ");
-  const hashParsed = hashRemoveDoubleHyphen.replace(/-/g, " ");
+  const hashParsed = hash.substring(1).replace(/--/g, " & ").replace(/-/g, " ");
   const hashFormatted = toUpperEachWord(hashParsed);
   return hashFormatted;
 };
