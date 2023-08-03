@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 
-export const DocumentTitle = () => {
-  const title = "TypeScript Style Guide";
+type DocumentTitleProps = {
+  title: string;
+};
 
+export const DocumentTitle = ({ title }: DocumentTitleProps) => {
   useEffect(() => {
     const handlePopstate = () => {
       const hash = window.location.hash;
