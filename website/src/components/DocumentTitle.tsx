@@ -11,12 +11,19 @@ export const DocumentTitle = () => {
       return;
     }
 
-    const hashFormatted = toUpperEachWord(hash.substring(1));
-
-    document.title = `${hashFormatted} | ${title}`;
+    document.title = `${formatHash(hash)} | ${title}`;
   }, [window.location.href]);
 
   return null;
+};
+
+const formatHash = (hash: string) => {
+  const removeHash = hash.substring(1);
+  const hashRemoveDoubleHyphen = removeHash.replace(/--/g, " & ");
+  const hashParsed = hashRemoveDoubleHyphen.replace(/-/g, " ");
+  const hashFormatted = toUpperEachWord(hashParsed);
+
+  return hashFormatted;
 };
 
 const toUpperEachWord = (text: string) =>
