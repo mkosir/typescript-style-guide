@@ -17,7 +17,7 @@ export const DocumentTitle = ({ title }: DocumentTitleProps) => {
       document.title = `${formatHash(hash)} | ${title}`;
     };
 
-    document.title = title;
+    handlePopstate();
 
     window.addEventListener("popstate", handlePopstate);
     return () => {
