@@ -31,7 +31,6 @@ const formatHash = (hash: string) => {
   const hashRemoveDoubleHyphen = removeHash.replace(/--/g, " & ");
   const hashParsed = hashRemoveDoubleHyphen.replace(/-/g, " ");
   const hashFormatted = toUpperEachWord(hashParsed);
-
   return hashFormatted;
 };
 
