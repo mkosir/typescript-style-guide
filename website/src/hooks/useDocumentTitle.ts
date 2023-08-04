@@ -23,7 +23,13 @@ export const useDocumentTitle = (title: string) => {
 };
 
 const formatHash = (hash: string) => {
-  const hashParsed = hash.substring(1).replace(/--/g, " & ").replace(/-/g, " ");
+  const hashParsed = hash
+    .substring(1)
+    .replace(/---/g, "__dash__")
+    .replace(/--/g, " & ")
+    .replace(/-/g, " ")
+    .replace(/__dash__/g, " - ");
+
   const hashFormatted = toUpperEachWord(hashParsed);
   return hashFormatted;
 };
