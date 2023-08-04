@@ -2,6 +2,6 @@ import React from "react";
 
 import TOCInline from "@theme/TOCInline";
 
-export const TableOfContents = ({ toc }: { toc: any }) => {
-  return <TOCInline toc={toc} minHeadingLevel={2} maxHeadingLevel={3} />;
+export const TableOfContents = ({ items }: { items: any }) => {
+  return <TOCInline toc={items} minHeadingLevel={2} maxHeadingLevel={3} />;
 };
