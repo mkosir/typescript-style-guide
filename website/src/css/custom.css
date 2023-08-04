@@ -27,6 +27,26 @@ h1 {
   font-size: 30px;
 }
 
+h2 {
+  margin: 25px 0 13px 0;
+}
+
+h3 {
+  margin: 17px 0 13px 0;
+}
+
 h4 {
   margin: 0 0 5px 0;
+}
+
+p {
+  margin: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+div.language-ts {
+  margin: 10px 0;
 }
