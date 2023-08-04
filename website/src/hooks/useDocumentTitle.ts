@@ -1,10 +1,6 @@
 import { useEffect } from "react";
 
-type DocumentTitleProps = {
-  title: string;
-};
-
-export const DocumentTitle = ({ title }: DocumentTitleProps) => {
+export const useDocumentTitle = (title: string) => {
   useEffect(() => {
     const handlePopstate = () => {
       const hash = window.location.hash;
@@ -24,8 +20,6 @@ export const DocumentTitle = ({ title }: DocumentTitleProps) => {
       window.removeEventListener("popstate", handlePopstate);
     };
   }, []);
-
-  return null;
 };
 
 const formatHash = (hash: string) => {
@@ -40,3 +34,13 @@ const toUpperEachWord = (text: string) =>
     .split(" ")
     .map((word) => word[0].toUpperCase() + word.substring(1))
     .join(" ");
+
+type UseDocumentTitleProps = {
+  children: string;
+};
+
+export const UseDocumentTitle = ({ children }: UseDocumentTitleProps) => {
+  useDocumentTitle(children);
+
+  return null;
+};
