@@ -41,9 +41,5 @@ h4 {
 }
 
 p {
-  margin: 0;
-}
-
-div.language-ts, div.language-tsx {
-  margin: 10px 0;
+  margin-bottom: 15px;
 }
