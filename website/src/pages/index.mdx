@@ -177,13 +177,9 @@ enum Color {
 const USER_ROLES = ["guest", "moderator", "administrator"] as const;
 type UserRole = (typeof USER_ROLES)[number]; // Type "guest" | "moderator" | "administrator"
 
-// Use satisfies keyword, if UserRole type is already defined - e.g. database schema model
+// Use satisfies if UserRole type is already defined - e.g. database schema model
 type UserRoleDB = ReadonlyArray<"guest" | "moderator" | "administrator">;
-const USER_ROLES_IN_DROPDOWN = [
-  "guest",
-  "moderator",
-  "administrator",
-] as const satisfies UserRoleDB;
+const AVAILABLE_ROLES = ["guest", "moderator"] as const satisfies UserRoleDB;
 
 const COLOR = {
   primary: "#B33930",
