@@ -462,6 +462,69 @@ const filteredUsers = frontendFiltering(selectedUsernames);
 const frequencies = signal.FFT();
 ```
 
+## Source Organization
+
+### Code Collocation
+
+- Every application or package in monorepo has project files/folders organized and grouped by **feature**.
+- **Collocate code as close as possible to where it's relevant.**
+- Deep folder nesting should not represent an issue.
+
+### Imports
+
+Import paths can be relative, starting with `./` or `../`, or they can be absolute `common/components`.
+
+Relative imports `./myCustomHook` must be used when importing files within the same feature, as it allows moving feature around the codebase without introducing changes in these imports.  
+Absolute imports `common/components` must be used in all other cases.
+
+### Project Structure
+
+Example frontend monorepo project, where every application has following file/folder structure:
+
+```shell
+apps/
+├─ product-manager/
+│  ├─ common/
+│  │  ├─ components/
+│  │  │  ├─ Button/
+│  │  │  ├─ ProductTitle/
+│  │  │  ├─ ...
+│  │  │  └─ index.tsx
+│  │  ├─ consts/
+│  │  │  ├─ paths.ts
+│  │  │  └─ ...
+│  │  ├─ hooks/
+│  │  └─ types/
+│  ├─ modules/
+│  │  ├─ HomePage/
+│  │  ├─ ProductAddPage/
+│  │  ├─ ProductPage/
+│  │  ├─ ProductsPage/
+│  │  │  ├─ api/
+│  │  │  │  └─ useGetProducts/
+│  │  │  ├─ components/
+│  │  │  │  ├─ ProductItem/
+│  │  │  │  ├─ ProductsStatistics/
+│  │  │  │  └─ ...
+│  │  │  ├─ utils/
+│  │  │  │  └─ filterProductsByType/
+│  │  │  └─ index.tsx
+│  │  ├─ ...
+│  │  └─ index.tsx
+│  ├─ eslintrc.js
+│  ├─ package.json
+│  └─ tsconfig.json
+├─ warehouse/
+├─ admin-dashboard/
+└─ ...
+```
+
+- `modules` folder is responsible for implementation of each individual page, where all custom features for that page are being implemented (components, hooks, utils functions etc.).
+- `common` folder is responsible for implementations that are truly used across application. Since its a "global folder" it should be used sparingly.  
+  If same component e.g. `common/components/ProductTitle` starts being used on more the one page, it shall be moved to common folder.
+
+In case file-system based router (e.g. Nextjs) is being used as frontend framework, `pages` folder serves only as a router, where its responsibility is to define routes (no business logic implementation).
+
 ## React
 
 ### Components
@@ -629,69 +692,6 @@ export const Status = (status: StatusProps) => {...
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
 - use of client-state library for global state is discouraged.  
   Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings - `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) or Context (not Redux, Mobx etc.).
-
-## Source Organization
-
-### Code Collocation
-
-- Every application or package in monorepo has project files/folders organized and grouped by **feature**.
-- **Collocate code as close as possible to where it's relevant.**
-- Deep folder nesting should not represent an issue.
-
-### Imports
-
-Import paths can be relative, starting with `./` or `../`, or they can be absolute `common/components`.
-
-Relative imports `./myCustomHook` must be used when importing files within the same feature, as it allows moving feature around the codebase without introducing changes in these imports.  
-Absolute imports `common/components` must be used in all other cases.
-
-### Project Structure
-
-Example frontend monorepo project, where every application has following file/folder structure:
-
-```shell
-apps/
-├─ product-manager/
-│  ├─ common/
-│  │  ├─ components/
-│  │  │  ├─ Button/
-│  │  │  ├─ ProductTitle/
-│  │  │  ├─ ...
-│  │  │  └─ index.tsx
-│  │  ├─ consts/
-│  │  │  ├─ paths.ts
-│  │  │  └─ ...
-│  │  ├─ hooks/
-│  │  └─ types/
-│  ├─ modules/
-│  │  ├─ HomePage/
-│  │  ├─ ProductAddPage/
-│  │  ├─ ProductPage/
-│  │  ├─ ProductsPage/
-│  │  │  ├─ api/
-│  │  │  │  └─ useGetProducts/
-│  │  │  ├─ components/
-│  │  │  │  ├─ ProductItem/
-│  │  │  │  ├─ ProductsStatistics/
-│  │  │  │  └─ ...
-│  │  │  ├─ utils/
-│  │  │  │  └─ filterProductsByType/
-│  │  │  └─ index.tsx
-│  │  ├─ ...
-│  │  └─ index.tsx
-│  ├─ eslintrc.js
-│  ├─ package.json
-│  └─ tsconfig.json
-├─ warehouse/
-├─ admin-dashboard/
-└─ ...
-```
-
-- `modules` folder is responsible for implementation of each individual page, where all custom features for that page are being implemented (components, hooks, utils functions etc.).
-- `common` folder is responsible for implementations that are truly used across application. Since its a "global folder" it should be used sparingly.  
-  If same component e.g. `common/components/ProductTitle` starts being used on more the one page, it shall be moved to common folder.
-
-In case file-system based router (e.g. Nextjs) is being used as frontend framework, `pages` folder serves only as a router, where its responsibility is to define routes (no business logic implementation).
 
 ## Tests - Unit & Integration
 
