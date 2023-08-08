@@ -718,7 +718,7 @@ export const Status = (status: StatusProps) => {...
   ```
 
 - UI components should show derived state and send events, nothing more.
-- As in many programming language functions args can be passed to the next function and on to the next etc.  
+- As in many programming languages functions args can be passed to the next function and on to the next etc.  
   Rect components are no different, where prop drilling should not become an issue.  
   If with app scaling prop drilling truly becomes an issue, try to refactor render method, local states in parent components, using composition etc.
 - Data fetching is only allowed in container components.
