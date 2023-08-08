@@ -525,7 +525,7 @@ apps/
 
 In case file-system based router (e.g. Nextjs) is being used as frontend framework, `pages` folder serves only as a router, where its responsibility is to define routes (no business logic implementation).
 
-## React
+## Appendix - React
 
 ### Components
 
@@ -726,7 +726,7 @@ export const Status = (status: StatusProps) => {...
 - use of client-state library for global state is discouraged.  
   Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings - `/me` endpoint). If still truly needed use [Zustand](https://github.com/pmndrs/zustand) or Context (not Redux, Mobx etc.).
 
-## Tests - Unit & Integration
+## Appendix - Tests (Unit & Integration)
 
 ### What & How To Test
 
