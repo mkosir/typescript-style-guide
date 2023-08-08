@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import Tilt from "react-parallax-tilt";
 import { useColorMode } from "@docusaurus/theme-common";
 
 type MainTitleProps = {
-  children: ReactNode;
+  children: string;
 };
 
 export const MainTitle = ({ children }: MainTitleProps) => {
