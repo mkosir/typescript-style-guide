@@ -19,7 +19,7 @@ export const useDocumentTitle = (title: string) => {
     return () => {
       window.removeEventListener('popstate', handlePopstate);
     };
-  }, []);
+  }, [title]);
 };
 
 const formatHash = (hash: string) => {
