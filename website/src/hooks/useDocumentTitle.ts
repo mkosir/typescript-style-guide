@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 export const useDocumentTitle = (title: string) => {
   useEffect(() => {
@@ -15,9 +15,9 @@ export const useDocumentTitle = (title: string) => {
 
     handlePopstate();
 
-    window.addEventListener("popstate", handlePopstate);
+    window.addEventListener('popstate', handlePopstate);
     return () => {
-      window.removeEventListener("popstate", handlePopstate);
+      window.removeEventListener('popstate', handlePopstate);
     };
   }, []);
 };
@@ -25,10 +25,10 @@ export const useDocumentTitle = (title: string) => {
 const formatHash = (hash: string) => {
   const hashParsed = hash
     .substring(1)
-    .replace(/---/g, "__dash__")
-    .replace(/--/g, " & ")
-    .replace(/-/g, " ")
-    .replace(/__dash__/g, " - ");
+    .replace(/---/g, '__dash__')
+    .replace(/--/g, ' & ')
+    .replace(/-/g, ' ')
+    .replace(/__dash__/g, ' - ');
 
   const hashFormatted = toUpperEachWord(hashParsed);
   return hashFormatted;
@@ -37,9 +37,9 @@ const formatHash = (hash: string) => {
 const toUpperEachWord = (text: string) =>
   text
     .toLowerCase()
-    .split(" ")
+    .split(' ')
     .map((word) => word[0].toUpperCase() + word.substring(1))
-    .join(" ");
+    .join(' ');
 
 type UseDocumentTitleProps = {
   children: string;

@@ -1,2 +1,2 @@
-export * from "./MainTitle";
-export * from "./TableOfContents";
+export * from './MainTitle';
+export * from './TableOfContents';

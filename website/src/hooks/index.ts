@@ -1,1 +1,1 @@
-export * from "./useDocumentTitle";
+export * from './useDocumentTitle';

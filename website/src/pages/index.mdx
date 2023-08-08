@@ -5,8 +5,8 @@ toc_min_heading_level: 2
 toc_max_heading_level: 3
 ---
 
-import { MainTitle, TableOfContents } from "@site/src/components";
-import { UseDocumentTitle } from "@site/src/hooks";
+import { MainTitle, TableOfContents } from '@site/src/components';
+import { UseDocumentTitle } from '@site/src/hooks';
 
 <UseDocumentTitle>TypeScript Style Guide</UseDocumentTitle>
 <MainTitle>TypeScript Style Guide</MainTitle>
@@ -75,11 +75,11 @@ To keep function readable and easily extensible for the future (adding/removing 
 
 ```ts
 // ❌ Avoid having multiple arguments
-transformUserInput("client", false, 60, 120, null, true, 2000);
+transformUserInput('client', false, 60, 120, null, true, 2000);
 
 // ✅ Use options object as argument
 transformUserInput({
-  method: "client",
+  method: 'client',
   isValidated: false,
   minLines: 60,
   maxLines: 120,
@@ -168,23 +168,23 @@ enum UserRole {
 }
 
 enum Color {
-  PRIMARY = "#B33930",
-  SECONDARY = "#113A5C",
-  BRAND = "#9C0E7D",
+  PRIMARY = '#B33930',
+  SECONDARY = '#113A5C',
+  BRAND = '#9C0E7D',
 }
 
 // ✅ Use const assertion
-const USER_ROLES = ["guest", "moderator", "administrator"] as const;
+const USER_ROLES = ['guest', 'moderator', 'administrator'] as const;
 type UserRole = (typeof USER_ROLES)[number]; // Type "guest" | "moderator" | "administrator"
 
 // Use satisfies if UserRole type is already defined - e.g. database schema model
-type UserRoleDB = ReadonlyArray<"guest" | "moderator" | "administrator">;
-const AVAILABLE_ROLES = ["guest", "moderator"] as const satisfies UserRoleDB;
+type UserRoleDB = ReadonlyArray<'guest' | 'moderator' | 'administrator'>;
+const AVAILABLE_ROLES = ['guest', 'moderator'] as const satisfies UserRoleDB;
 
 const COLOR = {
-  primary: "#B33930",
-  secondary: "#113A5C",
-  brand: "#9C0E7D",
+  primary: '#B33930',
+  secondary: '#113A5C',
+  brand: '#9C0E7D',
 } as const;
 type Color = typeof COLOR;
 type ColorKey = keyof Color; // Type "PRIMARY" | "SECONDARY" | "BRAND"
@@ -235,12 +235,12 @@ Array types must be defined with `generic` syntax ([eslint rule](https://typescr
 
 ```ts
 // ❌ Avoid
-const x: string[] = ["a", "b"];
-const y: readonly string[] = ["a", "b"];
+const x: string[] = ['a', 'b'];
+const y: readonly string[] = ['a', 'b'];
 
 // ✅ Use
-const x: Array<string> = ["a", "b"];
-const y: ReadonlyArray<string> = ["a", "b"];
+const x: Array<string> = ['a', 'b'];
+const y: ReadonlyArray<string> = ['a', 'b'];
 ```
 
 ### Type Annotation & Inference
@@ -251,17 +251,17 @@ It should be taken with a grain of salt, but use type inference "when possible" 
 
 ```ts
 // ❌ Avoid annotating types, when they can be inferred
-const color: string = "blue";
-const [name, setName] = useState<string>("");
+const color: string = 'blue';
+const [name, setName] = useState<string>('');
 const [isActive, setIsActive] = useState<boolean>(false);
 
 // ✅ Use type inference or annotate explicit types when you must
-const COLOR = "blue"; // Type 'blue'
-const [name, setName] = useState(""); // Type 'string'
+const COLOR = 'blue'; // Type 'blue'
+const [name, setName] = useState(''); // Type 'string'
 const [isActive, setIsActive] = useState(false); // Type 'boolean'
 
-type UserRole = "admin" | "guest";
-const [userRole, setUserRole] = useState<UserRole>("admin"); // Type 'UserRole'
+type UserRole = 'admin' | 'guest';
+const [userRole, setUserRole] = useState<UserRole>('admin'); // Type 'UserRole'
 const [users, setUsers] = useState<ReadonlyArray<User>>([]); // Type 'readonly User[]'
 ```
 
@@ -286,11 +286,11 @@ If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to
 ```ts
 // ❌ Avoid @ts-ignore
 // @ts-ignore
-const result = doSomething("hello");
+const result = doSomething('hello');
 
 // ✅ Use @ts-expect-error with description
 // @ts-expect-error: the library definition is wrong
-const result = doSomething("hello");
+const result = doSomething('hello');
 ```
 
 ### Type & Non-nullability Assertions
@@ -349,9 +349,9 @@ While it's often hard to find the best name, try optimize code for consistency a
 
   ```ts
   const ORDER_STATUS = {
-    pending: "pending",
-    fulfilled: "fulfilled",
-    error: "error",
+    pending: 'pending',
+    fulfilled: 'fulfilled',
+    error: 'error',
   } as const satisfies OrderStatus;
   ```
 
@@ -370,16 +370,13 @@ A name starts with the capital letter T `TRequest`, `TFooBar` (similar to [.Net 
 const createPair = <T, K extends string>(first: T, second: K): [T, K] => {
   return [first, second];
 };
-const pair = createPair(1, "a");
+const pair = createPair(1, 'a');
 
 // ✅ Name starts with the capital letter T
-const createPair = <TFirst, TSecond extends string>(
-  first: TFirst,
-  second: TSecond
-): [TFirst, TSecond] => {
+const createPair = <TFirst, TSecond extends string>(first: TFirst, second: TSecond): [TFirst, TSecond] => {
   return [first, second];
 };
-const pair = createPair(1, "a");
+const pair = createPair(1, 'a');
 ```
 
 #### React Components
@@ -562,9 +559,7 @@ const ProductsPage = () => {
 
 // React hook with side effects.
 const useGetUsers: UseGeUsers = ({ country, isActive }) =>
-  useQuery(["fetchUsers", { country, isActive }], () =>
-    fetchUsers({ country, isActive })
-  );
+  useQuery(['fetchUsers', { country, isActive }], () => fetchUsers({ country, isActive }));
 ```
 
 </details>
@@ -751,9 +746,9 @@ Automated test comes with benefits that helps us write better code and makes it 
 
   ```ts
   // ❌ Avoid
-  it("should render user list", () => {
+  it('should render user list', () => {
     render(<UserList />);
-    expect(screen.getByText("Users List")).toBeInTheDocument();
+    expect(screen.getByText('Users List')).toBeInTheDocument();
   });
   ```
 
@@ -773,12 +768,12 @@ All test descriptions must follow naming convention as `it('should ... when ...'
 
 ```ts
 // ❌ Avoid
-it("accepts ISO date format where date is parsed and formatted as YYYY-MM");
-it("after title is confirmed user description is rendered");
+it('accepts ISO date format where date is parsed and formatted as YYYY-MM');
+it('after title is confirmed user description is rendered');
 
 // ✅ Name test description as it('should ... when ...')
-it("should return parsed date as YYYY-MM when input is in ISO date format");
-it("should render user description when title is confirmed");
+it('should return parsed date as YYYY-MM when input is in ISO date format');
+it('should render user description when title is confirmed');
 ```
 
 ### Tooling Extension
