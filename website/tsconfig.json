@@ -3,8 +3,7 @@
   "extends": "@tsconfig/docusaurus/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "moduleResolution": "Node16",
-    "strict": true
+    "moduleResolution": "Node16"
   },
   "include": [".", ".eslintrc.js"],
   "exclude": ["node_modules", ".next"]
