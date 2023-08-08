@@ -3,7 +3,7 @@
   "singleQuote": true,
   "trailingComma": "all",
   "plugins": ["@trivago/prettier-plugin-sort-imports"],
-  "importOrder": ["^@docusaurus/(.*)$", "^@theme/(.*)$", "^[./]"],
+  "importOrder": ["^@docusaurus|@theme/(.*)$", "^@theme/(.*)$", "^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true
 }
