@@ -13,7 +13,9 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "lint": "eslint --max-warnings 0 .",
     "lint-fix": "eslint --fix .",
-    "tsc": "tsc"
+    "tsc": "tsc -p tsconfig.json",
+    "format-lint": "prettier --config .prettierrc --check --ignore-unknown .",
+    "format-fix": "prettier --config .prettierrc --write --ignore-unknown -l ."
   },
   "dependencies": {
     "@docusaurus/core": "2.4.1",
