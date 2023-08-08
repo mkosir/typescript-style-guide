@@ -49,7 +49,7 @@ module.exports = {
     ],
   },
 
-  ignorePatterns: ['!.*', 'node_modules', 'dist', 'compiled'],
+  ignorePatterns: ['!.*', 'node_modules', 'dist', 'compiled', 'build', '.docusaurus'],
 
   settings: {
     'import/resolver': {

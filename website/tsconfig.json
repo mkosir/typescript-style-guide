@@ -15,5 +15,5 @@
     "isolatedModules": true
   },
   "include": [".", ".eslintrc.js"],
-  "exclude": ["node_modules", ".next"]
+  "exclude": ["node_modules", "build", ".docusaurus"]
 }
