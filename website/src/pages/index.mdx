@@ -686,7 +686,38 @@ export const Status = (status: StatusProps) => {...
 - Don't sync URL state with local state.
 - Prop drilling should not become an issue, if it does [break out your render method](https://kentcdodds.com/blog/prop-drilling#how-can-we-avoid-problems-with-prop-drilling).
 - Consider passing data simply through props, using the URL, or composing children. Use global state (Zustand, Context) as a last resort.
-- Use component composition sparingly, where its emphasized how component API improved (performance improvement, better app scalability etc.).
+- Use React compound components when components should belong and work together: `menu`, `accordion`,`navigation`, `tabs`, `list`,...  
+  Always export compound components as:
+
+  ```tsx
+  // PriceList.tsx
+  const PriceListRoot = ({ children }) => <ul>{children}</ul>;
+  const PriceListItem = ({ title, amount }) => <li>Name: {name} - Amount: {amount}<li/>;
+
+  // ❌
+  export const PriceList = {
+    Container: PriceListRoot,
+    Item: PriceListItem,
+  };
+  // ❌
+  PriceList.Item = Item;
+  export default PriceList;
+
+  // ✅
+  export const PriceList = PriceListRoot as typeof PriceListRoot & {
+    Item: typeof PriceListItem;
+  };
+  PriceList.Item = PriceListItem;
+
+  // App.tsx
+  import { PriceList } from "./PriceList";
+
+  <PriceList>
+    <PriceList.Item title="Item 1" amount={8} />
+    <PriceList.Item title="Item 2" amount={12} />
+  </PriceList>;
+  ```
+
 - UI components should show derived state and send events, nothing more.
 - Data fetching is only allowed in container components.
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
