@@ -8,5 +8,5 @@ export const TableOfContents = ({
 }: {
   items: ReadonlyArray<TOCItem>;
 }) => {
-  return <TOCInline toc={items} minHeadingLevel={2} maxHeadingLevel={3} />;
+  return <TOCInline toc={items} minHeadingLevel={2} maxHeadingLevel={2} />;
 };
