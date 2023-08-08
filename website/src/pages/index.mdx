@@ -684,7 +684,6 @@ export const Status = (status: StatusProps) => {...
 
 - Utilize storing state in the URL, especially for filtering, sorting etc.
 - Don't sync URL state with local state.
-- Prop drilling should not become an issue, if it does [break out your render method](https://kentcdodds.com/blog/prop-drilling#how-can-we-avoid-problems-with-prop-drilling).
 - Consider passing data simply through props, using the URL, or composing children. Use global state (Zustand, Context) as a last resort.
 - Use React compound components when components should belong and work together: `menu`, `accordion`,`navigation`, `tabs`, `list`,...  
   Always export compound components as:
@@ -719,6 +718,9 @@ export const Status = (status: StatusProps) => {...
   ```
 
 - UI components should show derived state and send events, nothing more.
+- As in many programming language functions args can be passed to the next function and on to the next etc.  
+  Rect components are no different, where prop drilling should not become an issue.  
+  If with app scaling prop drilling truly becomes an issue, try to refactor render method, local states in parent components, using composition etc.
 - Data fetching is only allowed in container components.
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
 - use of client-state library for global state is discouraged.  
