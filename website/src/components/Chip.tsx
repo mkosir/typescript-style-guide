@@ -6,20 +6,17 @@ type ChipProps = {
 };
 
 export const Chip = ({ children }: ChipProps) => {
-  const [descriptionHeight, setDescriptionHeight] = useState<'auto' | 0>(0);
+  const [descriptionHeight, setDescriptionHeight] = useState<'auto' | 0>('auto');
 
   return (
     <div className="mb-2">
       <div
-        className="inline-flex items-center px-1.5"
+        className="inline-flex items-center mb-1 px-1.5 cursor-pointer text-[11px]"
         style={{
           backgroundColor: '#F0F0F0',
           color: '#6A6A6A',
           borderRadius: '8px',
-          fontSize: '11px',
           fontWeight: 500,
-          cursor: 'pointer',
-          marginBottom: '2px',
         }}
         onClick={() => setDescriptionHeight((prev) => (prev === 0 ? 'auto' : 0))}
       >
@@ -27,16 +24,7 @@ export const Chip = ({ children }: ChipProps) => {
         <InfoIcon />
       </div>
       <AnimateHeight duration={500} height={descriptionHeight}>
-        <div
-          style={{
-            backgroundColor: '#474748',
-            borderRadius: '6px',
-            padding: '10px',
-            borderLeft: '5px solid #d4d5d8',
-            fontSize: '12px',
-            fontStyle: 'italic',
-          }}
-        >
+        <div className="text-xs italic bg-neutral-600 p-2 rounded-md border-l-[5px] border-solid border-gray-200">
           {children}
         </div>
       </AnimateHeight>
