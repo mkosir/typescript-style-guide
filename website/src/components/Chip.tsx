@@ -11,12 +11,7 @@ export const Chip = ({ children }: ChipProps) => {
   return (
     <div className="mb-2">
       <div
-        className="mb-1 inline-flex cursor-pointer items-center bg-gray-200 px-1.5 text-[11px]"
-        style={{
-          color: '#6A6A6A',
-          borderRadius: '8px',
-          fontWeight: 500,
-        }}
+        className="mb-1 inline-flex cursor-pointer items-center rounded-lg bg-gray-200 px-1.5 text-[11px] font-normal text-neutral-600"
         onClick={() => setDescriptionHeight((prev) => (prev === 0 ? 'auto' : 0))}
       >
         <div className="mr-1">Note</div>
