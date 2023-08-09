@@ -11,7 +11,7 @@ export const Chip = ({ children }: ChipProps) => {
   return (
     <div className="mb-2">
       <div
-        className="inline-flex mb-1 items-center px-1.5 cursor-pointer text-[11px]"
+        className="mb-1 inline-flex cursor-pointer items-center px-1.5 text-[11px]"
         style={{
           backgroundColor: '#F0F0F0',
           color: '#6A6A6A',
@@ -24,7 +24,7 @@ export const Chip = ({ children }: ChipProps) => {
         <InfoIcon />
       </div>
       <AnimateHeight duration={500} height={descriptionHeight}>
-        <div className="text-xs italic bg-neutral-600 p-2 rounded-md border-l-[5px] border-solid border-gray-200">
+        <div className="rounded-md border-l-[5px] border-solid border-gray-200 bg-neutral-600 p-2 text-xs italic">
           {children}
         </div>
       </AnimateHeight>
