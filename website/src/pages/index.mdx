@@ -202,12 +202,17 @@ Use `undefined` assignment when e.g. trying to exclude fields in: forms, request
 
 TypeScript offers two options for type definitions - `type` and `interface`. As they come with some functional differences, we try to limit syntax difference and pick one for consistency.
 
-All types must be defined with `type` alias ([eslint rule](https://typescript-eslint.io/rules/consistent-type-definitions/#type)).
-
-<Chip>
-  Consider using interfaces if developing package that can be further extended, team is more comfortable working with
-  interfaces etc. Disable lint rule in case of exceptions as type unions (type Status = 'loading' | 'error') etc.
-</Chip>
+<p>
+  All types must be defined with `type` alias{' '}
+  <a href="https://typescript-eslint.io/rules/consistent-type-definitions/#type" target="_blank">
+    (eslint rule)
+  </a>
+  .
+  <Chip>
+    Consider using interfaces if developing package that can be further extended, team is more comfortable working with
+    interfaces etc. Disable lint rule in case of exceptions as type unions (type Status = 'loading' | 'error') etc.
+  </Chip>
+</p>
 
 ```ts
 // ❌ Avoid interface definitions
@@ -217,8 +222,9 @@ interface UserInfo {
 
 // ✅ Use type definition
 type UserInfo = {
-  name: string;
+name: string;
 };
+
 ```
 
 In case of exceptions use `interface` and disable lint rule. E.g. declaration merging, extending third-party library types etc.
