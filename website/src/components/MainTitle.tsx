@@ -11,13 +11,7 @@ export const MainTitle = ({ children }: MainTitleProps) => {
   const { colorMode } = useColorMode();
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        marginBottom: '30px',
-      }}
-    >
+    <div className="mb-7 flex justify-center">
       <Tilt
         tiltAxis="y"
         tiltMaxAngleY={5}
