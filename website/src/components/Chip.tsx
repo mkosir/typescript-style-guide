@@ -11,12 +11,10 @@ export const Chip = ({ children }: ChipProps) => {
   return (
     <div className="mb-2">
       <div
+        className="inline-flex items-center px-1.5"
         style={{
-          display: 'inline-flex',
-          alignItems: 'center',
           backgroundColor: '#F0F0F0',
           color: '#6A6A6A',
-          padding: '0 6px',
           borderRadius: '8px',
           fontSize: '11px',
           fontWeight: 500,
@@ -25,10 +23,10 @@ export const Chip = ({ children }: ChipProps) => {
         }}
         onClick={() => setDescriptionHeight((prev) => (prev === 0 ? 'auto' : 0))}
       >
-        <div style={{ marginRight: '3px' }}>Note</div>
+        <div className="mr-1">Note</div>
         <InfoIcon />
       </div>
-      <AnimateHeight id="example-panel" duration={500} height={descriptionHeight}>
+      <AnimateHeight duration={500} height={descriptionHeight}>
         <div
           style={{
             backgroundColor: '#474748',
