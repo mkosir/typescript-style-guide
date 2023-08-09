@@ -6,14 +6,13 @@ type ChipProps = {
 };
 
 export const Chip = ({ children }: ChipProps) => {
-  const [descriptionHeight, setDescriptionHeight] = useState<'auto' | 0>('auto');
+  const [descriptionHeight, setDescriptionHeight] = useState<'auto' | 0>(0);
 
   return (
     <div className="mb-2">
       <div
-        className="mb-1 inline-flex cursor-pointer items-center px-1.5 text-[11px]"
+        className="mb-1 inline-flex cursor-pointer items-center bg-gray-200 px-1.5 text-[11px]"
         style={{
-          backgroundColor: '#F0F0F0',
           color: '#6A6A6A',
           borderRadius: '8px',
           fontWeight: 500,
