@@ -18,7 +18,7 @@ export const Chip = ({ children }: ChipProps) => {
         <InfoIcon />
       </div>
       <AnimateHeight duration={500} height={descriptionHeight}>
-        <div className="rounded-md border-l-[5px] border-solid border-gray-200 bg-neutral-600 p-2 text-xs italic">
+        <div className="rounded-md border-0 border-l-[5px] border-solid border-gray-200 bg-neutral-600 p-2 text-xs italic">
           {children}
         </div>
       </AnimateHeight>
