@@ -11,7 +11,7 @@ export const Chip = ({ children }: ChipProps) => {
   return (
     <div className="mb-2">
       <div
-        className="inline-flex items-center mb-1 px-1.5 cursor-pointer text-[11px]"
+        className="inline-flex mb-1 items-center px-1.5 cursor-pointer text-[11px]"
         style={{
           backgroundColor: '#F0F0F0',
           color: '#6A6A6A',
