@@ -58,11 +58,11 @@ jobs:
           cache: 'npm'
           cache-dependency-path: "./website"
 
-      # - name: Install dependencies 🔧
-      #   run: npm ci
+      - name: Install dependencies 🔧
+        run: npm ci
 
-      # - name: Lint ✅
-      #   run: npm run lint
+      - name: Lint ✅
+        run: npm run lint
 
   tsc:
     name: TypeScript Compiler 🔎
