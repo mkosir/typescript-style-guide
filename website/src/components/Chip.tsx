@@ -9,7 +9,7 @@ export const Chip = ({ children }: ChipProps) => {
   const [descriptionHeight, setDescriptionHeight] = useState<'auto' | 0>(0);
 
   return (
-    <div style={{ marginBottom: '10px' }}>
+    <div className="mb-2">
       <div
         style={{
           display: 'inline-flex',
