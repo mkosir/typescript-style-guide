@@ -252,24 +252,36 @@ const y: ReadonlyArray<string> = ['a', 'b'];
 
 ### Type Annotation & Inference
 
-Just because you don't need to add types, doesn't mean you shouldn't. Explicit type annotations increase code readability and intent, but still in some cases inference has its place.
-
-It should be taken with a grain of salt, but use type inference "when possible" and annotate types "when you must".
+<p>
+  As rule of a thumb, use type annotation if it narrows the type.
+  <Chip>
+    Just because you don't need to add types, doesn't mean you shouldn't. Explicit type annotations increase code
+    readability and intent, but still in some cases inference has its place.
+  </Chip>
+</p>
 
 ```ts
-// ❌ Avoid annotating types, when they can be inferred
-const color: string = 'blue';
-const [name, setName] = useState<string>('');
+// ❌ Avoid
+// Type can be inferred
+const userRole: string = 'admin'; // Type 'string'
+const employees = new Map<string, number>([['gabriel', 32]]);
 const [isActive, setIsActive] = useState<boolean>(false);
 
-// ✅ Use type inference or annotate explicit types when you must
-const COLOR = 'blue'; // Type 'blue'
-const [name, setName] = useState(''); // Type 'string'
+// Type can be narrowed
+const employees = new Map(); // Type 'Map<any, any>'
+type UserRole = 'admin' | 'guest';
+const [userRole, setUserRole] = useState('admin'); // Type 'string'
+
+// ✅ Use
+const USER_ROLE = 'admin'; // Type 'admin'
+const employees = new Map([['gabriel', 32]]); // Type 'Map<string, number>'
 const [isActive, setIsActive] = useState(false); // Type 'boolean'
 
+const employees = new Map<string, number>(); // Type 'Map<string, number>'
+employees.set('gabriel', 32);
 type UserRole = 'admin' | 'guest';
 const [userRole, setUserRole] = useState<UserRole>('admin'); // Type 'UserRole'
-const [users, setUsers] = useState<ReadonlyArray<User>>([]); // Type 'readonly User[]'
+
 ```
 
 ### Return Types
@@ -288,7 +300,7 @@ Consider benefits when explicitly typing the return value of a function:
 ### Type Error
 
 If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)). If at any future point suppressed line becomes error-free, TypeScript compiler will indicate it.  
- `@ts-ignore` is not allowed, while `@ts-expect-error` can be used with provided description ([eslint rule](https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description)).
+`@ts-ignore` is not allowed, while `@ts-expect-error` can be used with provided description ([eslint rule](https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description)).
 
 ```ts
 // ❌ Avoid @ts-ignore
