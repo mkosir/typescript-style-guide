@@ -193,8 +193,11 @@ type ColorValue = Color[ColorKey]; // Type "#B33930" | "#113A5C" | "#9C0E7D"
 
 ### Null & Undefined
 
-Prefer using `null` instead of `undefined`, to explicitly state it has no value - assignment, return type etc.  
-Use `undefined` assignment when e.g. trying to exclude fields in: forms, request payload, querying database ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined)) etc.
+In TypeScript types `null` and `undefined` many times can be used interchangeably.  
+For consistency strive to:
+
+- use `null` to explicitly state it has no value - assignment, return function type etc.
+- use `undefined` assignment when trying to exclude fields. E.g. in form fields, request payload, querying database ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined)) etc.
 
 ## Types
 
