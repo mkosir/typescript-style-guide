@@ -11,7 +11,7 @@ export const TableOfContents = ({ items }: { items: ReadonlyArray<TOCItem> }) =>
       <button
         className="rounded-md border-none px-2 py-1 text-[11px] hover:cursor-pointer"
         onClick={() => setIsTocExpanded((prev) => !prev)}
-        title={`${isTocExpanded ? 'Collapse' : 'Expand'} - Table of Contents`}
+        title={`${isTocExpanded ? 'Collapse' : 'Expand'} Table of Contents`}
       >
         {isTocExpanded ? 'Collapse' : 'Expand'}
       </button>
