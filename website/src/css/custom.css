@@ -47,10 +47,3 @@ h4 {
 p {
   margin-bottom: 15px;
 }
-
-.toc-inline ul{
-  padding-bottom: 0;
-}
-.toc-inline li:last-child{
-  margin-bottom: 0;
-}
