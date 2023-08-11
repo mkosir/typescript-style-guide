@@ -10,7 +10,7 @@ export const TableOfContents = ({ items }: { items: ReadonlyArray<TOCItem> }) =>
     <div className="toc-inline mb-4">
       <TOCInline toc={items} minHeadingLevel={2} maxHeadingLevel={isTocExpanded ? 3 : 2} />
       <button
-        className="hover:cursor-pointer"
+        className="text-[11px] hover:cursor-pointer"
         onClick={() => setIsTocExpanded((prev) => !prev)}
         title={`${isTocExpanded ? 'Collapse' : 'Expand'} - Table of Contents`}
       >{`${isTocExpanded ? 'Collapse' : 'Expand'} - TOC`}</button>
