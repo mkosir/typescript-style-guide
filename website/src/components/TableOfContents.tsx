@@ -7,11 +7,13 @@ export const TableOfContents = ({ items }: { items: ReadonlyArray<TOCItem> }) =>
   const [isTocExpanded, setIsTocExpanded] = useState(false);
 
   return (
-    <div className="mb-4">
+    <div className="toc-inline mb-4">
       <TOCInline toc={items} minHeadingLevel={2} maxHeadingLevel={isTocExpanded ? 3 : 2} />
-      <button onClick={() => setIsTocExpanded((prev) => !prev)}>{`${
-        isTocExpanded ? 'Collapse' : 'Expand'
-      } - Table of Contents`}</button>
+      <button
+        className="hover:cursor-pointer"
+        onClick={() => setIsTocExpanded((prev) => !prev)}
+        title={`${isTocExpanded ? 'Collapse' : 'Expand'} - Table of Contents`}
+      >{`${isTocExpanded ? 'Collapse' : 'Expand'} - TOC`}</button>
     </div>
   );
 };
