@@ -7,7 +7,7 @@ export const TableOfContents = ({ items }: { items: ReadonlyArray<TOCItem> }) =>
   const [isTocExpanded, setIsTocExpanded] = useState(false);
 
   return (
-    <div>
+    <div className="mb-4">
       <TOCInline toc={items} minHeadingLevel={2} maxHeadingLevel={isTocExpanded ? 3 : 2} />
       <button onClick={() => setIsTocExpanded((prev) => !prev)}>{`${
         isTocExpanded ? 'Collapse' : 'Expand'
