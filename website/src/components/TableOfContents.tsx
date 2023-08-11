@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { TOCItem } from '@docusaurus/mdx-loader';
 import TOCInline from '@theme/TOCInline';
 
 export const TableOfContents = ({ items }: { items: ReadonlyArray<TOCItem> }) => {
-  return <TOCInline toc={items} minHeadingLevel={2} maxHeadingLevel={2} />;
+  const [isTocExpanded, setIsTocExpanded] = useState(false);
+
+  return (
+    <div>
+      <TOCInline toc={items} minHeadingLevel={2} maxHeadingLevel={isTocExpanded ? 3 : 2} />
+      <button onClick={() => setIsTocExpanded((prev) => !prev)}>{`${
+        isTocExpanded ? 'Collapse' : 'Expand'
+      } - Table of Contents`}</button>
+    </div>
+  );
 };
