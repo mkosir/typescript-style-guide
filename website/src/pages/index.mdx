@@ -388,20 +388,6 @@ Camel case
 A name starts with the capital letter T `TRequest`, `TFooBar` (similar to [.Net internal](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-5.0) implementation or [Google style guide](https://google.github.io/styleguide/javaguide.html#s5.2.8-type-variable-names)).  
  Avoid (popular convention) naming generics with one character `T`, `K` etc., the more variables we introduce, the easier it is to mistake them.
 
-[Eslint rule](https://typescript-eslint.io/rules/naming-convention) implements:
-
-```ts
-// .eslintrc.js
-'@typescript-eslint/naming-convention': [
-  'error',
-  {
-    selector: 'typeParameter',
-    format: ['PascalCase'],
-    custom: { regex: '^T[A-Z]', match: true },
-  },
-],
-```
-
 ```ts
 // ❌ Avoid naming generics with one character
 const createPair = <T, K extends string>(first: T, second: K): [T, K] => {
@@ -414,6 +400,20 @@ const createPair = <TFirst, TSecond extends string>(first: TFirst, second: TSeco
   return [first, second];
 };
 const pair = createPair(1, 'a');
+```
+
+[Eslint rule](https://typescript-eslint.io/rules/naming-convention) implements:
+
+```ts
+// .eslintrc.js
+'@typescript-eslint/naming-convention': [
+  'error',
+  {
+    selector: 'typeParameter',
+    format: ['PascalCase'],
+    custom: { regex: '^T[A-Z]', match: true },
+  },
+],
 ```
 
 #### React Components
