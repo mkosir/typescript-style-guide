@@ -342,8 +342,7 @@ Named exports have the benefit of erroring when import statements try to import 
 In case of exceptions e.g. Next.js pages, disable rule:
 
 ```ts
-// .eslintrc
-...
+// .eslintrc.js
 overrides: [
   {
     files: ["src/pages/**/*"],
@@ -388,6 +387,20 @@ Camel case
 
 A name starts with the capital letter T `TRequest`, `TFooBar` (similar to [.Net internal](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-5.0) implementation or [Google style guide](https://google.github.io/styleguide/javaguide.html#s5.2.8-type-variable-names)).  
  Avoid (popular convention) naming generics with one character `T`, `K` etc., the more variables we introduce, the easier it is to mistake them.
+
+[Eslint rule](https://typescript-eslint.io/rules/naming-convention) implements:
+
+```ts
+// .eslintrc.js
+'@typescript-eslint/naming-convention': [
+  'error',
+  {
+    selector: 'typeParameter',
+    format: ['PascalCase'],
+    custom: { regex: '^T[A-Z]', match: true },
+  },
+],
+```
 
 ```ts
 // ❌ Avoid naming generics with one character
@@ -759,6 +772,7 @@ All test descriptions must follow naming convention as `it('should ... when ...'
  [Eslint rule](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/valid-title.md#mustmatch--mustnotmatch) implements regex:
 
 ```ts
+// .eslintrc.js
 'jest/valid-title': [
   'error',
   {
