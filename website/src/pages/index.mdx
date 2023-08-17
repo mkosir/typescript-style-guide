@@ -355,6 +355,30 @@ overrides: [
 
 While it's often hard to find the best name, try optimize code for consistency and future reader by following conventions:
 
+#### Abbreviations & Acronyms
+
+Treat acronyms as whole words, with capitalized first letter only.
+
+```ts
+// ❌ Avoid
+const FAQList = ['qa-1', 'qa-2'];
+const generateUserURL(params) => {...}
+
+// ✅ Use
+const FaqList = ['qa-1', 'qa-2'];
+const generateUserUrl(params) => {...}
+```
+
+In favor of readability, strive to avoid abbreviations, unless they are widely accepted and necessary.
+
+```ts
+// ❌ Avoid
+const GetWin(params) => {...}
+
+// ✅ Use
+const GetWindow(params) => {...}
+```
+
 #### Variables
 
 - **Locals**  
