@@ -254,7 +254,7 @@ const user = { name: 'Nika' } as User;
 renderUserAvatar(user!.avatar);
 ```
 
-### any
+### Type any
 
 `any` data type must not be used as it represents literally “any” value that TypeScript defaults to and skips type checking since it cannot infer the type. As such, any is dangerous, it can mask severe programming errors.  
  If error truly cannot be resolved as safer option use type `unknown` since it does not allow dereferencing all properties or as last resort use `@ts-expect-error` ([Type Error](#type-error)).
