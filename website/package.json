@@ -25,7 +25,7 @@
     "react": "17.0.2",
     "react-animate-height": "3.2.2",
     "react-dom": "17.0.2",
-    "react-parallax-tilt": "1.7.161"
+    "react-parallax-tilt": "1.7.162"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.4.1",
