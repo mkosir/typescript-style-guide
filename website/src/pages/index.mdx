@@ -320,8 +320,15 @@ const result = doSomething('hello');
 
 ### Type & Non-nullability Assertions
 
-Type assertions `brand as BrandType` and non-nullability assertions `brand!.name` are unsafe. Both only silence TypeScript compiler and increase the risk of crashing application at runtime.  
+Type assertions `user as User` and non-nullability assertions `user!.name` are unsafe. Both only silence TypeScript compiler and increase the risk of crashing application at runtime.  
  They can only be used as last resort exceptions (e.g. third party library types mismatch etc.) with strong rational why being introduced into codebase.
+
+```ts
+// ❌ Avoid type & non-nullability Assertions
+type User = { id: string; username: string; avatar: string | null };
+const user = { name: 'Nika' } as User;
+renderUserAvatar(user!.avatar);
+```
 
 ### any
 
