@@ -83,17 +83,19 @@ name: string;
 
 ```
 
-In case of exceptions use `interface` and disable lint rule. E.g. declaration merging, extending third-party library types etc.
+In case of declaration merging (e.g. extending third-party library types) use `interface` and disable lint rule.
 
 ```ts
 declare namespace NodeJS {
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-export interface ProcessEnv {
-    NODE_ENV: 'development' | 'production;
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+  export interface ProcessEnv {
+    NODE_ENV: 'development' | 'production';
     PORT: string;
+    CUSTOM_ENV_VAR: string;
   }
 }
 
+app.listen(process.env.PORT, () => {
 ```
 
 ### Type & Non-nullability Assertions
