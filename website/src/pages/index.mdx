@@ -196,12 +196,12 @@ Array types must be defined with generic syntax ([eslint rule](https://typescrip
 
 ```ts
 // ❌ Avoid
-const x: string[] = ['a', 'b'];
-const y: readonly string[] = ['a', 'b'];
+const x: string[] = ['foo', 'bar'];
+const y: readonly string[] = ['foo', 'bar'];
 
 // ✅ Use
-const x: Array<string> = ['a', 'b'];
-const y: ReadonlyArray<string> = ['a', 'b'];
+const x: Array<string> = ['foo', 'bar'];
+const y: ReadonlyArray<string> = ['foo', 'bar'];
 ```
 
 ## Functions
