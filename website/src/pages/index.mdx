@@ -77,8 +77,11 @@ interface UserInfo {
 }
 
 // ✅ Use type definition
+type UserRole = 'admin' | 'guest';
+
 type UserInfo = {
-name: string;
+  name: string;
+  role: UserRole;
 };
 
 ```
