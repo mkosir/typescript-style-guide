@@ -72,8 +72,11 @@ All types must be defined with `type` alias [(eslint rule)](https://typescript-e
 
 ```ts
 // ❌ Avoid interface definitions
+interface UserRole = 'admin' | 'guest'; // invalid - interface can't express (commonly used) type union
+
 interface UserInfo {
   name: string;
+  role: 'admin' | 'guest';
 }
 
 // ✅ Use type definition
