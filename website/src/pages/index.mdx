@@ -62,13 +62,13 @@ As an exception mutations should be used sparingly in cases where truly necessar
 
 TypeScript offers two options for type definitions - `type` and `interface`. As they come with some functional differences, we try to limit syntax difference and pick one for consistency.
 
-<p>
-  All types must be defined with `type` alias{' '}
-  <a href="https://typescript-eslint.io/rules/consistent-type-definitions/#type" target="_blank">
-    (eslint rule)
-  </a>
-  .<Chip>Consider using interfaces if developing package that can be further extended, team is more comfortable working with interfaces etc. In such case disable lint rule where needed e.g. using type unions (type Status = 'loading' | 'error') etc.</Chip>
-</p>
+All types must be defined with `type` alias [(eslint rule)](https://typescript-eslint.io/rules/consistent-type-definitions/#type).
+
+<Chip>
+  Consider using interfaces if developing package that can be further extended, team is more comfortable working with
+  interfaces etc. In such case disable lint rule where needed e.g. using type unions (type Status = 'loading' | 'error')
+  etc.
+</Chip>
 
 ```ts
 // ❌ Avoid interface definitions
