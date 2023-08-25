@@ -648,8 +648,8 @@ export const Foo = ({ name, score }: FooProps) => {...
 Especially when creating new component for first/single use case majority of props should be required. When component starts covering more use cases, introduce optional props.  
 There are potential exceptions, where component API needs to implement optional props from the start (e.g. shared components covering multiple use cases, UI design system components - button `isDisabled` etc.)
 
-As mentioned in function example - implementing 10 React components with 5 required props each, is better then implementing one "can do it all" function that accepts 50 optional props.  
-If component becomes to complex it probably should be broken into smaller pieces.
+An exaggerated example where implementing 10 React components with 5 required props each, is better then implementing one "can do it all" function that accepts 50 optional props.  
+If component/hook becomes to complex it probably should be broken into smaller pieces.
 
 **Use Discriminated Type**
 
