@@ -555,9 +555,9 @@ Import paths can be relative, starting with `./` or `../`, or they can be absolu
 
 To make import statements more readable and easier to understand:
 
-- Relative imports `./sortItems` must be used when importing files within the same feature, that are 'close' to each other, which also allows moving feature around the codebase without introducing changes in these imports.
-- Absolute imports `@common/utils` must be used in all other cases.
-- All imports must be auto sorted by tooling e.g. [prettier-plugin-sort-imports](https://github.com/trivago/prettier-plugin-sort-imports), [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/order.md)...
+- **Relative** imports `./sortItems` must be used when importing files within the same feature, that are 'close' to each other, which also allows moving feature around the codebase without introducing changes in these imports.
+- **Absolute** imports `@common/utils` must be used in all other cases.
+- **All** imports must be auto sorted by tooling e.g. [prettier-plugin-sort-imports](https://github.com/trivago/prettier-plugin-sort-imports), [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/order.md)...
 
 ```ts
 // ❌ Avoid
