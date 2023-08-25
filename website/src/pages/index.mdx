@@ -376,30 +376,6 @@ overrides: [
 
 While it's often hard to find the best name, try optimize code for consistency and future reader by following conventions:
 
-#### Abbreviations & Acronyms
-
-Treat acronyms as whole words, with capitalized first letter only.
-
-```ts
-// ❌ Avoid
-const FAQList = ['qa-1', 'qa-2'];
-const generateUserURL(params) => {...}
-
-// ✅ Use
-const FaqList = ['qa-1', 'qa-2'];
-const generateUserUrl(params) => {...}
-```
-
-In favor of readability, strive to avoid abbreviations, unless they are widely accepted and necessary.
-
-```ts
-// ❌ Avoid
-const GetWin(params) => {...}
-
-// ✅ Use
-const GetWindow(params) => {...}
-```
-
 #### Variables
 
 - **Locals**  
@@ -461,6 +437,30 @@ const pair = createPair(1, 'a');
 ],
 ```
 
+#### Abbreviations & Acronyms
+
+Treat acronyms as whole words, with capitalized first letter only.
+
+```ts
+// ❌ Avoid
+const FAQList = ['qa-1', 'qa-2'];
+const generateUserURL(params) => {...}
+
+// ✅ Use
+const FaqList = ['qa-1', 'qa-2'];
+const generateUserUrl(params) => {...}
+```
+
+In favor of readability, strive to avoid abbreviations, unless they are widely accepted and necessary.
+
+```ts
+// ❌ Avoid
+const GetWin(params) => {...}
+
+// ✅ Use
+const GetWindow(params) => {...}
+```
+
 #### React Components
 
 Pascal case  
@@ -516,10 +516,10 @@ const { fontSizes } = useTheme();
 
 ### Comments
 
-Comments in general should be avoided. Try to write expressive code and name things what they are before adding comments.
+In general try to avoid comments, by writing expressive code and name things what they are.
 
-As an exception use comments only when you need to add context or explain choices that cannot be expressed through code.  
-Comments should always be complete sentences. As rule of a thumb try to explain `why` in comments, not `how` and `what`.
+As an exception use comments when you need to add context or explain choices that cannot be expressed through code (e.g. config files).  
+Comments should always be complete sentences. As rule of thumb try to explain `why` in comments, not `how` and `what`.
 
 ```ts
 // ❌ Avoid
