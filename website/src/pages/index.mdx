@@ -134,27 +134,28 @@ renderUserAvatar(user!.avatar);
 </p>
 
 ```ts
-// ❌ Avoid
-// Type can be inferred
+// ❌ Avoid - Type can be inferred
 const userRole: string = 'admin'; // Type 'string'
 const employees = new Map<string, number>([['gabriel', 32]]);
 const [isActive, setIsActive] = useState<boolean>(false);
-
-// Type can be narrowed
-const employees = new Map(); // Type 'Map<any, any>'
-type UserRole = 'admin' | 'guest';
-const [userRole, setUserRole] = useState('admin'); // Type 'string'
 
 // ✅ Use
 const USER_ROLE = 'admin'; // Type 'admin'
 const employees = new Map([['gabriel', 32]]); // Type 'Map<string, number>'
 const [isActive, setIsActive] = useState(false); // Type 'boolean'
 
+
+// ❌ Avoid - Type can be narrowed
+const employees = new Map(); // Type 'Map<any, any>'
+employees.set('lea', 'foo-anything');
+type UserRole = 'admin' | 'guest';
+const [userRole, setUserRole] = useState('admin'); // Type 'string'
+
+// ✅ Use
 const employees = new Map<string, number>(); // Type 'Map<string, number>'
 employees.set('gabriel', 32);
 type UserRole = 'admin' | 'guest';
 const [userRole, setUserRole] = useState<UserRole>('admin'); // Type 'UserRole'
-
 ```
 
 ### Return Types
