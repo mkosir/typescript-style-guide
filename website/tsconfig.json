@@ -10,9 +10,10 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext",
+    "module": "Node16",
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "target": "ES6"
   },
   "include": [".", ".eslintrc.js"],
   "exclude": ["node_modules", "build", ".docusaurus"]
