@@ -26,7 +26,7 @@
     "react": "18.2.0",
     "react-animate-height": "3.2.2",
     "react-dom": "18.2.0",
-    "react-parallax-tilt": "1.7.163"
+    "react-parallax-tilt": "1.7.164"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.4.1",
@@ -43,7 +43,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "postcss": "8.4.29",
     "prettier": "3.0.3",
-    "prettier-plugin-tailwindcss": "0.5.3",
+    "prettier-plugin-tailwindcss": "0.5.4",
     "shx": "0.3.4",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
