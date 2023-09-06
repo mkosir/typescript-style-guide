@@ -114,22 +114,35 @@ Consider benefits when explicitly typing the return value of a function:
 
 `any` data type must not be used as it represents literally “any” value that TypeScript defaults to and skips type checking since it cannot infer the type. As such, `any` is dangerous, it can mask severe programming errors.
 
-When dealing with ambiguous data type use `unknown` since it does not allow dereferencing all properties.
+When dealing with ambiguous data type use `unknown` since it does not allow dereferencing all properties (anything can be assigned to `unknown`, but `unknown` isn’t assignable to anything).
 
 ```ts
 // ❌ Avoid any
 const foo: any = 'five';
-let bar: number = bar; // no type error
+const bar: number = bar; // no type error
 
-// ✅ Use unknown and narrow the type before dereferencing it
+// ✅ Use unknown
 const foo: unknown = 5;
-let bar: number = foo; // type error - Type 'unknown' is not assignable to type 'number'
+const bar: number = foo; // type error - Type 'unknown' is not assignable to type 'number'
+
+// Narrow the type before dereferencing it using:
+// Type guard
+const isNumber = (num: unknown): num is number => {
+  return typeof num === 'number';
+};
+if (!isNumber(foo)) {
+  throw Error(`API provided a fault value for field 'foo':${foo}. Should be a number!`);
+}
+const bar: number = foo;
+
+// Type assertion
+const bar: number = foo as number;
 ```
 
 ### Type & Non-nullability Assertions
 
 Type assertions `user as User` and non-nullability assertions `user!.name` are unsafe. Both only silence TypeScript compiler and increase the risk of crashing application at runtime.  
- They can only be used as an exceptions (e.g. third party library types mismatch, dereferencing `unknown` etc.) with strong rational why being introduced into codebase.
+They can only be used as an exceptions (e.g. third party library types mismatch, dereferencing `unknown` etc.) with strong rational why being introduced into codebase.
 
 ```ts
 // ❌ Avoid type & non-nullability assertions
