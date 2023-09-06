@@ -314,7 +314,7 @@ export const parseStatus = (params: StatusParams) => {...
 
 ### Const Assertion
 
-Strive to use const assertion (`as const`):
+Strive to use const assertion `as const`:
 
 - type is narrowed
 - object gets `readonly` properties
@@ -322,14 +322,34 @@ Strive to use const assertion (`as const`):
 
   ```ts
   // ❌ Avoid declaring constants without const assertion
-  const BASE_LOCATION = { x: 50, y: 130 }; // Type { x: number; y: number; }
-  BASE_LOCATION.x = 10;
-  const BASE_LOCATION = [50, 130]; // Type number[]
-  BASE_LOCATION.push(10);
+  const FOO_LOCATION = { x: 50, y: 130 }; // Type { x: number; y: number; }
+  FOO_LOCATION.x = 10;
+  const BAR_LOCATION = [50, 130]; // Type number[]
+  BAR_LOCATION.push(10);
 
   // ✅ Use const assertion
-  const BASE_LOCATION = { x: 50, y: 130 } as const; // Type '{ readonly x: 50; readonly y: 130; }'
-  const BASE_LOCATION = [50, 130] as const; // Type 'readonly [10, 20]'
+  const FOO_LOCATION = { x: 50, y: 130 } as const; // Type '{ readonly x: 50; readonly y: 130; }'
+  FOO_LOCATION.x = 10; // Error
+  const BAR_LOCATION = [50, 130] as const; // Type 'readonly [10, 20]'
+  BAR_LOCATION.push(10); // Error
+
+
+  const shapes = [
+  { kind: 'square', size: 7 },
+  { kind: 'rectangle', width: 12, height: 6 },
+  { kind: 'circle', radius: 23 },
+  ] as const;
+
+  type Shape = (typeof shapes)[number];
+
+  const getShapeArea = (shape: Shape) => {
+    switch (shape.kind) { // Error - Switch is not exhaustive. Cases not matched: "circle"
+      case 'square':
+        return shape.size * shape.size;
+      case 'rectangle':
+        return shape.width * shape.size; // Error - Property 'size' does not exist on type 'kind'
+    }
+  };
   ```
 
 ### Enums & Const Assertion
