@@ -326,12 +326,20 @@ Strive to use const assertion `as const`:
   FOO_LOCATION.x = 10;
   const BAR_LOCATION = [50, 130]; // Type number[]
   BAR_LOCATION.push(10);
+  const RATE_LIMIT = 25;
+  // RATE_LIMIT_MESSAGE type - string
+  const RATE_LIMIT_MESSAGE = `Rate limit exceeded! Max number of requests/min is ${RATE_LIMIT}.`;
+
+
 
   // ✅ Use const assertion
   const FOO_LOCATION = { x: 50, y: 130 } as const; // Type '{ readonly x: 50; readonly y: 130; }'
   FOO_LOCATION.x = 10; // Error
   const BAR_LOCATION = [50, 130] as const; // Type 'readonly [10, 20]'
   BAR_LOCATION.push(10); // Error
+  const RATE_LIMIT = 25;
+    // RATE_LIMIT_MESSAGE type - 'Rate limit exceeded! Max number of requests/min is 25.'
+  const RATE_LIMIT_MESSAGE = `Rate limit exceeded! Max number of requests/min is ${RATE_LIMIT}.` as const;
 
 
   const shapes = [
