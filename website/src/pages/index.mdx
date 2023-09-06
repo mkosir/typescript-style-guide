@@ -347,7 +347,7 @@ Strive to use const assertion `as const`:
       case 'square':
         return shape.size * shape.size;
       case 'rectangle':
-        return shape.width * shape.size; // Error - Property 'size' does not exist on type 'kind'
+        return shape.width * shape.size; // Error - Property 'size' does not exist on type 'rectangle'
     }
   };
   ```
