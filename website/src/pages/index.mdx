@@ -340,18 +340,22 @@ Strive to use const assertion `as const`:
   const RATE_LIMIT = 25;
     // RATE_LIMIT_MESSAGE type - 'Rate limit exceeded! Max number of requests/min is 25.'
   const RATE_LIMIT_MESSAGE = `Rate limit exceeded! Max number of requests/min is ${RATE_LIMIT}.` as const;
+  ```
 
+- exhaustiveness check, code implements all possible type values ([eslint rule](https://typescript-eslint.io/rules/switch-exhaustiveness-check/))
 
+  ```ts
   const shapes = [
-  { kind: 'square', size: 7 },
-  { kind: 'rectangle', width: 12, height: 6 },
-  { kind: 'circle', radius: 23 },
+    { kind: 'square', size: 7 },
+    { kind: 'rectangle', width: 12, height: 6 },
+    { kind: 'circle', radius: 23 },
   ] as const;
 
   type Shape = (typeof shapes)[number];
 
   const getShapeArea = (shape: Shape) => {
-    switch (shape.kind) { // Error - Switch is not exhaustive. Cases not matched: "circle"
+    // Error - Switch is not exhaustive. Cases not matched: "circle"
+    switch (shape.kind) {
       case 'square':
         return shape.size * shape.size;
       case 'rectangle':
