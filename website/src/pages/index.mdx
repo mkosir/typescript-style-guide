@@ -114,7 +114,8 @@ Consider benefits when explicitly typing the return value of a function:
 
 `any` data type must not be used as it represents literally “any” value that TypeScript defaults to and skips type checking since it cannot infer the type. As such, `any` is dangerous, it can mask severe programming errors.
 
-When dealing with ambiguous data type use `unknown` since it does not allow dereferencing all properties (anything can be assigned to `unknown`, but `unknown` isn’t assignable to anything).
+When dealing with ambiguous data type use `unknown`, which is the type-safe counterpart of `any`.  
+`unknown` doesn't allow dereferencing all properties (anything can be assigned to `unknown`, but `unknown` isn’t assignable to anything).
 
 ```ts
 // ❌ Avoid any
