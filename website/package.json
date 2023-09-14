@@ -26,16 +26,16 @@
     "react": "18.2.0",
     "react-animate-height": "3.2.2",
     "react-dom": "18.2.0",
-    "react-parallax-tilt": "1.7.164"
+    "react-parallax-tilt": "1.7.166"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.4.1",
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
     "@tsconfig/docusaurus": "1.0.5",
-    "@typescript-eslint/eslint-plugin": "6.6.0",
-    "@typescript-eslint/parser": "6.6.0",
+    "@typescript-eslint/eslint-plugin": "6.7.0",
+    "@typescript-eslint/parser": "6.7.0",
     "autoprefixer": "10.4.15",
-    "eslint": "8.48.0",
+    "eslint": "8.49.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-import": "2.28.1",
     "eslint-plugin-prettier": "5.0.0",
