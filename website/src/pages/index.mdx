@@ -408,7 +408,7 @@ In TypeScript types `null` and `undefined` many times can be used interchangeabl
 For consistency strive to:
 
 - Use `null` to explicitly state it has no value - assignment, return function type etc.
-- Use `undefined` assignment when trying to exclude fields. E.g. in form fields, request payload, querying database ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined))...
+- Use `undefined` assignment when the value doesn't exist. E.g. exclude fields in form, request payload, database query ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined))...
 
 ## Naming
 
