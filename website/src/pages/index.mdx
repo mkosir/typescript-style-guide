@@ -683,7 +683,7 @@ In case using frontend framework with file-system based router (e.g. Nextjs), `p
 
 Since React components and hooks are also functions, respective [function conventions](#functions) applies.
 
-### Props - Required & Optional
+### Required & Optional Props
 
 **Strive to have majority of props required and use optional sparingly.**
 
@@ -693,7 +693,7 @@ There are potential exceptions, where component API needs to implement optional 
 If component/hook becomes to complex it probably should be broken into smaller pieces.  
 An exaggerated example where implementing 10 React components with 5 required props each, is better then implementing one "can do it all" component that accepts 50 optional props.
 
-**Use Discriminated Type**
+### Props as Discriminated Type
 
 When applicable use **discriminated type** to eliminate optional props, which will decrease complexity on component API and only necessary/required props will be passed depending on its use case.
 
