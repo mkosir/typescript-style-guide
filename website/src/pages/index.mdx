@@ -683,26 +683,6 @@ In case using frontend framework with file-system based router (e.g. Nextjs), `p
 
 Since React components and hooks are also functions, respective [function conventions](#functions) applies.
 
-### Props Type
-
-```tsx
-// ❌ Avoid using React.FC type
-type FooProps = {
-  name: string;
-  score: number;
-};
-
-export const Foo: React.FC<FooProps> = ({ name, score }) => {
-
-// ✅ Use props argument with type
-type FooProps = Readonly<{
-  name: string;
-  score: number;
-}>;
-
-export const Foo = ({ name, score }: FooProps) => {...
-```
-
 ### Props - Required & Optional
 
 **Strive to have majority of props required and use optional sparingly.**
@@ -747,6 +727,26 @@ type StatusError = {
 type StatusProps = StatusSuccess | StatusLoading | StatusError;
 
 export const Status = (status: StatusProps) => {...
+```
+
+### Props Type
+
+```tsx
+// ❌ Avoid using React.FC type
+type FooProps = {
+  name: string;
+  score: number;
+};
+
+export const Foo: React.FC<FooProps> = ({ name, score }) => {
+
+// ✅ Use props argument with type
+type FooProps = Readonly<{
+  name: string;
+  score: number;
+}>;
+
+export const Foo = ({ name, score }: FooProps) => {...
 ```
 
 ### Component Types
