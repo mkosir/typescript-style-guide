@@ -729,6 +729,33 @@ type StatusProps = StatusSuccess | StatusLoading | StatusError;
 export const Status = (status: StatusProps) => {...
 ```
 
+### Props To State
+
+In general avoid using props to state, since component will not update on prop changes. It can lead to bugs that are hard to track, with unintended side effects and difficulty testing.  
+When there is truly a use case for using prop in initial state, prop must be prefixed with `initial` (e.g. `initialProduct`, `initialSort` etc.)
+
+```tsx
+// ❌ Avoid using props to state
+type FooProps = {
+  productName: string;
+  userId: string;
+};
+
+export const Foo = ({ productName, userId }: FooProps) => {
+  const [productName, setProductName] = useState(productName);
+  ...
+
+// ✅ Use prop prefix `initial`, when there is a rational use case for it
+type FooProps = {
+  initialProductName: string;
+  userId: string;
+};
+
+export const Foo = ({ initialProductName, userId }: FooProps) => {
+  const [productName, setProductName] = useState(initialProductName);
+  ...
+```
+
 ### Props Type
 
 ```tsx
@@ -741,10 +768,10 @@ type FooProps = {
 export const Foo: React.FC<FooProps> = ({ name, score }) => {
 
 // ✅ Use props argument with type
-type FooProps = Readonly<{
+type FooProps = {
   name: string;
   score: number;
-}>;
+};
 
 export const Foo = ({ name, score }: FooProps) => {...
 ```
