@@ -16,7 +16,7 @@
     "tsc": "tsc -p tsconfig.json",
     "format-lint": "prettier --config .prettierrc --check --ignore-unknown .",
     "format-fix": "prettier --config .prettierrc --write --ignore-unknown -l .",
-    "clean": "shx rm -rf node_modules coverage dist compiled build .docusaurus"
+    "clean": "rm -rf node_modules coverage dist compiled build .docusaurus"
   },
   "dependencies": {
     "@docusaurus/core": "3.0.0-beta.0",
@@ -26,25 +26,24 @@
     "react": "18.2.0",
     "react-animate-height": "3.2.2",
     "react-dom": "18.2.0",
-    "react-parallax-tilt": "1.7.166"
+    "react-parallax-tilt": "1.7.168"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.4.1",
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
     "@tsconfig/docusaurus": "1.0.5",
-    "@typescript-eslint/eslint-plugin": "6.7.0",
-    "@typescript-eslint/parser": "6.7.0",
-    "autoprefixer": "10.4.15",
-    "eslint": "8.49.0",
+    "@typescript-eslint/eslint-plugin": "6.7.2",
+    "@typescript-eslint/parser": "6.7.2",
+    "autoprefixer": "10.4.16",
+    "eslint": "8.50.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-import": "2.28.1",
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
-    "postcss": "8.4.29",
+    "postcss": "8.4.30",
     "prettier": "3.0.3",
     "prettier-plugin-tailwindcss": "0.5.4",
-    "shx": "0.3.4",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
   },
@@ -61,6 +60,6 @@
     ]
   },
   "engines": {
-    "node": ">=18.17.1"
+    "node": ">=20.7.0"
   }
 }
