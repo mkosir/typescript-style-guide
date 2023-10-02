@@ -175,10 +175,13 @@ Type assertions `user as User` and non-nullability assertions `user!.name` are u
 They can only be used as an exceptions (e.g. third party library types mismatch, dereferencing `unknown` etc.) with strong rational why being introduced into codebase.
 
 ```ts
-// ❌ Avoid type & non-nullability assertions
 type User = { id: string; username: string; avatar: string | null };
+// ❌ Avoid type assertions
 const user = { name: 'Nika' } as User;
-renderUserAvatar(user!.avatar);
+// ❌ Avoid non-nullability assertions
+renderUserAvatar(user!.avatar); // Runtime error
+
+const renderUserAvatar = (avatar: string) => {...}
 ```
 
 ### Type Error
