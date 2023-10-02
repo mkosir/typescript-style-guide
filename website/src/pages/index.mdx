@@ -118,7 +118,6 @@ Template literal types have many applicable use cases e.g. API endpoints, routin
 ```ts
 // ❌ Avoid
 const userEndpoint = '/api/usersss'; // Type 'string' - no error
-
 // ✅ Use
 type ApiRoute = 'users' | 'posts' | 'comments';
 type ApiEndpoint = `/api/${ApiRoute}`;
@@ -126,7 +125,6 @@ const userEndpoint: ApiEndpoint = '/api/users';
 
 // ❌ Avoid
 const homeTitleTranslation = 'transltion.hom.title'; // Type 'string' - no error
-
 // ✅ Use
 type LocaleKeyPages = 'home' | 'about' | 'contact';
 type TranslationKey = `translation.${LocaleKeyPages}.${string}`;
@@ -134,7 +132,6 @@ const homeTitleTranslation: TranslationKey = 'translation.home.title';
 
 // ❌ Avoid
 const color = 'blue-450'; // Type 'string' - no error
-
 // ✅ Use
 type BaseColor = 'blue' | 'red' | 'yellow' | 'gray';
 type Variant = 50 | 100 | 200 | 300 | 400;
