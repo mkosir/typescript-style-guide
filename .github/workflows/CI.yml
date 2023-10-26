@@ -6,6 +6,7 @@ on:
       - main
 
 env:
+  NODE_VERSION: '20.x'
   CACHE_PATHS_BUILD: |
     ./website/build
   CACHE_KEY_BUILD: build-${{ github.sha }}-${{ github.ref_type }}
@@ -24,9 +25,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node.js ⚙️
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "18.x"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
           cache-dependency-path: "./website"
 
@@ -52,9 +53,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node.js ⚙️
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "18.x"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
           cache-dependency-path: "./website"
 
@@ -73,9 +74,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node.js ⚙️
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "18.x"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
           cache-dependency-path: "./website"
 
