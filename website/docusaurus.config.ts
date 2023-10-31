@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { themes } from 'prism-react-renderer';
 
 import type * as Preset from '@docusaurus/preset-classic';
@@ -52,7 +50,9 @@ const config: Config = {
       return {
         name: 'docusaurus-tailwindcss',
         configurePostCss(postcssOptions) {
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
           postcssOptions.plugins.push(require('tailwindcss'));
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
           postcssOptions.plugins.push(require('autoprefixer'));
           return postcssOptions;
         },
