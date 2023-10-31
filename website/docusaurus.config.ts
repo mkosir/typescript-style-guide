@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/require-await */
 
 /* eslint-disable @typescript-eslint/no-var-requires */
-
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-// @ts-check
 import { themes } from 'prism-react-renderer';
 
 import type * as Preset from '@docusaurus/preset-classic';
@@ -117,4 +114,5 @@ const config: Config = {
   } satisfies Preset.ThemeConfig,
 };
 
+// eslint-disable-next-line import/no-default-export
 export default config;
