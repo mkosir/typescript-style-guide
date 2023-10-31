@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+//@ts-expect-error AnimateHeight types conflict with Docusaurus
 import AnimateHeight from 'react-animate-height';
 
 type ChipProps = {
