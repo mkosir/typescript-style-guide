@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/require-await */
 import { themes } from 'prism-react-renderer';
 
 import type * as Preset from '@docusaurus/preset-classic';
@@ -46,7 +45,7 @@ const config: Config = {
   ],
 
   plugins: [
-    async function myPlugin() {
+    function myPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
         configurePostCss(postcssOptions) {
