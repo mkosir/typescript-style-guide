@@ -4,10 +4,9 @@
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // @ts-check
-import type { Config } from '@docusaurus/types';
+import { themes } from 'prism-react-renderer';
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/okaidia');
+import type { Config } from '@docusaurus/types';
 
 const config: Config = {
   title: ' ',
@@ -93,8 +92,8 @@ const config: Config = {
         copyright: `TypeScript Style Guide. Built with Docusaurus.`,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: themes.github,
+        darkTheme: themes.okaidia,
       },
       algolia: {
         // Public application ID provided by Algolia
