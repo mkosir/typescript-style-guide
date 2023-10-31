@@ -1,15 +1,17 @@
 /* eslint-disable @typescript-eslint/require-await */
+
 /* eslint-disable @typescript-eslint/no-var-requires */
+
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // @ts-check
+import type { Config } from '@docusaurus/types';
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/okaidia');
 
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+const config: Config = {
   title: ' ',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'TypeScript Style Guide',
   favicon: 'img/favicon.ico',
 
   url: 'https://mkosir.github.io',
