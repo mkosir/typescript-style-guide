@@ -37,10 +37,9 @@ const config: Config = {
         docs: false,
         blog: false,
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: './src/css/custom.css',
         },
       } satisfies Preset.Options,
-      ,
     ],
   ],
 
