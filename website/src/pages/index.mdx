@@ -77,7 +77,7 @@ const userRole: string = 'admin'; // Type 'string'
 const employees = new Map<string, number>([['gabriel', 32]]);
 const [isActive, setIsActive] = useState<boolean>(false);
 
-// ✅ Use
+// ✅ Use type inference
 const USER_ROLE = 'admin'; // Type 'admin'
 const employees = new Map([['gabriel', 32]]); // Type 'Map<string, number>'
 const [isActive, setIsActive] = useState(false); // Type 'boolean'
@@ -89,7 +89,7 @@ employees.set('lea', 'foo-anything');
 type UserRole = 'admin' | 'guest';
 const [userRole, setUserRole] = useState('admin'); // Type 'string'
 
-// ✅ Use
+// ✅ Use explicit type declaration to narrow the type
 const employees = new Map<string, number>(); // Type 'Map<string, number>'
 employees.set('gabriel', 32);
 type UserRole = 'admin' | 'guest';
