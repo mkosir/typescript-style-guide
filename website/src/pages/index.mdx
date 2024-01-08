@@ -83,24 +83,24 @@ As rule of thumb, explicitly declare a type when it help narrows it.
 ```ts
 // ❌ Avoid - Type can be inferred
 const userRole: string = 'admin'; // Type 'string'
-const employees = new Map<string, number>([['gabriel', 32]]);
+const employees = new Map<string, number>([['Gabriel', 32]]);
 const [isActive, setIsActive] = useState<boolean>(false);
 
 // ✅ Use type inference
 const USER_ROLE = 'admin'; // Type 'admin'
-const employees = new Map([['gabriel', 32]]); // Type 'Map<string, number>'
+const employees = new Map([['Gabriel', 32]]); // Type 'Map<string, number>'
 const [isActive, setIsActive] = useState(false); // Type 'boolean'
 
 
 // ❌ Avoid - Type can be narrowed
 const employees = new Map(); // Type 'Map<any, any>'
-employees.set('lea', 'foo-anything');
+employees.set('Lea', 'foo-anything');
 type UserRole = 'admin' | 'guest';
 const [userRole, setUserRole] = useState('admin'); // Type 'string'
 
 // ✅ Use explicit type declaration to narrow the type
 const employees = new Map<string, number>(); // Type 'Map<string, number>'
-employees.set('gabriel', 32);
+employees.set('Gabriel', 32);
 type UserRole = 'admin' | 'guest';
 const [userRole, setUserRole] = useState<UserRole>('admin'); // Type 'UserRole'
 ```
