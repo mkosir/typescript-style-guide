@@ -4,7 +4,7 @@
 
 ### Go to 👉 [TypeScript Style Guide](https://mkosir.github.io/typescript-style-guide/)
 
-As projects grow in size and complexity, maintaining code quality and ensuring consistent practices becomes increasingly challenging. Defining and following a standard way to write TypeScript applications brings consistent codebase and faster development cycles.
+As project grow in size and complexity, maintaining code quality and ensuring consistent practices becomes increasingly challenging. Defining and following a standard way to write TypeScript applications brings consistent codebase and faster development cycles.
 
 **Contributing**  
 All contributions are welcome! Open a [PR](https://github.com/mkosir/typescript-style-guide/blob/main/.github/pull_request_template.md), [issue](https://github.com/mkosir/typescript-style-guide/issues/new/choose) or [discussion](https://github.com/mkosir/typescript-style-guide/discussions/new/choose).
