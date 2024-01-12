@@ -4,13 +4,6 @@
 
 ### Go to 👉 [TypeScript Style Guide](https://mkosir.github.io/typescript-style-guide/)
 
-### What
-
-As any code style guide is opinionated, TypeScript Style Guide is no different as it tries to set conventions (sometimes arbitrary) that govern our code.
-
-Since "consistency is the key", guide strives to enforce majority of the rules by using automated tooling as ESLint, TypeScript, Prettier, etc.  
-Still certain design and architectural decisions must be followed which are described with conventions bellow.
-
 ### Why
 
 - As project grow in size and complexity, maintaining code quality and ensuring consistent practices becomes increasingly challenging.
