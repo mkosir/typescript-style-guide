@@ -14,8 +14,8 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "target": "ES6"
+    "target": "ES6",
   },
   "include": [".", ".eslintrc.js"],
-  "exclude": ["node_modules", "build", ".docusaurus"]
+  "exclude": ["node_modules", "build", ".docusaurus"],
 }
