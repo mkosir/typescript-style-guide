@@ -16,6 +16,6 @@
     "isolatedModules": true,
     "target": "ES6",
   },
-  "include": [".", ".eslintrc.js"],
+  "include": [".", ".eslintrc.cjs"],
   "exclude": ["node_modules", "build", ".docusaurus"],
 }
