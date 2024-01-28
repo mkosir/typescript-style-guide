@@ -49,7 +49,7 @@ Style Guide requires you to use:
 Style Guide assumes using, but is not limited to:
 
 - [React](https://github.com/facebook/react) as UI library for frontend conventions.
-- [Testing Library](https://testing-library.com/) for testing conventions.
+- [Playwright](https://playwright.dev/) and [Testing Library](https://testing-library.com/) for testing conventions.
 
 ## TLDR
 
@@ -907,7 +907,7 @@ export const Foo = ({ name, score }: FooProps) => {...
 - use of client-state library for global state is discouraged.  
   Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings - `/me` endpoint). If still global state is truly needed use [Zustand](https://github.com/pmndrs/zustand) or Context.
 
-## Appendix - Tests (Unit & Integration)
+## Appendix - Tests
 
 ### What & How To Test
 
@@ -919,9 +919,13 @@ Automated test comes with benefits that helps us write better code and makes it 
 - Implement test to be short, explicit, and pleasant to work with. Intent of a test should be immediately visible.
 - Strive to write tests in a way your app/package is used by a user, meaning test business logic.  
   E.g. given some user input, they receive the expected output for a process.
-- All tests must be setup and implemented to run as standalone in isolation, where they don't depend on other tests order of execution.
-- Tests should be resilient to changes.  
-  Query HTML elements based on attributes that are unlikely to change. Order of priority must be followed as specified in [Testing Library](https://testing-library.com/docs/queries/about/#priority) - [role](https://testing-library.com/docs/queries/byrole), [label](https://testing-library.com/docs/queries/bylabeltext), [placeholder](https://testing-library.com/docs/queries/byplaceholdertext), [text contents](https://testing-library.com/docs/queries/bytext), [display value](https://testing-library.com/docs/queries/bydisplayvalue), [alt text](https://testing-library.com/docs/queries/byalttext), [title](https://testing-library.com/docs/queries/bytitle), [test ID](https://testing-library.com/docs/queries/bytestid).
+- Make tests as isolated as possible, where they don't depend on order of execution and should run independently with its own local storage, session storage, data, cookies etc.
+  Test isolation improves reproducibility, makes debugging easier and prevents cascading test failures.
+- Avoid testing third-party dependencies. Only test what you control. Don't try to test links to external sites or third party servers that you do not control.
+
+- Tests should be resilient to changes.
+  - Query HTML elements based on attributes that are unlikely to change. Order of priority must be followed as specified in [Testing Library](https://testing-library.com/docs/queries/about/#priority) - [role](https://testing-library.com/docs/queries/byrole), [label](https://testing-library.com/docs/queries/bylabeltext), [placeholder](https://testing-library.com/docs/queries/byplaceholdertext), [text contents](https://testing-library.com/docs/queries/bytext), [display value](https://testing-library.com/docs/queries/bydisplayvalue), [alt text](https://testing-library.com/docs/queries/byalttext), [title](https://testing-library.com/docs/queries/bytitle), [test ID](https://testing-library.com/docs/queries/bytestid).
+  - If testing with a database then make sure you control the data. If test are run against a staging environment make sure it doesn't change.
 
 ❌ Don't:
 
