@@ -19,22 +19,22 @@
     "clean": "rm -rf node_modules coverage dist compiled build .docusaurus"
   },
   "dependencies": {
-    "@docusaurus/core": "3.1.0",
-    "@docusaurus/preset-classic": "3.1.0",
+    "@docusaurus/core": "3.1.1",
+    "@docusaurus/preset-classic": "3.1.1",
     "@mdx-js/react": "3.0.0",
     "prism-react-renderer": "2.3.1",
     "react": "18.2.0",
     "react-animate-height": "3.2.3",
     "react-dom": "18.2.0",
-    "react-parallax-tilt": "1.7.198"
+    "react-parallax-tilt": "1.7.205"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.1.0",
-    "@docusaurus/tsconfig": "3.1.0",
+    "@docusaurus/module-type-aliases": "3.1.1",
+    "@docusaurus/tsconfig": "3.1.1",
     "@trivago/prettier-plugin-sort-imports": "4.3.0",
     "@types/react": "18.2.48",
-    "@typescript-eslint/eslint-plugin": "6.19.0",
-    "@typescript-eslint/parser": "6.19.0",
+    "@typescript-eslint/eslint-plugin": "6.19.1",
+    "@typescript-eslint/parser": "6.19.1",
     "autoprefixer": "10.4.17",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
