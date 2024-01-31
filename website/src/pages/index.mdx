@@ -24,7 +24,7 @@ TypeScript Style Guide provides a concise set of conventions and best practices 
 ### What
 
 Since "consistency is the key", TypeScript Style Guide strives to enforce majority of the rules by using automated tooling as ESLint, TypeScript, Prettier, etc.  
-Still certain design and architectural decisions must be followed which are described with conventions bellow.
+Still certain design and architectural decisions must be followed which are described with conventions below.
 
 ### Why
 
@@ -107,7 +107,7 @@ const [userRole, setUserRole] = useState<UserRole>('admin'); // Type 'UserRole'
 
 ### Return Types
 
-Including return type annotations is highly encouraged, altought not required ([eslint rule](https://typescript-eslint.io/rules/explicit-function-return-type/)).
+Including return type annotations is highly encouraged, although not required ([eslint rule](https://typescript-eslint.io/rules/explicit-function-return-type/)).
 
 Consider benefits when explicitly typing the return value of a function:
 
@@ -125,14 +125,14 @@ Template literal types have many applicable use cases e.g. API endpoints, routin
 
 ```ts
 // ❌ Avoid
-const userEndpoint = '/api/usersss'; // Type 'string' - no error
+const userEndpoint = '/api/users'; // Type 'string' - no error
 // ✅ Use
 type ApiRoute = 'users' | 'posts' | 'comments';
 type ApiEndpoint = `/api/${ApiRoute}`;
 const userEndpoint: ApiEndpoint = '/api/users';
 
 // ❌ Avoid
-const homeTitleTranslation = 'transltion.home.title'; // Type 'string' - no error
+const homeTitleTranslation = 'translation.home.title'; // Type 'string' - no error
 // ✅ Use
 type LocaleKeyPages = 'home' | 'about' | 'contact';
 type TranslationKey = `translation.${LocaleKeyPages}.${string}`;
@@ -157,7 +157,7 @@ When dealing with ambiguous data type use `unknown`, which is the type-safe coun
 ```ts
 // ❌ Avoid any
 const foo: any = 'five';
-const bar: number = bar; // no type error
+const bar: number = foo; // no type error
 
 // ✅ Use unknown
 const foo: unknown = 5;
@@ -180,7 +180,7 @@ const bar: number = foo as number;
 ### Type & Non-nullability Assertions
 
 Type assertions `user as User` and non-nullability assertions `user!.name` are unsafe. Both only silence TypeScript compiler and increase the risk of crashing application at runtime.  
-They can only be used as an exceptions (e.g. third party library types mismatch, dereferencing `unknown` etc.) with strong rational why being introduced into codebase.
+They can only be used as an exception (e.g. third party library types mismatch, dereferencing `unknown` etc.) with strong rational why being introduced into codebase.
 
 ```ts
 type User = { id: string; username: string; avatar: string | null };
@@ -290,7 +290,7 @@ Function:
 ### Single Object Arg
 
 To keep function readable and easily extensible for the future (adding/removing args), strive to have single object as the function arg, instead of multiple args.  
- As exception this not applies when having only one primitive single arg (e.g. simple functions isNumber(value), implementing currying etc.).
+ As exception this does not apply when having only one primitive single arg (e.g. simple functions isNumber(value), implementing currying etc.).
 
 ```ts
 // ❌ Avoid having multiple arguments
@@ -714,8 +714,8 @@ apps/
 ```
 
 - `modules` folder is responsible for implementation of each individual page, where all custom features for that page are being implemented (components, hooks, utils functions etc.).
-- `common` folder is responsible for implementations that are truly used across application. Since its a "global folder" it should be used sparingly.  
-  If same component e.g. `common/components/ProductTitle` starts being used on more the one page, it shall be moved to common folder.
+- `common` folder is responsible for implementations that are truly used across application. Since it's a "global folder" it should be used sparingly.  
+  If same component e.g. `common/components/ProductTitle` starts being used on more than one page, it shall be moved to common folder.
 
 In case using frontend framework with file-system based router (e.g. Nextjs), `pages` folder serves only as a router, where its responsibility is to define routes (no business logic implementation).
 
@@ -820,7 +820,7 @@ export const Foo = ({ name, score }: FooProps) => {...
 
 #### Container
 
-- All container components have postfix "Container" or "Page" `[ComponentName]Container|Page`. Use "Page" postfix to indicate component it's an actual web page.
+- All container components have postfix "Container" or "Page" `[ComponentName]Container|Page`. Use "Page" postfix to indicate component is an actual web page.
 - Each feature has a container component (`AddUserContainer.tsx`, `EditProductContainer.tsx`, `ProductsPage.tsx` etc.)
 - Includes business logic.
 - API integration.
@@ -900,11 +900,11 @@ export const Foo = ({ name, score }: FooProps) => {...
 
 - UI components should show derived state and send events, nothing more.
 - As in many programming languages functions args can be passed to the next function and on to the next etc.  
-  Rect components are no different, where prop drilling should not become an issue.  
+  React components are no different, where prop drilling should not become an issue.  
   If with app scaling prop drilling truly becomes an issue, try to refactor render method, local states in parent components, using composition etc.
 - Data fetching is only allowed in container components.
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
-- use of client-state library for global state is discouraged.  
+- Use of client-state library for global state is discouraged.  
   Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings - `/me` endpoint). If still global state is truly needed use [Zustand](https://github.com/pmndrs/zustand) or Context.
 
 ## Appendix - Tests
@@ -977,4 +977,4 @@ code --install-extension firsttris.vscode-jest-runner
 ### Snapshot
 
 Snapshot tests are discouraged in order to avoid fragility, which leads to "just update it" turn of mind, to achieve all the tests pass.  
- Exceptions can be made, with strong rational behind it, where test output has short and clear intent, whats actually being tested (e.g. design system library critical elements that shouldn't deviate).
+ Exceptions can be made, with strong rational behind it, where test output has short and clear intent, what's actually being tested (e.g. design system library critical elements that shouldn't deviate).
