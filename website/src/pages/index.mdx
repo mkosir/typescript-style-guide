@@ -195,16 +195,16 @@ const renderUserAvatar = (avatar: string) => {...}
 ### Type Error
 
 If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it ([eslint rule](https://typescript-eslint.io/rules/prefer-ts-expect-error/)). If at any future point suppressed line becomes error-free, TypeScript compiler will indicate it.  
-`@ts-ignore` is not allowed, while `@ts-expect-error` can be used with provided description ([eslint rule](https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description)).
+`@ts-ignore` is not allowed, where `@ts-expect-error` must be used with provided description ([eslint rule](https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description)).
 
 ```ts
 // ❌ Avoid @ts-ignore
 // @ts-ignore
-const result = doSomething('hello');
+const newUser = createUser('Gabriel');
 
 // ✅ Use @ts-expect-error with description
-// @ts-expect-error: The library definition is wrong, doSomething accepts string as an argument.
-const result = doSomething('hello');
+// @ts-expect-error: The library definition is wrong, createUser accepts string as an argument.
+const newUser = createUser('Gabriel');
 ```
 
 ### Type Definition
