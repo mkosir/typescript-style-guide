@@ -21,12 +21,12 @@
   "dependencies": {
     "@docusaurus/core": "3.1.1",
     "@docusaurus/preset-classic": "3.1.1",
-    "@mdx-js/react": "3.0.0",
+    "@mdx-js/react": "3.0.1",
     "prism-react-renderer": "2.3.1",
     "react": "18.2.0",
     "react-animate-height": "3.2.3",
     "react-dom": "18.2.0",
-    "react-parallax-tilt": "1.7.209"
+    "react-parallax-tilt": "1.7.210"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.1.1",
@@ -61,6 +61,6 @@
     ]
   },
   "engines": {
-    "node": ">=20.11.0"
+    "node": ">=20.11.1"
   }
 }
