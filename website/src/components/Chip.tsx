@@ -9,13 +9,13 @@ type ChipProps = {
 
 const COLORS = {
   dark: {
-    chip: 'bg-gray-200 text-neutral-600',  
-    description: 'border-gray-200 bg-neutral-600 text-gray-200'
+    chip: 'bg-gray-200 text-neutral-600',
+    description: 'border-gray-200 bg-neutral-600 text-gray-200',
   },
   light: {
-    chip: 'bg-neutral-600 text-gray-200', 
-    description: 'border-neutral-600 bg-gray-200 text-neutral-600', 
-  }
+    chip: 'bg-neutral-600 text-gray-200',
+    description: 'border-neutral-600 bg-gray-200 text-neutral-600',
+  },
 } as const;
 
 export const Chip = ({ children }: ChipProps) => {
@@ -32,7 +32,9 @@ export const Chip = ({ children }: ChipProps) => {
         <InfoIcon />
       </div>
       <AnimateHeight duration={500} easing="ease" height={descriptionHeight}>
-        <div className={`rounded-md border-0 border-l-[5px] border-solid p-2 text-xs italic [&_p]:mb-0 ${COLORS[colorMode].description}`}>
+        <div
+          className={`rounded-md border-0 border-l-[5px] border-solid p-2 text-xs italic [&_p]:mb-0 ${COLORS[colorMode].description}`}
+        >
           {children}
         </div>
       </AnimateHeight>
