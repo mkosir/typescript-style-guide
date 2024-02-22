@@ -1,24 +1,38 @@
 import React, { useState } from 'react';
 import AnimateHeight from 'react-animate-height';
 
+import { useColorMode } from '@docusaurus/theme-common';
+
 type ChipProps = {
   children?: string;
 };
 
+const COLORS = {
+  dark: {
+    chip: 'bg-gray-200 text-neutral-600',  
+    description: 'border-gray-200 bg-neutral-600 text-gray-200'
+  },
+  light: {
+    chip: 'bg-neutral-600 text-gray-200', 
+    description: 'border-neutral-600 bg-gray-200 text-neutral-600', 
+  }
+} as const;
+
 export const Chip = ({ children }: ChipProps) => {
+  const { colorMode } = useColorMode();
   const [descriptionHeight, setDescriptionHeight] = useState<'auto' | 0>(0);
 
   return (
     <div className="mb-2">
       <div
-        className="mb-1 inline-flex cursor-pointer items-center rounded-lg bg-gray-200 px-1.5 text-[11px] font-normal text-neutral-600"
+        className={`mb-1 inline-flex cursor-pointer items-center rounded-lg px-1.5 text-[11px] font-normal ${COLORS[colorMode].chip}`}
         onClick={() => setDescriptionHeight((prev) => (prev === 0 ? 'auto' : 0))}
       >
         <div className="mr-1">Note</div>
         <InfoIcon />
       </div>
       <AnimateHeight duration={500} easing="ease" height={descriptionHeight}>
-        <div className="rounded-md border-0 border-l-[5px] border-solid border-gray-200 bg-neutral-600 p-2 text-xs italic [&_p]:mb-0">
+        <div className={`rounded-md border-0 border-l-[5px] border-solid p-2 text-xs italic [&_p]:mb-0 ${COLORS[colorMode].description}`}>
           {children}
         </div>
       </AnimateHeight>
