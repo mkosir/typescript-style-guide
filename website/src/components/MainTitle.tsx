@@ -27,18 +27,6 @@ export const MainTitle = ({ children }: MainTitleProps) => {
             <img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo-30.png" />{' '}
             <h1>{children}</h1>
           </div>
-          <div className="mt-1">
-            <iframe
-              src="https://ghbtns.com/github-btn.html?user=mkosir&amp;repo=typescript-style-guide&amp;type=star&amp;count=true&amp;size=small"
-              width={100}
-              height={20}
-            />
-            <iframe
-              src="https://ghbtns.com/github-btn.html?user=mkosir&amp;repo=typescript-style-guide&amp;type=fork&amp;count=true&amp;size=small"
-              width={100}
-              height={20}
-            />
-          </div>
         </div>
       </Tilt>
     </div>

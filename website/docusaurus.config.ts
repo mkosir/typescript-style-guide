@@ -75,6 +75,10 @@ const config: Config = {
       },
       items: [
         {
+          type: 'custom-GithubStats',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/mkosir/typescript-style-guide',
           label: 'GitHub',
           position: 'right',
