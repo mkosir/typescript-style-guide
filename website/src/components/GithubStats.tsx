@@ -13,6 +13,6 @@ export const GithubStats = () => {
         width={100}
         height={20}
       />
-    </div >
+    </div>
   );
 };

@@ -1,6 +1,5 @@
-import ComponentTypes from '@theme-original/NavbarItem/ComponentTypes';
-
 import { GithubStats } from '@site/src/components';
+import ComponentTypes from '@theme-original/NavbarItem/ComponentTypes';
 
 // https://docusaurus.io/docs/swizzling
 
