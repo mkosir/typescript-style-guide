@@ -22,8 +22,8 @@ export const MainTitle = ({ children }: MainTitleProps) => {
         glarePosition="all"
         glareBorderRadius="9px"
       >
-        <div className="flex items-center gap-1.5">
-          <img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo-30.png" />{' '}
+        <div className="flex items-center gap-2">
+          <img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo-30.png" />
           <h1>{children}</h1>
         </div>
       </Tilt>
