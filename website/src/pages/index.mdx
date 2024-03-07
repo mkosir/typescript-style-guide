@@ -489,13 +489,29 @@ While it's often hard to find the best name, try optimize code for consistency a
   `PRODUCT_ID`
 - **Object constants**
 
-  Singular, capitalized with const assertion (optionally satisfies type if there is one).
+  Singular, capitalized with const assertion.
 
   ```ts
   const ORDER_STATUS = {
     pending: 'pending',
-    fulfilled: 'fulfilled',
-    error: 'error',
+    fulfilled: true,
+    error: 'Shipping Error',
+  } as const;
+  ```
+
+  If object type exist use `satisfies` operator, to verify you object constant matches its type.
+
+  ```ts
+  type OrderStatus = {
+    pending: 'pending' | 'idle';
+    fulfilled: boolean;
+    error: string;
+  };
+
+  const ORDER_STATUS = {
+    pending: 'pending',
+    fulfilled: true,
+    error: 'Shipping Error',
   } as const satisfies OrderStatus;
   ```
 
