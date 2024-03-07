@@ -33,6 +33,11 @@ export const MainTitle = ({ children }: MainTitleProps) => {
               width={100}
               height={20}
             />
+            <iframe
+              src="https://ghbtns.com/github-btn.html?user=mkosir&amp;repo=typescript-style-guide&amp;type=fork&amp;count=true&amp;size=small"
+              width={100}
+              height={20}
+            />
           </div>
         </div>
       </Tilt>
