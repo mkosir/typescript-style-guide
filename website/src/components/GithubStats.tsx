@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const DOCUSAURUS_LG_BREAKPOINT = 997;
 
 export const GithubStats = () => {
