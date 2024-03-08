@@ -150,10 +150,13 @@ type Color = `${BaseColor}-${Variant}` | `#${string}`;
 
 ### Discriminated union
 
-Discriminated unions are a powerful concept you may encounter in various programming languages, often under different names such as tagged unions, sum types in C, Rust, Haskell etc.
+Discriminated unions are a powerful concept to model complex data structures and improve type safety in TypeScript codebases, leading to clearer, more maintainable, and less error-prone code.
+You may encounter discriminated unions under different names such as tagged unions or sum types in various programming languages C, Rust, Haskell etc.
 
-Embrace using discriminated unions, since code becomes easier to read and understand by explicitly indicating the possible cases for a given type.
+Embrace using discriminated unions:
 
+- Clear code intent, as it becomes easier to read and understand by explicitly indicating the possible cases for a given type.
+- TypeScript can narrow down union types, ensuring code correctness at compile time.
 - As mentioned in [Args as Discriminated Union](#args-as-discriminated-union), discriminated union eliminates optional args which decreases complexity on function API.
 - Exhaustiveness check - TypeScript can ensure that all possible variants of a type are implemented, eliminating the risk of undefined or unexpected behavior at runtime. ([eslint rule](https://typescript-eslint.io/rules/switch-exhaustiveness-check/))
 
@@ -177,6 +180,9 @@ Embrace using discriminated unions, since code becomes easier to read and unders
     }
   };
   ```
+
+- Discriminated unions make refactoring and maintenance easier by providing a centralized definition of related types. When adding or modifying types within the union, the compiler reports any inconsistencies throughout the codebase.
+- IDEs can leverage discriminated unions to provide better autocompletion and type inference.
 
 ### Type any & unknown
 
