@@ -56,6 +56,7 @@ Style Guide assumes using, but is not limited to:
 - Strive for data immutability. [&#11107;](#data-immutability)
 - Embrace const assertions. [&#11107;](#const-assertion)
 - Avoid type assertions. [&#11107;](#type--non-nullability-assertions)
+- Embrace discriminated union. [&#11107;](#discriminated-union)
 - Strive for functions to be pure, stateless and have single responsibility. [&#11107;](#functions)
 - Majority of function arguments should be required (use optional sparingly). [&#11107;](#required--optional-args)
 - Strong emphasis to keep naming conventions consistent and readable. [&#11107;](#naming-conventions)
@@ -146,6 +147,35 @@ type Variant = 50 | 100 | 200 | 300 | 400;
 // Type blue-50, blue-100, blue-200, blue-300, blue-400, red-50, red-100, #AD3128 ...
 type Color = `${BaseColor}-${Variant}` | `#${string}`;
 ```
+
+### Discriminated union
+
+Discriminated unions are a powerful concept you may encounter in various programming languages, often under different names such as tagged unions, sum types in C, Rust, Haskell etc.
+
+Embrace using discriminated unions, since code becomes easier to read and understand by explicitly indicating the possible cases for a given type.
+
+- Exhaustiveness check - TypeScript can ensure that all possible variants of a type are implemented, eliminating the risk of undefined or unexpected behavior at runtime. ([eslint rule](https://typescript-eslint.io/rules/switch-exhaustiveness-check/))
+
+  ```ts
+  const shapes = [
+    { kind: 'square', size: 7 },
+    { kind: 'rectangle', width: 12, height: 6 },
+    { kind: 'circle', radius: 23 },
+  ] as const;
+
+  type Shape = (typeof shapes)[number];
+
+  // TypeScript warns us with errors in calculateArea function
+  const calculateArea = (shape: Shape) => {
+    // Error - Switch is not exhaustive. Cases not matched: "circle"
+    switch (shape.kind) {
+      case 'square':
+        return shape.size * shape.size;
+      case 'rectangle':
+        return shape.width * shape.size; // Error - Property 'size' does not exist on type 'rectangle'
+    }
+  };
+  ```
 
 ### Type any & unknown
 
@@ -380,28 +410,6 @@ Strive to use const assertion `as const`:
   const RATE_LIMIT = 25;
     // RATE_LIMIT_MESSAGE type - 'Rate limit exceeded! Max number of requests/min is 25.'
   const RATE_LIMIT_MESSAGE = `Rate limit exceeded! Max number of requests/min is ${RATE_LIMIT}.` as const;
-  ```
-
-- exhaustiveness check, code implements all possible type values ([eslint rule](https://typescript-eslint.io/rules/switch-exhaustiveness-check/))
-
-  ```ts
-  const shapes = [
-    { kind: 'square', size: 7 },
-    { kind: 'rectangle', width: 12, height: 6 },
-    { kind: 'circle', radius: 23 },
-  ] as const;
-
-  type Shape = (typeof shapes)[number];
-
-  const getShapeArea = (shape: Shape) => {
-    // Error - Switch is not exhaustive. Cases not matched: "circle"
-    switch (shape.kind) {
-      case 'square':
-        return shape.size * shape.size;
-      case 'rectangle':
-        return shape.width * shape.size; // Error - Property 'size' does not exist on type 'rectangle'
-    }
-  };
   ```
 
 ### Enums & Const Assertion
