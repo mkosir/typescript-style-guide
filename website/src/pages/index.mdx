@@ -537,7 +537,9 @@ Camel case
 
 #### Generics
 
-A generic variable must start with the capital letter T followed by descriptive name `TRequest`, `TFooBar`.  
+A generic variable must start with the capital letter T followed by a descriptive name `TRequest`, `TFooBar`.
+
+Creating more complex types often include generics, which can make them hard to read and understand, that's why we try to put best effort naming them.  
 Naming generics using popular convention with one character `T`, `K` etc. is not allowed, the more variables we introduce, the easier it is to mistake them.
 
 ```ts
@@ -547,7 +549,7 @@ const createPair = <T, K extends string>(first: T, second: K): [T, K] => {
 };
 const pair = createPair(1, 'a');
 
-// ✅ Name starts with the capital letter T
+// ✅ Name starts with the capital letter T followed by a descriptive name
 const createPair = <TFirst, TSecond extends string>(first: TFirst, second: TSecond): [TFirst, TSecond] => {
   return [first, second];
 };
