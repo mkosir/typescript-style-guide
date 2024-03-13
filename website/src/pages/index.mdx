@@ -72,6 +72,14 @@ As an exception mutations should be used sparingly in cases where truly necessar
 
 ## Types
 
+When creating types try to think of how they would best **describe your code**.  
+Try to be expressive by keeping them as **narrow as possible** which brings benefits to the codebase:
+
+- Increased Type Safety - Catch errors at compile-time, since narrowed types provide more specific information about the shape and behavior of your data.
+- Improved Code Clarity - Reduced cognitive load by providing clearer boundaries and constraints on your data which makes your code easier to understand by other developers.
+- Easier Refactoring - Refactor with confidence, since types are narrow, making changes to your code becomes less risky.
+- Optimized Performance - In some cases, narrow types can help the TypeScript compiler generate more optimized JavaScript code.
+
 ### Type Inference
 
 As rule of thumb, explicitly declare a type when it help narrows it.
@@ -897,6 +905,7 @@ export const Foo = ({ name, score }: FooProps) => {...
 
 ### Store & Pass Data
 
+- Pass only the necessary props to child components rather than passing the entire object.
 - Utilize storing state in the URL, especially for filtering, sorting etc.
 - Don't sync URL state with local state.
 - Consider passing data simply through props, using the URL, or composing children. Use global state (Zustand, Context) as a last resort.
