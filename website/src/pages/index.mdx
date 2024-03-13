@@ -540,10 +540,10 @@ Camel case
 A generic variable must start with the capital letter T followed by a descriptive name `TRequest`, `TFooBar`.
 
 Creating more complex types often include generics, which can make them hard to read and understand, that's why we try to put best effort when naming them.  
-Naming generics using popular convention with one character `T`, `K` etc. is not allowed, the more variables we introduce, the easier it is to mistake them.
+Naming generics using popular convention with one letter `T`, `K` etc. is not allowed, the more variables we introduce, the easier it is to mistake them.
 
 ```ts
-// ❌ Avoid naming generics with one character
+// ❌ Avoid naming generics with one letter
 const createPair = <T, K extends string>(first: T, second: K): [T, K] => {
   return [first, second];
 };
