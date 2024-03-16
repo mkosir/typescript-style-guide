@@ -153,6 +153,8 @@ const color = 'blue-450'; // Type 'string' - Since color 'blue-450' doesn't exis
 type BaseColor = 'blue' | 'red' | 'yellow' | 'gray';
 type Variant = 50 | 100 | 200 | 300 | 400;
 type Color = `${BaseColor}-${Variant}` | `#${string}`; // Type Color = "blue-50" | "blue-100" | "blue-200" ... | "red-50" | "red-100" ... | #${string}
+const iconColor: Color = 'blue-400';
+const customColor: Color = '#AD3128';
 ```
 
 ### Discriminated union
