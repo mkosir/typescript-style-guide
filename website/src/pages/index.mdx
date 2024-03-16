@@ -137,23 +137,22 @@ Template literal types have many applicable use cases e.g. API endpoints, routin
 const userEndpoint = '/api/usersss'; // Type 'string' - Since typo 'usersss', route doesn't exist and results in runtime error
 // ✅ Use
 type ApiRoute = 'users' | 'posts' | 'comments';
-type ApiEndpoint = `/api/${ApiRoute}`;
+type ApiEndpoint = `/api/${ApiRoute}`; // Type ApiEndpoint = "/api/users" | "/api/posts" | "/api/comments"
 const userEndpoint: ApiEndpoint = '/api/users';
 
 // ❌ Avoid
-const homeTitleTranslation = 'translation.homesss.title'; // Type 'string' - Since typo 'homesss', translation doesn't exist and results in runtime error
+const homeTitle = 'translation.homesss.title'; // Type 'string' - Since typo 'homesss', translation doesn't exist and results in runtime error
 // ✅ Use
 type LocaleKeyPages = 'home' | 'about' | 'contact';
-type TranslationKey = `translation.${LocaleKeyPages}.${string}`;
-const homeTitleTranslation: TranslationKey = 'translation.home.title';
+type TranslationKey = `translation.${LocaleKeyPages}.${string}`; // Type TranslationKey = `translation.home.${string}` | `translation.about.${string}` | `translation.contact.${string}`
+const homeTitle: TranslationKey = 'translation.home.title';
 
 // ❌ Avoid
 const color = 'blue-450'; // Type 'string' - Since color 'blue-450' doesn't exist and results in runtime error
 // ✅ Use
 type BaseColor = 'blue' | 'red' | 'yellow' | 'gray';
 type Variant = 50 | 100 | 200 | 300 | 400;
-// Type blue-50, blue-100, blue-200, blue-300, blue-400, red-50, red-100, #AD3128 ...
-type Color = `${BaseColor}-${Variant}` | `#${string}`;
+type Color = `${BaseColor}-${Variant}` | `#${string}`; // Type Color = "blue-50" | "blue-100" | "blue-200" ... | "red-50" | "red-100" ... | #${string}
 ```
 
 ### Discriminated union
