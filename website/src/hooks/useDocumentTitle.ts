@@ -38,8 +38,7 @@ const toUpperEachWord = (text: string) =>
   text
     .toLowerCase()
     .split(' ')
-    //@ts-expect-error revert the function
-    .map((word) => word[0].toUpperCase() + word.substring(1))
+    .map((word) => word[0]?.toUpperCase() + word.substring(1))
     .join(' ');
 
 type UseDocumentTitleProps = {
