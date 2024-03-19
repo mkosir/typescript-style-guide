@@ -168,13 +168,13 @@ Embrace using discriminated unions:
 - Exhaustiveness check - TypeScript can ensure that all possible variants of a type are implemented, eliminating the risk of undefined or unexpected behavior at runtime. ([eslint rule](https://typescript-eslint.io/rules/switch-exhaustiveness-check/))
 
   ```ts
-  const shapes = [
+  const SHAPES = [
     { kind: 'square', size: 7 },
     { kind: 'rectangle', width: 12, height: 6 },
     { kind: 'circle', radius: 23 },
   ] as const;
 
-  type Shape = (typeof shapes)[number];
+  type Shape = (typeof SHAPES)[number];
 
   // TypeScript warns us with errors in calculateArea function
   const calculateArea = (shape: Shape) => {
