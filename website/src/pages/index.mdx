@@ -187,6 +187,7 @@ Embrace using discriminated unions:
   };
   ```
 
+- Avoid code complexity introduced by [flag variables](#type-union--boolean-flags).
 - Clear code intent, as it becomes easier to read and understand by explicitly indicating the possible cases for a given type.
 - TypeScript can narrow down union types, ensuring code correctness at compile time.
 - Discriminated unions make refactoring and maintenance easier by providing a centralized definition of related types. When adding or modifying types within the union, the compiler reports any inconsistencies throughout the codebase.
@@ -475,6 +476,23 @@ type Color = typeof COLOR;
 type ColorKey = keyof Color; // Type "PRIMARY" | "SECONDARY" | "BRAND"
 type ColorValue = Color[ColorKey]; // Type "#B33930" | "#113A5C" | "#9C0E7D"
 ```
+
+### Type Union & Boolean Flags
+
+Strive to use type union variable instead multiple boolean flag variables.
+
+Flags tend to compound over time and become hard to maintain, since they hide the actual app state.
+
+```ts
+// ❌ Avoid introducing multiple boolean flag variables
+const isPending, isProcessing, isConfirmed, isExpired;
+
+// ✅ Use type union variable
+type UserStatus = 'pending' | 'processing' | 'confirmed' | 'expired';
+const userStatus: UserStatus;
+```
+
+When maintaining code that makes the number of possible states grows quickly because use of flags, there are almost always unhandled states, utilize [discriminated union](#discriminated-union).
 
 ### Null & Undefined
 
