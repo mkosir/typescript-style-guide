@@ -62,8 +62,6 @@ Style Guide assumes using, but is not limited to:
 - Strong emphasis to keep naming conventions consistent and readable. [&#11107;](#naming-conventions)
 - Use named exports. [&#11107;](#named-export)
 - Code is organized and grouped by feature. Collocate code as close as possible to where it's relevant. [&#11107;](#code-collocation)
-- UI components must only show derived state and send events, nothing more (no business logic). [&#11107;](#component-types)
-- Test business logic, not implementation details. [&#11107;](#what--how-to-test)
 
 ## Types
 
@@ -993,7 +991,7 @@ export const Foo = ({ name, score }: FooProps) => {...
   </PriceList>;
   ```
 
-- UI components should show derived state and send events, nothing more.
+- UI components should show derived state and send events, nothing more (no business logic).
 - As in many programming languages functions args can be passed to the next function and on to the next etc.  
   React components are no different, where prop drilling should not become an issue.  
   If with app scaling prop drilling truly becomes an issue, try to refactor render method, local states in parent components, using composition etc.
@@ -1071,7 +1069,8 @@ it('should render user description when title is confirmed');
 
 ### Test Tooling
 
-Tests can be run through npm scripts, but to improve development experience it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) and [Playwright Test](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright) VS code extension so any single [unit/integration](https://github.com/mkosir/typescript-style-guide/raw/main/misc/vscode-jest-runner.gif) or [E2E](https://github.com/mkosir/typescript-style-guide/raw/main/misc/vscode-playwright-test.gif) test can be run instantly, especially if testing app/package in larger monorepo codebase.
+Tests can be run through scripts, but it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) and [Playwright Test](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright) VS code extension alongside.  
+With extension any single [unit/integration](https://github.com/mkosir/typescript-style-guide/raw/main/misc/vscode-jest-runner.gif) or [E2E](https://github.com/mkosir/typescript-style-guide/raw/main/misc/vscode-playwright-test.gif) test can be run instantly, especially if testing app or package in larger monorepo codebase.
 
 ```sh
 code --install-extension firsttris.vscode-jest-runner
