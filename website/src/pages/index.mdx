@@ -1019,6 +1019,7 @@ Automated test comes with benefits that helps us write better code and makes it 
 - Make tests as isolated as possible, where they don't depend on order of execution and should run independently with its own local storage, session storage, data, cookies etc.
   Test isolation improves reproducibility, makes debugging easier and prevents cascading test failures.
 - Tests should be resilient to changes.
+  - Black box testing - Always test only implementation that is publicly exposed, don't write fragile tests on how implementation works internally.
   - Query HTML elements based on attributes that are unlikely to change. Order of priority must be followed as specified in [Testing Library](https://testing-library.com/docs/queries/about/#priority) - [role](https://testing-library.com/docs/queries/byrole), [label](https://testing-library.com/docs/queries/bylabeltext), [placeholder](https://testing-library.com/docs/queries/byplaceholdertext), [text contents](https://testing-library.com/docs/queries/bytext), [display value](https://testing-library.com/docs/queries/bydisplayvalue), [alt text](https://testing-library.com/docs/queries/byalttext), [title](https://testing-library.com/docs/queries/bytitle), [test ID](https://testing-library.com/docs/queries/bytestid).
   - If testing with a database then make sure you control the data. If test are run against a staging environment make sure it doesn't change.
 
