@@ -811,6 +811,55 @@ apps/
 
 In case using frontend framework with file-system based router (e.g. Nextjs), `pages` folder serves only as a router, where its responsibility is to define routes (no business logic implementation).
 
+Example backend project structure with file/folder grouped by feature:
+
+```shell
+product-manager/
+├─ dist/
+├── database/
+│   ├── migrations/
+│   │   ├── 20220102063048_create_accounts.ts
+│   │   └── ...
+│   └── seeders/
+│       ├── 20221116042655-feeds.ts
+│       └── ...
+├─ docker/
+├─ logs/
+├─ scripts/
+├─ src/
+│  ├─ common/
+│  │  ├─ consts/
+│  │  ├─ middleware/
+│  │  ├─ types/
+│  │  └─ ...
+│  ├─ modules/
+│  │   ├── admin/
+│  │   │   ├── account/
+│  │   │   │   ├── account.model.ts
+│  │   │   │   ├── account.controller.ts
+│  │   │   │   ├── account.route.ts
+│  │   │   │   ├── account.service.ts
+│  │   │   │   ├── account.validation.ts
+│  │   │   │   ├── account.test.ts
+│  │   │   │   └── index.ts
+│  │   │   └── ...
+│  │   ├── general/
+│  │   │   ├── general.model.ts
+│  │   │   ├── general.controller.ts
+│  │   │   ├── general.route.ts
+│  │   │   ├── general.service.ts
+│  │   │   ├── general.validation.ts
+│  │   │   ├── general.test.ts
+│  │   │   └── index.ts
+│  │   ├─ ...
+│  │   └─ index.tsx
+│  └─ ...
+├─ ...
+├─ eslintrc.js
+├─ package.json
+└─ tsconfig.json
+```
+
 ## Appendix - React
 
 Since React components and hooks are also functions, respective [function conventions](#functions) applies.
