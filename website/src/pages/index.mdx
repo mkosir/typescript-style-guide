@@ -557,6 +557,22 @@ While it's often hard to find the best name, try optimize code for consistency a
 - **Booleans**  
   Prefixed with `is`, `has` etc.  
   `isDisabled`, `hasProduct`
+
+  [Eslint rule](https://typescript-eslint.io/rules/naming-convention) implements:
+
+  ```ts
+  // .eslintrc.js
+  '@typescript-eslint/naming-convention': [
+    'error',
+    {
+      selector: 'variable',
+      types: ['boolean'],
+      format: ['PascalCase'],
+      prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+    },
+  ],
+  ```
+
 - **Constants**  
   Capitalized  
   `PRODUCT_ID`
@@ -592,6 +608,24 @@ While it's often hard to find the best name, try optimize code for consistency a
 
 Camel case  
 `filterProductsByType`, `formatCurrency`
+
+#### Types
+
+Pascal case  
+`OrderStatus`, `ProductItem`
+
+[Eslint rule](https://typescript-eslint.io/rules/naming-convention) implements:
+
+```ts
+// .eslintrc.js
+'@typescript-eslint/naming-convention': [
+  'error',
+  {
+    selector: 'typeAlias',
+    format: ['PascalCase'],
+  },
+],
+```
 
 #### Generics
 
