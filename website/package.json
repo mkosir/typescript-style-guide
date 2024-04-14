@@ -26,13 +26,13 @@
     "react": "18.2.0",
     "react-animate-height": "3.2.3",
     "react-dom": "18.2.0",
-    "react-parallax-tilt": "1.7.220"
+    "react-parallax-tilt": "1.7.221"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.2.1",
     "@docusaurus/tsconfig": "3.2.1",
     "@trivago/prettier-plugin-sort-imports": "4.3.0",
-    "@types/react": "18.2.75",
+    "@types/react": "18.2.78",
     "@typescript-eslint/eslint-plugin": "7.6.0",
     "@typescript-eslint/parser": "7.6.0",
     "autoprefixer": "10.4.19",
@@ -46,7 +46,7 @@
     "prettier": "3.2.5",
     "prettier-plugin-tailwindcss": "0.5.13",
     "tailwindcss": "3.4.3",
-    "typescript": "5.4.4"
+    "typescript": "5.4.5"
   },
   "browserslist": {
     "production": [
@@ -61,6 +61,6 @@
     ]
   },
   "engines": {
-    "node": ">=20.12.1"
+    "node": ">=20.12.2"
   }
 }
