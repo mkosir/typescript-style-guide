@@ -341,6 +341,14 @@ const x: Array<string> = ['foo', 'bar'];
 const y: ReadonlyArray<string> = ['foo', 'bar'];
 ```
 
+### Services
+
+Documentation becomes outdated the moment it's written, and worse than no documentation is wrong documentation. The same can be said about types when describing modules your app interacts with (APIs, messaging systems, databases).
+
+For external API services e.g. REST, GraphQL etc. it's crucial to generate types from their contracts, whether it's Swagger, schemas, or other sources. Avoid manually declaring and maintaining them, as it's easy to get them out of sync.
+
+As exception manually declare types only when their is truly no documentation provided by external service.
+
 ## Functions
 
 Function conventions should be followed as much as possible (some of the conventions derives from functional programming basic concepts):
