@@ -596,9 +596,10 @@ While it's often hard to find the best name, try optimize code for consistency a
   } as const;
   ```
 
-  If object type exist use `satisfies` operator, to verify you object constant matches its type.
+  If object type exist use `satisfies` operator in conjunction with const assertion, to conform object matches its type.
 
   ```ts
+  // OrderStatus type is already defined - e.g. generated from database schema model, API etc.
   type OrderStatus = {
     pending: 'pending' | 'idle';
     fulfilled: boolean;
