@@ -150,10 +150,12 @@ Consider benefits when explicitly typing the return value of a function:
 
 ### Discriminated union
 
+If there is only one TypeScript feature to choose, embrace discriminated unions.
+
 Discriminated unions are a powerful concept to model complex data structures and improve type safety, leading to clearer and less error-prone code.  
 You may encounter discriminated unions under different names such as tagged unions or sum types in various programming languages as C, Haskell, Rust (in conjunction with pattern-matching).
 
-Embrace using discriminated unions:
+Discriminated unions advantages:
 
 - As mentioned in [Args as Discriminated Union](#args-as-discriminated-union), discriminated union eliminates optional args which decreases complexity on function API.
 - Exhaustiveness check - TypeScript can ensure that all possible variants of a type are implemented, eliminating the risk of undefined or unexpected behavior at runtime. ([eslint rule](https://typescript-eslint.io/rules/switch-exhaustiveness-check/))
