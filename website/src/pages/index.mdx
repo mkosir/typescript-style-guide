@@ -1112,7 +1112,7 @@ Automated test comes with benefits that helps us write better code and makes it 
   - Assert - Validate the outcome against expectations. **Strive for minimal number of asserts**.  
     A rule "unit tests should fail for exactly one reason" doesn't need to apply always, but it can indicate a code smell if there are tests with many asserts in codebase.
 - As mentioned in [function conventions](#functions) try to keep them pure, and impure one small and focused.  
-  It will make them easy to test, by passing args and observing return values, since we will **rarely need to mock dependencies**.
+  It makes them easy to test, by passing args and observing return values, since we will **rarely need to mock dependencies**.
 - Strive to write tests in a way your app is used by a user, meaning test business logic.  
   E.g. given some user input, they receive the expected output for a process.
 - Make tests as isolated as possible, where they don't depend on order of execution and should run independently with its own local storage, session storage, data, cookies etc.
