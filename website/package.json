@@ -26,7 +26,7 @@
     "react": "18.3.1",
     "react-animate-height": "3.2.3",
     "react-dom": "18.3.1",
-    "react-parallax-tilt": "1.7.233"
+    "react-parallax-tilt": "1.7.234"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.4.0",
@@ -45,7 +45,7 @@
     "postcss": "8.4.40",
     "prettier": "3.3.3",
     "prettier-plugin-tailwindcss": "0.6.5",
-    "tailwindcss": "3.4.6",
+    "tailwindcss": "3.4.7",
     "typescript": "5.5.4"
   },
   "browserslist": {
