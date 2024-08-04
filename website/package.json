@@ -26,7 +26,7 @@
     "react": "18.3.1",
     "react-animate-height": "3.2.3",
     "react-dom": "18.3.1",
-    "react-parallax-tilt": "1.7.234"
+    "react-parallax-tilt": "1.7.235"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.4.0",
@@ -35,7 +35,7 @@
     "@types/react": "18.3.3",
     "@typescript-eslint/eslint-plugin": "7.17.0",
     "@typescript-eslint/parser": "7.17.0",
-    "autoprefixer": "10.4.19",
+    "autoprefixer": "10.4.20",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-import": "2.29.1",
