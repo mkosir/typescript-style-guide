@@ -96,7 +96,7 @@ const [isActive, setIsActive] = useState(false); // Type 'boolean'
 
 // ❌ Avoid - Don't infer a (wide) type, it can be narrowed.
 const employees = new Map(); // Type 'Map<any, any>'
-employees.set('Lea', 'foo-anything');
+employees.set('Lea', 17);
 type UserRole = 'admin' | 'guest';
 const [userRole, setUserRole] = useState('admin'); // Type 'string'
 
