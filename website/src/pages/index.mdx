@@ -54,11 +54,11 @@ Style Guide assumes using, but is not limited to:
 ## TLDR
 
 - Embrace const assertions. [&#11107;](#const-assertion)
-- Strive for data immutability. [&#11107;](#data-immutability)
+- Strive for data immutability (`Readonly`, `ReadonlyArray`). [&#11107;](#data-immutability)
 - Embrace discriminated unions. [&#11107;](#discriminated-union)
+- Majority of function arguments should be required (use optional sparingly). [&#11107;](#required--optional-args)
 - Avoid type assertions. [&#11107;](#type--non-nullability-assertions)
 - Strive for functions to be pure, stateless and have single responsibility. [&#11107;](#functions)
-- Majority of function arguments should be required (use optional sparingly). [&#11107;](#required--optional-args)
 - Strong emphasis to keep naming conventions consistent and readable. [&#11107;](#naming-conventions)
 - Use named exports. [&#11107;](#named-export)
 - Code is organized and grouped by feature. Collocate code as close as possible to where it's relevant. [&#11107;](#code-collocation)
@@ -406,23 +406,23 @@ type StatusParams = {
 
 // ✅ Strive to have majority of args required, if that's not possible,
 // use discriminated union for clear intent on function usage
-type StatusParamsSuccess = {
+type StatusSuccessParams = {
   status: 'success';
   data: Products;
   title: string;
 };
 
-type StatusParamsLoading = {
+type StatusLoadingParams = {
   status: 'loading';
   time: number;
 };
 
-type StatusParamsError = {
+type StatusErrorParams = {
   status: 'error';
   error: string;
 };
 
-type StatusParams = StatusSuccess | StatusLoading | StatusError;
+type StatusParams = StatusSuccessParams | StatusLoadingParams | StatusErrorParams;
 
 export const parseStatus = (params: StatusParams) => {...
 ```
