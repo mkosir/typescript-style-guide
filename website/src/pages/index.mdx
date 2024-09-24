@@ -1094,7 +1094,7 @@ export const Foo = ({ name, score }: FooProps) => {...
 - Data fetching is only allowed in container components.
 - Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
 - Use of client-state library for global state is discouraged.  
-  Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings - `/me` endpoint). If still global state is truly needed use [Zustand](https://github.com/pmndrs/zustand) or Context.
+  Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings - `/me` endpoint). If still global state is truly needed use [Zustand](https://github.com/pmndrs/zustand) or [Context](https://react.dev/reference/react/createContext).
 
 ## Appendix - Tests
 
