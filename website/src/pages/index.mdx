@@ -1110,7 +1110,7 @@ Automated test comes with benefits that helps us write better code and makes it 
   - Arrange - Setup preconditions or the initial state necessary for the test case. Create necessary objects and define input values.
   - Act - Perform the action you want to unit test (invoke a method, triggering an event etc.). **Strive for minimal number of actions**.
   - Assert - Validate the outcome against expectations. **Strive for minimal number of asserts**.  
-    A rule "unit tests should fail for exactly one reason" doesn't need to apply always, but it can indicate a code smell if there are tests with many asserts in codebase.
+    A rule "unit tests should fail for exactly one reason" doesn't need to apply always, but it can indicate a code smell if there are tests with many asserts in a codebase.
 - As mentioned in [function conventions](#functions) try to keep them pure, and impure one small and focused.  
   It makes them easy to test, by passing args and observing return values, since we will **rarely need to mock dependencies**.
 - Strive to write tests in a way your app is used by a user, meaning test business logic.  
