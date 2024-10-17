@@ -49,7 +49,7 @@ Style Guide requires you to use:
 Style Guide assumes using, but is not limited to:
 
 - [React](https://github.com/facebook/react) as UI library for frontend conventions.
-- [Playwright](https://playwright.dev/) and [Testing Library](https://testing-library.com/) for testing conventions.
+- [Playwright](https://playwright.dev/) and [Vitest](https://vitest.dev/) for testing conventions.
 
 ## TLDR
 
@@ -1116,7 +1116,7 @@ Automated test comes with benefits that helps us write better code and makes it 
 - Strive to write tests in a way your app is used by a user, meaning test business logic.  
   E.g. For a specific user role or permission, given some input, we receive the expected output from the process.
 - Make tests as isolated as possible, where they don't depend on order of execution and should run independently with its own local storage, session storage, data, cookies etc.
-  Test isolation improves reproducibility, makes debugging easier and prevents cascading test failures.
+  Test isolation speeds up the test run, improves reproducibility, makes debugging easier and prevents cascading test failures.
 - Tests should be resilient to changes.
   - Black box testing - Always test only implementation that is publicly exposed, don't write fragile tests on how implementation works internally.
   - Query HTML elements based on attributes that are unlikely to change. Order of priority must be followed as specified in [Testing Library](https://testing-library.com/docs/queries/about/#priority) - [role](https://testing-library.com/docs/queries/byrole), [label](https://testing-library.com/docs/queries/bylabeltext), [placeholder](https://testing-library.com/docs/queries/byplaceholdertext), [text contents](https://testing-library.com/docs/queries/bytext), [display value](https://testing-library.com/docs/queries/bydisplayvalue), [alt text](https://testing-library.com/docs/queries/byalttext), [title](https://testing-library.com/docs/queries/bytitle), [test ID](https://testing-library.com/docs/queries/bytestid).
@@ -1141,11 +1141,11 @@ Automated test comes with benefits that helps us write better code and makes it 
 ### Test Description
 
 All test descriptions must follow naming convention as `it('should ... when ...')`.  
- [Eslint rule](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/valid-title.md#mustmatch--mustnotmatch) implements regex:
+[Eslint rule](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/valid-title.md#mustmatch) implements:
 
 ```ts
 // .eslintrc.js
-'jest/valid-title': [
+'vitest/valid-title': [
   'error',
   {
     mustMatch: { it: [/should.*when/u.source, "Test title must include 'should' and 'when'"] },
@@ -1165,11 +1165,11 @@ it('should render user description when title is confirmed');
 
 ### Test Tooling
 
-Tests can be run through scripts, but it's highly encouraged to use [Jest Runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner) and [Playwright Test](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright) VS code extension alongside.  
-With extension any single [unit/integration](https://github.com/mkosir/typescript-style-guide/raw/main/misc/vscode-jest-runner.gif) or [E2E](https://github.com/mkosir/typescript-style-guide/raw/main/misc/vscode-playwright-test.gif) test can be run instantly, especially if testing app or package in larger monorepo codebase.
+Besides running tests through scripts, it's highly encouraged to use [Vitest Runner](https://marketplace.visualstudio.com/items?itemName=vitest.explorer) and [Playwright Test](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright) VS code extension alongside.  
+With extension any single [unit/integration](https://github.com/mkosir/typescript-style-guide/raw/main/misc/vscode-vitest-runner.gif) or [E2E](https://github.com/mkosir/typescript-style-guide/raw/main/misc/vscode-playwright-test.gif) test can be run instantly, especially if testing app or package in larger monorepo codebase.
 
 ```sh
-code --install-extension firsttris.vscode-jest-runner
+code --install-extension vitest.explorer
 code --install-extension ms-playwright.playwright
 ```
 
