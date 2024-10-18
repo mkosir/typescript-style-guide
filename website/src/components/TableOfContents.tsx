@@ -10,12 +10,12 @@ export const TableOfContents = ({ items }: { items: ReadonlyArray<TOCItem> }) =>
     <div className="toc-inline -mt-2">
       <button
         className="rounded-md border-none px-2 py-1 text-[11px] hover:cursor-pointer"
-        onClick={() => setIsTocExpanded((prev) => !prev)}
         title={`${isTocExpanded ? 'Collapse' : 'Expand'} Table of Contents`}
+        onClick={() => setIsTocExpanded((prev) => !prev)}
       >
         {isTocExpanded ? 'Collapse' : 'Expand'}
       </button>
-      <TOCInline toc={items} minHeadingLevel={2} maxHeadingLevel={isTocExpanded ? 3 : 2} />
+      <TOCInline maxHeadingLevel={isTocExpanded ? 3 : 2} minHeadingLevel={2} toc={items} />
     </div>
   );
 };

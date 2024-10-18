@@ -13,14 +13,14 @@ export const MainTitle = ({ children }: MainTitleProps) => {
   return (
     <div className="mb-7 flex justify-center">
       <Tilt
+        glareBorderRadius="9px"
+        glareColor={colorMode === 'dark' ? '#007cfe' : '#498cd5'}
+        glareEnable={true}
+        glareMaxOpacity={0.08}
+        glarePosition="all"
         tiltAxis="y"
         tiltMaxAngleY={5}
         transitionSpeed={2500}
-        glareEnable={true}
-        glareMaxOpacity={0.08}
-        glareColor={colorMode === 'dark' ? '#007cfe' : '#498cd5'}
-        glarePosition="all"
-        glareBorderRadius="9px"
       >
         <div className="flex items-center gap-2">
           <img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo-30.png" />
