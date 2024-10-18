@@ -38,8 +38,8 @@ export default tseslint.config(
       ...eslintPluginReactHooks.configs.recommended.rules,
 
       'react/prop-types': 'off',
-      'no-undef': 'off',
 
+      'no-undef': 'off',
       'prefer-template': 'error',
       'no-nested-ternary': 'error',
       'no-unneeded-ternary': 'error',
