@@ -249,7 +249,7 @@ const bar: number = foo as number;
 ### Type & Non-nullability Assertions
 
 Type assertions `user as User` and non-nullability assertions `user!.name` are unsafe. Both only silence TypeScript compiler and increase the risk of crashing application at runtime.  
-They can only be used as an exception (e.g. third party library types mismatch, dereferencing `unknown` etc.) with strong rational why being introduced into codebase.
+They can only be used as an exception (e.g. third party library types mismatch, dereferencing `unknown` etc.) with a strong rational for why it's introduced into the codebase.
 
 ```ts
 type User = { id: string; username: string; avatar: string | null };
@@ -283,7 +283,7 @@ TypeScript offers two options for type definitions - `type` and `interface`. As 
 All types must be defined with `type` alias [(eslint rule)](https://typescript-eslint.io/rules/consistent-type-definitions/#type).
 
 <Chip>
-  Consider using interfaces if developing package that can be further extended, team is more comfortable working with
+  Consider using interfaces if developing a package that can be further extended, team is more comfortable working with
   interfaces etc. In such case disable lint rule where needed e.g. using type unions (type Status = 'loading' | 'error')
   etc.
 </Chip>
@@ -349,11 +349,11 @@ Documentation becomes outdated the moment it's written, and worse than no docume
 
 For external API services e.g. REST, GraphQL etc. it's crucial to generate types from their contracts, whether it's Swagger, schemas, or other sources (e.g. [openapi-ts](https://github.com/drwpow/openapi-typescript), [graphql-config](https://github.com/kamilkisiela/graphql-config)...). Avoid manually declaring and maintaining them, as it's easy to get them out of sync.
 
-As exception manually declare types only when their is truly no documentation provided by external service.
+As an exception manually declare types only when there is truly no documentation provided by external service.
 
 ## Functions
 
-Function conventions should be followed as much as possible (some of the conventions derives from functional programming basic concepts):
+Function conventions should be followed as much as possible (some of the conventions derive from functional programming basic concepts):
 
 ### General
 
@@ -362,12 +362,12 @@ Function:
 - should have single responsibility.
 - should be stateless where the same input arguments return same value every single time.
 - should accept at least one argument and return data.
-- should not have side effects, but be pure. It's implementation should not modify or access variable value outside its local environment (global state, fetching etc.).
+- should not have side effects, but be pure. Implementation should not modify or access variable value outside its local environment (global state, fetching etc.).
 
 ### Single Object Arg
 
 To keep function readable and easily extensible for the future (adding/removing args), strive to have single object as the function arg, instead of multiple args.  
- As exception this does not apply when having only one primitive single arg (e.g. simple functions isNumber(value), implementing currying etc.).
+ As an exception this does not apply when having only one primitive single arg (e.g. simple functions isNumber(value), implementing currying etc.).
 
 ```ts
 // ❌ Avoid having multiple arguments
@@ -388,7 +388,7 @@ transformUserInput({
 ### Required & Optional Args
 
 **Strive to have majority of args required and use optional sparingly.**  
- If function becomes to complex it probably should be broken into smaller pieces.  
+ If the function becomes too complex, it probably should be broken into smaller pieces.  
  An exaggerated example where implementing 10 functions with 5 required args each, is better then implementing one "can do it all" function that accepts 50 optional args.
 
 ### Args as Discriminated Union
