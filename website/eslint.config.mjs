@@ -32,7 +32,11 @@ export default tseslint.config(
       prettier: eslintPluginPrettierRecommended,
     },
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     rules: {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      ...eslintPluginReactHooks.configs.recommended.rules,
+
       'react/prop-types': 'off',
       'no-undef': 'off',
 
