@@ -12,6 +12,7 @@ export default tseslint.config(
   eslintPluginImport.flatConfigs.recommended,
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
+  eslintPluginReact.configs.flat.recommended,
   {
     languageOptions: {
       parserOptions: {
@@ -20,13 +21,15 @@ export default tseslint.config(
         tsconfigRootDir: import.meta.name,
       },
     },
+    settings: {
+      react: { version: 'detect' },
+    },
   },
   {
     files: ['**/*.{js,ts,tsx}'],
     ignores: ['!.*', 'node_modules', 'dist', 'compiled', 'build', '.docusaurus'],
 
     plugins: {
-      react: eslintPluginReact,
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       'react-hooks': eslintPluginReactHooks,
       prettier: eslintPluginPrettierRecommended,
@@ -38,6 +41,7 @@ export default tseslint.config(
       ...eslintPluginReactHooks.configs.recommended.rules,
 
       'react/prop-types': 'off',
+      'react/sort-prop-types': 'error',
 
       'no-undef': 'off',
       'prefer-template': 'error',
@@ -54,10 +58,6 @@ export default tseslint.config(
 
       'import/no-default-export': 'error',
       'import/no-unresolved': 'off',
-    },
-
-    settings: {
-      react: { version: 'detect' },
     },
   },
 );
