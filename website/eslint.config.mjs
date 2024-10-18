@@ -12,6 +12,8 @@ export default tseslint.config(
   eslintPluginImport.flatConfigs.recommended,
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
+  // Uncomment once released - https://github.com/facebook/react/pull/30774
+  // eslintPluginReactHooks.configs.recommended,
   eslintPluginReact.configs.flat.recommended,
   eslintPluginPrettierRecommended,
   {
@@ -31,12 +33,14 @@ export default tseslint.config(
     ignores: ['!.*', 'node_modules', 'dist', 'compiled', 'build', '.docusaurus'],
 
     plugins: {
+      // Remove once released - https://github.com/facebook/react/pull/30774
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       'react-hooks': eslintPluginReactHooks,
     },
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     rules: {
+      // Remove once released - https://github.com/facebook/react/pull/30774
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       ...eslintPluginReactHooks.configs.recommended.rules,
 
