@@ -13,6 +13,7 @@ export default tseslint.config(
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   eslintPluginReact.configs.flat.recommended,
+  eslintPluginPrettierRecommended,
   {
     languageOptions: {
       parserOptions: {
@@ -32,7 +33,6 @@ export default tseslint.config(
     plugins: {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       'react-hooks': eslintPluginReactHooks,
-      prettier: eslintPluginPrettierRecommended,
     },
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
