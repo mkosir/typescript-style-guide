@@ -44,7 +44,6 @@ export default tseslint.config(
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       ...eslintPluginReactHooks.configs.recommended.rules,
 
-      'react/prop-types': 'off',
       'react/sort-prop-types': 'error',
 
       'no-undef': 'off',
