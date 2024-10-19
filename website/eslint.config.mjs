@@ -17,6 +17,9 @@ export default tseslint.config(
   eslintPluginReact.configs.flat.recommended,
   eslintPluginPrettierRecommended,
   {
+    ignores: ['!.*', 'node_modules', 'dist', 'compiled', 'build', '.docusaurus'],
+  },
+  {
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -30,7 +33,6 @@ export default tseslint.config(
   },
   {
     files: ['**/*.{js,ts,tsx}'],
-    ignores: ['!.*', 'node_modules', 'dist', 'compiled', 'build', '.docusaurus'],
 
     plugins: {
       // Remove once released - https://github.com/facebook/react/pull/30774
