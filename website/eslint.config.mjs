@@ -1,4 +1,5 @@
 import eslint from '@eslint/js';
+import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import eslintPluginReact from 'eslint-plugin-react';
@@ -16,6 +17,8 @@ export default tseslint.config(
   // eslintPluginReactHooks.configs.recommended,
   eslintPluginReact.configs.flat.recommended,
   eslintPluginPrettierRecommended,
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  eslintConfigPrettier,
   {
     ignores: ['!.*', 'node_modules', 'dist', 'compiled', 'build', '.docusaurus'],
   },
