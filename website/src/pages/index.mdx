@@ -506,7 +506,7 @@ const COLOR = {
   brand: '#9C0E7D',
 } as const;
 type Color = typeof COLOR;
-type ColorKey = keyof Color; // Type "PRIMARY" | "SECONDARY" | "BRAND"
+type ColorKey = keyof Color; // Type "primary" | "secondary" | "brand"
 type ColorValue = Color[ColorKey]; // Type "#B33930" | "#113A5C" | "#9C0E7D"
 ```
 
