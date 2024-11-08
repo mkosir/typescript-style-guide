@@ -1,12 +1,10 @@
-name: CI
-
 on:
   push:
     branches:
       - main
 
 env:
-  NODE_VERSION: '20.x'
+  NODE_VERSION: "20.x"
   CACHE_PATHS_BUILD: |
     ./website/build
   CACHE_KEY_BUILD: build-${{ github.sha }}-${{ github.ref_type }}
