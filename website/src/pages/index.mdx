@@ -514,7 +514,7 @@ type ColorValue = Color[ColorKey]; // Type "#B33930" | "#113A5C" | "#9C0E7D"
 
 Embrace type unions, especially when type union options are mutually exclusive, instead multiple boolean flag variables.
 
-Flags tend to compound over time and become hard to maintain, since they hide the actual app state.
+Boolean flags have a tendency to accumulate over time, leading to confusing and error-prone code, since they hide the actual app state.
 
 ```ts
 // ❌ Avoid introducing multiple boolean flag variables
