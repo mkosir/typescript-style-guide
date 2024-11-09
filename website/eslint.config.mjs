@@ -51,7 +51,6 @@ export default tseslint.config(
 
       'react/jsx-sort-props': ['error', { callbacksLast: true, shorthandFirst: true }],
 
-      'no-undef': 'off',
       'prefer-template': 'error',
       'no-nested-ternary': 'error',
       'no-unneeded-ternary': 'error',
