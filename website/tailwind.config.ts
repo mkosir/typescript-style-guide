@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from 'tailwindcss';
+
+const tailwindConfig: Config = {
   corePlugins: {
     preflight: false, // disable Tailwind's reset -  don't wipe out the rest of Docusaurus styles
   },
@@ -8,3 +9,6 @@ module.exports = {
   theme: {},
   plugins: [],
 };
+
+// eslint-disable-next-line import/no-default-export
+export default tailwindConfig;
