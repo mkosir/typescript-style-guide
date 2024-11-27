@@ -149,7 +149,7 @@ If introduction of many optional properties truly can't be avoided utilize **dis
 
 ```ts
 // ❌ Avoid optional properties as they increase complexity
-type StatusParams = {
+type User = {
   id?: number;
   email?: string;
   dashboardAccess?: boolean;
@@ -184,6 +184,15 @@ type GuestUser = {
 
 // Discriminated union type 'User' with no optional properties
 type User = AdminUser | RegularUser | GuestUser;
+
+const regularUser: User = {
+  role: 'regular',
+  id: 212,
+  email: 'lea@user.com',
+  subscriptionPlan: 'pro',
+  rewardsPoints: 1500,
+  dashboardAccess: false, // Error 'dashboardAccess' property does not exist
+};
 ```
 
 ### Discriminated union
