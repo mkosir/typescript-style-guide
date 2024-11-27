@@ -113,7 +113,7 @@ Majority of the data should be immutable with use of `Readonly`, `ReadonlyArray`
 
 Using readonly type prevents accidental data mutations, which reduces the risk of introducing bugs related to unintended side effects.
 
-When performing data processing always return new array, object etc. To keep cognitive load for future developers low, try to keep data objects small.  
+When performing data processing always return new array, object etc. To minimize cognitive load for future developers, aim to keep data objects flat and small.  
 As an exception mutations should be used sparingly in cases where truly necessary: complex objects, performance reasoning etc.
 
 ```ts
