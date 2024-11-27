@@ -135,6 +135,57 @@ const removeFirstUser = (users: ReadonlyArray<User>) => {
 };
 ```
 
+### Required & Optional Object Properties
+
+**Strive to have majority of object properties required and use optional sparingly.**
+
+It will reflect designing type-safe and maintainable code:
+
+- Clarity and Predictability - Required properties make it explicit which data is always expected. This reduces ambiguity for developers using or consuming the object, as they know exactly what must be present.
+- Type Safety - When properties are required, TypeScript can enforce their presence at compile time. This prevents runtime errors caused by missing properties.
+- Avoids Overuse of Optional Chaining - If too many properties are optional, it often leads to extensive use of optional chaining (`?.`) to handle potential undefined values. This clutters the code and obscure its intent.
+
+If introduction of many optional properties truly can't be avoided utilize **discriminated union type**.
+
+```ts
+// ❌ Avoid optional properties as they increase complexity
+type StatusParams = {
+  id?: number;
+  email?: string;
+  dashboardAccess?: boolean;
+  adminPermissions?: ReadonlyArray<string>;
+  subscriptionPlan?: 'free' | 'pro' | 'premium';
+  rewardsPoints?: number;
+  temporaryToken?: string;
+};
+
+// ✅ Strive to have majority of properties required, if that's not possible,
+// use discriminated union for clear intent on object usage
+type AdminUser = {
+  role: 'admin';
+  id: number;
+  email: string;
+  dashboardAccess: boolean;
+  adminPermissions: ReadonlyArray<string>;
+};
+
+type RegularUser = {
+  role: 'regular';
+  id: number;
+  email: string;
+  subscriptionPlan: 'free' | 'pro' | 'premium';
+  rewardsPoints: number;
+};
+
+type GuestUser = {
+  role: 'guest';
+  temporaryToken: string;
+};
+
+// Discriminating union type 'User' with no optional properties
+type User = AdminUser | RegularUser | GuestUser;
+```
+
 ### Discriminated union
 
 If there's only one TypeScript feature to choose from, embrace discriminated unions.
