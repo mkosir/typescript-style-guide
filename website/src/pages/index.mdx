@@ -396,7 +396,7 @@ transformUserInput({
 When applicable use **discriminated union type** to eliminate optional args, which will decrease complexity on function API and only necessary/required args will be passed depending on its use case.
 
 ```ts
-// ❌ Avoid optional args as they increase complexity of function API
+// ❌ Avoid optional properties as they increase complexity of function API
 type StatusParams = {
   data?: Products;
   title?: string;
@@ -404,7 +404,7 @@ type StatusParams = {
   error?: string;
 };
 
-// ✅ Strive to have majority of args required, if that's not possible,
+// ✅ Strive to have majority of properties required, if that's not possible,
 // use discriminated union for clear intent on function usage
 type StatusSuccessParams = {
   status: 'success';
