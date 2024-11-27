@@ -55,8 +55,8 @@ Style Guide assumes using, but is not limited to:
 
 - Embrace const assertions. [&#11107;](#const-assertion)
 - Strive for data immutability (`Readonly`, `ReadonlyArray`). [&#11107;](#data-immutability)
+- Majority of object properties should be required (use optional sparingly). [&#11107;](#required--optional-object-properties)
 - Embrace discriminated unions. [&#11107;](#discriminated-union)
-- Majority of function arguments should be required (use optional sparingly). [&#11107;](#required--optional-args)
 - Avoid type assertions. [&#11107;](#type--non-nullability-assertions)
 - Strive for functions to be pure, stateless and have single responsibility. [&#11107;](#functions)
 - Strong emphasis to keep naming conventions consistent and readable. [&#11107;](#naming-conventions)
@@ -182,7 +182,7 @@ type GuestUser = {
   temporaryToken: string;
 };
 
-// Discriminating union type 'User' with no optional properties
+// Discriminated union type 'User' with no optional properties
 type User = AdminUser | RegularUser | GuestUser;
 ```
 
@@ -195,7 +195,7 @@ You may encounter discriminated unions under different names such as tagged unio
 
 Discriminated unions advantages:
 
-- As mentioned in [Args as Discriminated Union](#args-as-discriminated-union), discriminated union eliminates optional object properties which decreases complexity on function API.
+- As mentioned in [Required & Optional Object Properties](#required--optional-object-properties), [Args as Discriminated Union](#args-as-discriminated-type) and [Props as Discriminated Type](#props-as-discriminated-type), discriminated union eliminates optional object properties which decreases complexity.
 - Exhaustiveness check - TypeScript can ensure that all possible variants of a type are implemented, eliminating the risk of undefined or unexpected behavior at runtime. ([eslint rule](https://typescript-eslint.io/rules/switch-exhaustiveness-check/))
 
   ```ts
@@ -442,7 +442,7 @@ transformUserInput({
  If the function becomes too complex, it probably should be broken into smaller pieces.  
  An exaggerated example where implementing 10 functions with 5 required args each, is better then implementing one "can do it all" function that accepts 50 optional args.
 
-### Args as Discriminated Union
+### Args as Discriminated Type
 
 When applicable use **discriminated union type** to eliminate optional properties, which will decrease complexity on function API and only required properties will be passed depending on its use case.
 
@@ -473,6 +473,7 @@ type StatusErrorParams = {
   error: string;
 };
 
+// Discriminated function param 'StatusParams' with no optional properties
 type StatusParams = StatusSuccessParams | StatusLoadingParams | StatusErrorParams;
 
 export const parseStatus = (params: StatusParams) => {...
@@ -1003,6 +1004,7 @@ type StatusError = {
   error: string;
 };
 
+// Discriminated component props 'StatusProps' with no optional properties
 type StatusProps = StatusSuccess | StatusLoading | StatusError;
 
 export const Status = (status: StatusProps) => {...
