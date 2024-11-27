@@ -111,7 +111,7 @@ const [userRole, setUserRole] = useState<UserRole>('admin'); // Type 'UserRole'
 
 The majority of the data should be immutable, using types like `Readonly` and `ReadonlyArray`.
 
-Using readonly type prevents accidental data mutations, which reduces the risk of introducing bugs related to unintended side effects.
+Using readonly type prevents accidental data mutations and reduces the risk of bugs caused by unintended side effects.
 
 When performing data processing always return new array, object etc. To minimize cognitive load for future developers, aim to keep data objects flat and small.  
 Mutations should be used sparingly and only as an exception in cases where they are truly necessary, such as when dealing with complex objects, performance-related reasons etc.
