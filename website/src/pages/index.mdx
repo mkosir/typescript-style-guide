@@ -53,15 +53,15 @@ Style Guide assumes using, but is not limited to:
 
 ## TLDR
 
-- Embrace const assertions. [&#11107;](#const-assertion)
-- Strive for data immutability using types like `Readonly` and `ReadonlyArray`. [&#11107;](#data-immutability)
-- Majority of object properties should be required (use optional sparingly). [&#11107;](#required--optional-object-properties)
-- Embrace discriminated unions. [&#11107;](#discriminated-union)
-- Avoid type assertions. [&#11107;](#type--non-nullability-assertions)
-- Strive for functions to be pure, stateless and have single responsibility. [&#11107;](#functions)
-- Strong emphasis to keep naming conventions consistent and readable. [&#11107;](#naming-conventions)
-- Use named exports. [&#11107;](#named-export)
-- Code is organized and grouped by feature. Collocate code as close as possible to where it's relevant. [&#11107;](#code-collocation)
+- **Embrace const assertions**. [&#11107;](#const-assertion)
+- Strive for **data immutability** using types like `Readonly` and `ReadonlyArray`. [&#11107;](#data-immutability)
+- Majority of **object properties** should be **required** (use optional sparingly). [&#11107;](#required--optional-object-properties)
+- **Embrace discriminated unions**. [&#11107;](#discriminated-union)
+- **Avoid type assertions**. [&#11107;](#type--non-nullability-assertions)
+- Strive for functions to be **pure**, **stateless** and have **single responsibility**. [&#11107;](#functions)
+- Strong emphasis to keep **naming conventions consistent and readable**. [&#11107;](#naming-conventions)
+- Use **named exports**. [&#11107;](#named-export)
+- Code is **organized** and **grouped by feature**. Collocate code as close as possible to where it's relevant. [&#11107;](#code-collocation)
 
 ## Types
 
@@ -92,7 +92,6 @@ const [isActive, setIsActive] = useState<boolean>(false);
 const USER_ROLE = 'admin'; // Type 'admin'
 const employees = new Map([['Gabriel', 32]]); // Type 'Map<string, number>'
 const [isActive, setIsActive] = useState(false); // Type 'boolean'
-
 
 // ❌ Avoid - Don't infer a (wide) type, it can be narrowed.
 const employees = new Map(); // Type 'Map<any, any>'
@@ -513,8 +512,6 @@ Strive to use const assertion `as const`:
 
   const RATE_LIMIT = 25;
   const RATE_LIMIT_MESSAGE = `Max number of requests/min is ${RATE_LIMIT}.`; // Type string
-
-
 
   // ✅ Use const assertion
   const FOO_LOCATION = { x: 50, y: 130 } as const; // Type '{ readonly x: 50; readonly y: 130; }'
