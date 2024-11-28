@@ -5,7 +5,7 @@ toc_min_heading_level: 2
 toc_max_heading_level: 2
 ---
 
-import { Chip, MainTitle, Rule, TableOfContents } from '@site/src/components';
+import { MainTitle, Note, Rule, TableOfContents } from '@site/src/components';
 import { UseDocumentTitle } from '@site/src/hooks';
 
 <UseDocumentTitle>TypeScript Style Guide</UseDocumentTitle>
@@ -77,10 +77,10 @@ Being expressive and keeping types as **narrow as possible** brings benefits to 
 
 As rule of thumb, explicitly declare a type when it help narrows it.
 
-<Chip>
+<Note>
   Just because you don't need to add types, doesn't mean you shouldn't. In some cases explicit type declaration can
   increase code readability and intent.
-</Chip>
+</Note>
 
 ```ts
 // ❌ Avoid - Don't explicitly declare a type, it can be inferred.
@@ -346,11 +346,11 @@ TypeScript offers two options for type definitions - `type` and `interface`. As 
 
 All types must be defined with `type` alias <Rule href='https://typescript-eslint.io/rules/consistent-type-definitions/#type' />.
 
-<Chip>
+<Note>
   Consider using interfaces if developing a package that can be further extended, team is more comfortable working with
   interfaces etc. In such case disable lint rule where needed e.g. using type unions (type Status = 'loading' | 'error')
   etc.
-</Chip>
+</Note>
 
 ```ts
 // ❌ Avoid interface definitions
@@ -392,10 +392,10 @@ app.listen(process.env.PORT, () => {...}
 
 Array types must be defined with generic syntax <Rule href='https://typescript-eslint.io/rules/array-type/#generic' />.
 
-<Chip>
+<Note>
   As there is no functional difference between 'generic' and 'array' definition, feel free to set the one your team
   finds most readable to work with.
-</Chip>
+</Note>
 
 ```ts
 // ❌ Avoid

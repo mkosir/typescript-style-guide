@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import AnimateHeight from 'react-animate-height';
 
-type ChipProps = {
+type NoteProps = {
   children?: string;
 };
 
-export const Chip = ({ children }: ChipProps) => {
+export const Note = ({ children }: NoteProps) => {
   const [descriptionHeight, setDescriptionHeight] = useState<'auto' | 0>(0);
 
   return (
