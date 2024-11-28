@@ -9,11 +9,9 @@ type ChipProps = {
 
 const COLORS = {
   dark: {
-    chip: 'bg-gray-200 text-neutral-600',
     description: 'border-gray-200 bg-neutral-600 text-gray-200',
   },
   light: {
-    chip: 'bg-neutral-500 text-gray-200',
     description: 'border-neutral-500 bg-gray-200 text-neutral-600',
   },
 } as const;
@@ -25,7 +23,7 @@ export const Chip = ({ children }: ChipProps) => {
   return (
     <div className="mb-2">
       <div
-        className={`mb-1 inline-flex cursor-pointer items-center rounded-lg px-1.5 text-[11px] font-normal ${COLORS[colorMode].chip}`}
+        className={`mb-1 inline-flex cursor-pointer items-center rounded-lg bg-neutral-500 px-1.5 text-[11px] font-normal text-gray-200 dark:bg-gray-200 dark:text-neutral-600`}
         onClick={() => setDescriptionHeight((prev) => (prev === 0 ? 'auto' : 0))}
       >
         <div className="mr-1">Note</div>
