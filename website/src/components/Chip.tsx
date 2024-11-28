@@ -13,8 +13,8 @@ const COLORS = {
     description: 'border-gray-200 bg-neutral-600 text-gray-200',
   },
   light: {
-    chip: 'bg-neutral-600 text-gray-200',
-    description: 'border-neutral-600 bg-gray-200 text-neutral-600',
+    chip: 'bg-neutral-500 text-gray-200',
+    description: 'border-neutral-500 bg-gray-200 text-neutral-600',
   },
 } as const;
 
