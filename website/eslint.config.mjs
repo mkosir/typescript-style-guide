@@ -50,6 +50,7 @@ export default tseslint.config(
       ...eslintPluginReactHooks.configs.recommended.rules,
 
       'react/jsx-sort-props': ['error', { callbacksLast: true, shorthandFirst: true }],
+      'react/react-in-jsx-scope': 'off',
 
       'prefer-template': 'error',
       'no-nested-ternary': 'error',

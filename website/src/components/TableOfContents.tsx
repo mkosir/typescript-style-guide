@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { TOCItem } from '@docusaurus/mdx-loader';
 import TOCInline from '@theme/TOCInline';

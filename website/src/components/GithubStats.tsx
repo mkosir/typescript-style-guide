@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const GithubStats = () => {
   return (
     <div className="flex items-center gap-0.5">
