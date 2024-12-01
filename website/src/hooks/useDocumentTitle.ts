@@ -1,5 +1,8 @@
 import { useEffect } from 'react';
 
+/**
+ * Update the document title dynamically based on hash and title
+ */
 export const useDocumentTitle = (title: string) => {
   useEffect(() => {
     const handlePopstate = () => {
