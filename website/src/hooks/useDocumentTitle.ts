@@ -49,7 +49,7 @@ type UseDocumentTitleProps = {
 };
 
 /**
- * Wrapper component, since MDX file can't import hooks directly.
+ * Wrapper component, since MDX file can't use hook directly.
  */
 export const UseDocumentTitle = ({ children }: UseDocumentTitleProps) => {
   useDocumentTitle(children);
