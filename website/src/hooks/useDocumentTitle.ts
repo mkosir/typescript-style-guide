@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 /**
- * Update the document title dynamically based on hash and title
+ * Update the document title dynamically based on hash and title.
  */
 export const useDocumentTitle = (title: string) => {
   useEffect(() => {
@@ -48,6 +48,9 @@ type UseDocumentTitleProps = {
   children: string;
 };
 
+/**
+ * Wrapper component, since MDX file can't import hooks directly.
+ */
 export const UseDocumentTitle = ({ children }: UseDocumentTitleProps) => {
   useDocumentTitle(children);
 
