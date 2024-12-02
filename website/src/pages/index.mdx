@@ -342,9 +342,9 @@ TypeScript offers two options for type definitions - `type` and `interface`. As 
 All types must be defined with `type` alias <Rule href='https://typescript-eslint.io/rules/consistent-type-definitions/#type' />.
 
 <Note>
-  Consider using interfaces if developing a package that can be further extended, team is more comfortable working with
-  interfaces etc. In such case disable lint rule where needed e.g. using type unions (type Status = 'loading' | 'error')
-  etc.
+  Consider using interfaces when developing a package that may be extended in the future by third-party consumers or
+  when the team prefers working with interfaces. In such cases, you can disable linting rules where necessary, such as
+  when using type unions (e.g. `type Status = 'loading' | 'error'`).
 </Note>
 
 ```ts
