@@ -275,6 +275,48 @@ const iconColor: Color = 'blue-400';
 const customColor: Color = '#AD3128';
 ```
 
+### Type-Safe Constants with `satisfies`
+
+The `as const satisfies` syntax is a powerful feature in TypeScript that combines strict type-checking and immutability for constants. It is particularly useful when defining constants that need to conform to a specific type.
+
+Key benefits:
+
+- Immutability with `as const`
+  - Ensures the constant is treated as readonly.
+  - Narrows the types of values to their literals, preventing accidental modifications.
+- Validation with `satisfies`
+  - Ensures the object conforms to a broader type without widening its inferred type.
+  - Helps catch type mismatches at compile time while preserving narrowed inferred types.
+
+```ts
+type OrderStatus = {
+  pending: 'pending' | 'idle';
+  fulfilled: boolean;
+  error: string;
+};
+
+// ❌ Avoid mutable constant of wide type
+const IDLE_ORDER: OrderStatus = {
+  pending: 'idle',
+  fulfilled: true,
+  error: 'Shipping Error',
+};
+
+// ❌ Avoid constant with incorrect values
+const IDLE_ORDER = {
+  pending: 'done',
+  fulfilled: 'partially',
+  error: 116,
+} as const;
+
+// ✅ Use immutable constant of narrowed type
+const IDLE_ORDER = {
+  pending: 'idle',
+  fulfilled: true,
+  error: 'Shipping Error',
+} as const satisfies OrderStatus;
+```
+
 ### Type any & unknown
 
 `any` data type must not be used as it represents literally “any” value that TypeScript defaults to and skips type checking since it cannot infer the type. As such, `any` is dangerous, it can mask severe programming errors.
@@ -680,17 +722,17 @@ While it's often hard to find the best name, try optimize code for consistency a
   } as const;
   ```
 
-  If object type exist use `satisfies` operator in conjunction with const assertion, to conform object matches its type.
+  If type exist use `satisfies` operator in conjunction with const assertion, to conform object matches its type.
 
   ```ts
-  // OrderStatus type is already defined - e.g. generated from database schema model, API etc.
+  // OrderStatus is predefined (e.g. generated from database schema, API)
   type OrderStatus = {
     pending: 'pending' | 'idle';
     fulfilled: boolean;
     error: string;
   };
 
-  const ORDER_STATUS = {
+  const PENDING_STATUS = {
     pending: 'pending',
     fulfilled: true,
     error: 'Shipping Error',
