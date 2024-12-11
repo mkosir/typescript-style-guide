@@ -289,6 +289,19 @@ Key benefits:
   - Helps catch type mismatches at compile time while preserving narrowed inferred types.
 
 ```ts
+// Array constant
+type UserRole = 'admin' | 'editor' | 'moderator' | 'viewer' | 'guest';
+
+// ❌ Avoid constant of wide type
+const DASHBOARD_ACCESS_ROLES: ReadonlyArray<UserRole> = ['admin', 'editor', 'moderator'];
+
+// ❌ Avoid constant with incorrect values
+const DASHBOARD_ACCESS_ROLES = ['admin', 'contributor', 'analyst'] as const;
+
+// ✅ Use immutable constant of narrowed type
+const DASHBOARD_ACCESS_ROLES = ['admin', 'editor', 'moderator'] as const satisfies ReadonlyArray<UserRole>;
+
+// Object constant
 type OrderStatus = {
   pending: 'pending' | 'idle';
   fulfilled: boolean;
