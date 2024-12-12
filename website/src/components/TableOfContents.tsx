@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { TOCItem } from '@docusaurus/mdx-loader';
+import type { TOCItem } from '@docusaurus/mdx-loader';
 import TOCInline from '@theme/TOCInline';
 
 export const TableOfContents = ({ items }: { items: ReadonlyArray<TOCItem> }) => {
