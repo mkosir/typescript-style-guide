@@ -493,7 +493,7 @@ import type { MyClass } from 'some-library';
 
 Documentation becomes outdated the moment it's written, and worse than no documentation is wrong documentation. The same applies to types when describing the modules your app interacts with, such as APIs, messaging systems, databases etc.
 
-For external API services, such as REST, GraphQL etc. it's crucial to generate types from their contracts, whether they use Swagger, schemas, or other sources (e.g. [openapi-ts](https://github.com/drwpow/openapi-typescript), [graphql-config](https://github.com/kamilkisiela/graphql-config)...). Avoid manually declaring and maintaining types, as they can easily fall out of sync.
+For external API services, such as REST, GraphQL etc. it's crucial to generate types from their contracts, whether they use Swagger, schemas, or other sources (e.g. [openapi-ts](https://github.com/drwpow/openapi-typescript), [graphql-config](https://github.com/kamilkisiela/graphql-config) etc.). Avoid manually declaring and maintaining types, as they can easily fall out of sync.
 
 As an exception manually declare types only when there is truly no documentation provided by external service.
 
@@ -610,7 +610,7 @@ Strive to use const assertion `as const`:
 
 Const assertion must be used over enum.
 
-While enums can still cover use cases as const assertion would, we tend to avoid it. Some of the reasonings as mentioned in TypeScript documentation - [Const enum pitfalls](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls), [Objects vs Enums](https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums), [Reverse mappings](https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings)...
+While enums can still cover use cases as const assertion would, we tend to avoid it. Some of the reasonings as mentioned in TypeScript documentation - [Const enum pitfalls](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls), [Objects vs Enums](https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums), [Reverse mappings](https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings) etc.
 
 ```ts
 // .eslintrc.js
@@ -678,7 +678,7 @@ In TypeScript types `null` and `undefined` many times can be used interchangeabl
 Strive to:
 
 - Use `null` to explicitly state it has no value - assignment, return function type etc.
-- Use `undefined` assignment when the value doesn't exist. E.g. exclude fields in form, request payload, database query ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined))...
+- Use `undefined` assignment when the value doesn't exist. E.g. exclude fields in form, request payload, database query ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined)) etc.
 
 ## Naming
 
@@ -687,7 +687,7 @@ Strive to keep naming conventions consistent and readable, with important contex
 ### Named Export
 
 Named exports must be used to ensure that all imports follow a uniform pattern <Rule href='https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md' />.  
-This keeps variables, functions... names consistent across the entire codebase.  
+This keeps variables, functions etc. names consistent across the entire codebase.  
 Named exports have the benefit of erroring when import statements try to import something that hasn't been declared.
 
 In case of exceptions e.g. Next.js pages, disable rule:
@@ -941,7 +941,7 @@ To make import statements more readable and easier to understand:
 
 - **Relative** imports `./sortItems` must be used when importing files within the same feature, that are 'close' to each other, which also allows moving feature around the codebase without introducing changes in these imports.
 - **Absolute** imports `@common/utils` must be used in all other cases.
-- **All** imports must be auto sorted by tooling e.g. [prettier-plugin-sort-imports](https://github.com/trivago/prettier-plugin-sort-imports), [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/order.md)...
+- **All** imports must be auto sorted by tooling e.g. [prettier-plugin-sort-imports](https://github.com/trivago/prettier-plugin-sort-imports), [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/order.md) etc.
 
 ```ts
 // ❌ Avoid
@@ -1201,7 +1201,7 @@ export const Foo = ({ name, score }: FooProps) => {...
 - Utilize storing state in the URL, especially for filtering, sorting etc.
 - Don't sync URL state with local state.
 - Consider passing data simply through props, using the URL, or composing children. Use global state (Zustand, Context) as a last resort.
-- Use React compound components when components should belong and work together: `menu`, `accordion`,`navigation`, `tabs`, `list`,...  
+- Use React compound components when components should belong and work together: `menu`, `accordion`,`navigation`, `tabs`, `list`, etc.  
   Always export compound components as:
 
   ```tsx
@@ -1238,7 +1238,7 @@ export const Foo = ({ name, score }: FooProps) => {...
   React components are no different, where prop drilling should not become an issue.  
   If with app scaling prop drilling truly becomes an issue, try to refactor render method, local states in parent components, using composition etc.
 - Data fetching is only allowed in container components.
-- Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client)...).
+- Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client) etc.).
 - Use of client-state library for global state is discouraged.  
   Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings - `/me` endpoint). If still global state is truly needed use [Zustand](https://github.com/pmndrs/zustand) or [Context](https://react.dev/reference/react/createContext).
 
