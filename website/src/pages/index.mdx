@@ -377,7 +377,7 @@ const renderUserAvatar = (avatar: string) => {...}
 
 ### Type Error
 
-If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it <Rule href="https://typescript-eslint.io/rules/prefer-ts-expect-error/" />. If at any future point suppressed line becomes error-free, TypeScript compiler will indicate it.  
+If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it <Rule href="https://typescript-eslint.io/rules/ban-ts-comment" />. If at any future point suppressed line becomes error-free, TypeScript compiler will indicate it.  
 `@ts-ignore` is not allowed, where `@ts-expect-error` must be used with provided description <Rule href="https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description" />.
 
 ```ts
