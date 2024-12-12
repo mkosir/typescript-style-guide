@@ -204,7 +204,9 @@ You may encounter discriminated unions under different names such as tagged unio
 Discriminated unions advantages:
 
 - As mentioned in [Required & Optional Object Properties](#required--optional-object-properties), [Args as Discriminated Union](#args-as-discriminated-type) and [Props as Discriminated Type](#props-as-discriminated-type), discriminated union eliminates optional object properties which decreases complexity.
-- Exhaustiveness check - TypeScript can ensure that all possible variants of a type are implemented, eliminating the risk of undefined or unexpected behavior at runtime. <Rule href="https://typescript-eslint.io/rules/switch-exhaustiveness-check/" />
+- Exhaustiveness check - TypeScript can ensure that all possible variants of a type are implemented, eliminating the risk of undefined or unexpected behavior at runtime.
+
+  <Rule href="https://typescript-eslint.io/rules/switch-exhaustiveness-check/">{`"@typescript-eslint/switch-exhaustiveness-check": "error"`}</Rule>
 
   ```ts
   type Circle = { kind: 'circle'; radius: number };
@@ -234,7 +236,10 @@ Discriminated unions advantages:
 
 ### Return Types
 
-Including return type annotations is highly encouraged, although not required <Rule href="https://typescript-eslint.io/rules/explicit-function-return-type/" />.
+<Rule
+  prefix="Including return type annotations is highly encouraged, although not required"
+  href="https://typescript-eslint.io/rules/explicit-function-return-type/"
+>{`"@typescript-eslint/explicit-function-return-type": "error"`}</Rule>
 
 Consider benefits when explicitly typing the return value of a function:
 
@@ -377,25 +382,22 @@ const renderUserAvatar = (avatar: string) => {...}
 
 ### Type Error
 
-If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it <Rule href="https://typescript-eslint.io/rules/ban-ts-comment" />. If at any future point suppressed line becomes error-free, TypeScript compiler will indicate it.  
-`@ts-ignore` is not allowed, where `@ts-expect-error` must be used with provided description <Rule href="https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description" />.
+If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to suppress it. If at any future point suppressed line becomes error-free, TypeScript compiler will indicate it. `@ts-ignore` is not
+allowed, where `@ts-expect-error` must be used with provided description.
 
-```ts
-// .eslintrc.js
-'@typescript-eslint/ban-ts-comment': [
+<Rule href="https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description">{`'@typescript-eslint/ban-ts-comment': [
   'error',
   {
     'ts-expect-error': 'allow-with-description'
   },
-],
-```
+]`}</Rule>
 
 ```ts
-// ❌ Avoid @ts-ignore
+// ❌ Avoid @ts-ignore as it will do nothing if the following line is error-free.
 // @ts-ignore
 const newUser = createUser('Gabriel');
 
-// ✅ Use @ts-expect-error with description
+// ✅ Use @ts-expect-error with description.
 // @ts-expect-error: The library type definition is wrong, createUser accepts string as an argument.
 const newUser = createUser('Gabriel');
 ```
@@ -404,7 +406,10 @@ const newUser = createUser('Gabriel');
 
 TypeScript offers two options for type definitions - `type` and `interface`. As they come with some functional differences in most cases they can be used interchangeably. We try to limit syntax difference and pick one for consistency.
 
-All types must be defined with `type` alias <Rule href='https://typescript-eslint.io/rules/consistent-type-definitions/#type' />.
+<Rule
+  prefix="All types must be defined with `type` alias"
+  href="https://typescript-eslint.io/rules/consistent-type-definitions/#type"
+>{`'@typescript-eslint/consistent-type-definitions': ['error', 'type']`}</Rule>
 
 <Note>
   Consider using interfaces when developing a package that may be extended in the future by third-party consumers or
@@ -450,8 +455,18 @@ app.listen(process.env.PORT, () => {...}
 
 ### Array Types
 
-Array types must be defined with generic syntax <Rule href='https://typescript-eslint.io/rules/array-type/#generic' />.
-
+<Rule
+  prefix="Array types must be defined with generic syntax"
+  href="https://typescript-eslint.io/rules/array-type/#generic"
+>
+  {`'@typescript-eslint/naming-convention': [
+    'error',
+    {
+      selector: 'typeAlias',
+      format: ['PascalCase'],
+      },
+  ]`}
+</Rule>
 <Note>
   As there is no functional difference between 'generic' and 'array' definition, feel free to set the one your team
   finds most readable to work with.
@@ -471,11 +486,13 @@ const y: ReadonlyArray<string> = ['foo', 'bar'];
 
 TypeScript allows specifying a `type` keyword on imports to indicate that the export exists only in the type system, not at runtime.
 
-Type imports must always be separated <Rule href="https://typescript-eslint.io/rules/consistent-type-imports/" />:
+Type imports must always be separated:
 
 - Tree Shaking and Dead Code Elimination: If you use `import` for types instead of `import type`, the bundler might include the imported module in the bundle unnecessarily, increasing the size. Separating imports ensures that only necessary runtime code is included.
 - Minimizing Dependencies: Some modules may contain both runtime and type definitions. Mixing type imports with runtime imports might lead to accidental inclusion of unnecessary runtime code.
 - Improves code clarity by making the distinction between runtime dependencies and type-only imports explicit.
+
+<Rule href="https://typescript-eslint.io/rules/consistent-type-imports/">{`'@typescript-eslint/consistent-type-imports': 'error'`}</Rule>
 
 ```ts
 // ❌ Avoid using `import` for both runtime and type
@@ -686,25 +703,26 @@ Strive to keep naming conventions consistent and readable, with important contex
 
 ### Named Export
 
-Named exports must be used to ensure that all imports follow a uniform pattern <Rule href='https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md' />.  
-This keeps variables, functions etc. names consistent across the entire codebase.  
-Named exports have the benefit of erroring when import statements try to import something that hasn't been declared.
+<Rule
+  prefix="Named exports must be used to ensure that all imports follow a uniform pattern"
+  href="https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md"
+>{`'import/no-default-export': 'error'
 
-In case of exceptions e.g. Next.js pages, disable rule:
-
-```ts
-// .eslintrc.js
+// In case of exceptions disable the rule
 overrides: [
-  {
-    files: ["src/pages/**/*"],
-    rules: { "import/no-default-export": "off" },
-  },
-],
-```
+{
+files: ["src/pages/**/*"],
+rules: { "import/no-default-export": "off" },
+},
+]
+`}</Rule>
+
+This keeps variables, functions etc. names consistent across the entire codebase. Named exports have the benefit of
+erroring when import statements try to import something that hasn't been declared.
 
 ### Naming Conventions
 
-While it's often hard to find the best name, try optimize code for consistency and future reader by following conventions:
+While it's often hard to find the best name, aim to optimize code for consistency and future reader by following conventions:
 
 #### Variables
 
@@ -715,20 +733,19 @@ While it's often hard to find the best name, try optimize code for consistency a
   Prefixed with `is`, `has` etc.  
   `isDisabled`, `hasProduct`
 
-  <Rule href="https://typescript-eslint.io/rules/naming-convention" /> implements:
+  <Rule href="https://typescript-eslint.io/rules/naming-convention" />
 
-  ```ts
-  // .eslintrc.js
-  '@typescript-eslint/naming-convention': [
-    'error',
-    {
-      selector: 'variable',
-      types: ['boolean'],
-      format: ['PascalCase'],
-      prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
-    },
-  ],
-  ```
+```ts
+'@typescript-eslint/naming-convention': [
+  'error',
+  {
+    selector: 'variable',
+    types: ['boolean'],
+    format: ['PascalCase'],
+    prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+  },
+],
+```
 
 - **Constants**  
   Capitalized  
@@ -772,18 +789,16 @@ Camel case
 Pascal case  
 `OrderStatus`, `ProductItem`
 
-<Rule href="https://typescript-eslint.io/rules/naming-convention" /> implements:
-
-```ts
-// .eslintrc.js
+<Rule href="https://typescript-eslint.io/rules/naming-convention">
+  {`
 '@typescript-eslint/naming-convention': [
   'error',
   {
     selector: 'typeAlias',
     format: ['PascalCase'],
   },
-],
-```
+]`}
+</Rule>
 
 #### Generics
 
@@ -791,6 +806,18 @@ A generic variable must start with the capital letter T followed by a descriptiv
 
 Creating more complex types often include generics, which can make them hard to read and understand, that's why we try to put best effort when naming them.  
 Naming generics using popular convention with one letter `T`, `K` etc. is not allowed, the more variables we introduce, the easier it is to mistake them.
+
+<Rule href="https://typescript-eslint.io/rules/naming-convention">
+  {`'@typescript-eslint/naming-convention': [
+  'error',
+  {
+    // Generic type parameter must start with letter T, followed by any uppercase letter.
+    selector: 'typeParameter',
+    format: ['PascalCase'],
+    custom: { regex: '^T[A-Z]', match: true },
+  },
+]`}
+</Rule>
 
 ```ts
 // ❌ Avoid naming generics with one letter
@@ -804,21 +831,6 @@ const createPair = <TFirst, TSecond extends string>(first: TFirst, second: TSeco
   return [first, second];
 };
 const pair = createPair(1, 'a');
-```
-
-<Rule href="https://typescript-eslint.io/rules/naming-convention" /> implements:
-
-```ts
-// .eslintrc.js
-'@typescript-eslint/naming-convention': [
-  'error',
-  {
-    // Generic type parameter must start with letter T, followed by any uppercase letter.
-    selector: 'typeParameter',
-    format: ['PascalCase'],
-    custom: { regex: '^T[A-Z]', match: true },
-  },
-],
 ```
 
 #### Abbreviations & Acronyms
@@ -858,7 +870,9 @@ React component name following "Props" postfix
 #### Callback Props
 
 Event handler (callback) props are prefixed as `on*` - e.g. `onClick`.  
-Event handler implementation functions are prefixed as `handle*` - e.g. `handleClick` <Rule href="https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md" />.
+Event handler implementation functions are prefixed as `handle*` - e.g. `handleClick`.
+
+<Rule href="https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md" />
 
 ```tsx
 // ❌ Avoid inconsistent callback prop naming
@@ -872,7 +886,14 @@ Event handler implementation functions are prefixed as `handle*` - e.g. `handleC
 
 #### React Hooks
 
-Camel case, prefixed as 'use' <Rule href="https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks" />, symmetrically convention as `[value, setValue] = useState()` <Rule href="https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md#rule-details" />:
+<Rule
+  prefix="Camel case, prefixed as 'use'"
+  href="https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks"
+/>
+<Rule
+  prefix="Symmetrically convention as [value, setValue] = useState()"
+  href="https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md#rule-details"
+/>
 
 ```ts
 // ❌ Avoid inconsistent useState hook naming
@@ -886,7 +907,7 @@ const [color, setColor] = useState();
 const [isActive, setIsActive] = useState();
 ```
 
-Custom hook must always return an object:
+Custom hook must always return an object
 
 ```ts
 // ❌ Avoid
@@ -1288,17 +1309,14 @@ Automated test comes with benefits that helps us write better code and makes it 
 
 All test descriptions must follow naming convention as `it('should ... when ...')`.
 
-<Rule href="https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/valid-title.md#mustmatch" /> implements:
-
-```ts
-// .eslintrc.js
-'vitest/valid-title': [
-  'error',
-  {
-    mustMatch: { it: [/should.*when/u.source, "Test title must include 'should' and 'when'"] },
-  },
-],
-```
+<Rule href="https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/valid-title.md#mustmatch">
+  {`'vitest/valid-title': [
+    'error',
+    {
+      mustMatch: { it: [/should.*when/u.source, "Test title must include 'should' and 'when'"] },
+    },
+  ]`}
+</Rule>
 
 ```ts
 // ❌ Avoid
