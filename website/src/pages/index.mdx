@@ -314,7 +314,7 @@ type ApiEndpoint = `/api/${ApiRoute}`; // Type ApiEndpoint = "/api/users" | "/ap
 const userEndpoint: ApiEndpoint = '/api/users';
 
 // ❌ Avoid
-const homeTitle = 'translation.homesss.title'; // Type 'string' - Since typo 'homesss', translation doesn't exist and results in runtime error
+const homeTitle = 'translation.homesss.title'; // Type 'string' - Typo 'homesss': the translation doesn't exist, leading to a runtime error.
 // ✅ Use
 type LocaleKeyPages = 'home' | 'about' | 'contact';
 type TranslationKey = `translation.${LocaleKeyPages}.${string}`; // Type TranslationKey = `translation.home.${string}` | `translation.about.${string}` | `translation.contact.${string}`
