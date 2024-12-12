@@ -381,6 +381,16 @@ If TypeScript error can't be mitigated, as last resort use `@ts-expect-error` to
 `@ts-ignore` is not allowed, where `@ts-expect-error` must be used with provided description <Rule href="https://typescript-eslint.io/rules/ban-ts-comment/#allow-with-description" />.
 
 ```ts
+// .eslintrc.js
+'@typescript-eslint/ban-ts-comment': [
+  'error',
+  {
+    'ts-expect-error': 'allow-with-description'
+  },
+],
+```
+
+```ts
 // ❌ Avoid @ts-ignore
 // @ts-ignore
 const newUser = createUser('Gabriel');
