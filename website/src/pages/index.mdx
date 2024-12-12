@@ -307,7 +307,7 @@ Template literal types have many practical use cases, such as defining API endpo
 
 ```ts
 // ❌ Avoid
-const userEndpoint = '/api/usersss'; // Type 'string' - Since typo 'usersss', route doesn't exist and results in runtime error
+const userEndpoint = '/api/usersss'; // Type 'string' - Typo 'usersss': the route doesn't exist, leading to a runtime error.
 // ✅ Use
 type ApiRoute = 'users' | 'posts' | 'comments';
 type ApiEndpoint = `/api/${ApiRoute}`; // Type ApiEndpoint = "/api/users" | "/api/posts" | "/api/comments"
