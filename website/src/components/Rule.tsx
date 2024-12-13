@@ -24,7 +24,7 @@ export const Rule = ({ children, href, prefix }: RuleProps) => {
             <span
               className={clsx(
                 'ease inline-block transform transition-all duration-500',
-                descriptionHeight === 0 ? 'rotate-0' : 'rotate-[60deg]',
+                descriptionHeight === 0 ? 'rotate-0' : 'rotate-[65deg]',
               )}
             >
               📏
