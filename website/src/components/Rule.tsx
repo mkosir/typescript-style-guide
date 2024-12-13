@@ -23,7 +23,12 @@ export const Rule = ({ children, href, prefix }: RuleProps) => {
         </div>
         <AnimateHeight duration={500} easing="ease" height={descriptionHeight}>
           <div className="rounded-md border-0 border-l-[5px] border-solid border-neutral-500 bg-gray-200 p-2 text-xs italic text-neutral-600 dark:border-gray-200 dark:bg-neutral-600 dark:text-gray-200 [&_p]:mb-0">
-            <a className="text-sm" href={href} rel="noopener noreferrer" target="_blank">
+            <a
+              className="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline dark:text-blue-400 dark:hover:text-blue-500"
+              href={href}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               Rule
             </a>
             <CodeBlock className="!mb-0 mt-1 text-sm" language="ts" title="eslint.config.mjs">
