@@ -456,17 +456,9 @@ app.listen(process.env.PORT, () => {...}
 ### Array Types
 
 <Rule
-  prefix="Array types must be defined with generic syntax"
+  prefix="Array types should be defined using generic syntax"
   href="https://typescript-eslint.io/rules/array-type/#generic"
->
-  {`'@typescript-eslint/naming-convention': [
-    'error',
-    {
-      selector: 'typeAlias',
-      format: ['PascalCase'],
-      },
-  ]`}
-</Rule>
+>{`'@typescript-eslint/array-type': ['error', { default: 'generic' }]`}</Rule>
 <Note>
   As there is no functional difference between 'generic' and 'array' definition, feel free to set the one your team
   finds most readable to work with.
