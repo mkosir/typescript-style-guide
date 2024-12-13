@@ -621,16 +621,13 @@ Const assertion must be used over enum.
 
 While enums can still cover use cases as const assertion would, we tend to avoid it. Some of the reasonings as mentioned in TypeScript documentation - [Const enum pitfalls](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls), [Objects vs Enums](https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums), [Reverse mappings](https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings) etc.
 
-```ts
-// .eslintrc.js
-'no-restricted-syntax': [
-  'error',
-  {
-    selector: 'TSEnumDeclaration',
-    message: 'Use const assertion or a string union type instead.',
-  },
-],
-```
+<Rule href="https://eslint.org/docs/latest/rules/no-restricted-syntax">{`'no-restricted-syntax': [
+    'error',
+    {
+      selector: 'TSEnumDeclaration',
+      message: 'Use const assertion or a string union type instead.',
+    },
+]`}</Rule>
 
 ```ts
 // ❌ Avoid using enums
