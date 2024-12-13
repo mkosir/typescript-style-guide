@@ -51,6 +51,7 @@ export default tseslint.config(
 
       'react/jsx-sort-props': ['error', { callbacksLast: true, shorthandFirst: true }],
       'react/react-in-jsx-scope': 'off',
+      'react/hook-use-state': 'error',
 
       'prefer-template': 'error',
       'no-nested-ternary': 'error',
@@ -74,7 +75,7 @@ export default tseslint.config(
           selector: 'variable',
           types: ['boolean'],
           format: ['PascalCase'],
-          prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+          prefix: ['is', 'are', 'should', 'has', 'can', 'did', 'will'],
         },
         {
           // Generic type parameter must start with letter T, followed by any uppercase letter.

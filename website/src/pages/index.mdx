@@ -719,7 +719,7 @@ While it's often hard to find the best name, aim to optimize code for consistenc
   Camel case  
   `products`, `productsFiltered`
 - **Booleans**  
-   Camel case, prefixed with `is`, `has` etc.  
+   Prefixed with `is`, `has` etc.  
    `isDisabled`, `hasProduct`
   <!-- prettier-ignore-start -->
   <Rule href="https://typescript-eslint.io/rules/naming-convention">
@@ -728,7 +728,7 @@ While it's often hard to find the best name, aim to optimize code for consistenc
       {
         selector: 'variable',
         types: ['boolean'],
-        format: ['strictCamelCase'],
+        format: ['PascalCase'],
         prefix: ['is', 'are', 'should', 'has', 'can', 'did', 'will'],
       }
   ]
@@ -888,7 +888,7 @@ Event handler implementation functions are prefixed as `handle*` - e.g. `handleC
 <Rule
   prefix="Symmetrically convention as [value, setValue] = useState()"
   href="https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md#rule-details"
-/>
+>{`'react/hook-use-state': 'error'`}</Rule>
 
 ```ts
 // ❌ Avoid inconsistent useState hook naming
