@@ -801,13 +801,13 @@ Naming generics using popular convention with one letter `T`, `K` etc. is not al
 
 <Rule href="https://typescript-eslint.io/rules/naming-convention">
   {`'@typescript-eslint/naming-convention': [
-  'error',
-  {
-    // Generic type parameter must start with letter T, followed by any uppercase letter.
-    selector: 'typeParameter',
-    format: ['PascalCase'],
-    custom: { regex: '^T[A-Z]', match: true },
-  },
+    'error',
+    {
+      // Generic type parameter must start with letter T, followed by any uppercase letter.
+      selector: 'typeParameter',
+      format: ['PascalCase'],
+      custom: { regex: '^T[A-Z]', match: true },
+    }
 ]`}
 </Rule>
 
