@@ -722,22 +722,22 @@ While it's often hard to find the best name, aim to optimize code for consistenc
   Camel case  
   `products`, `productsFiltered`
 - **Booleans**  
-  Prefixed with `is`, `has` etc.  
-  `isDisabled`, `hasProduct`
-
-  <Rule href="https://typescript-eslint.io/rules/naming-convention" />
-
-  ```ts
-  '@typescript-eslint/naming-convention': [
-    'error',
-    {
-      selector: 'variable',
-      types: ['boolean'],
-      format: ['PascalCase'],
-      prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
-    },
-  ],
-  ```
+   Prefixed with `is`, `has` etc.  
+   `isDisabled`, `hasProduct`
+  <!-- prettier-ignore-start -->
+    <Rule href="https://typescript-eslint.io/rules/naming-convention">
+      {`'@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'variable',
+        types: ['boolean'],
+        format: ['PascalCase'],
+        prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+      }
+    ]
+    `}
+    </Rule>
+  <!-- prettier-ignore-end -->
 
 - **Constants**  
   Capitalized  
