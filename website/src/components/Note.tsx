@@ -6,18 +6,18 @@ type NoteProps = {
 };
 
 export const Note = ({ children }: NoteProps) => {
-  const [descriptionHeight, setDescriptionHeight] = useState<'auto' | 0>(0);
+  const [isRuleExpanded, setIsRuleExpanded] = useState(false);
 
   return (
     <div className="mb-2">
       <div
         className="mb-1 inline-flex cursor-pointer items-center rounded-lg bg-neutral-500 px-1.5 text-[11px] font-normal text-gray-200 dark:bg-gray-200 dark:text-neutral-600"
-        onClick={() => setDescriptionHeight((prev) => (prev === 0 ? 'auto' : 0))}
+        onClick={() => setIsRuleExpanded((prev) => !prev)}
       >
         <div className="mr-1">Note</div>
         <InfoIcon />
       </div>
-      <AnimateHeight duration={500} easing="ease" height={descriptionHeight}>
+      <AnimateHeight duration={500} easing="ease" height={isRuleExpanded ? 'auto' : 0}>
         <div className="rounded-md border-0 border-l-[5px] border-solid border-neutral-500 bg-gray-200 p-2 text-xs italic text-neutral-600 dark:border-gray-200 dark:bg-neutral-600 dark:text-gray-200 [&_p]:mb-0">
           {children}
         </div>
