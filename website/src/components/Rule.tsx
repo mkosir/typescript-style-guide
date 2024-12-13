@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AnimateHeight from 'react-animate-height';
 import CodeBlock from '@theme/CodeBlock';
-import clsx from 'clsx';
+import { cn } from '../utils/cn';
 
 type RuleProps = {
   children: string;
@@ -22,7 +22,7 @@ export const Rule = ({ children, href, prefix }: RuleProps) => {
         >
           <div className="mr-1">
             <span
-              className={clsx(
+              className={cn(
                 'ease inline-block transform transition-all duration-500',
                 isRuleExpanded ? 'rotate-[65deg]' : 'rotate-0',
               )}
