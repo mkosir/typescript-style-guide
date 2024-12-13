@@ -86,6 +86,17 @@ export default tseslint.config(
       ],
 
       'import/no-default-export': 'error',
+      'import/order': [
+        'error',
+        {
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling'],
+          'newlines-between': 'always',
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
+        },
+      ],
       'import/no-unresolved': 'off',
     },
   },

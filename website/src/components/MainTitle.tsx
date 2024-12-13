@@ -1,6 +1,5 @@
-import Tilt from 'react-parallax-tilt';
-
 import { useColorMode } from '@docusaurus/theme-common';
+import Tilt from 'react-parallax-tilt';
 
 type MainTitleProps = {
   children: string;

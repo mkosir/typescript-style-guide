@@ -1,6 +1,7 @@
+import CodeBlock from '@theme/CodeBlock';
 import { useState } from 'react';
 import AnimateHeight from 'react-animate-height';
-import CodeBlock from '@theme/CodeBlock';
+
 import { cn } from '../utils/cn';
 
 type RuleProps = {

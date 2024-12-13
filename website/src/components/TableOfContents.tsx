@@ -1,7 +1,6 @@
-import { useState } from 'react';
-
 import type { TOCItem } from '@docusaurus/mdx-loader';
 import TOCInline from '@theme/TOCInline';
+import { useState } from 'react';
 
 export const TableOfContents = ({ items }: { items: ReadonlyArray<TOCItem> }) => {
   const [isTocExpanded, setIsTocExpanded] = useState(false);
