@@ -861,7 +861,13 @@ React component name following "Props" postfix
 Event handler (callback) props are prefixed as `on*` - e.g. `onClick`.  
 Event handler implementation functions are prefixed as `handle*` - e.g. `handleClick`.
 
-<Rule href="https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md" />
+<Rule href="https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md">{`'react/jsx-handler-names': [
+    'error',
+    {
+      eventHandlerPrefix: 'handle',
+      eventHandlerPropPrefix: 'on',
+    },
+]`}</Rule>
 
 ```tsx
 // ❌ Avoid inconsistent callback prop naming
