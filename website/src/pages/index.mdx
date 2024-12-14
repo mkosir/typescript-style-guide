@@ -293,32 +293,50 @@ const IDLE_ORDER = {
 
 Template literal types allow you to create precise and type-safe string constructs by interpolating values. They are a powerful alternative to using the wide string type, providing better type safety and developer experience.
 
+Adopting template literal types brings several advantages::
+
+- Prevent errors caused by typos or invalid strings.
+- Provide better type safety and autocompletion support.
+- Improve code maintainability and readability.
+
 Template literal types have many practical use cases, such as defining API endpoints, routes, internationalization, database queries, CSS typings etc.
 
-```ts
-// ❌ Avoid
-const userEndpoint = '/api/usersss'; // Type 'string' - Typo 'usersss': the route doesn't exist, leading to a runtime error.
-// ✅ Use
-type ApiRoute = 'users' | 'posts' | 'comments';
-type ApiEndpoint = `/api/${ApiRoute}`; // Type ApiEndpoint = "/api/users" | "/api/posts" | "/api/comments"
-const userEndpoint: ApiEndpoint = '/api/users';
+Template literal types are useful in various scenarios, such as:
 
-// ❌ Avoid
-const homeTitle = 'translation.homesss.title'; // Type 'string' - Typo 'homesss': the translation doesn't exist, leading to a runtime error.
-// ✅ Use
-type LocaleKeyPages = 'home' | 'about' | 'contact';
-type TranslationKey = `translation.${LocaleKeyPages}.${string}`; // Type TranslationKey = `translation.home.${string}` | `translation.about.${string}` | `translation.contact.${string}`
-const homeTitle: TranslationKey = 'translation.home.title';
+- API Endpoints - Use template literal types to restrict values to valid API routes.
 
-// ❌ Avoid
-const color = 'blue-450'; // Type 'string' - Color 'blue-450' doesn't exist, leading to a runtime error.
-// ✅ Use
-type BaseColor = 'blue' | 'red' | 'yellow' | 'gray';
-type Variant = 50 | 100 | 200 | 300 | 400;
-type Color = `${BaseColor}-${Variant}` | `#${string}`; // Type Color = "blue-50" | "blue-100" | "blue-200" ... | "red-50" | "red-100" ... | #${string}
-const iconColor: Color = 'blue-400';
-const customColor: Color = '#AD3128';
-```
+  ```ts
+  // ❌ Avoid
+  const userEndpoint = '/api/usersss'; // Type 'string' - Typo 'usersss': the route doesn't exist, leading to a runtime error.
+  // ✅ Use
+  type ApiRoute = 'users' | 'posts' | 'comments';
+  type ApiEndpoint = `/api/${ApiRoute}`; // Type ApiEndpoint = "/api/users" | "/api/posts" | "/api/comments"
+  const userEndpoint: ApiEndpoint = '/api/users';
+  ```
+
+- Internationalization Keys - Avoid relying on raw strings for translation keys, which can lead to typos and missing translations. Use template literal types to define valid translation keys.
+
+  ```ts
+  // ❌ Avoid
+  const homeTitle = 'translation.homesss.title'; // Type 'string' - Typo 'homesss': the translation doesn't exist, leading to a runtime error.
+  // ✅ Use
+  type LocaleKeyPages = 'home' | 'about' | 'contact';
+  type TranslationKey = `translation.${LocaleKeyPages}.${string}`; // Type TranslationKey = `translation.home.${string}` | `translation.about.${string}` | `translation.contact.${string}`
+  const homeTitle: TranslationKey = 'translation.home.title';
+  ```
+
+- CSS Utilities - Avoid raw strings for color values, which can lead to invalid or non-existent colors. Use template literal types to enforce valid color names and values.
+
+  ```ts
+  // ❌ Avoid
+  const color = 'blue-450'; // Type 'string' - Color 'blue-450' doesn't exist, leading to a runtime error.
+  // ✅ Use
+  type BaseColor = 'blue' | 'red' | 'yellow' | 'gray';
+  type Variant = 50 | 100 | 200 | 300 | 400;
+  type Color = `${BaseColor}-${Variant}` | `#${string}`; // Type Color = "blue-50" | "blue-100" | "blue-200" ... | "red-50" | "red-100" ... | #${string}
+  const iconColor: Color = 'blue-400';
+  const customColor: Color = '#AD3128';
+  ```
 
 ### Return Types
 
