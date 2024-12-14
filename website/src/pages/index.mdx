@@ -382,7 +382,7 @@ const renderUserAvatar = (avatar: string) => {...}
 
 ### Type Error
 
-When a TypeScript error cannot be mitigated, use `@ts-expect-error` as a last resort to suppress it. This directive allows the TypeScript compiler to notify you if the suppressed line becomes error-free in the future.
+When a TypeScript error cannot be mitigated, use `@ts-expect-error` as a last resort to suppress it. This directive enables the TypeScript compiler to indicate when the suppressed line no longer contains an error.
 
 - Always use `@ts-expect-error` with a clear description explaining why it is necessary.
 - Avoid using `@ts-ignore`, as it does not provide the same level of safety and accountability as @ts-expect-error.
