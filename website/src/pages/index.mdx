@@ -75,15 +75,33 @@ Being expressive and keeping types as **narrow as possible** brings benefits to 
 
 ### Type Inference
 
-As a rule of thumb, explicitly declare a type when it helps narrow it.
+As a rule of thumb, explicitly declare types when it helps to narrow them.
 
 <Note>
   Just because you don't need to add types doesn't mean you shouldn't. In some cases, explicitly declaring types can
   improve code readability and clarify intent.
 </Note>
 
+Explicitly declare types when it helps to narrow them:
+
 ```ts
-// ❌ Avoid - Don't explicitly declare types when they can be inferred.
+// ❌ Avoid
+const employees = new Map(); // Inferred as wide type 'Map<any, any>'
+employees.set('Lea', 17);
+type UserRole = 'admin' | 'guest';
+const [userRole, setUserRole] = useState('admin'); // Inferred as 'string', not the desired narrowed literal type
+
+// ✅ Use explicit type declarations to narrow the types.
+const employees = new Map<string, number>(); // Narrowed to 'Map<string, number>'
+employees.set('Gabriel', 32);
+type UserRole = 'admin' | 'guest';
+const [userRole, setUserRole] = useState<UserRole>('admin'); // Explicit type 'UserRole'
+```
+
+Don't explicitly declare types when they can be inferred:
+
+```ts
+// ❌ Avoid
 const userRole: string = 'admin'; // Inferred as wide type 'string'
 const employees = new Map<string, number>([['Gabriel', 32]]); // Redundant type declaration
 const [isActive, setIsActive] = useState<boolean>(false); // Redundant, inferred as 'boolean'
@@ -92,18 +110,6 @@ const [isActive, setIsActive] = useState<boolean>(false); // Redundant, inferred
 const USER_ROLE = 'admin'; // Inferred as narrowed string literal type 'admin'
 const employees = new Map([['Gabriel', 32]]); // Inferred as 'Map<string, number>'
 const [isActive, setIsActive] = useState(false); // Inferred as 'boolean'
-
-// ❌ Avoid - Don't infer a wide types when they can be narrowed.
-const employees = new Map(); // Inferred as wide type 'Map<any, any>'
-employees.set('Lea', 17);
-type UserRole = 'admin' | 'guest';
-const [userRole, setUserRole] = useState('admin'); // Inferred as 'string', not the desired narrowed literal type
-
-// ✅ Use explicit type declaration to narrow the type.
-const employees = new Map<string, number>(); // Explicitly narrowed to 'Map<string, number>'
-employees.set('Gabriel', 32);
-type UserRole = 'admin' | 'guest';
-const [userRole, setUserRole] = useState<UserRole>('admin'); // Explicit type 'UserRole'
 ```
 
 ### Data Immutability
