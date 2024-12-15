@@ -657,7 +657,7 @@ The TypeScript documentation highlights several reasons into the limitations and
 
 As rule of a thumb try to use literal type most frequently, const assertion arrrays when there is a need to loop through the values and need for const assetion objects should happen rarely:
 
-- Majority of times there is no need to create run time object that add up to the bundle size, we only need literal type at compile time.
+- Use literal type majority of times and avoid creating run time objects that add up to the bundle size.
 
   ```ts
   // ❌ Avoid using enums adding up to the bundle size
