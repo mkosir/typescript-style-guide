@@ -658,34 +658,21 @@ The TypeScript documentation highlights several reasons into the limitations and
 ```ts
 // ❌ Avoid using enums
 enum UserRole {
-  GUEST,
-  MODERATOR,
-  ADMINISTRATOR,
-}
-
-enum Color {
-  PRIMARY = '#B33930',
-  SECONDARY = '#113A5C',
-  BRAND = '#9C0E7D',
+  GUEST = 'guest',
+  MODERATOR = 'moderator',
+  ADMINISTRATOR = 'administrator',
 }
 
 // ✅ Use const assertions
-const USER_ROLES = ['guest', 'moderator', 'administrator'] as const;
-type UserRole = (typeof USER_ROLES)[number]; // Type "guest" | "moderator" | "administrator"
-
-// Use 'satisfies' if the UserRole type is already defined, e.g., in a database schema model
-type UserRoleDB = ReadonlyArray<'guest' | 'moderator' | 'administrator'>;
-const AVAILABLE_ROLES = ['guest', 'moderator'] as const satisfies UserRoleDB;
-
-const COLOR = {
-  primary: '#B33930',
-  secondary: '#113A5C',
-  brand: '#9C0E7D',
+const USER_ROLE = {
+  guest: 'guest',
+  moderator: 'moderator',
+  administrator: 'administrator',
 } as const;
 
-type Color = typeof COLOR;
-type ColorKey = keyof Color; // Type "primary" | "secondary" | "brand"
-type ColorValue = Color[ColorKey]; // Type "#B33930" | "#113A5C" | "#9C0E7D"
+type UserRole = keyof typeof USER_ROLE;
+
+const isGuest = (role: UserRole) => role === USER_ROLE.guest;
 ```
 
 ### Type Union & Boolean Flags
