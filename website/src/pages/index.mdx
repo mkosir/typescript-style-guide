@@ -655,7 +655,13 @@ The TypeScript documentation highlights several reasons into the limitations and
     },
 ]`}</Rule>
 
-As rule of a thumb try to use literal type most frequently, const assertion arrrays when there is a need to loop through the values and need for const assetion objects should happen rarely:
+As rule of a thumb try to:
+
+- use literal type most frequently
+- const assertion arrays when there is a need to loop through the values
+- const assertion objects when there is a strong use case for it
+
+Literal type and const assertion examples:
 
 - Use literal type majority of times and avoid creating run time objects that add up to the bundle size.
 
