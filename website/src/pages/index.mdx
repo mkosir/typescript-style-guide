@@ -607,12 +607,12 @@ export const parseStatus = (params: StatusParams) => {...
 
 Consider the advantages of explicitly defining the return type of a function::
 
-- Return values makes it clear and easy to understand to any calling code what type is returned.
-- In the case where there is no return value, the calling code doesn't try to use the undefined value when it shouldn't.
-- Surface potential type errors faster in the future if there are code changes that change the return type of the function.
-- Easier to refactor, since it ensures that the return value is assigned to a variable of the correct type.
-- Similar to writing tests before implementation (TDD), defining function arguments and return type, gives you the opportunity to discuss the feature functionality and its interface ahead of implementation.
-- Although type inference is very convenient, adding return types can save TypeScript compiler a lot of work.
+- Improves Readability: Clearly specifies what type of value the function returns, making the code easier to understand for those calling the function.
+- Avoids Misuse: Ensures that calling code does not accidentally attempt to use an undefined value when no return value is intended.
+- Surfaces Type Errors Early: Helps catch potential type errors during development, especially when code changes unintentionally alter the return type.
+- Simplifies Refactoring: Ensures that any variable assigned to the function's return value is of the correct type, making refactoring safer and more efficient.
+- Encourages Design Discussions: Similar to Test-Driven Development (TDD), explicitly defining function arguments and return types promotes discussions about a function's functionality and interface ahead of implementation.
+- Optimizes Compilation: While TypeScript's type inference is powerful, explicitly defining return types can reduce the workload on the TypeScript compiler, improving overall performance.
 
 ## Variables
 
