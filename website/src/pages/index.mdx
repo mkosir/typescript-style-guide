@@ -1174,7 +1174,7 @@ An exaggerated example where implementing 10 React components with 5 required pr
 When applicable use **discriminated type** to eliminate optional props, which will decrease complexity on component API and only required props will be passed depending on its use case.
 
 ```ts
-// ❌ Avoid optional props as they increase complexity of component API
+// ❌ Avoid optional props as they increase complexity and ambiguity in component APIs
 type StatusProps = {
   data?: Products;
   title?: string;
@@ -1182,8 +1182,8 @@ type StatusProps = {
   error?: string;
 };
 
-// ✅ Strive to have majority of props required, if that's not possible,
-// use discriminated union for clear intent on component usage
+// ✅ Prefer required props. If optional props are unavoidable,
+// use a discriminated union to represent distinct use cases with required props.
 type StatusSuccess = {
   status: 'success';
   data: Products;
@@ -1200,7 +1200,7 @@ type StatusError = {
   error: string;
 };
 
-// Discriminated component props 'StatusProps' with no optional properties
+// Discriminated union 'StatusProps' ensures predictable component props with no optionals
 type StatusProps = StatusSuccess | StatusLoading | StatusError;
 
 export const Status = (status: StatusProps) => {...
