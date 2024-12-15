@@ -607,12 +607,12 @@ export const parseStatus = (params: StatusParams) => {...
 
 Consider the advantages of explicitly defining the return type of a function::
 
-- Improves Readability: Clearly specifies what type of value the function returns, making the code easier to understand for those calling the function.
-- Avoids Misuse: Ensures that calling code does not accidentally attempt to use an undefined value when no return value is intended.
-- Surfaces Type Errors Early: Helps catch potential type errors during development, especially when code changes unintentionally alter the return type.
-- Simplifies Refactoring: Ensures that any variable assigned to the function's return value is of the correct type, making refactoring safer and more efficient.
-- Encourages Design Discussions: Similar to Test-Driven Development (TDD), explicitly defining function arguments and return types promotes discussions about a function's functionality and interface ahead of implementation.
-- Optimizes Compilation: While TypeScript's type inference is powerful, explicitly defining return types can reduce the workload on the TypeScript compiler, improving overall performance.
+- **Improves Readability**: Clearly specifies what type of value the function returns, making the code easier to understand for those calling the function.
+- **Avoids Misuse**: Ensures that calling code does not accidentally attempt to use an undefined value when no return value is intended.
+- **Surfaces Type Errors Early**: Helps catch potential type errors during development, especially when code changes unintentionally alter the return type.
+- **Simplifies Refactoring**: Ensures that any variable assigned to the function's return value is of the correct type, making refactoring safer and more efficient.
+- **Encourages Design Discussions**: Similar to Test-Driven Development (TDD), explicitly defining function arguments and return types promotes discussions about a function's functionality and interface ahead of implementation.
+- **Optimizes Compilation**: While TypeScript's type inference is powerful, explicitly defining return types can reduce the workload on the TypeScript compiler, improving overall performance.
 
 ## Variables
 
