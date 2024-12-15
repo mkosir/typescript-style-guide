@@ -147,7 +147,7 @@ It will reflect designing type-safe and maintainable code:
 If introduction of many optional properties truly can't be avoided utilize **discriminated union type**.
 
 ```ts
-// ❌ Avoid optional properties as they increase complexity
+// ❌ Avoid optional properties when possible, as they increase complexity and ambiguity
 type User = {
   id?: number;
   email?: string;
@@ -158,8 +158,8 @@ type User = {
   temporaryToken?: string;
 };
 
-// ✅ Strive to have majority of properties required, if that's not possible,
-// use discriminated union for clear intent on object usage
+// ✅ Prefer required properties. If optional properties are unavoidable,
+// use a discriminated union to make object usage explicit and predictable.
 type AdminUser = {
   role: 'admin';
   id: number;
@@ -181,7 +181,7 @@ type GuestUser = {
   temporaryToken: string;
 };
 
-// Discriminated union type 'User' with no optional properties
+// Discriminated union type 'User' ensures clear intent with no optional properties
 type User = AdminUser | RegularUser | GuestUser;
 
 const regularUser: User = {
@@ -190,7 +190,7 @@ const regularUser: User = {
   email: 'lea@user.com',
   subscriptionPlan: 'pro',
   rewardsPoints: 1500,
-  dashboardAccess: false, // Error 'dashboardAccess' property does not exist
+  dashboardAccess: false, // Error: 'dashboardAccess' property does not exist
 };
 ```
 
@@ -572,7 +572,7 @@ transformUserInput({
 When applicable use **discriminated union type** to eliminate optional properties, which will decrease complexity on function API and only required properties will be passed depending on its use case.
 
 ```ts
-// ❌ Avoid optional properties as they increase complexity of function API
+// ❌ Avoid optional properties as they increase complexity and ambiguity in function APIs
 type StatusParams = {
   data?: Products;
   title?: string;
@@ -580,8 +580,8 @@ type StatusParams = {
   error?: string;
 };
 
-// ✅ Strive to have majority of properties required, if that's not possible,
-// use discriminated union for clear intent on function usage
+// ✅ Prefer required properties. If optional properties are unavoidable,
+// use a discriminated union to represent distinct use cases with required properties.
 type StatusSuccessParams = {
   status: 'success';
   data: Products;
@@ -598,7 +598,7 @@ type StatusErrorParams = {
   error: string;
 };
 
-// Discriminated function param 'StatusParams' with no optional properties
+// Discriminated union 'StatusParams' ensures predictable function arguments with no optional properties
 type StatusParams = StatusSuccessParams | StatusLoadingParams | StatusErrorParams;
 
 export const parseStatus = (params: StatusParams) => {...
