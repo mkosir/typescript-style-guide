@@ -253,8 +253,9 @@ Key benefits:
   - Ensures the object conforms to a broader type without widening its inferred type.
   - Helps catch type mismatches at compile time while preserving narrowed inferred types.
 
+Array constants:
+
 ```ts
-// Array constant
 type UserRole = 'admin' | 'editor' | 'moderator' | 'viewer' | 'guest';
 
 // ❌ Avoid constant of wide type
@@ -265,8 +266,11 @@ const DASHBOARD_ACCESS_ROLES = ['admin', 'contributor', 'analyst'] as const;
 
 // ✅ Use immutable constant of narrowed type
 const DASHBOARD_ACCESS_ROLES = ['admin', 'editor', 'moderator'] as const satisfies ReadonlyArray<UserRole>;
+```
 
-// Object constant
+Object constants:
+
+```ts
 type OrderStatus = {
   pending: 'pending' | 'idle';
   fulfilled: boolean;
