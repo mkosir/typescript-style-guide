@@ -651,29 +651,96 @@ The TypeScript documentation highlights several reasons into the limitations and
     'error',
     {
       selector: 'TSEnumDeclaration',
-      message: 'Replace enum with a const assertion object or a literal type.',
+      message: 'Replace enum with a literal type or a const assertion.',
     },
 ]`}</Rule>
 
-```ts
-// ❌ Avoid using enums
-enum UserRole {
-  GUEST = 'guest',
-  MODERATOR = 'moderator',
-  ADMINISTRATOR = 'administrator',
-}
+As rule of a thumb try to use literal type most frequently, const assertion arrrays when there is a need to loop through the values and need for const assetion objects should happen rarely:
 
-// ✅ Use const assertions
-const USER_ROLE = {
-  guest: 'guest',
-  moderator: 'moderator',
-  administrator: 'administrator',
-} as const;
+- Majority of times there is no need to create run time object that add up to the bundle size, we only need literal type at compile time.
 
-type UserRole = keyof typeof USER_ROLE;
+  ```ts
+  // ❌ Avoid using enums adding up to the bundle size
+  enum UserRole {
+    GUEST = 'guest',
+    MODERATOR = 'moderator',
+    ADMINISTRATOR = 'administrator',
+  }
 
-const isGuest = (role: UserRole) => role === USER_ROLE.guest;
-```
+  // Transpiled JavaScript
+  ('use strict');
+  var UserRole;
+  (function (UserRole) {
+    UserRole['GUEST'] = 'guest';
+    UserRole['MODERATOR'] = 'moderator';
+    UserRole['ADMINISTRATOR'] = 'administrator';
+  })(UserRole || (UserRole = {}));
+
+  // ✅ Use literal type
+  type UserRole = 'guest' | 'moderator' | 'administrator';
+
+  const isGuest = (role: UserRole) => role === 'guest';
+  ```
+
+- Use const assertion arrays, when need to loop through the values.
+
+  ```ts
+  // ❌ Avoid using enums
+  enum UserRole {
+    GUEST = 'guest',
+    MODERATOR = 'moderator',
+    ADMINISTRATOR = 'administrator',
+  }
+
+  // ✅ Use const assertions array
+  const USER_ROLES = ['guest', 'moderator', 'administrator'] as const;
+  type UserRole = (typeof USER_ROLES)[number];
+
+  const seedDatabase = () => {
+    USER_ROLES.forEach((role) => {
+      db.roles.insert(role);
+    }
+  }
+  const insert = (role: UserRole) => {...
+
+  const UsersRoleList = () => {
+    return (
+      <div>
+        {USER_ROLES.map((role) => (
+          <Item key={role} role={role} />
+        ))}
+      </div>
+    );
+  };
+  const Item = ({ role }: { role: UserRole }) => {...
+  ```
+
+- Use const assertion objects when there is a strong use case for it.
+
+  ```ts
+  // ❌ Avoid using enums
+  enum Color {
+    PRIMARY = '#B33930',
+    SECONDARY = '#113A5C',
+    BRAND = '#9C0E7D',
+  }
+
+  // ✅ Use const assertions objects
+  const COLOR = {
+    primary: '#B33930',
+    secondary: '#113A5C',
+    brand: '#9C0E7D',
+  } as const;
+
+  type Color = typeof COLOR;
+  type ColorKey = keyof Color; // Type "primary" | "secondary" | "brand"
+  type ColorValue = Color[ColorKey]; // Type "#B33930" | "#113A5C" | "#9C0E7D"
+
+  const setColor = (color: ColorValue) => {...
+
+  setColor(COLOR.primary);
+  setColor('#B33930');
+  ```
 
 ### Type Union & Boolean Flags
 
