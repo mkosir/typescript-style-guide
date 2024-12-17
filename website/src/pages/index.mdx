@@ -119,7 +119,7 @@ Immutability should be a key principle. Wherever possible, data should remain im
 Using readonly types prevents accidental data mutations and reduces the risk of bugs caused by unintended side effects. This ensures that data integrity is maintained throughout the application lifecycle.
 
 When performing data processing, always return new arrays, objects, or other data structures. To minimize cognitive load for future developers, strive to keep data objects flat and concise.
-Mutations should be used sparingly and only as an exception in cases where they are truly necessary, such as when dealing with complex objects, performance-related reasons etc.
+Mutations should be used sparingly and only as a last resort, in cases where they are truly necessary, such as when dealing with complex objects or optimizing for performance.
 
 ```ts
 // ❌ Avoid data mutations
