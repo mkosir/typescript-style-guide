@@ -75,14 +75,14 @@ Being expressive and keeping types as **narrow as possible** offers several bene
 
 ### Type Inference
 
-As a rule of thumb, explicitly declare types when it helps to narrow them.
+As a rule of thumb, explicitly declare types only when it helps to narrow them.
 
 <Note>
   Just because you don't need to add types doesn't mean you shouldn't. In some cases, explicitly declaring types can
   improve code readability and clarify intent.
 </Note>
 
-Explicitly declare types when it helps to narrow them:
+Explicitly declare types when doing so helps to narrow them:
 
 ```ts
 // ❌ Avoid
@@ -98,7 +98,7 @@ type UserRole = 'admin' | 'guest';
 const [userRole, setUserRole] = useState<UserRole>('admin'); // Explicit type 'UserRole'
 ```
 
-Don't explicitly declare types when they can be inferred:
+Avoid explicitly declaring types when they can be inferred:
 
 ```ts
 // ❌ Avoid
