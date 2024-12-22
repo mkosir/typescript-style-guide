@@ -637,8 +637,12 @@ Consider the advantages of explicitly defining the return type of a function::
 
 Strive declaring constants using const assertion `as const`:
 
-- Type Narrowing - Using as const narrows the type of literals to their exact values rather than general types.
+Constants are used to represent values that are not meant to change, ensuring reliability and consistency in a codebase. Using const assertions further enhances type safety and immutability, making your code more robust and predictable.
+
+- Type Narrowing - Using `as const` ensures that literal values (e.g., numbers, strings) are treated as exact values instead of generalized types like `number` or `string`.
 - Immutability - Objects and arrays get readonly properties, preventing accidental mutations.
+
+- Objects
 
   ```ts
   // ❌ Avoid
@@ -650,6 +654,8 @@ Strive declaring constants using const assertion `as const`:
   FOO_LOCATION.x = 10; // Error
   ```
 
+- Arrays
+
   ```ts
   // ❌ Avoid
   const BAR_LOCATION = [50, 130]; // Type number[]
@@ -659,6 +665,8 @@ Strive declaring constants using const assertion `as const`:
   const BAR_LOCATION = [50, 130] as const; // Type 'readonly [10, 20]'
   BAR_LOCATION.push(10); // Error
   ```
+
+- Template Literals
 
   ```ts
   // ❌ Avoid
