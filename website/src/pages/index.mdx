@@ -637,28 +637,35 @@ Consider the advantages of explicitly defining the return type of a function::
 
 Strive declaring constants using const assertion `as const`:
 
-- type is narrowed
-- object gets `readonly` properties
-- array becomes `readonly` tuple
+- Type Narrowing - Using as const narrows the type of literals to their exact values rather than general types.
+- Immutability - Objects and arrays get readonly properties, preventing accidental mutations.
 
   ```ts
   // ❌ Avoid
   const FOO_LOCATION = { x: 50, y: 130 }; // Type { x: number; y: number; }
   FOO_LOCATION.x = 10;
 
+  // ✅ Use
+  const FOO_LOCATION = { x: 50, y: 130 } as const; // Type '{ readonly x: 50; readonly y: 130; }'
+  FOO_LOCATION.x = 10; // Error
+  ```
+
+  ```ts
+  // ❌ Avoid
   const BAR_LOCATION = [50, 130]; // Type number[]
   BAR_LOCATION.push(10);
 
+  // ✅ Use
+  const BAR_LOCATION = [50, 130] as const; // Type 'readonly [10, 20]'
+  BAR_LOCATION.push(10); // Error
+  ```
+
+  ```ts
+  // ❌ Avoid
   const RATE_LIMIT = 25;
   const RATE_LIMIT_MESSAGE = `Max number of requests/min is ${RATE_LIMIT}.`; // Type string
 
   // ✅ Use
-  const FOO_LOCATION = { x: 50, y: 130 } as const; // Type '{ readonly x: 50; readonly y: 130; }'
-  FOO_LOCATION.x = 10; // Error
-
-  const BAR_LOCATION = [50, 130] as const; // Type 'readonly [10, 20]'
-  BAR_LOCATION.push(10); // Error
-
   const RATE_LIMIT = 25;
   const RATE_LIMIT_MESSAGE = `Max number of requests/min is ${RATE_LIMIT}.` as const; // Type 'Rate limit exceeded! Max number of requests/min is 25.'
   ```
