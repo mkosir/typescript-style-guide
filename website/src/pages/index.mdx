@@ -635,14 +635,14 @@ Consider the advantages of explicitly defining the return type of a function::
 
 ### Const Assertion
 
-Strive to use const assertion `as const`:
+Strive declaring constants using const assertion `as const`:
 
 - type is narrowed
 - object gets `readonly` properties
 - array becomes `readonly` tuple
 
   ```ts
-  // ❌ Avoid declaring constants without const assertion
+  // ❌ Avoid
   const FOO_LOCATION = { x: 50, y: 130 }; // Type { x: number; y: number; }
   FOO_LOCATION.x = 10;
 
@@ -652,7 +652,7 @@ Strive to use const assertion `as const`:
   const RATE_LIMIT = 25;
   const RATE_LIMIT_MESSAGE = `Max number of requests/min is ${RATE_LIMIT}.`; // Type string
 
-  // ✅ Use const assertion
+  // ✅ Use
   const FOO_LOCATION = { x: 50, y: 130 } as const; // Type '{ readonly x: 50; readonly y: 130; }'
   FOO_LOCATION.x = 10; // Error
 
