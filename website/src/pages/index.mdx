@@ -345,6 +345,26 @@ Template literal types are useful in various practical scenarios, such as:
   const customColor: Color = '#AD3128';
   ```
 
+- Database queries - Avoid using raw strings for table or column names, which can lead to typos and invalid queries. Use template literal types to define valid tables and column combinations.
+
+<!-- prettier-ignore-start -->
+```ts
+// ❌ Avoid
+const query = 'SELECT name FROM usersss WHERE age > 30'; // Type 'string' - Typo 'usersss': table doesn't exist, leading to a runtime error.
+// ✅ Use
+type Table = 'users' | 'posts' | 'comments';
+type Column<TTableName extends Table> =
+  TTableName extends 'users' ? 'id' | 'name' | 'age' :
+  TTableName extends 'posts' ? 'id' | 'title' | 'content' :
+  TTableName extends 'comments' ? 'id' | 'postId' | 'text' :
+  never;
+
+type Query<TTableName extends Table> = `SELECT ${Column<TTableName>} FROM ${TTableName} WHERE ${string}`;
+const userQuery: Query<'users'> = 'SELECT name FROM users WHERE age > 30'; // Valid query
+const invalidQuery: Query<'users'> = 'SELECT title FROM users WHERE age > 30'; // Error: 'title' is not a column in 'users' table.
+```
+<!-- prettier-ignore-end -->
+
 ### Type any & unknown
 
 `any` data type must not be used as it represents literally “any” value that TypeScript defaults to and skips type checking since it cannot infer the type. As such, `any` is dangerous, it can mask severe programming errors.
