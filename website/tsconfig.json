@@ -14,7 +14,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "target": "ES6"
+    "target": "ES2020"
   },
   "include": ["."],
   "exclude": ["node_modules", "build", ".docusaurus"]
