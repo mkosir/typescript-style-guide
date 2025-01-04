@@ -823,6 +823,7 @@ Strive to keep naming conventions consistent and readable, with important contex
 
 ### Named Export
 
+<!-- prettier-ignore-start -->
 <Rule
   prefix="Named exports must be used to ensure that all imports follow a uniform pattern"
   href="https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md"
@@ -830,12 +831,13 @@ Strive to keep naming conventions consistent and readable, with important contex
 
 // In case of exceptions disable the rule
 overrides: [
-{
-files: ["src/pages/**/*"],
-rules: { "import/no-default-export": "off" },
-}
+    {
+      files: ["src/pages/**/*"],
+      rules: { "import/no-default-export": "off" },
+    }
 ]
 `}</Rule>
+<!-- prettier-ignore-end -->
 
 This keeps variables, functions etc. names consistent across the entire codebase. Named exports have the benefit of
 erroring when import statements try to import something that hasn't been declared.
