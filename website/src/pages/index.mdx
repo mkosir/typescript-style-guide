@@ -893,7 +893,7 @@ While it's often hard to find the best name, aim to optimize code for consistenc
   If a type exists use [Type-Safe Constants With Satisfies](#type-safe-constants-with-satisfies).
 
   ```ts
-  // OrderStatus is predefined (e.g. generated from database schema, API)
+  // Type OrderStatus is predefined (e.g. generated from database schema, API)
   type OrderStatus = {
     pending: 'pending' | 'idle';
     fulfilled: boolean;
@@ -905,6 +905,11 @@ While it's often hard to find the best name, aim to optimize code for consistenc
     fulfilled: true,
     error: 'Shipping Error',
   } as const satisfies OrderStatus;
+
+  // Type UserRole is predefined
+  type UserRole = 'admin' | 'editor' | 'moderator' | 'viewer' | 'guest';
+
+  const DASHBOARD_ACCESS_ROLES = ['admin', 'editor', 'moderator'] as const satisfies ReadonlyArray<UserRole>;
   ```
 
 #### Functions
