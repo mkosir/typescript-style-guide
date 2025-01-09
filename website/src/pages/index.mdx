@@ -881,8 +881,8 @@ While it's often hard to find the best name, aim to optimize code for consistenc
   Singular, capitalized with const assertion.
 
   ```ts
-  const ORDER_STATUS = {
-    pending: 'pending',
+  const IDLE_ORDER = {
+    pending: 'idle',
     fulfilled: true,
     error: 'Shipping Error',
   } as const;
@@ -898,8 +898,8 @@ While it's often hard to find the best name, aim to optimize code for consistenc
     error: string;
   };
 
-  const PENDING_STATUS = {
-    pending: 'pending',
+  const IDLE_ORDER = {
+    pending: 'idle',
     fulfilled: true,
     error: 'Shipping Error',
   } as const satisfies OrderStatus;
