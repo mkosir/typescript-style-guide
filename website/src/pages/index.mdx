@@ -239,7 +239,7 @@ Discriminated unions advantages:
 - Discriminated unions make refactoring and maintenance easier by providing a centralized definition of related types. When adding or modifying types within the union, the compiler reports any inconsistencies throughout the codebase.
 - IDEs can leverage discriminated unions to provide better autocompletion and type inference.
 
-### Type-Safe Constants with satisfies
+### Type-Safe Constants With Satisfies
 
 The `as const satisfies` syntax is a powerful TypeScript feature that combines strict type-checking and immutability for constants. It is particularly useful when defining constants that need to conform to a specific type.
 
@@ -888,7 +888,7 @@ While it's often hard to find the best name, aim to optimize code for consistenc
   } as const;
   ```
 
-  If type exist use `satisfies` operator in conjunction with const assertion, to conform object matches its type.
+  If type exist use [Type-Safe Constants With Satisfies](#type-safe-constants-with-satisfies).
 
   ```ts
   // OrderStatus is predefined (e.g. generated from database schema, API)
