@@ -444,9 +444,9 @@ TypeScript provides two options for defining types: `type` and `interface`. Whil
 >{`'@typescript-eslint/consistent-type-definitions': ['error', 'type']`}</Rule>
 
 <Note>
-  Consider using interfaces when developing a package that may be extended in the future by third-party consumers or
-  when the team prefers working with interfaces. In such cases, you can disable linting rules where necessary, such as
-  when using type unions (e.g. `type Status = 'loading' | 'error'`).
+  Consider using interfaces when developing a package that might be extended by third-party consumers in the future or
+  when your team prefers working with interfaces. In these cases, you can disable linting rules if needed, such as when
+  defining type unions (e.g. `type Status = 'loading' | 'error'`).
 </Note>
 
 ```ts
