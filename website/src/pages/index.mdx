@@ -886,6 +886,8 @@ While it's often hard to find the best name, aim to optimize code for consistenc
     fulfilled: true,
     error: 'Shipping Error',
   } as const;
+
+  const DASHBOARD_ACCESS_ROLES = ['admin', 'editor', 'moderator'] as const;
   ```
 
   If a type exists use [Type-Safe Constants With Satisfies](#type-safe-constants-with-satisfies).
