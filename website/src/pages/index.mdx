@@ -726,7 +726,7 @@ Examples:
     UserRole['ADMINISTRATOR'] = 'administrator';
   })(UserRole || (UserRole = {}));
 
-  // ✅ Use literal types
+  // ✅ Use literal types - Types are stripped during transpilation
   type UserRole = 'guest' | 'moderator' | 'administrator';
 
   const isGuest = (role: UserRole) => role === 'guest';
