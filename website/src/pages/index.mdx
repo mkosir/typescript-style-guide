@@ -41,15 +41,15 @@ You don't have to follow every convention exactly as written, decide what works 
 
 ### Requirements
 
-This Style Guide requires the use of:
+This Style Guide requires:
 
 - [TypeScript v5](https://github.com/microsoft/TypeScript)
 - [typescript-eslint v8](https://github.com/typescript-eslint/typescript-eslint) with [`strict-type-checked`](https://typescript-eslint.io/linting/configs/#strict-type-checked) configuration enabled.
 
-The Style Guide assumes the use of, but is not limited to:
+The Style Guide assumes but is not limited to using:
 
-- [React](https://github.com/facebook/react) as UI library for frontend conventions.
-- [Playwright](https://playwright.dev/) and [Vitest](https://vitest.dev/) for testing conventions.
+- [React](https://github.com/facebook/react) for frontend conventions
+- [Playwright](https://playwright.dev/) and [Vitest](https://vitest.dev/) for testing conventions
 
 ## TLDR
 
@@ -114,11 +114,11 @@ const [isActive, setIsActive] = useState(false); // Inferred as 'boolean'
 
 ### Data Immutability
 
-Immutability should be a key principle. Wherever possible, data should remain immutable, leveraging types like `Readonly` and `ReadonlyArray`.
+Immutability should be a key principle. Wherever possible, data should remain immutable by leveraging types like `Readonly` and `ReadonlyArray`.
 
-- Using readonly types prevents accidental data mutations and reduces the risk of bugs caused by unintended side effects. This ensures that data integrity is maintained throughout the application lifecycle.
+- Using readonly types prevents accidental data mutations and reduces the risk of bugs caused by unintended side effects, ensuring data integrity throughout the application lifecycle.
 - When performing data processing, always return new arrays, objects, or other reference-based data structures. To minimize cognitive load for future developers, strive to keep data objects flat and concise.
-- Mutations should be used sparingly, in cases where they are truly necessary, such as when dealing with complex objects or optimizing for performance.
+- Use mutations sparingly, only in cases where they are truly necessary, such as when dealing with complex objects or optimizing for performance.
 
 ```ts
 // ❌ Avoid data mutations
