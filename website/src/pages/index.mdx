@@ -141,15 +141,15 @@ const removeFirstUser = (users: ReadonlyArray<User>) => {
 
 ### Required & Optional Object Properties
 
-**Strive to have majority of object properties required and use optional sparingly.**
+**Strive to have the majority of object properties required and use optional properties sparingly.**
 
-It will reflect designing type-safe and maintainable code:
+This approach reflects designing type-safe and maintainable code:
 
 - Clarity and Predictability - Required properties make it explicit which data is always expected. This reduces ambiguity for developers using or consuming the object, as they know exactly what must be present.
 - Type Safety - When properties are required, TypeScript can enforce their presence at compile time. This prevents runtime errors caused by missing properties.
-- Avoids Overuse of Optional Chaining - If too many properties are optional, it often leads to extensive use of optional chaining (`?.`) to handle potential undefined values. This clutters the code and obscure its intent.
+- Avoids Overuse of Optional Chaining - If too many properties are optional, it often leads to extensive use of optional chaining (`?.`) to handle potential undefined values. This clutters the code and obscures its intent.
 
-If introduction of many optional properties truly can't be avoided utilize **discriminated union type**.
+If introducing many optional properties truly can't be avoided, utilize **discriminated union types**.
 
 ```ts
 // ❌ Avoid optional properties when possible, as they increase complexity and ambiguity
@@ -844,7 +844,7 @@ erroring when import statements try to import something that hasn't been declare
 
 ### Naming Conventions
 
-While it's often hard to find the best name, aim to optimize code for consistency and future reader by following conventions:
+While it's often hard to find the best name, aim to optimize code for consistency and future readers by following these conventions:
 
 #### Variables
 
@@ -1060,10 +1060,10 @@ const { fontSizes } = useTheme();
 
 ### Comments
 
-In general try to avoid comments, by writing expressive code and name things what they are.
+In general, try to avoid comments by writing expressive code and naming things what they are.
 
-Use comments when you need to add context or explain choices that cannot be expressed through code (e.g. config files).  
-Comments should always be complete sentences. As rule of thumb try to explain `why` in comments, not `how` and `what`.
+Use comments when you need to add context or explain choices that cannot be expressed through code (e.g., config files).
+As a rule of thumb, try to explain "why" in comments, not "how" and "what".
 
 ```ts
 // ❌ Avoid
@@ -1218,7 +1218,7 @@ Since React components and hooks are also functions, respective [function conven
 
 ### Required & Optional Props
 
-**Strive to have majority of props required and use optional sparingly.**
+**Strive to have majority of props required and use optional props sparingly.**
 
 Especially when creating new component for first/single use case majority of props should be required. When component starts covering more use cases, introduce optional props.  
 There are potential exceptions, where component API needs to implement optional props from the start (e.g. shared components covering multiple use cases, UI design system components - button `isDisabled` etc.)
@@ -1479,5 +1479,5 @@ code --install-extension ms-playwright.playwright
 
 ### Snapshot
 
-Snapshot tests are discouraged in order to avoid fragility, which leads to "just update it" turn of mind, to achieve all the tests pass.  
- Exceptions can be made, with strong rational behind it, where test output has short and clear intent, what's actually being tested (e.g. design system library critical elements that shouldn't deviate).
+Snapshot tests are discouraged to avoid fragility, which leads to a "just update it" mindset to make all tests pass.  
+Exceptions can be made, with strong rationale behind them, where test output has short and clear intent about what's actually being tested (e.g., design system library critical elements that shouldn't deviate).
