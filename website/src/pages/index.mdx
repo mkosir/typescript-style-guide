@@ -310,6 +310,16 @@ Adopting template literal types brings several advantages:
 
 Template literal types are useful in various practical scenarios, such as:
 
+- String Patterns - Use template literal types to enforce valid string patterns.
+
+  ```ts
+  // ❌ Avoid
+  const appVersion = '2.6';
+  // ✅ Use
+  type Version = `v${number}.${number}.${number}`;
+  const appVersion: Version = 'v2.6.1';
+  ```
+
 - API Endpoints - Use template literal types to restrict values to valid API routes.
 
   ```ts
