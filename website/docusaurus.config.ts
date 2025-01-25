@@ -36,7 +36,7 @@ const config: Config = {
         docs: false,
         blog: false,
         theme: {
-          customCss: './src/css/global.css',
+          customCss: './src/styles/global.css',
         },
       } satisfies Preset.Options,
     ],
