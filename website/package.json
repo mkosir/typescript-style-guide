@@ -27,7 +27,7 @@
     "react": "19.0.0",
     "react-animate-height": "3.2.3",
     "react-dom": "19.0.0",
-    "react-parallax-tilt": "1.7.278",
+    "react-parallax-tilt": "1.7.279",
     "tailwind-merge": "2.6.0"
   },
   "devDependencies": {
