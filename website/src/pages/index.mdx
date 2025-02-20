@@ -1074,8 +1074,8 @@ Favor expressive code over comments by using meaningful names and clear logic. C
 
 Use comments when:
 
-- Context or reasoning isn't obvious from the code (e.g., config files, workarounds).
-- You need to reference related issues, PRs, or future improvements.
+- The context or reasoning isn't obvious from the code alone (e.g. config files, workarounds)
+- Referencing related issues, PRs, or planned improvements
 
 ```ts
 // ❌ Avoid
@@ -1090,7 +1090,7 @@ const minutes = seconds * SECONDS_IN_MINUTE;
 const averageUsersPerMinute = noOfUsers / minutes;
 
 // ✅ Use - Add context to explain why
-// TODO: Filtering should be moved to the backend once API changes are released.
+// TODO: Move filtering to the backend once API v2 is released.
 // Issue/PR - https://github.com/foo/repo/pulls/55124
 const filteredUsers = frontendFiltering(selectedUsers);
 // Use Fourier transformation to minimize information loss - https://github.com/dntj/jsfft#usage
@@ -1108,27 +1108,21 @@ Use TSDoc comments when documenting APIs, libraries, configuration or reusable c
  * Configuration options for the Web3 SDK.
  */
 export type Web3Config = {
-  /**
-   * Ethereum network chain ID.
-   */
+  /** Ethereum network chain ID. */
   chainId: number;
 
   /**
-   * Gas price strategy for transactions.
-   * - `fast`: Higher fees, faster confirmation.
-   * - `standard`: Balanced.
-   * - `slow`: Lower fees, slower confirmation.
+   * Gas price strategy for transactions:
+   * - `fast`: Higher fees, faster confirmation
+   * - `standard`: Balanced
+   * - `slow`: Lower fees, slower confirmation
    */
   gasPriceStrategy: 'fast' | 'standard' | 'slow';
 
-  /**
-   * Maximum gas limit per transaction.
-   */
+  /** Maximum gas limit per transaction. */
   maxGasLimit?: number;
 
-  /**
-   * Enables event listening for smart contract interactions.
-   */
+  /** Enables event listening for smart contract interactions. */
   enableEventListener?: boolean;
 };
 ```
