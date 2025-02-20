@@ -1070,10 +1070,12 @@ const { fontSizes } = useTheme();
 
 ### Comments
 
-In general, try to avoid comments by writing expressive code and naming things what they are.
+Favor expressive code over comments by using meaningful names and clear logic. Comments should primarily explain "why," not "what" or "how."
 
-Use comments when you need to add context or explain choices that cannot be expressed through code (e.g., config files).
-As a rule of thumb, try to explain "why" in comments, not "how" and "what".
+Use comments when:
+
+- Context or reasoning isn't obvious from the code (e.g., config files, workarounds).
+- You need to reference related issues, PRs, or future improvements.
 
 ```ts
 // ❌ Avoid
@@ -1082,12 +1084,12 @@ const m = s * 60;
 // avg users per minute
 const myAvg = u / m;
 
-// ✅ Use - Expressive code and name things what they are
+// ✅ Use - Prefer expressive code by naming things what they are
 const SECONDS_IN_MINUTE = 60;
 const minutes = seconds * SECONDS_IN_MINUTE;
 const averageUsersPerMinute = noOfUsers / minutes;
 
-// ✅ Use - Add context to explain why in comments
+// ✅ Use - Add context to explain why
 // TODO: Filtering should be moved to the backend once API changes are released.
 // Issue/PR - https://github.com/foo/repo/pulls/55124
 const filteredUsers = frontendFiltering(selectedUsers);
