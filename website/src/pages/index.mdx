@@ -1097,6 +1097,42 @@ const filteredUsers = frontendFiltering(selectedUsers);
 const frequencies = signal.FFT();
 ```
 
+#### TSDoc Comments
+
+Unlike regular comments, [TSDoc](https://tsdoc.org/) comments are encouraged because they enhance code maintainability and developer experience. They provide structured documentation that tools like IDEs, TypeScript, API generators (Swagger/OpenAPI/GraphQL) can interpret.
+
+Use TSDoc comments when documenting APIs, libraries, configuration or reusable code.
+
+```ts
+/**
+ * Configuration options for the Web3 SDK.
+ */
+export type Web3Config = {
+  /**
+   * Ethereum network chain ID.
+   */
+  chainId: number;
+
+  /**
+   * Gas price strategy for transactions.
+   * - `fast`: Higher fees, faster confirmation.
+   * - `standard`: Balanced.
+   * - `slow`: Lower fees, slower confirmation.
+   */
+  gasPriceStrategy: 'fast' | 'standard' | 'slow';
+
+  /**
+   * Maximum gas limit per transaction.
+   */
+  maxGasLimit?: number;
+
+  /**
+   * Enables event listening for smart contract interactions.
+   */
+  enableEventListener?: boolean;
+};
+```
+
 ## Source Organization
 
 ### Code Collocation
