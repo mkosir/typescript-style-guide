@@ -540,13 +540,13 @@ import type { MyClass } from 'some-library';
 // This ensures only the type is imported and no runtime code from "some-library" ends up in the bundle.
 ```
 
-### Services
+### Services & Types Generation
 
-Documentation becomes outdated the moment it's written, and worse than no documentation is wrong documentation. The same applies to types when describing the modules your app interacts with, such as APIs, messaging systems, databases etc.
+Documentation becomes outdated the moment it's written, and worse than no documentation is wrong documentation. The same applies to types when describing the modules your app interacts with, such as APIs, messaging protocols and databases.
 
-For external API services, such as REST, GraphQL etc. it's crucial to generate types from their contracts, whether they use Swagger, schemas, or other sources (e.g. [openapi-ts](https://github.com/drwpow/openapi-typescript), [graphql-config](https://github.com/kamilkisiela/graphql-config) etc.). Avoid manually declaring and maintaining types, as they can easily fall out of sync.
+For external services, such as REST, GraphQL, and MQ it's crucial to generate types from their contracts, whether they use Swagger, schemas, or other sources (e.g. [openapi-ts](https://github.com/drwpow/openapi-typescript), [graphql-config](https://github.com/kamilkisiela/graphql-config)). Avoid manually declaring and maintaining types, as they can easily fall out of sync.
 
-As an exception manually declare types only when there is truly no documentation provided by external service.
+As an exception, only manually declare types when no options are available, such as when there is no documentation for the service, data cannot be fetched to retrieve a contract, or the database cannot be accessed to infer types.
 
 ## Functions
 
@@ -1070,6 +1070,8 @@ const { fontSizes } = useTheme();
 
 ### Comments
 
+Comments can quickly become outdated, leading to confusion rather than clarity.
+
 Favor expressive code over comments by using meaningful names and clear logic. Comments should primarily explain "why," not "what" or "how."
 
 Use comments when:
@@ -1089,10 +1091,12 @@ const SECONDS_IN_MINUTE = 60;
 const minutes = seconds * SECONDS_IN_MINUTE;
 const averageUsersPerMinute = noOfUsers / minutes;
 
-// ✅ Use - Add context to explain why
+// ✅ Use - Reference planned improvements
 // TODO: Move filtering to the backend once API v2 is released.
 // Issue/PR - https://github.com/foo/repo/pulls/55124
 const filteredUsers = frontendFiltering(selectedUsers);
+
+// ✅ Use - Add context to explain why
 // Use Fourier transformation to minimize information loss - https://github.com/dntj/jsfft#usage
 const frequencies = signal.FFT();
 ```
@@ -1302,7 +1306,16 @@ type StatusError = {
 // Discriminated union 'StatusProps' ensures predictable component props with no optionals
 type StatusProps = StatusSuccess | StatusLoading | StatusError;
 
-export const Status = (status: StatusProps) => {...
+export const Status = (status: StatusProps) => {
+  switch (props.status) {
+    case 'success':
+      return <div>Title {props.title}</div>;
+    case 'loading':
+      return <div>Loading {props.time}</div>;
+    case 'error':
+      return <div>Error {props.error}</div>;
+  }
+};
 ```
 
 ### Props To State
