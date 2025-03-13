@@ -627,10 +627,7 @@ export const parseStatus = (params: StatusParams) => {...
 
 ### Return Types
 
-<Rule
-  prefix="Explicitly defining the return type of a function is encouraged, although not required"
-  href="https://typescript-eslint.io/rules/explicit-function-return-type/"
->{`"@typescript-eslint/explicit-function-return-type": "error"`}</Rule>
+Requiring explicit return types improves safety, catches errors early, and helps with long-term maintainability. However, excessive strictness can slow development and add unnecessary redundancy.
 
 Consider the advantages of explicitly defining the return type of a function:
 
@@ -640,6 +637,13 @@ Consider the advantages of explicitly defining the return type of a function:
 - **Simplifies Refactoring**: Ensures that any variable assigned to the function's return value is of the correct type, making refactoring safer and more efficient.
 - **Encourages Design Discussions**: Similar to Test-Driven Development (TDD), explicitly defining function arguments and return types promotes discussions about a function's functionality and interface ahead of implementation.
 - **Optimizes Compilation**: While TypeScript's type inference is powerful, explicitly defining return types can reduce the workload on the TypeScript compiler, improving overall performance.
+
+As context matters, use explicit return types when they add clarity and safety.
+
+<Rule
+  prefix="Explicitly defining the return type of a function is encouraged, although not required"
+  href="https://typescript-eslint.io/rules/explicit-function-return-type/"
+>{`"@typescript-eslint/explicit-function-return-type": "error"`}</Rule>
 
 ## Variables
 
