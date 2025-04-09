@@ -750,10 +750,10 @@ Examples:
 
   ```tsx
   // ❌ Avoid using enums
-  enum UserRole {
-    GUEST = 'guest',
-    MODERATOR = 'moderator',
-    ADMINISTRATOR = 'administrator',
+  enum USER_ROLES {
+    guest = 'guest',
+    moderator = 'moderator',
+    administrator = 'administrator',
   }
 
   // ✅ Use const assertions arrays
@@ -783,26 +783,26 @@ Examples:
 
   ```ts
   // ❌ Avoid using enums
-  enum Color {
-    PRIMARY = '#B33930',
-    SECONDARY = '#113A5C',
-    BRAND = '#9C0E7D',
+  enum COLORS {
+    primary = '#B33930',
+    secondary = '#113A5C',
+    brand = '#9C0E7D',
   }
 
   // ✅ Use const assertions objects
-  const COLOR = {
+  const COLORS = {
     primary: '#B33930',
     secondary: '#113A5C',
     brand: '#9C0E7D',
   } as const;
 
-  type Color = typeof COLOR;
-  type ColorKey = keyof Color; // Type "primary" | "secondary" | "brand"
-  type ColorValue = Color[ColorKey]; // Type "#B33930" | "#113A5C" | "#9C0E7D"
+  type Colors = typeof COLORS;
+  type ColorKey = keyof Colors; // Type "primary" | "secondary" | "brand"
+  type ColorValue = Colors[ColorKey]; // Type "#B33930" | "#113A5C" | "#9C0E7D"
 
   const setColor = (color: ColorValue) => {...
 
-  setColor(COLOR.primary);
+  setColor(COLORS.primary);
   setColor('#B33930');
   ```
 
