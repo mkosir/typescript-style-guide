@@ -27,17 +27,17 @@
     "react": "19.1.0",
     "react-animate-height": "3.2.3",
     "react-dom": "19.1.0",
-    "react-parallax-tilt": "1.7.289",
+    "react-parallax-tilt": "1.7.293",
     "tailwind-merge": "2.6.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.7.0",
     "@docusaurus/tsconfig": "3.7.0",
-    "@eslint/js": "9.24.0",
-    "@types/react": "19.1.0",
+    "@eslint/js": "9.25.1",
+    "@types/react": "19.1.2",
     "autoprefixer": "10.4.21",
-    "eslint": "9.24.0",
-    "eslint-config-prettier": "10.1.1",
+    "eslint": "9.25.1",
+    "eslint-config-prettier": "10.1.2",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-prettier": "5.2.6",
     "eslint-plugin-react": "7.37.5",
@@ -47,7 +47,7 @@
     "prettier-plugin-tailwindcss": "0.6.11",
     "tailwindcss": "3.4.17",
     "typescript": "5.8.3",
-    "typescript-eslint": "8.29.1"
+    "typescript-eslint": "8.31.0"
   },
   "browserslist": {
     "production": [
