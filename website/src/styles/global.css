@@ -1,21 +1,21 @@
 /* https://tailwindcss.com/docs/preflight#disabling-preflight */
 /* @import 'tailwindcss'; */
 
-/* Not working as expected */
 @layer theme, base, components, utilities;
 @import 'tailwindcss/theme.css' layer(theme);
-/* @import 'tailwindcss/utilities.css' layer(utilities); */
-button {
+/* @import 'tailwindcss/preflight.css' layer(base); */
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* Because of disabled preflight */
+/* button {
   all: unset;
   display: inline-flex;
   align-items: center;
-}
-@tailwind utilities;
+} */
 
-@custom-variant dark (&:is([data-theme="dark"] *));
+/* Not needed anymore in Tailwind v4? */
+/* @custom-variant dark (&:is([data-theme="dark"] *)); */
 
-/* @layer base { */
-/* @theme { */
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #296bb3;
@@ -61,4 +61,3 @@ h4 {
 p {
   margin-bottom: 15px;
 }
-/* } */
