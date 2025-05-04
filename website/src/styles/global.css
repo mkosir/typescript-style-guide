@@ -1,10 +1,15 @@
 /* https://tailwindcss.com/docs/preflight#disabling-preflight */
 /* @import 'tailwindcss'; */
 
-/* Not working as described in the docs */
+/* Not working as expected */
 @layer theme, base, components, utilities;
 @import 'tailwindcss/theme.css' layer(theme);
 /* @import 'tailwindcss/utilities.css' layer(utilities); */
+button {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+}
 @tailwind utilities;
 
 @custom-variant dark (&:is([data-theme="dark"] *));

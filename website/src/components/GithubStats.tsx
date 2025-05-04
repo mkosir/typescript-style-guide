@@ -18,8 +18,9 @@ export const GithubStats = () => {
         {...IFRAME_ATTRS}
         className={cn(GITHUB_STAR_BUTTON_MARGIN_MOBILE, GITHUB_STAR_BUTTON_MARGIN_DESKTOP, `min-[997px]:mr-0!`)}
         src={getSrcUrl('star')}
+        title="GitHub Stars"
       />
-      <iframe {...IFRAME_ATTRS} className={`hidden min-[997px]:inline`} src={getSrcUrl('fork')} />
+      <iframe {...IFRAME_ATTRS} className={`hidden min-[997px]:inline`} src={getSrcUrl('fork')} title="GitHub Forks" />
     </div>
   );
 };

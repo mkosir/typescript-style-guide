@@ -4,6 +4,7 @@ import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import eslintPluginReact from 'eslint-plugin-react';
 import eslintPluginReactHooks from 'eslint-plugin-react-hooks';
+import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
 // eslint-disable-next-line import/no-unresolved
 import tseslint from 'typescript-eslint';
 
@@ -13,6 +14,8 @@ export default tseslint.config(
   eslintPluginImport.flatConfigs.recommended,
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+  eslintPluginJsxA11y.flatConfigs.recommended,
   eslintPluginReact.configs.flat.recommended,
   eslintPluginPrettierRecommended,
   eslintConfigPrettier,

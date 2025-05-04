@@ -10,13 +10,13 @@ export const Note = ({ children }: NoteProps) => {
 
   return (
     <div className="mb-2">
-      <div
-        className="mb-1 inline-flex cursor-pointer items-center rounded-lg bg-neutral-500 px-1.5 text-[11px] font-normal text-gray-200 dark:bg-gray-200 dark:text-neutral-600"
+      <button
+        className="mb-1 inline-flex cursor-pointer items-center rounded-lg bg-neutral-500 px-1.5 text-[11px] font-normal text-gray-200 hover:bg-neutral-600 dark:bg-gray-200 dark:text-neutral-600 dark:hover:bg-gray-300"
         onClick={() => setIsRuleExpanded((prev) => !prev)}
       >
-        <div className="mr-1">Note</div>
+        <span className="mr-1">Note</span>
         <InfoIcon />
-      </div>
+      </button>
       <AnimateHeight duration={500} easing="ease" height={isRuleExpanded ? 'auto' : 0}>
         <div className="rounded-md border-0 border-l-[5px] border-solid border-neutral-500 bg-gray-200 p-2 text-xs text-neutral-600 italic dark:border-gray-200 dark:bg-neutral-600 dark:text-gray-200 [&_p]:mb-0">
           {children}
