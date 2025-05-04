@@ -18,7 +18,7 @@ export const Note = ({ children }: NoteProps) => {
         <InfoIcon />
       </div>
       <AnimateHeight duration={500} easing="ease" height={isRuleExpanded ? 'auto' : 0}>
-        <div className="rounded-md border-0 border-l-[5px] border-solid border-neutral-500 bg-gray-200 p-2 text-xs italic text-neutral-600 dark:border-gray-200 dark:bg-neutral-600 dark:text-gray-200 [&_p]:mb-0">
+        <div className="rounded-md border-0 border-l-[5px] border-solid border-neutral-500 bg-gray-200 p-2 text-xs text-neutral-600 italic dark:border-gray-200 dark:bg-neutral-600 dark:text-gray-200 [&_p]:mb-0">
           {children}
         </div>
       </AnimateHeight>

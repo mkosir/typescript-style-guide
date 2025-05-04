@@ -1,7 +1,16 @@
-@tailwind base;
-@tailwind components;
+/* https://tailwindcss.com/docs/preflight#disabling-preflight */
+/* @import 'tailwindcss'; */
+
+/* Not working as described in the docs */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+/* @import 'tailwindcss/utilities.css' layer(utilities); */
 @tailwind utilities;
 
+@custom-variant dark (&:is([data-theme="dark"] *));
+
+/* @layer base { */
+/* @theme { */
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #296bb3;
@@ -47,3 +56,4 @@ h4 {
 p {
   margin-bottom: 15px;
 }
+/* } */

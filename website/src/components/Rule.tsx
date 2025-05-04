@@ -18,7 +18,7 @@ export const Rule = ({ children, href, prefix }: RuleProps) => {
       {prefix}{' '}
       <span>
         <div
-          className="mb-1 inline-flex cursor-pointer items-center rounded-md bg-gray-100 px-1.5 py-1 text-xs font-medium text-neutral-600 hover:bg-gray-200 dark:bg-blue-600 dark:bg-opacity-40 dark:text-neutral-200 dark:hover:bg-blue-700 dark:hover:bg-opacity-40"
+          className="dark:bg-opacity-40 dark:hover:bg-opacity-40 mb-1 inline-flex cursor-pointer items-center rounded-md bg-gray-100 px-1.5 py-1 text-xs font-medium text-neutral-600 hover:bg-gray-200 dark:bg-blue-900 dark:text-neutral-200 dark:hover:bg-blue-950"
           onClick={() => setIsRuleExpanded((prev) => !prev)}
         >
           <div className="mr-1">
@@ -34,7 +34,7 @@ export const Rule = ({ children, href, prefix }: RuleProps) => {
           </div>
         </div>
         <AnimateHeight duration={500} easing="ease" height={isRuleExpanded ? 'auto' : 0}>
-          <div className="rounded-md border-0 border-l-[5px] border-solid border-neutral-500 bg-gray-200 p-2 text-xs italic text-neutral-600 dark:border-gray-200 dark:bg-neutral-600 dark:text-gray-200 [&_p]:mb-0">
+          <div className="rounded-md border-0 border-l-[5px] border-solid border-neutral-500 bg-gray-200 p-2 text-xs text-neutral-600 italic dark:border-gray-200 dark:bg-neutral-600 dark:text-gray-200 [&_p]:mb-0">
             <a
               className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline dark:text-blue-400 dark:hover:text-blue-500"
               href={href}
@@ -46,7 +46,7 @@ export const Rule = ({ children, href, prefix }: RuleProps) => {
                 <ExternalLinkIcon />
               </span>
             </a>
-            <CodeBlock className="!mb-0 mt-1 text-sm" language="ts" title="eslint.config.mjs">
+            <CodeBlock className="mt-1 mb-0! text-sm" language="ts" title="eslint.config.mjs">
               {children}
             </CodeBlock>
           </div>
