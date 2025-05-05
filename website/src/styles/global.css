@@ -7,8 +7,7 @@
 /* @import 'tailwindcss/utilities.css' layer(utilities); */
 @tailwind utilities;
 
-/* Not needed anymore in Tailwind v4? */
-/* @custom-variant dark (&:is([data-theme="dark"] *)); */
+@custom-variant dark (&:is([data-theme="dark"] *));
 
 /* You can override the default Infima variables here. */
 :root {

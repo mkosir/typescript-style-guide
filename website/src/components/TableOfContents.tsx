@@ -14,7 +14,7 @@ export const TableOfContents = ({ items }: TableOfContentsProps) => {
       <button
         aria-controls="toc-content"
         aria-expanded={isTocExpanded}
-        className="rounded-md border-none px-2 py-1 text-[11px] hover:cursor-pointer"
+        className="rounded-md border-none bg-gray-300 px-2 py-0.5 text-[11px] hover:cursor-pointer hover:bg-gray-400 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-700"
         title={`${isTocExpanded ? 'Collapse' : 'Expand'} Table of Contents`}
         onClick={() => setIsTocExpanded((prev) => !prev)}
       >
