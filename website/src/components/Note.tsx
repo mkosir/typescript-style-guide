@@ -11,7 +11,7 @@ export const Note = ({ children }: NoteProps) => {
   return (
     <div className="mb-2">
       <button
-        className="mb-1 inline-flex cursor-pointer items-center rounded-lg bg-neutral-500 px-1.5 text-[11px] font-normal text-gray-200 hover:bg-neutral-600 dark:bg-gray-200 dark:text-neutral-600 dark:hover:bg-gray-300"
+        className="mb-1 inline-flex cursor-pointer items-center rounded-lg bg-neutral-500 px-1.5 text-[11px] font-normal text-gray-200 transition-colors duration-100 hover:bg-neutral-600 dark:bg-gray-200 dark:text-neutral-600 dark:hover:bg-gray-300"
         onClick={() => setIsRuleExpanded((prev) => !prev)}
       >
         <span className="mr-1">Note</span>

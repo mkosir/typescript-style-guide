@@ -18,7 +18,7 @@ export const Rule = ({ children, href, prefix }: RuleProps) => {
       {prefix}{' '}
       <span>
         <button
-          className="dark:bg-opacity-40 dark:hover:bg-opacity-40 mb-1 inline-flex cursor-pointer items-center rounded-md bg-gray-100 px-1.5 py-1 text-xs font-medium text-neutral-600 hover:bg-gray-200 dark:bg-blue-900 dark:text-neutral-200 dark:hover:bg-blue-950"
+          className="dark:bg-opacity-40 dark:hover:bg-opacity-40 mb-1 inline-flex cursor-pointer items-center rounded-md bg-gray-100 px-1.5 py-1 text-xs font-medium text-neutral-600 transition-colors duration-100 hover:bg-gray-200 dark:bg-blue-900 dark:text-neutral-200 dark:hover:bg-blue-950"
           onClick={() => setIsRuleExpanded((prev) => !prev)}
         >
           <span className="mr-1">
