@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  NODE_VERSION: "22.x"
+  NODE_VERSION: "24.x"
   CACHE_PATHS_BUILD: |
     ./website/build
   CACHE_KEY_BUILD: build-${{ github.sha }}-${{ github.ref_type }}
