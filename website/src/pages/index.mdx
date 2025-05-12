@@ -700,12 +700,8 @@ Examples:
 
 Const assertions must be used over enums.
 
-While enums can still fulfill similar use cases as const assertions, we tend to avoid using them.  
-The TypeScript documentation highlights several reasons into the limitations and potential issues with enums, such as:
-
-- [Const enum pitfalls](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls)
-- [Objects vs Enums](https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums)
-- [Reverse mappings](https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings)
+Enums are generally discouraged in the TypeScript ecosystem due to their runtime cost and quirks.  
+The TypeScript documentation outlines several [pitfalls](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls), and recently introduced the [--erasableSyntaxOnly](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-8.html#the---erasablesyntaxonly-option) flag to disable runtime-generating features like enums altogether.
 
 <Rule href="https://eslint.org/docs/latest/rules/no-restricted-syntax">{`'no-restricted-syntax': [
     'error',
