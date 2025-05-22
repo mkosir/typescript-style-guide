@@ -945,10 +945,14 @@ Pascal case
 
 #### Generics
 
-A generic variable must start with the capital letter T followed by a descriptive name `TRequest`, `TFooBar`.
+A generic type parameter must start with the capital letter T followed by a descriptive name `TRequest`, `TFooBar`.
 
-Creating more complex types often include generics, which can make them hard to read and understand, that's why we try to put best effort when naming them.  
-Naming generics using popular convention with one letter `T`, `K` etc. is not allowed, the more variables we introduce, the easier it is to mistake them.
+Key reasons and benefits:
+
+- Complex types often involve generics, where clear naming improves readability and maintainability.
+- Single letter generics like `T`, `K`, `U` are disallowed, the more parameters we introduce, the easier it is to mistake them.
+- Prefixing with `T` makes it immediately obvious that it's a generic type parameter, not a regular type.
+- A common scenario is when a generic parameter shadows an existing type due to having the same name e.g. `<Request extends Request>`
 
 <Rule href="https://typescript-eslint.io/rules/naming-convention">
   {`'@typescript-eslint/naming-convention': [
@@ -963,17 +967,23 @@ Naming generics using popular convention with one letter `T`, `K` etc. is not al
 </Rule>
 
 ```ts
-// ❌ Avoid naming generics with one letter
+// ❌ Avoid naming generic parameters with one letter
 const createPair = <T, K extends string>(first: T, second: K): [T, K] => {
   return [first, second];
 };
 const pair = createPair(1, 'a');
 
-// ✅ Name starts with the capital letter T followed by a descriptive name
+// ✅ Use descriptive names starting with capital T
 const createPair = <TFirst, TSecond extends string>(first: TFirst, second: TSecond): [TFirst, TSecond] => {
   return [first, second];
 };
 const pair = createPair(1, 'a');
+
+// ❌ Avoid naming generic parameters without a prefix - which 'Request' is which?
+const handle = <Request extends Request>(req: Request): void => {...
+
+// ✅ Prefix generic parameter with capital T
+const handle = <TRequest extends Request>(req: TRequest): void => {...
 ```
 
 #### Abbreviations & Acronyms
