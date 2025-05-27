@@ -19,8 +19,8 @@
     "clean": "rm -rf node_modules coverage dist compiled build .docusaurus"
   },
   "dependencies": {
-    "@docusaurus/core": "3.7.0",
-    "@docusaurus/preset-classic": "3.7.0",
+    "@docusaurus/core": "3.8.0",
+    "@docusaurus/preset-classic": "3.8.0",
     "@mdx-js/react": "3.1.0",
     "clsx": "2.1.1",
     "prism-react-renderer": "2.4.1",
@@ -31,11 +31,11 @@
     "tailwind-merge": "3.3.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.7.0",
-    "@docusaurus/tsconfig": "3.7.0",
+    "@docusaurus/module-type-aliases": "3.8.0",
+    "@docusaurus/tsconfig": "3.8.0",
     "@eslint/js": "9.27.0",
     "@tailwindcss/postcss": "4.1.7",
-    "@types/react": "19.1.5",
+    "@types/react": "19.1.6",
     "eslint": "9.27.0",
     "eslint-config-prettier": "10.1.5",
     "eslint-plugin-import": "2.31.0",
