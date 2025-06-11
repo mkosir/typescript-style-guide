@@ -631,6 +631,8 @@ export const parseStatus = (params: StatusParams) => {...
 
 Requiring explicit return types improves safety, catches errors early, and helps with long-term maintainability. However, excessive strictness can slow development and add unnecessary redundancy.
 
+As a rule of thumb, be explicit on the outside, implicit on the inside. For example, when building APIs or libraries, always type everything explicitly to avoid accidental breaking changes. For internal logic, let TypeScript infer its defaults, which will provide strong type safety without added verbosity.
+
 Consider the advantages of explicitly defining the return type of a function:
 
 - **Improves Readability**: Clearly specifies what type of value the function returns, making the code easier to understand for those calling the function.
