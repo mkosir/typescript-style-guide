@@ -1,4 +1,5 @@
 import type { TOCItem } from '@docusaurus/mdx-loader';
+// eslint-disable-next-line import-x/no-unresolved
 import TOCInline from '@theme/TOCInline';
 import { useState } from 'react';
 

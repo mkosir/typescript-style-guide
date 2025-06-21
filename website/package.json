@@ -33,21 +33,22 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.8.1",
     "@docusaurus/tsconfig": "3.8.1",
-    "@eslint/js": "9.28.0",
+    "@eslint/js": "9.29.0",
     "@tailwindcss/postcss": "4.1.10",
     "@types/react": "19.1.8",
-    "eslint": "9.28.0",
+    "eslint": "9.29.0",
     "eslint-config-prettier": "10.1.5",
-    "eslint-plugin-import": "2.31.0",
+    "eslint-import-resolver-typescript": "4.4.3",
+    "eslint-plugin-import-x": "4.15.2",
     "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-prettier": "5.4.1",
+    "eslint-plugin-prettier": "5.5.0",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "5.2.0",
     "prettier": "3.5.3",
-    "prettier-plugin-tailwindcss": "0.6.12",
+    "prettier-plugin-tailwindcss": "0.6.13",
     "tailwindcss": "4.1.10",
     "typescript": "5.8.3",
-    "typescript-eslint": "8.34.0"
+    "typescript-eslint": "8.34.1"
   },
   "browserslist": {
     "production": [

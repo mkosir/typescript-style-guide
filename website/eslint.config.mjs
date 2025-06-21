@@ -1,17 +1,17 @@
 import eslint from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import eslintPluginImport from 'eslint-plugin-import';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import * as eslintPluginImportX from 'eslint-plugin-import-x';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import eslintPluginReact from 'eslint-plugin-react';
-import eslintPluginReactHooks from 'eslint-plugin-react-hooks';
 import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
-// eslint-disable-next-line import/no-unresolved
-import tseslint from 'typescript-eslint';
+import * as eslintPluginReactHooks from 'eslint-plugin-react-hooks';
+import * as tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   eslint.configs.recommended,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-  eslintPluginImport.flatConfigs.recommended,
+  eslintPluginImportX.flatConfigs.recommended,
+  eslintPluginImportX.flatConfigs.typescript,
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
@@ -31,6 +31,7 @@ export default tseslint.config(
       },
     },
     settings: {
+      'import-x/resolver-next': [createTypeScriptImportResolver()],
       react: { version: 'detect' },
     },
   },
@@ -80,8 +81,8 @@ export default tseslint.config(
         },
       ],
 
-      'import/no-default-export': 'error',
-      'import/order': [
+      'import-x/no-default-export': 'error',
+      'import-x/order': [
         'error',
         {
           groups: ['builtin', 'external', 'internal', 'parent', 'sibling'],
@@ -92,7 +93,6 @@ export default tseslint.config(
           },
         },
       ],
-      'import/no-unresolved': 'off',
     },
   },
 );

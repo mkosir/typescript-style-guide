@@ -1,3 +1,4 @@
+// eslint-disable-next-line import-x/no-unresolved
 import CodeBlock from '@theme/CodeBlock';
 import { useState } from 'react';
 import AnimateHeight from 'react-animate-height';
