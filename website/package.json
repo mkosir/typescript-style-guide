@@ -27,28 +27,28 @@
     "react": "19.1.0",
     "react-animate-height": "3.2.3",
     "react-dom": "19.1.0",
-    "react-parallax-tilt": "1.7.298",
+    "react-parallax-tilt": "1.7.299",
     "tailwind-merge": "3.3.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.8.1",
     "@docusaurus/tsconfig": "3.8.1",
     "@eslint/js": "9.29.0",
-    "@tailwindcss/postcss": "4.1.10",
+    "@tailwindcss/postcss": "4.1.11",
     "@types/react": "19.1.8",
     "eslint": "9.29.0",
     "eslint-config-prettier": "10.1.5",
-    "eslint-import-resolver-typescript": "4.4.3",
-    "eslint-plugin-import-x": "4.15.2",
+    "eslint-import-resolver-typescript": "4.4.4",
+    "eslint-plugin-import-x": "4.16.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-prettier": "5.5.0",
+    "eslint-plugin-prettier": "5.5.1",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "5.2.0",
-    "prettier": "3.5.3",
+    "prettier": "3.6.2",
     "prettier-plugin-tailwindcss": "0.6.13",
-    "tailwindcss": "4.1.10",
+    "tailwindcss": "4.1.11",
     "typescript": "5.8.3",
-    "typescript-eslint": "8.34.1"
+    "typescript-eslint": "8.35.0"
   },
   "browserslist": {
     "production": [
@@ -63,6 +63,6 @@
     ]
   },
   "engines": {
-    "node": ">=24.2.0"
+    "node": ">=24.3.0"
   }
 }
