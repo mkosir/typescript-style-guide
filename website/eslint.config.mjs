@@ -5,16 +5,17 @@ import * as eslintPluginImportX from 'eslint-plugin-import-x';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import eslintPluginReact from 'eslint-plugin-react';
 import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
-import * as eslintPluginReactHooks from 'eslint-plugin-react-hooks';
+import eslintPluginReactHooks from 'eslint-plugin-react-hooks';
 import * as tseslint from 'typescript-eslint';
+import { defineConfig } from 'eslint/config';
 
-export default tseslint.config(
+export default defineConfig(
   eslint.configs.recommended,
   eslintPluginImportX.flatConfigs.recommended,
   eslintPluginImportX.flatConfigs.typescript,
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument
   eslintPluginJsxA11y.flatConfigs.recommended,
   eslintPluginReact.configs.flat.recommended,
   eslintPluginPrettierRecommended,
