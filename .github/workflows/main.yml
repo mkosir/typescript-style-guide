@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  NODE_VERSION: "24.x"
+  NODE_VERSION: "26.x"
   CACHE_PATHS_BUILD: |
     ./website/build
   CACHE_KEY_BUILD: build-${{ github.sha }}-${{ github.ref_type }}
@@ -22,10 +22,10 @@ jobs:
 
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node.js ⚙️
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -39,7 +39,7 @@ jobs:
 
       - name: Cache build ⚡
         id: cache_build
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ env.CACHE_PATHS_BUILD }}
           key: ${{ env.CACHE_KEY_BUILD }}
@@ -50,10 +50,10 @@ jobs:
 
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node.js ⚙️
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -71,10 +71,10 @@ jobs:
 
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node.js ⚙️
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -93,9 +93,9 @@ jobs:
 
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: ${{ env.CACHE_PATHS_BUILD }}
           key: ${{ env.CACHE_KEY_BUILD }}
