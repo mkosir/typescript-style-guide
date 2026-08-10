@@ -1325,7 +1325,7 @@ type StatusError = {
 // Discriminated union 'StatusProps' ensures predictable component props with no optionals
 type StatusProps = StatusSuccess | StatusLoading | StatusError;
 
-export const Status = (status: StatusProps) => {
+export const Status = (props: StatusProps) => {
   switch (props.status) {
     case 'success':
       return <div>Title {props.title}</div>;
