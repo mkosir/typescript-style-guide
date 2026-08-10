@@ -121,9 +121,9 @@ const [isActive, setIsActive] = useState(false); // Inferred as 'boolean'
 
 ### Data Immutability
 
-Immutability should be a key principle. Wherever possible, data should remain immutable by leveraging types like `Readonly` and `ReadonlyArray`.
+Immutability should be a key principle. Wherever possible, prevent unintended mutations with types like `Readonly` and `ReadonlyArray`.
 
-- Using readonly types prevents accidental data mutations and reduces the risk of bugs caused by unintended side effects, ensuring data integrity throughout the application lifecycle.
+- Readonly types help prevent accidental mutations and bugs caused by unintended side effects. This protection exists during type checking and does not freeze values at runtime.
 - When performing data processing, always return new arrays, objects, or other reference-based data structures. To minimize cognitive load for future developers, strive to keep data objects flat and concise.
 - Use mutations sparingly, only in cases where they are truly necessary, such as when dealing with complex objects or optimizing for performance.
 
@@ -248,11 +248,11 @@ Discriminated unions advantages:
 
 ### Type-Safe Constants With Satisfies
 
-The `as const satisfies` syntax is a powerful TypeScript feature that combines strict type-checking and immutability for constants. It is particularly useful when defining constants that need to conform to a specific type.
+The `as const satisfies` syntax combines narrow, readonly inference with type validation. It is useful when a constant should retain its exact values while conforming to a broader type.
 
 Key benefits:
 
-- Immutability with `as const`
+- Readonly values with `as const`
   - Ensures the constant is treated as readonly.
   - Narrows the types of values to their literals, preventing accidental modifications.
 - Validation with `satisfies`
@@ -270,7 +270,7 @@ const DASHBOARD_ACCESS_ROLES: ReadonlyArray<UserRole> = ['admin', 'editor', 'mod
 // ❌ Avoid constant with incorrect values
 const DASHBOARD_ACCESS_ROLES = ['admin', 'contributor', 'analyst'] as const;
 
-// ✅ Use immutable constant of narrowed type
+// ✅ Use readonly constant of narrowed type
 const DASHBOARD_ACCESS_ROLES = ['admin', 'editor', 'moderator'] as const satisfies ReadonlyArray<UserRole>;
 ```
 
@@ -297,7 +297,7 @@ const IDLE_ORDER = {
   error: 116,
 } as const;
 
-// ✅ Use immutable constant of narrowed type
+// ✅ Use readonly constant of narrowed type
 const IDLE_ORDER = {
   pending: 'idle',
   fulfilled: true,
@@ -662,10 +662,10 @@ As context matters, use explicit return types when they add clarity and safety.
 
 Strive declaring constants using const assertion `as const`:
 
-Constants are used to represent values that are not meant to change, ensuring reliability and consistency in a codebase. Using const assertions further enhances type safety and immutability, making your code more robust and predictable.
+Constants are used to represent values that are not meant to change, ensuring reliability and consistency in a codebase. Const assertions preserve literal types and infer readonly properties.
 
 - Type Narrowing - Using `as const` ensures that literal values (e.g., numbers, strings) are treated as exact values instead of generalized types like `number` or `string`.
-- Immutability - Objects and arrays get readonly properties, preventing accidental mutations.
+- Readonly Properties - Objects and arrays get readonly properties, so TypeScript catches direct mutations.
 
 Examples:
 
