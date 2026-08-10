@@ -528,9 +528,9 @@ TypeScript allows specifying a `type` keyword on imports to indicate that the ex
 
 Type imports must always be separated:
 
-- Tree Shaking and Dead Code Elimination: If you use `import` for types instead of `import type`, the bundler might include the imported module in the bundle unnecessarily, increasing the size. Separating imports ensures that only necessary runtime code is included.
-- Minimizing Dependencies: Some modules may contain both runtime and type definitions. Mixing type imports with runtime imports might lead to accidental inclusion of unnecessary runtime code.
-- Improves code clarity by making the distinction between runtime dependencies and type-only imports explicit.
+- Tree Shaking and Dead Code Elimination - `import type` is erased during compilation, leaving no runtime import for a bundler to analyze or remove.
+- Avoids Side Effects - Depending on compiler settings, a regular import used only as a type may remain in emitted JavaScript and run module side effects.
+- Code Clarity - Makes the difference between runtime and type-only imports explicit.
 
 <Rule href="https://typescript-eslint.io/rules/consistent-type-imports/">{`'@typescript-eslint/consistent-type-imports': 'error'`}</Rule>
 
@@ -538,12 +538,12 @@ Type imports must always be separated:
 // ❌ Avoid using `import` for both runtime and type
 import { MyClass } from 'some-library';
 
-// Even if MyClass is only a type, the entire module might be included in the bundle.
+// Even if MyClass is only used as a type, a regular import can pull the module into the runtime bundle.
 
 // ✅ Use `import type`
 import type { MyClass } from 'some-library';
 
-// This ensures only the type is imported and no runtime code from "some-library" ends up in the bundle.
+// This import is removed from the emitted JavaScript.
 ```
 
 ### Services & Types Generation
