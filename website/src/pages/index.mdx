@@ -407,9 +407,6 @@ if (!isNumber(foo)) {
   throw Error(`API provided a fault value for field 'foo':${foo}. Should be a number!`);
 }
 const bar: number = foo;
-
-// Type assertion
-const bar: number = foo as number;
 ```
 
 ### Type & Non-nullability Assertions
