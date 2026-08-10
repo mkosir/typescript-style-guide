@@ -2,7 +2,9 @@
   // This file is not used in compilation. It is here just for a nice editor experience.
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
+    // Docusaurus v3 needs baseUrl for @site/*; remove baseUrl and ignoreDeprecations in v4.
     "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "allowJs": true,
@@ -14,7 +16,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "target": "ES2020"
+    "target": "ES2022"
   },
   "include": ["."],
   "exclude": ["node_modules", "build", ".docusaurus"]
