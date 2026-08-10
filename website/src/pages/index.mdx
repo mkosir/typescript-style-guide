@@ -384,7 +384,7 @@ const invalidQuery: Query<'users'> = 'SELECT title FROM users WHERE age > 30'; /
 
 ### Type any & unknown
 
-The `any` type must not be used because it bypasses type checking and allows unsafe operations and assignments. This can hide serious programming errors.
+The `any` type must not be used because it bypasses type checking and allows unsafe operations and assignments. This can mask serious programming errors.
 
 When dealing with ambiguous data type use `unknown`, which is the type-safe counterpart of `any`.  
 `unknown` doesn't allow dereferencing all properties (anything can be assigned to `unknown`, but `unknown` isn’t assignable to anything).
