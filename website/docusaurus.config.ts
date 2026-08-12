@@ -1,6 +1,30 @@
+import path from 'node:path';
+
+import { createMDXLoaderRule } from '@docusaurus/mdx-loader';
 import type * as Preset from '@docusaurus/preset-classic';
-import type { Config } from '@docusaurus/types';
+import type { Config, LoadContext, Plugin } from '@docusaurus/types';
 import { themes } from 'prism-react-renderer';
+
+const guideReferencesPlugin = async (context: LoadContext): Promise<Plugin> => {
+  const referenceLoaderRule = await createMDXLoaderRule({
+    include: path.resolve(context.siteDir, '../skills/typescript-style-guide/references'),
+    options: {
+      isMDXPartial: () => true,
+      markdownConfig: context.siteConfig.markdown,
+      siteDir: context.siteDir,
+      staticDirs: context.siteConfig.staticDirectories.map((directory) => path.resolve(context.siteDir, directory)),
+    },
+  });
+
+  return {
+    name: 'guide-references',
+    configureWebpack: () => ({
+      module: {
+        rules: [referenceLoaderRule],
+      },
+    }),
+  };
+};
 
 const config: Config = {
   title: ' ',
@@ -48,6 +72,7 @@ const config: Config = {
   ],
 
   plugins: [
+    guideReferencesPlugin,
     function tailwindPlugin() {
       return {
         name: 'tailwind-plugin',
