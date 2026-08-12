@@ -1,6 +1,6 @@
 <h1 align="center"><img src="https://raw.githubusercontent.com/mkosir/typescript-style-guide/main/misc/typescript-logo-30.png" style="vertical-align:text-top" /> TypeScript Style Guide</h1>
 
-<p align="center">TypeScript Style Guide provides a concise set of conventions and best practices for creating consistent, maintainable code.</p>
+<p align="center">TypeScript Style Guide and Agent Skill. A concise set of conventions and best practices for consistent, maintainable code.</p>
 
 ### Go to 👉 [TypeScript Style Guide](https://mkosir.github.io/typescript-style-guide/)
 
