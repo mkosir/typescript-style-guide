@@ -2,6 +2,7 @@ import { execFile, spawn } from 'node:child_process'
 import { cp, mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve, sep } from 'node:path'
+import { createInterface } from 'node:readline'
 import { promisify } from 'node:util'
 import { fileURLToPath } from 'node:url'
 
@@ -11,6 +12,7 @@ const execFileAsync = promisify(execFile)
 const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const SKILL_SOURCE = join(REPOSITORY_ROOT, 'skills/typescript-style-guide')
 const TEST_CASE = EVAL_CASES[0]
+const VERBOSE = process.argv.includes('--verbose')
 
 const LOCAL_SKILL_REPORTING = `## Local Skill Reporting
 
@@ -33,16 +35,55 @@ const getTargetPath = (workspaceRoot: string, filePath: string) => {
   return targetPath
 }
 
-const runCodex = async (args: ReadonlyArray<string>, cwd: string) => {
-  return new Promise<void>((resolvePromise, rejectPromise) => {
-    const child = spawn('codex', args, { cwd, stdio: 'inherit' })
+type CodexEvent = {
+  item?: {
+    command?: string
+    text?: string
+    type?: string
+  }
+}
 
-    child.on('error', rejectPromise)
-    child.on('close', (code) => {
-      if (code === 0) resolvePromise()
-      else rejectPromise(new Error(`codex exited with code ${code}`))
-    })
-  })
+const runCodex = async (args: ReadonlyArray<string>, cwd: string) => {
+  return new Promise<{ finalResponse: string; references: ReadonlyArray<string>; skillUsed: boolean }>(
+    (resolvePromise, rejectPromise) => {
+      const child = spawn('codex', args, { cwd })
+      const output = createInterface({ input: child.stdout })
+      const references = new Set<string>()
+      let finalResponse = ''
+      let skillUsed = false
+      let errorOutput = ''
+
+      output.on('line', (line) => {
+        if (VERBOSE) console.log(line)
+
+        const event = JSON.parse(line) as CodexEvent
+        const command = event.item?.command ?? ''
+
+        if (command.includes('.agents/skills/typescript-style-guide/SKILL.md')) skillUsed = true
+
+        for (const reference of command.match(/references\/[\w-]+\.md/g) ?? []) {
+          references.add(reference)
+        }
+
+        if (event.item?.type === 'agent_message') finalResponse = event.item.text ?? ''
+      })
+
+      child.stderr.on('data', (data: Buffer) => {
+        const text = data.toString()
+        errorOutput += text
+        if (VERBOSE) process.stderr.write(text)
+      })
+
+      child.on('error', rejectPromise)
+      child.on('close', (code) => {
+        if (code === 0) {
+          resolvePromise({ finalResponse, references: [...references], skillUsed })
+        } else {
+          rejectPromise(new Error(`codex exited with code ${code}\n${errorOutput}`))
+        }
+      })
+    },
+  )
 }
 
 const runCodexCase = async () => {
@@ -63,10 +104,16 @@ const runCodexCase = async () => {
     }
 
     console.log(`Case: ${TEST_CASE.id}`)
-    console.log(`Fixture files: ${Object.keys(TEST_CASE.workspace).join(', ')}`)
-    console.log('\nCodex JSONL:')
+    console.log(`Task: ${TEST_CASE.task}`)
 
-    await runCodex(
+    for (const [filePath, content] of Object.entries(TEST_CASE.workspace)) {
+      console.log(`\nFixture: ${filePath}\n${content}`)
+    }
+
+    console.log('Running Codex...')
+    const startedAt = Date.now()
+
+    const result = await runCodex(
       [
         'exec',
         '--ephemeral',
@@ -81,6 +128,11 @@ const runCodexCase = async () => {
       ],
       workspaceRoot,
     )
+
+    console.log(`\nCompleted in ${((Date.now() - startedAt) / 1000).toFixed(1)}s`)
+    console.log(`Skill: ${result.skillUsed ? 'typescript-style-guide' : 'not used'}`)
+    console.log(`References: ${result.references.join(', ') || 'none'}`)
+    console.log(`\nFinal response:\n${result.finalResponse}`)
   } finally {
     await rm(workspaceRoot, { recursive: true, force: true })
   }
