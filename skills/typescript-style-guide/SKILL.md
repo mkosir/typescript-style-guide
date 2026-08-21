@@ -1,6 +1,6 @@
 ---
 name: typescript-style-guide
-description: Apply, review, and explain the TypeScript Style Guide conventions for type modelling and type-related code. Use automatically for TypeScript tasks involving inference, readonly data, optional properties, discriminated unions, type-safe constants, template literal types, any and unknown, assertions, type errors, type definitions, arrays, type imports, or generated service types.
+description: Apply, review, and explain the TypeScript Style Guide conventions for type modelling, constants, and variable state. Use automatically for TypeScript tasks involving inference, readonly data, optional properties, discriminated unions, type-safe constants, enums, boolean state flags, null and undefined, template literal types, any and unknown, assertions, type errors, type definitions, arrays, type imports, or generated service types.
 ---
 
 # TypeScript Style Guide
@@ -19,6 +19,7 @@ Apply only the conventions relevant to the current task. Keep TypeScript, linter
 ## Reference routing
 
 - Read [references/types.md](references/types.md) for type modelling, inference, readonly data, object properties, discriminated unions, constants, template literal types, `any`, `unknown`, assertions, type errors, type definitions, arrays, type imports, and generated service types.
+- Read [references/variables.md](references/variables.md) for const assertion declarations, enum alternatives, mutually exclusive state variables instead of multiple boolean flags, and `null` and `undefined` conventions.
 
 ## Boundaries
 
