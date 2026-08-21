@@ -6,6 +6,8 @@ import { createInterface } from 'node:readline'
 import { promisify } from 'node:util'
 import { fileURLToPath } from 'node:url'
 
+import type { ThreadEvent } from '@openai/codex-sdk'
+
 import { EVAL_CASES } from './cases.ts'
 
 const execFileAsync = promisify(execFile)
@@ -35,14 +37,6 @@ const getTargetPath = (workspaceRoot: string, filePath: string) => {
   return targetPath
 }
 
-type CodexEvent = {
-  item?: {
-    command?: string
-    text?: string
-    type?: string
-  }
-}
-
 const runCodex = async (args: ReadonlyArray<string>, cwd: string) => {
   return new Promise<{ finalResponse: string; references: ReadonlyArray<string>; skillUsed: boolean }>(
     (resolvePromise, rejectPromise) => {
@@ -56,8 +50,17 @@ const runCodex = async (args: ReadonlyArray<string>, cwd: string) => {
       output.on('line', (line) => {
         if (VERBOSE) console.log(line)
 
-        const event = JSON.parse(line) as CodexEvent
-        const command = event.item?.command ?? ''
+        const event = JSON.parse(line) as ThreadEvent
+
+        if (
+          event.type !== 'item.started' &&
+          event.type !== 'item.updated' &&
+          event.type !== 'item.completed'
+        ) {
+          return
+        }
+
+        const command = event.item.type === 'command_execution' ? event.item.command : ''
 
         if (command.includes('.agents/skills/typescript-style-guide/SKILL.md')) skillUsed = true
 
@@ -65,7 +68,9 @@ const runCodex = async (args: ReadonlyArray<string>, cwd: string) => {
           references.add(reference)
         }
 
-        if (event.item?.type === 'agent_message') finalResponse = event.item.text ?? ''
+        if (event.type === 'item.completed' && event.item.type === 'agent_message') {
+          finalResponse = event.item.text
+        }
       })
 
       child.stderr.on('data', (data: Buffer) => {
