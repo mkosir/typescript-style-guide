@@ -1,0 +1,11 @@
+{
+  "name": "typescript-style-guide-skills",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "eval:typescript-style-guide": "node evals/typescript-style-guide/run-codex.ts"
+  },
+  "devDependencies": {
+    "@openai/codex-sdk": "0.149.0"
+  }
+}
