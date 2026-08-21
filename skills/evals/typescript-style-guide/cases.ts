@@ -2,6 +2,7 @@ type ExpectedSkill = {
   name: 'typescript-style-guide'
   references: ReadonlyArray<
     | 'references/types.md'
+    | 'references/functions.md'
     | 'references/variables.md'
     | 'references/naming.md'
   >
