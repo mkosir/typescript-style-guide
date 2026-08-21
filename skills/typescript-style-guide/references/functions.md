@@ -41,7 +41,7 @@ transformUserInput({
 
 **Strive to have majority of args required and use optional sparingly.**  
  If the function becomes too complex, it probably should be broken into smaller pieces.  
- An exaggerated example where implementing 10 functions with 5 required args each, is better then implementing one "can do it all" function that accepts 50 optional args.
+ An exaggerated example: implementing 10 focused functions with 5 required arguments each is preferable to implementing one "do-it-all" function with 50 optional arguments.
 
 ### Args as Discriminated Type
 
