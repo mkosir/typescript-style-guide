@@ -6,6 +6,8 @@ type ExpectedSkill = {
     | 'references/variables.md'
     | 'references/naming.md'
     | 'references/source-organization.md'
+    | 'references/react.md'
+    | 'references/tests.md'
   >
 }
 

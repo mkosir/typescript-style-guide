@@ -1,6 +1,6 @@
 ---
 name: typescript-style-guide
-description: Apply, review, and explain the TypeScript Style Guide conventions for type modelling, functions, constants, variable state, naming, and source organization. Use automatically for TypeScript tasks involving inference, readonly data, optional properties, discriminated unions, type-safe constants, function design, arguments, return types, purity, side effects, enums, boolean state flags, null and undefined, naming, exports, generics, comments, template literal types, any and unknown, assertions, type errors, type definitions, arrays, type imports, generated service types, code collocation, feature-based project structure, or relative and absolute import paths.
+description: Apply, review, and explain the TypeScript Style Guide conventions for type modelling, functions, constants, variable state, naming, source organization, React, and tests. Use automatically for TypeScript tasks involving inference, readonly data, optional properties, discriminated unions, type-safe constants, function design, arguments, return types, purity, side effects, enums, boolean state flags, null and undefined, naming, exports, generics, comments, template literal types, any and unknown, assertions, type errors, type definitions, arrays, type imports, generated service types, code collocation, feature-based project structure, import paths, React component APIs, props-to-state, component roles, data flow, test design, test descriptions, isolation, mocking, or snapshots.
 ---
 
 # TypeScript Style Guide
@@ -23,6 +23,8 @@ Apply only the conventions relevant to the current task. Keep TypeScript, linter
 - Read [references/variables.md](references/variables.md) when the task concerns variable declarations, state modelling, enum alternatives, or choosing how application state represents absence with `null` or `undefined`. Do not read it for incidental variables or runtime checks used only for type narrowing.
 - Read [references/naming.md](references/naming.md) for named exports, naming conventions, generic type parameters, React naming, comments, and TSDoc.
 - Read [references/source-organization.md](references/source-organization.md) for code collocation, feature-based organization, relative and absolute import paths, and frontend or backend project structure. Do not read it for type-only import semantics, which belong to Types.
+- Read [references/react.md](references/react.md) for React component and hook APIs, required and optional props, discriminated props, props-to-state, component typing and roles, data flow, state placement, and compound components. This reference takes precedence when discriminated unions concern component props.
+- Read [references/tests.md](references/tests.md) for test design, the Arrange-Act-Assert pattern, isolation, implementation details, mocking, test descriptions, tooling, and snapshots.
 
 ## Boundaries
 
