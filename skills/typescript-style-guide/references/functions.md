@@ -19,7 +19,7 @@ Not every function can be pure. Network requests, storage, logging, and UI updat
 
 When a function accepts several related parameters, prefer a single object parameter. Named properties make call sites easier to understand and allow the function API to evolve without relying on argument order.
 
-Keep positional parameters when there are only one or two values and their meaning is obvious, or when a conventional signature is clearer, such as `isNumber(value)` or a callback.
+Keep positional parameters when their meaning and order are obvious, or when a conventional signature is clearer, such as `isNumber(value)` or a callback.
 
 ```ts
 // ❌ Multiple arguments make this call difficult to understand
