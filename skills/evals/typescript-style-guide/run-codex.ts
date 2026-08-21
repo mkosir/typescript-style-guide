@@ -1,12 +1,11 @@
-import { execFile, spawn } from 'node:child_process'
+import { execFile } from 'node:child_process'
 import { cp, mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve, sep } from 'node:path'
-import { createInterface } from 'node:readline'
 import { promisify } from 'node:util'
 import { fileURLToPath } from 'node:url'
 
-import type { ThreadEvent } from '@openai/codex-sdk'
+import { Codex } from '@openai/codex-sdk'
 
 import { EVAL_CASES } from './cases.ts'
 
@@ -37,58 +36,38 @@ const getTargetPath = (workspaceRoot: string, filePath: string) => {
   return targetPath
 }
 
-const runCodex = async (args: ReadonlyArray<string>, cwd: string) => {
-  return new Promise<{ finalResponse: string; references: ReadonlyArray<string>; skillUsed: boolean }>(
-    (resolvePromise, rejectPromise) => {
-      const child = spawn('codex', args, { cwd })
-      const output = createInterface({ input: child.stdout })
-      const references = new Set<string>()
-      let finalResponse = ''
-      let skillUsed = false
-      let errorOutput = ''
+const runCodex = async (task: string, cwd: string) => {
+  const codex = new Codex()
+  const thread = codex.startThread({
+    approvalPolicy: 'never',
+    sandboxMode: 'read-only',
+    workingDirectory: cwd,
+  })
+  const { events } = await thread.runStreamed(task)
+  const references = new Set<string>()
+  let finalResponse = ''
+  let skillUsed = false
 
-      output.on('line', (line) => {
-        if (VERBOSE) console.log(line)
+  for await (const event of events) {
+    if (VERBOSE) console.log(JSON.stringify(event))
 
-        const event = JSON.parse(line) as ThreadEvent
+    if (event.type === 'turn.failed') throw new Error(event.error.message)
+    if (event.type === 'error') throw new Error(event.message)
+    if (event.type !== 'item.completed') continue
 
-        if (
-          event.type !== 'item.started' &&
-          event.type !== 'item.updated' &&
-          event.type !== 'item.completed'
-        ) {
-          return
-        }
+    if (event.item.type === 'agent_message') finalResponse = event.item.text
+    if (event.item.type !== 'command_execution') continue
 
-        const command = event.item.type === 'command_execution' ? event.item.command : ''
+    const { command } = event.item
 
-        if (command.includes('.agents/skills/typescript-style-guide/SKILL.md')) skillUsed = true
+    if (command.includes('.agents/skills/typescript-style-guide/SKILL.md')) skillUsed = true
 
-        for (const reference of command.match(/references\/[\w-]+\.md/g) ?? []) {
-          references.add(reference)
-        }
+    for (const reference of command.match(/references\/[\w-]+\.md/g) ?? []) {
+      references.add(reference)
+    }
+  }
 
-        if (event.type === 'item.completed' && event.item.type === 'agent_message') {
-          finalResponse = event.item.text
-        }
-      })
-
-      child.stderr.on('data', (data: Buffer) => {
-        const text = data.toString()
-        errorOutput += text
-        if (VERBOSE) process.stderr.write(text)
-      })
-
-      child.on('error', rejectPromise)
-      child.on('close', (code) => {
-        if (code === 0) {
-          resolvePromise({ finalResponse, references: [...references], skillUsed })
-        } else {
-          rejectPromise(new Error(`codex exited with code ${code}\n${errorOutput}`))
-        }
-      })
-    },
-  )
+  return { finalResponse, references: [...references], skillUsed }
 }
 
 const runCodexCase = async () => {
@@ -118,21 +97,7 @@ const runCodexCase = async () => {
     console.log('Running Codex...')
     const startedAt = Date.now()
 
-    const result = await runCodex(
-      [
-        'exec',
-        '--ephemeral',
-        '--json',
-        '--sandbox',
-        'read-only',
-        '--ignore-user-config',
-        '--ignore-rules',
-        '--cd',
-        workspaceRoot,
-        TEST_CASE.task,
-      ],
-      workspaceRoot,
-    )
+    const result = await runCodex(TEST_CASE.task, workspaceRoot)
 
     console.log(`\nCompleted in ${((Date.now() - startedAt) / 1000).toFixed(1)}s`)
     console.log(`Skill: ${result.skillUsed ? 'typescript-style-guide' : 'not used'}`)
