@@ -12,14 +12,14 @@ Apply only the conventions relevant to the current task. Keep TypeScript, linter
 1. Inspect the consuming repository's conventions and configuration.
 2. Let explicit repository conventions take precedence over this opinionated guide.
 3. Identify which guide topic applies.
-4. Read only the relevant reference file.
+4. Read only the reference for the task's primary guide topic. Read multiple references only when the task substantively spans multiple topics.
 5. Apply, review, or explain the conventions in the context of the current task.
 6. State important tradeoffs when a convention depends on context or judgment.
 
 ## Reference routing
 
 - Read [references/types.md](references/types.md) for type modelling, inference, readonly data, object properties, discriminated unions, constants, template literal types, `any`, `unknown`, assertions, type errors, type definitions, arrays, type imports, and generated service types.
-- Read [references/variables.md](references/variables.md) for const assertion declarations, enum alternatives, mutually exclusive state variables instead of multiple boolean flags, and `null` and `undefined` conventions.
+- Read [references/variables.md](references/variables.md) when the task concerns variable declarations, state modelling, enum alternatives, or `null` and `undefined` conventions. Do not read it for incidental variables or runtime null checks used only for type narrowing.
 - Read [references/naming.md](references/naming.md) for named exports, naming conventions, generic type parameters, React naming, comments, and TSDoc.
 
 ## Boundaries
