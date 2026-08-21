@@ -5,6 +5,7 @@ type ExpectedSkill = {
     | 'references/functions.md'
     | 'references/variables.md'
     | 'references/naming.md'
+    | 'references/source-organization.md'
   >
 }
 
