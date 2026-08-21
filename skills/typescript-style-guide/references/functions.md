@@ -4,12 +4,16 @@ Function conventions should be followed as much as possible (some of the convent
 
 ### General
 
-Function:
+Prefer functions that:
 
-- should have single responsibility.
-- should be stateless where the same input arguments return same value every single time.
-- should accept at least one argument and return data.
-- should not have side effects, but be pure. Implementation should not modify or access variable value outside its local environment (global state, fetching etc.).
+- have a single responsibility.
+- make dependencies explicit through arguments.
+- return a value when they calculate or transform data.
+- avoid side effects when practical.
+
+A stateless function does not retain data between calls. A deterministic function returns the same result for the same inputs. A pure function is deterministic and has no observable side effects, making it easier to understand, test, and reuse.
+
+Not every function can be pure. Network requests, storage, logging, and UI updates require side effects. Keep these functions small and isolate side effects from pure business logic.
 
 ### Single Object Arg
 
