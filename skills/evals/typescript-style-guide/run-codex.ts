@@ -43,22 +43,16 @@ const runCodex = async (task: string, cwd: string) => {
     sandboxMode: 'read-only',
     workingDirectory: cwd,
   })
-  const { events } = await thread.runStreamed(task)
+  const result = await thread.run(task)
   const references = new Set<string>()
-  let finalResponse = ''
   let skillUsed = false
 
-  for await (const event of events) {
-    if (VERBOSE) console.log(JSON.stringify(event))
+  if (VERBOSE) console.log(`\nCodex items:\n${JSON.stringify(result.items, null, 2)}`)
 
-    if (event.type === 'turn.failed') throw new Error(event.error.message)
-    if (event.type === 'error') throw new Error(event.message)
-    if (event.type !== 'item.completed') continue
+  for (const item of result.items) {
+    if (item.type !== 'command_execution') continue
 
-    if (event.item.type === 'agent_message') finalResponse = event.item.text
-    if (event.item.type !== 'command_execution') continue
-
-    const { command } = event.item
+    const { command } = item
 
     if (command.includes('.agents/skills/typescript-style-guide/SKILL.md')) skillUsed = true
 
@@ -67,7 +61,11 @@ const runCodex = async (task: string, cwd: string) => {
     }
   }
 
-  return { finalResponse, references: [...references], skillUsed }
+  return {
+    finalResponse: result.finalResponse,
+    references: [...references],
+    skillUsed,
+  }
 }
 
 const runCodexCase = async () => {
