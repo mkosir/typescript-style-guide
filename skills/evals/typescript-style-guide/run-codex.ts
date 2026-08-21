@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url'
 import { EVAL_CASES } from './cases.ts'
 
 const execFileAsync = promisify(execFile)
-const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
 const SKILL_SOURCE = join(REPOSITORY_ROOT, 'skills/typescript-style-guide')
 const TEST_CASE = EVAL_CASES[0]
 const VERBOSE = process.argv.includes('--verbose')
