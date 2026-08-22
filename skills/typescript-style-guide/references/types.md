@@ -313,8 +313,8 @@ const invalidQuery: Query<'users'> = 'SELECT title FROM users WHERE age > 30'; /
 
 The `any` type must not be used because it bypasses type checking and allows unsafe operations and assignments. This can mask serious programming errors.
 
-When dealing with ambiguous data type use `unknown`, which is the type-safe counterpart of `any`.  
-`unknown` doesn't allow dereferencing all properties (anything can be assigned to `unknown`, but `unknown` isn’t assignable to anything).
+When dealing with ambiguous data, use `unknown`, which is the type-safe counterpart of `any`.  
+Anything can be assigned to `unknown`, but it must be narrowed before accessing its properties or assigning it to a more specific type.
 
 ```ts
 // ❌ Avoid any
@@ -338,17 +338,16 @@ const bar: number = foo;
 
 ### Type & Non-nullability Assertions
 
-Type assertions `user as User` and non-nullability assertions `user!.name` are unsafe. Both only silence TypeScript compiler and increase the risk of crashing application at runtime.  
-They can only be used as an exception (e.g. third party library types mismatch, dereferencing `unknown` etc.) with a strong rational for why it's introduced into the codebase.
+Type assertions `user as User` and non-nullability assertions `user!.name` are unsafe. Both only silence the TypeScript compiler and increase the risk of crashing the application at runtime.  
+They can only be used as an exception, such as a third-party library type mismatch, with a strong rationale for why they are introduced into the codebase.
 
 ```ts
 type User = { id: string; username: string; avatar: string | null };
 // ❌ Avoid type assertions
 const user = { name: 'Nika' } as User;
-// ❌ Avoid non-nullability assertions
-renderUserAvatar(user!.avatar); // Runtime error
 
-const renderUserAvatar = (avatar: string) => {...}
+// ❌ Avoid non-nullability assertions
+const getUsername = (user: User | null) => user!.username; // Runtime error when user is null
 ```
 
 ### Type Errors
