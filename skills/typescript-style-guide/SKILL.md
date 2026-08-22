@@ -1,6 +1,6 @@
 ---
 name: typescript-style-guide
-description: Apply, review, and explain the opinionated conventions in the TypeScript Style Guide. Use automatically for TypeScript or TSX tasks involving type modelling, function APIs, variables and state, naming, source organization, React component design, or tests. Do not use for styling-only changes or tasks where TypeScript is incidental.
+description: Apply, review, and explain the opinionated conventions in the TypeScript Style Guide. Use automatically for TypeScript tasks involving type modelling, function APIs, variables and state, naming, source organization, React component design, or tests.
 ---
 
 # TypeScript Style Guide
