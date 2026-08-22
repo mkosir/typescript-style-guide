@@ -8,15 +8,16 @@ Strive to keep naming conventions consistent and readable, with important contex
 <Rule
   prefix="Named exports must be used to ensure that all imports follow a uniform pattern"
   href="https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md"
->{`'import/no-default-export': 'error'
-
-// In case of exceptions disable the rule
-overrides: [
-    {
-      files: ["src/pages/**/*"],
-      rules: { "import/no-default-export": "off" },
-    }
-]
+>{`export default [
+  {
+    rules: { 'import/no-default-export': 'error' },
+  },
+  // In case of exceptions disable the rule
+  {
+    files: ['src/pages/**/*'],
+    rules: { 'import/no-default-export': 'off' },
+  },
+];
 `}</Rule>
 <!-- prettier-ignore-end -->
 
