@@ -21,7 +21,7 @@ Strive to keep naming conventions consistent and readable, with important contex
 `}</Rule>
 <!-- prettier-ignore-end -->
 
-This keeps variables, functions etc. names consistent across the entire codebase. Named exports have the benefit of
+This keeps variable and function names consistent across the entire codebase. Named exports have the benefit of
 erroring when import statements try to import something that hasn't been declared.
 
 ### Naming Conventions
@@ -72,7 +72,7 @@ While it's often hard to find the best name, aim to optimize code for consistenc
   const DASHBOARD_ACCESS_ROLES = ['admin', 'editor', 'moderator'] as const;
   ```
 
-  If a type exists use [Type-Safe Constants With Satisfies](#type-safe-constants-with-satisfies).
+  If a type exists, use [Type-Safe Constants With Satisfies](#type-safe-constants-with-satisfies).
 
   ```ts
   // Type OrderStatus is predefined (e.g. generated from database schema, API)
@@ -121,10 +121,10 @@ A generic type parameter must start with the capital letter T followed by a desc
 
 Key reasons and benefits:
 
-- Complex types often involve generics, where clear naming improves readability and maintainability.
-- Single letter generics like `T`, `K`, `U` are disallowed, the more parameters we introduce, the easier it is to mistake them.
+- Complex types often involve generics, for which clear naming improves readability and maintainability.
+- Single-letter generics like `T`, `K`, and `U` are disallowed. The more parameters we introduce, the easier it is to mistake them.
 - Prefixing with `T` makes it immediately obvious that it's a generic type parameter, not a regular type.
-- A common scenario is when a generic parameter shadows an existing type due to having the same name e.g. `<Request extends Request>`
+- A common scenario is when a generic parameter shadows an existing type because it has the same name, e.g. `<Request extends Request>`.
 
 <Rule href="https://typescript-eslint.io/rules/naming-convention">
   {`'@typescript-eslint/naming-convention': [
@@ -172,7 +172,7 @@ const FaqList = ['qa-1', 'qa-2'];
 const generateUserUrl(params) => {...}
 ```
 
-In favor of readability, strive to avoid abbreviations, unless they are widely accepted and necessary.
+For readability, strive to avoid abbreviations, unless they are widely accepted and necessary.
 
 ```ts
 // ❌ Avoid
@@ -189,13 +189,13 @@ Pascal case
 
 #### Prop Types
 
-React component name following "Props" postfix  
+React component name followed by the "Props" suffix  
  `[ComponentName]Props` - `ProductItemProps`, `ProductsPageProps`
 
 #### Callback Props
 
-Event handler (callback) props are prefixed as `on*` - e.g. `onClick`.  
-Event handler implementation functions are prefixed as `handle*` - e.g. `handleClick`.
+Event handler (callback) props are prefixed with `on*` - e.g. `onClick`.  
+Event handler implementation functions are prefixed with `handle*` - e.g. `handleClick`.
 
 <Rule href="https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md">{`'react/jsx-handler-names': [
     'error',
@@ -222,7 +222,7 @@ Event handler implementation functions are prefixed as `handle*` - e.g. `handleC
   href="https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks"
 >{`'react-hooks/rules-of-hooks': 'error'`}</Rule>
 <Rule
-  prefix="Symmetrically convention as [value, setValue] = useState()"
+  prefix="Symmetrical convention: [value, setValue] = useState()"
   href="https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/hook-use-state.md#rule-details"
 >{`'react/hook-use-state': 'error'`}</Rule>
 
@@ -238,7 +238,7 @@ const [color, setColor] = useState();
 const [isActive, setIsActive] = useState();
 ```
 
-Custom hook must always return an object
+A custom hook must always return an object.
 
 ```ts
 // ❌ Avoid
@@ -287,7 +287,7 @@ const frequencies = signal.FFT();
 
 [TSDoc](https://tsdoc.org/) standardizes TypeScript documentation comments so editors and documentation tools can interpret them consistently. This improves developer experience and supports generated API documentation.
 
-Use TSDoc comments when documenting APIs, libraries, configurations or reusable code.
+Use TSDoc comments when documenting APIs, libraries, configurations, or reusable code.
 
 ```ts
 /**

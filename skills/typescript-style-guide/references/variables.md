@@ -2,7 +2,7 @@
 
 ### Const Assertion
 
-Strive declaring constants using const assertion `as const`:
+Strive to declare constants using the const assertion `as const`:
 
 Constants are used to represent values that are not meant to change, ensuring reliability and consistency in a codebase. Const assertions preserve literal types and infer readonly properties.
 

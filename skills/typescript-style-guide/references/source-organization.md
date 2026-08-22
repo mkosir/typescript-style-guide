@@ -2,7 +2,7 @@
 
 ### Code Collocation
 
-- Every application or package in monorepo has project files/folders organized and grouped **by feature**.
+- Every application or package in a monorepo has project files and folders organized and grouped **by feature**.
 - **Collocate code as close as possible to where it's relevant.**
 - Deep folder nesting should not represent an issue.
 
@@ -12,7 +12,7 @@ Import paths can be relative, starting with `./` or `../`, or they can be absolu
 
 To make import statements more readable and easier to understand:
 
-- **Relative** imports `./sortItems` must be used when importing files within the same feature, that are 'close' to each other, which also allows moving feature around the codebase without introducing changes in these imports.
+- **Relative** imports `./sortItems` must be used when importing files within the same feature that are 'close' to each other. This also allows moving the feature around the codebase without changing these imports.
 - **Absolute** imports `@common/utils` must be used in all other cases.
 - **All** imports must be auto sorted by tooling e.g. [prettier-plugin-sort-imports](https://github.com/trivago/prettier-plugin-sort-imports), [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/order.md) etc.
 
@@ -30,7 +30,7 @@ import { baz } from './baz';
 
 ### Project Structure
 
-Example frontend monorepo project, where every application has file/folder grouped by feature:
+Example frontend monorepo project where every application has files and folders grouped by feature:
 
 ```shell
 apps/
@@ -70,13 +70,13 @@ apps/
 └─ ...
 ```
 
-- `modules` folder is responsible for implementation of each individual page, where all custom features for that page are being implemented (components, hooks, utils functions etc.).
-- `common` folder is responsible for implementations that are truly used across application. Since it's a "global folder" it should be used sparingly.  
-  If same component e.g. `common/components/ProductTitle` starts being used on more than one page, it shall be moved to common folder.
+- The `modules` folder is responsible for implementing each individual page and its custom features (components, hooks, utility functions etc.).
+- The `common` folder is responsible for implementations that are truly used across the application. Since it's a "global folder" it should be used sparingly.  
+  If the same component, e.g. `common/components/ProductTitle`, is used on more than one page, it shall be moved to the common folder.
 
-In case using frontend framework with file-system based router (e.g. Nextjs), `pages` folder serves only as a router, where its responsibility is to define routes (no business logic implementation).
+When using a frontend framework with a file-system-based router (e.g. Next.js), the `pages` folder serves only as a router and is responsible for defining routes (no business logic implementation).
 
-Example backend project structure with file/folder grouped by feature:
+Example backend project structure with files and folders grouped by feature:
 
 ```shell
 product-manager/

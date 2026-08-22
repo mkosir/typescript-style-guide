@@ -1,20 +1,20 @@
 ## Appendix - React
 
-Since React components and hooks are also functions, respective [function conventions](#functions) applies.
+Since React components and hooks are also functions, the respective [function conventions](#functions) apply.
 
 ### Required & Optional Props
 
-**Strive to have majority of props required and use optional props sparingly.**
+**Strive to have the majority of props required and use optional props sparingly.**
 
-Especially when creating new component for first/single use case majority of props should be required. When component starts covering more use cases, introduce optional props.  
-There are potential exceptions, where component API needs to implement optional props from the start (e.g. shared components covering multiple use cases, UI design system components - button `isDisabled` etc.)
+Especially when creating a new component for its first or single use case, the majority of props should be required. When the component starts covering more use cases, introduce optional props.  
+There are potential exceptions where a component API needs to implement optional props from the start (e.g. shared components covering multiple use cases, UI design system components - button `isDisabled` etc.)
 
-If component/hook becomes to complex it probably should be broken into smaller pieces.  
-An exaggerated example where implementing 10 React components with 5 required props each, is better then implementing one "can do it all" component that accepts 50 optional props.
+If a component or hook becomes too complex, it should probably be broken into smaller pieces.  
+An exaggerated example: implementing 10 React components with 5 required props each is better than implementing one "can do it all" component that accepts 50 optional props.
 
 ### Props as Discriminated Type
 
-When applicable, use **discriminated types** to eliminate optional props. This approach reduces complexity in the component API and ensures that only the required props are passed based on the specific use case.
+When applicable, use **discriminated union types** to eliminate optional props. This approach reduces complexity in the component API and ensures that only the required props are passed based on the specific use case.
 
 ```ts
 // ❌ Avoid optional props as they increase complexity and ambiguity in component APIs
@@ -60,8 +60,8 @@ export const Status = (props: StatusProps) => {
 
 ### Props To State
 
-In general avoid using props to state, since component will not update on prop changes. It can lead to bugs that are hard to track, with unintended side effects and difficulty testing.  
-When there is truly a use case for using prop in initial state, prop must be prefixed with `initial` (e.g. `initialProduct`, `initialSort` etc.)
+In general, avoid using props as initial state because the state will not update when the props change. This can lead to bugs that are hard to track, unintended side effects, and difficulty testing.  
+When there is truly a use case for using a prop as initial state, the prop must be prefixed with `initial` (e.g. `initialProduct`, `initialSort` etc.)
 
 ```tsx
 // ❌ Avoid using props to state
@@ -74,7 +74,7 @@ export const Foo = ({ productName, userId }: FooProps) => {
   const [productName, setProductName] = useState(productName);
   ...
 
-// ✅ Use prop prefix `initial`, when there is a rational use case for it
+// ✅ Use prop prefix `initial` when there is a rationale for it
 type FooProps = {
   initialProductName: string;
   userId: string;
@@ -109,7 +109,7 @@ export const Foo = ({ name, score }: FooProps) => {...
 
 #### Container
 
-- All container components have postfix "Container" or "Page" `[ComponentName]Container|Page`. Use "Page" postfix to indicate component is an actual web page.
+- All container components have the suffix "Container" or "Page" `[ComponentName]Container|Page`. Use the "Page" suffix to indicate that a component is an actual web page.
 - Each feature has a container component (`AddUserContainer.tsx`, `EditProductContainer.tsx`, `ProductsPage.tsx` etc.)
 - Includes business logic.
 - API integration.
@@ -129,7 +129,7 @@ export const Foo = ({ name, score }: FooProps) => {...
 
 - Representational components that are designed to fulfill feature requirements.
 - Nested inside container component folder.
-- Should follow [functions conventions](#functions) as much as possible.
+- Should follow [function conventions](#functions) as much as possible.
 - No API integration.
 - Structure:
   ```
@@ -141,7 +141,7 @@ export const Foo = ({ name, score }: FooProps) => {...
 
 #### UI - Design system
 
-- Global Reusable/shared components used throughout whole codebase.
+- Globally reusable or shared components used throughout the whole codebase.
 - Structure:
   ```
   Button/
@@ -156,7 +156,7 @@ export const Foo = ({ name, score }: FooProps) => {...
 - Utilize storing state in the URL, especially for filtering, sorting etc.
 - Don't sync URL state with local state.
 - Consider passing data simply through props, using the URL, or composing children. Use global state (Zustand, Context) as a last resort.
-- Use React compound components when components should belong and work together: `menu`, `accordion`,`navigation`, `tabs`, `list`, etc.  
+- Use React compound components when components should belong and work together: `menu`, `accordion`, `navigation`, `tabs`, `list`, etc.  
   Always export compound components as:
 
   ```tsx
@@ -189,10 +189,10 @@ export const Foo = ({ name, score }: FooProps) => {...
   ```
 
 - UI components should show derived state and send events, nothing more (no business logic).
-- As in many programming languages functions args can be passed to the next function and on to the next etc.  
-  React components are no different, where prop drilling should not become an issue.  
-  If with app scaling prop drilling truly becomes an issue, try to refactor render method, local states in parent components, using composition etc.
+- As in many programming languages, function arguments can be passed to the next function and on to the next etc.  
+  React components are no different, so prop drilling should not become an issue.  
+  If prop drilling truly becomes an issue as the app scales, try refactoring render methods or local state in parent components, or use composition.
 - Data fetching is only allowed in container components.
-- Use of server-state library is encouraged ([TanStack Query](https://tanstack.com/query/latest/docs/framework/react/overview), [apollo client](https://github.com/apollographql/apollo-client) etc.).
+- The use of a server-state library is encouraged ([TanStack Query](https://tanstack.com/query/latest/docs/framework/react/overview), [Apollo Client](https://github.com/apollographql/apollo-client) etc.).
 - Use of client-state library for global state is discouraged.  
-  Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings - `/me` endpoint). If still global state is truly needed use [Zustand](https://github.com/pmndrs/zustand) or [Context](https://react.dev/reference/react/createContext).
+  Reconsider whether something should be truly global across the application, e.g. `themeMode` or `Permissions`, or whether it can be put in server state (e.g. user settings from the `/me` endpoint). If global state is still truly needed, use [Zustand](https://github.com/pmndrs/zustand) or [Context](https://react.dev/reference/react/createContext).

@@ -142,7 +142,7 @@ You may encounter discriminated unions under different names, such as tagged uni
 
 Advantages of discriminated unions:
 
-- As mentioned in [Required & Optional Object Properties](#required--optional-object-properties), [Args as Discriminated Type](#args-as-discriminated-type) and [Props as Discriminated Type](#props-as-discriminated-type), discriminated unions remove optional object properties, reducing complexity.
+- As mentioned in [Required & Optional Object Properties](#required--optional-object-properties), [Args as Discriminated Type](#args-as-discriminated-type), and [Props as Discriminated Type](#props-as-discriminated-type), discriminated unions remove optional object properties, reducing complexity.
 - Exhaustiveness check - TypeScript can ensure that all possible variants of a type are implemented, catching unhandled cases during type checking.
 
   <Rule href="https://typescript-eslint.io/rules/switch-exhaustiveness-check/">{`"@typescript-eslint/switch-exhaustiveness-check": "error"`}</Rule>
@@ -152,10 +152,10 @@ Advantages of discriminated unions:
   type Square = { kind: 'square'; size: number };
   type Triangle = { kind: 'triangle'; base: number; height: number };
 
-  // Create discriminated union 'Shape', with 'kind' property to discriminate the type of object.
+  // Create a discriminated union 'Shape', with the 'kind' property to discriminate the type of object.
   type Shape = Circle | Square | Triangle;
 
-  // TypeScript warns us with errors in calculateArea function
+  // TypeScript reports errors in the calculateArea function
   const calculateArea = (shape: Shape) => {
     // Error - Switch is not exhaustive. Cases not matched: "triangle"
     switch (shape.kind) {
@@ -476,10 +476,10 @@ import type { MyClass } from 'some-library';
 
 ### Services & Types Generation
 
-Documentation becomes outdated the moment it's written, and worse than no documentation is wrong documentation. The same applies to types when describing the modules your app interacts with, such as APIs, messaging protocols and databases.
+Documentation becomes outdated the moment it's written, and worse than no documentation is wrong documentation. The same applies to types when describing the modules your app interacts with, such as APIs, messaging protocols, and databases.
 
 For external services, such as REST, GraphQL, and MQ, it's crucial to generate types from their contracts, whether they use Swagger, schemas, or other sources (e.g. [openapi-ts](https://github.com/drwpow/openapi-typescript), [graphql-config](https://github.com/kamilkisiela/graphql-config)). Avoid manually declaring and maintaining types, as they can easily fall out of sync.
 
 Generated types keep compile-time contracts in sync. They do not validate data received from external services at runtime.
 
-As an exception, only manually declare types when no options are available, such as when there is no documentation for the service, data cannot be fetched to retrieve a contract, or the database cannot be accessed to infer types.
+As an exception, manually declare types only when no other options are available, such as when there is no documentation for the service, data cannot be fetched to retrieve a contract, or the database cannot be accessed to infer types.
