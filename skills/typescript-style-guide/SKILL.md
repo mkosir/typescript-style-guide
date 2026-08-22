@@ -24,7 +24,7 @@ Apply only the conventions relevant to the current task. Keep TypeScript, linter
 - Read [references/naming.md](references/naming.md) for named exports, naming conventions, generic type parameters, React naming, comments, and TSDoc.
 - Read [references/source-organization.md](references/source-organization.md) for code collocation, feature-based organization, relative and absolute import paths, and frontend or backend project structure. Do not read it for type-only import semantics, which belong to Types.
 - Read [references/react.md](references/react.md) for React component and hook APIs, required and optional props, discriminated props, props-to-state, component typing and roles, data flow, state placement, and compound components. This reference takes precedence when discriminated unions concern component props.
-- Read [references/tests.md](references/tests.md) for test design, the Arrange-Act-Assert pattern, isolation, implementation details, mocking, test descriptions, tooling, and snapshots.
+- Read [references/tests.md](references/tests.md) for test design, the Arrange-Act-Assert pattern, isolation, implementation details, mocking, test descriptions, and snapshots.
 
 ## Boundaries
 
