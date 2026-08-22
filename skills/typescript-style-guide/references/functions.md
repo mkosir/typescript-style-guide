@@ -98,6 +98,6 @@ Consider the advantages of explicitly defining the return type of a function:
 As context matters, use explicit return types when they add clarity and safety.
 
 <Rule
-  prefix="Explicitly defining the return type of a function is encouraged, although not required"
-  href="https://typescript-eslint.io/rules/explicit-function-return-type/"
->{`"@typescript-eslint/explicit-function-return-type": "error"`}</Rule>
+  prefix="Require explicit types at module boundaries"
+  href="https://typescript-eslint.io/rules/explicit-module-boundary-types/"
+>{`"@typescript-eslint/explicit-module-boundary-types": "error"`}</Rule>
