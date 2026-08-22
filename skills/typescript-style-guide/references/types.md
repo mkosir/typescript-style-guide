@@ -80,7 +80,7 @@ const removeFirstUser = (users: ReadonlyArray<User>) => {
 This approach reflects designing type-safe and maintainable code:
 
 - Clarity and Predictability - Required properties make it explicit which data is always expected. This reduces ambiguity for developers using or consuming the object, as they know exactly what must be present.
-- Type Safety - When properties are required, TypeScript can enforce their presence at compile time. This prevents runtime errors caused by missing properties.
+- Type Safety - When properties are required, TypeScript can enforce their presence and catch missing properties during type checking.
 - Avoids Overuse of Optional Chaining - If too many properties are optional, it often leads to extensive use of optional chaining (`?.`) to handle potential undefined values. This clutters the code and obscures its intent.
 
 If introducing many optional properties truly can't be avoided, utilize **discriminated union types**.
@@ -143,7 +143,7 @@ You may encounter discriminated unions under different names such as tagged unio
 Discriminated unions advantages:
 
 - As mentioned in [Required & Optional Object Properties](#required--optional-object-properties), [Args as Discriminated Type](#args-as-discriminated-type) and [Props as Discriminated Type](#props-as-discriminated-type), discriminated unions remove optional object properties, reducing complexity.
-- Exhaustiveness check - TypeScript can ensure that all possible variants of a type are implemented, eliminating the risk of undefined or unexpected behavior at runtime.
+- Exhaustiveness check - TypeScript can ensure that all possible variants of a type are implemented, catching unhandled cases during type checking.
 
   <Rule href="https://typescript-eslint.io/rules/switch-exhaustiveness-check/">{`"@typescript-eslint/switch-exhaustiveness-check": "error"`}</Rule>
 
@@ -236,6 +236,8 @@ const IDLE_ORDER = {
 
 Embrace template literal types as they allow you to create precise and type-safe string constructs by interpolating values. They are a powerful alternative to using the wide string type, providing better type safety.
 
+Template literal types constrain values known to TypeScript at compile time. They do not validate strings received at runtime.
+
 Adopting template literal types brings several advantages:
 
 - Prevent errors caused by typos or invalid strings.
@@ -244,7 +246,7 @@ Adopting template literal types brings several advantages:
 
 Template literal types are useful in various practical scenarios, such as:
 
-- String Patterns - Use template literal types to enforce valid string patterns.
+- String Patterns - Use template literal types to enforce specific string patterns during type checking.
 
   ```ts
   // ❌ Avoid
@@ -265,7 +267,7 @@ Template literal types are useful in various practical scenarios, such as:
   const userEndpoint: ApiEndpoint = '/api/users';
   ```
 
-- Internationalization Keys - Avoid relying on raw strings for translation keys, which can lead to typos and missing translations. Use template literal types to define valid translation keys.
+- Internationalization Keys - Avoid relying on raw strings for translation keys, which can lead to typos and missing translations. Use template literal types to constrain their structure.
 
   ```ts
   // ❌ Avoid
@@ -276,7 +278,7 @@ Template literal types are useful in various practical scenarios, such as:
   const homeTitle: TranslationKey = 'translation.home.title';
   ```
 
-- CSS Utilities - Avoid raw strings for color values, which can lead to invalid or non-existent colors. Use template literal types to enforce valid color names and values.
+- CSS Utilities - Avoid raw strings for color values, which can lead to invalid or non-existent colors. Use template literal types to enforce known color names and require custom values to start with `#`.
 
   ```ts
   // ❌ Avoid
@@ -289,7 +291,7 @@ Template literal types are useful in various practical scenarios, such as:
   const customColor: Color = '#AD3128';
   ```
 
-- Database queries - Avoid using raw strings for table or column names, which can lead to typos and invalid queries. Use template literal types to define valid tables and column combinations.
+- Database queries - Avoid using raw strings for table or column names, which can lead to typos. Use template literal types to define valid table and column combinations.
 
 <!-- prettier-ignore-start -->
 ```ts
@@ -304,7 +306,7 @@ type Column<TTableName extends Table> =
   never;
 
 type Query<TTableName extends Table> = `SELECT ${Column<TTableName>} FROM ${TTableName} WHERE ${string}`;
-const userQuery: Query<'users'> = 'SELECT name FROM users WHERE age > 30'; // Valid query
+const userQuery: Query<'users'> = 'SELECT name FROM users WHERE age > 30'; // Accepted by Query<'users'>
 const invalidQuery: Query<'users'> = 'SELECT title FROM users WHERE age > 30'; // Error: 'title' is not a column in 'users' table.
 ```
 <!-- prettier-ignore-end -->
@@ -477,5 +479,7 @@ import type { MyClass } from 'some-library';
 Documentation becomes outdated the moment it's written, and worse than no documentation is wrong documentation. The same applies to types when describing the modules your app interacts with, such as APIs, messaging protocols and databases.
 
 For external services, such as REST, GraphQL, and MQ it's crucial to generate types from their contracts, whether they use Swagger, schemas, or other sources (e.g. [openapi-ts](https://github.com/drwpow/openapi-typescript), [graphql-config](https://github.com/kamilkisiela/graphql-config)). Avoid manually declaring and maintaining types, as they can easily fall out of sync.
+
+Generated types keep compile-time contracts in sync. They do not validate data received from external services at runtime.
 
 As an exception, only manually declare types when no options are available, such as when there is no documentation for the service, data cannot be fetched to retrieve a contract, or the database cannot be accessed to infer types.

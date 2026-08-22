@@ -30,15 +30,7 @@ Automated test comes with benefits that helps us write better code and makes it 
 - Don't re-test the library/framework.
 - Don't mandate 100% code coverage for applications.
 - Don't test third-party dependencies. Only test what your team controls (package, API, microservice etc.). Don't test external sites links, third party servers, packages etc.
-- Don't test just to test.
-
-  ```ts
-  // ❌ Avoid
-  it('should render the user list', () => {
-    render(<UserList />);
-    expect(screen.getByText('Users List')).toBeInTheDocument();
-  });
-  ```
+- Don't test just to test. Every test should provide meaningful confidence.
 
 ### Test Description
 
