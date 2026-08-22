@@ -60,7 +60,7 @@ The TypeScript documentation outlines several [pitfalls](https://www.typescriptl
     },
 ]`}</Rule>
 
-As rule of a thumb, prefer:
+As a rule of thumb, prefer:
 
 - Literal types whenever possible.
 - Const assertion arrays when looping through values.

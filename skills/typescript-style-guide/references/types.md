@@ -138,9 +138,9 @@ const regularUser: User = {
 If there's only one TypeScript feature to choose from, embrace discriminated unions.
 
 Discriminated unions are a powerful concept to model complex data structures and improve type safety, leading to clearer and less error-prone code.  
-You may encounter discriminated unions under different names such as tagged unions or sum types in various programming languages as C, Haskell, Rust (in conjunction with pattern-matching).
+You may encounter discriminated unions under different names, such as tagged unions or sum types, in languages such as C, Haskell, and Rust (in conjunction with pattern-matching).
 
-Discriminated unions advantages:
+Advantages of discriminated unions:
 
 - As mentioned in [Required & Optional Object Properties](#required--optional-object-properties), [Args as Discriminated Type](#args-as-discriminated-type) and [Props as Discriminated Type](#props-as-discriminated-type), discriminated unions remove optional object properties, reducing complexity.
 - Exhaustiveness check - TypeScript can ensure that all possible variants of a type are implemented, catching unhandled cases during type checking.
@@ -478,7 +478,7 @@ import type { MyClass } from 'some-library';
 
 Documentation becomes outdated the moment it's written, and worse than no documentation is wrong documentation. The same applies to types when describing the modules your app interacts with, such as APIs, messaging protocols and databases.
 
-For external services, such as REST, GraphQL, and MQ it's crucial to generate types from their contracts, whether they use Swagger, schemas, or other sources (e.g. [openapi-ts](https://github.com/drwpow/openapi-typescript), [graphql-config](https://github.com/kamilkisiela/graphql-config)). Avoid manually declaring and maintaining types, as they can easily fall out of sync.
+For external services, such as REST, GraphQL, and MQ, it's crucial to generate types from their contracts, whether they use Swagger, schemas, or other sources (e.g. [openapi-ts](https://github.com/drwpow/openapi-typescript), [graphql-config](https://github.com/kamilkisiela/graphql-config)). Avoid manually declaring and maintaining types, as they can easily fall out of sync.
 
 Generated types keep compile-time contracts in sync. They do not validate data received from external services at runtime.
 
