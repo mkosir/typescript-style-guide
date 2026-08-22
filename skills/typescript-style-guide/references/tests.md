@@ -55,15 +55,6 @@ it('should return parsed date as YYYY-MM when input is in ISO date format');
 it('should render user description when title is confirmed');
 ```
 
-### Test Tooling
-
-Besides running tests through scripts, it's highly encouraged to use [Vitest Runner](https://marketplace.visualstudio.com/items?itemName=vitest.explorer) and [Playwright Test](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright) VS code extension alongside.  
-With extension any single [unit/integration](https://github.com/mkosir/typescript-style-guide/raw/main/misc/vscode-vitest-runner.gif) or [E2E](https://github.com/mkosir/typescript-style-guide/raw/main/misc/vscode-playwright-test.gif) test can be run instantly, especially if testing app or package in larger monorepo codebase.
-
-```sh
-code --install-extension vitest.explorer
-code --install-extension ms-playwright.playwright
-```
 
 ### Snapshot
 

@@ -193,6 +193,6 @@ export const Foo = ({ name, score }: FooProps) => {...
   React components are no different, where prop drilling should not become an issue.  
   If with app scaling prop drilling truly becomes an issue, try to refactor render method, local states in parent components, using composition etc.
 - Data fetching is only allowed in container components.
-- Use of server-state library is encouraged ([react-query](https://github.com/tanstack/query), [apollo client](https://github.com/apollographql/apollo-client) etc.).
+- Use of server-state library is encouraged ([TanStack Query](https://tanstack.com/query/latest/docs/framework/react/overview), [apollo client](https://github.com/apollographql/apollo-client) etc.).
 - Use of client-state library for global state is discouraged.  
   Reconsider if something should be truly global across application, e.g. `themeMode`, `Permissions` or even that can be put in server-state (e.g. user settings - `/me` endpoint). If still global state is truly needed use [Zustand](https://github.com/pmndrs/zustand) or [Context](https://react.dev/reference/react/createContext).

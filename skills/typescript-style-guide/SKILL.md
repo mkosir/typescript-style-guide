@@ -1,6 +1,6 @@
 ---
 name: typescript-style-guide
-description: Apply, review, and explain the TypeScript Style Guide conventions for type modelling, functions, constants, variable state, naming, source organization, React, and tests. Use automatically for TypeScript tasks involving inference, readonly data, optional properties, discriminated unions, type-safe constants, function design, arguments, return types, purity, side effects, enums, boolean state flags, null and undefined, naming, exports, generics, comments, template literal types, any and unknown, assertions, type errors, type definitions, arrays, type imports, generated service types, code collocation, feature-based project structure, import paths, React component APIs, props-to-state, component roles, data flow, test design, test descriptions, isolation, mocking, or snapshots.
+description: Apply, review, and explain the opinionated conventions in the TypeScript Style Guide. Use automatically for TypeScript or TSX tasks involving type modelling, function APIs, variables and state, naming, source organization, React component design, or tests. Do not use for styling-only changes or tasks where TypeScript is incidental.
 ---
 
 # TypeScript Style Guide
