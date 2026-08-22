@@ -31,7 +31,7 @@ Examples:
   BAR_LOCATION.push(10);
 
   // ✅ Use
-  const BAR_LOCATION = [50, 130] as const; // Type 'readonly [10, 20]'
+  const BAR_LOCATION = [50, 130] as const; // Type 'readonly [50, 130]'
   BAR_LOCATION.push(10); // Error
   ```
 
@@ -44,7 +44,7 @@ Examples:
 
   // ✅ Use
   const RATE_LIMIT = 25;
-  const RATE_LIMIT_MESSAGE = `Max number of requests/min is ${RATE_LIMIT}.` as const; // Type 'Rate limit exceeded! Max number of requests/min is 25.'
+  const RATE_LIMIT_MESSAGE = `Max number of requests/min is ${RATE_LIMIT}.` as const; // Type 'Max number of requests/min is 25.'
   ```
 
 ### Enums & Const Assertion
@@ -177,4 +177,3 @@ Strive to:
 
 - Use `null` when a value is explicitly empty, such as an assignment or function return value.
 - Use `undefined` when a value is missing or omitted, such as an optional field in a form, request payload, or database query ([Prisma differentiation](https://www.prisma.io/docs/concepts/components/prisma-client/null-and-undefined)).
-
