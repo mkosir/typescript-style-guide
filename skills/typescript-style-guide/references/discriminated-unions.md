@@ -9,7 +9,7 @@ You may encounter discriminated unions under different names, such as tagged uni
 
 Advantages of discriminated unions:
 
-- As mentioned in [Required & Optional Object Properties](#required--optional-object-properties), [Function Arguments](#function-arguments), and [Props as Discriminated Type](#props-as-discriminated-type), discriminated unions remove optional object properties, reducing complexity.
+- As mentioned in [Required & Optional Object Properties](#required--optional-object-properties), [Function Arguments](#function-arguments), and [Props as Discriminated Type](#props-as-discriminated-type), discriminated unions replace optional properties that depend on a variant with required properties for that variant, reducing complexity.
 - Exhaustiveness Checking - The configured ESLint rule reports when a switch does not handle every variant of a discriminated union.
 
   <Rule href="https://typescript-eslint.io/rules/switch-exhaustiveness-check/">{`"@typescript-eslint/switch-exhaustiveness-check": "error"`}</Rule>
