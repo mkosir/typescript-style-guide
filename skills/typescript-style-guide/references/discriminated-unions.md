@@ -10,7 +10,7 @@ You may encounter discriminated unions under different names, such as tagged uni
 Advantages of discriminated unions:
 
 - As mentioned in [Required & Optional Object Properties](#required--optional-object-properties), [Function Arguments](#function-arguments), and [Props as Discriminated Type](#props-as-discriminated-type), discriminated unions remove optional object properties, reducing complexity.
-- Exhaustiveness check - TypeScript can ensure that all possible variants of a type are implemented, catching unhandled cases during type checking.
+- Exhaustiveness Checking - The configured ESLint rule reports when a switch does not handle every variant of a discriminated union.
 
   <Rule href="https://typescript-eslint.io/rules/switch-exhaustiveness-check/">{`"@typescript-eslint/switch-exhaustiveness-check": "error"`}</Rule>
 
@@ -22,14 +22,13 @@ Advantages of discriminated unions:
   // Create a discriminated union 'Shape', with the 'kind' property to discriminate the type of object.
   type Shape = Circle | Square | Triangle;
 
-  // TypeScript reports errors in the calculateArea function
   const calculateArea = (shape: Shape) => {
-    // Error - Switch is not exhaustive. Cases not matched: "triangle"
+    // ESLint reports that the switch is missing the 'triangle' case
     switch (shape.kind) {
       case 'circle':
         return Math.PI * shape.radius ** 2;
       case 'square':
-        return shape.size * shape.width; // Error - Property 'width' does not exist on type 'square'
+        return shape.size ** 2;
     }
   };
   ```
