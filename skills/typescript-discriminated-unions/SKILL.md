@@ -1,5 +1,5 @@
 ---
-name: discriminated-unions
+name: typescript-discriminated-unions
 description: Apply, review, and explain discriminated unions in TypeScript. Use automatically for tasks involving mutually exclusive variants, invalid state prevention, exhaustiveness checking, variant-specific object properties, application state, function arguments, or React props.
 ---
 

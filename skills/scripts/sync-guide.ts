@@ -12,7 +12,7 @@ const START_MARKER = '<!-- BEGIN CANONICAL GUIDE CONTENT -->'
 const END_MARKER = '<!-- END CANONICAL GUIDE CONTENT -->'
 const GUIDE_SECTIONS = [
   {
-    source: 'discriminated-unions/SKILL.md',
+    source: 'typescript-discriminated-unions/SKILL.md',
     target: 'typescript-style-guide/references/discriminated-unions.md',
   },
 ] as const satisfies ReadonlyArray<GuideSection>

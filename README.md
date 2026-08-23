@@ -12,10 +12,10 @@ Install either the [complete guide](./skills/typescript-style-guide):
 npx skills add mkosir/typescript-style-guide --skill typescript-style-guide
 ```
 
-Or the focused [Discriminated Unions skill](./skills/discriminated-unions):
+Or the focused [Discriminated Unions skill](./skills/typescript-discriminated-unions):
 
 ```sh
-npx skills add mkosir/typescript-style-guide --skill discriminated-unions
+npx skills add mkosir/typescript-style-guide --skill typescript-discriminated-unions
 ```
 
 The complete guide loads only the sections relevant to the task, keeping the coding agent's context focused. Focused skills provide individual guide topics independently.
