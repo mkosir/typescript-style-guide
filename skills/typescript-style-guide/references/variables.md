@@ -168,7 +168,7 @@ type UserStatus = 'pending' | 'processing' | 'confirmed' | 'expired';
 const userStatus: UserStatus;
 ```
 
-When boolean flags are used and the number of possible states grows quickly, it often results in unhandled or ambiguous states. Instead, take advantage of [discriminated unions](#discriminated-unions) to better manage and represent your application's state.
+Use a literal union when only the state value changes. When each state requires different data, use a [discriminated union](#discriminated-unions) to represent the valid states explicitly.
 
 ### Null & Undefined
 
