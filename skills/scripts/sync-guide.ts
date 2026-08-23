@@ -12,7 +12,7 @@ const START_MARKER = '<!-- BEGIN CANONICAL GUIDE CONTENT -->'
 const END_MARKER = '<!-- END CANONICAL GUIDE CONTENT -->'
 const GUIDE_SECTIONS = [
   {
-    source: 'typescript-type-modelling/SKILL.md',
+    source: 'typescript-types/SKILL.md',
     target: 'typescript-style-guide/references/types.md',
   },
   {

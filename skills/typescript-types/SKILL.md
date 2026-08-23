@@ -1,11 +1,11 @@
 ---
-name: typescript-type-modelling
-description: Apply, review, and explain TypeScript type-modelling conventions. Use automatically for tasks involving inference, readonly data, type-safe constants, template literal types, any and unknown, assertions, type errors, type definitions, arrays, type imports, or generated service types.
+name: typescript-types
+description: Apply, review, and explain TypeScript type conventions. Use automatically for tasks involving inference, readonly data, type-safe constants, template literal types, any and unknown, assertions, type errors, type definitions, arrays, type imports, or generated service types.
 ---
 
-# Type Modelling
+# Types
 
-Apply the TypeScript Style Guide's type-modelling conventions in the context of the current task.
+Apply the TypeScript Style Guide's type conventions in the context of the current task.
 
 ## Workflow
 
