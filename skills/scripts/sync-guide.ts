@@ -19,6 +19,10 @@ const GUIDE_SECTIONS = [
     source: 'typescript-discriminated-unions/SKILL.md',
     target: 'typescript-style-guide/references/discriminated-unions.md',
   },
+  {
+    source: 'typescript-functions/SKILL.md',
+    target: 'typescript-style-guide/references/functions.md',
+  },
 ] as const satisfies ReadonlyArray<GuideSection>
 
 for (const { source, target } of GUIDE_SECTIONS) {
