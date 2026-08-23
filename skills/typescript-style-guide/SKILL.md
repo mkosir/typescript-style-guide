@@ -18,7 +18,8 @@ Apply only the conventions relevant to the current task. Keep TypeScript, linter
 
 ## Reference routing
 
-- Read [references/types.md](references/types.md) for type modelling, inference, readonly data, object properties, discriminated unions, constants, template literal types, `any`, `unknown`, assertions, type errors, type definitions, arrays, type imports, and generated service types. This reference takes precedence for narrowing `unknown` and assertions, including their runtime null checks.
+- Read [references/types.md](references/types.md) for type modelling, inference, readonly data, object properties, constants, template literal types, `any`, `unknown`, assertions, type errors, type definitions, arrays, type imports, and generated service types. This reference takes precedence for narrowing `unknown` and assertions, including their runtime null checks.
+- Read [references/discriminated-unions.md](references/discriminated-unions.md) for general discriminated-union modelling, narrowing, invalid states, and exhaustiveness checking.
 - Read [references/functions.md](references/functions.md) for function responsibility, statelessness, purity, side effects, function arguments, function API design, and return types. This reference takes precedence when discriminated unions concern a function's arguments.
 - Read [references/variables.md](references/variables.md) when the task concerns variable declarations, state modelling, enum alternatives, or choosing how application state represents absence with `null` or `undefined`. Do not read it for incidental variables or runtime checks used only for type narrowing.
 - Read [references/naming.md](references/naming.md) for named exports, naming conventions, generic type parameters, React naming, comments, and TSDoc.
