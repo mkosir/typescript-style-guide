@@ -12,6 +12,10 @@ const START_MARKER = '<!-- BEGIN CANONICAL GUIDE CONTENT -->'
 const END_MARKER = '<!-- END CANONICAL GUIDE CONTENT -->'
 const GUIDE_SECTIONS = [
   {
+    source: 'typescript-type-modelling/SKILL.md',
+    target: 'typescript-style-guide/references/types.md',
+  },
+  {
     source: 'typescript-discriminated-unions/SKILL.md',
     target: 'typescript-style-guide/references/discriminated-unions.md',
   },
