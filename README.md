@@ -4,15 +4,21 @@
 
 ### Go to 👉 [TypeScript Style Guide](https://mkosir.github.io/typescript-style-guide/)
 
-### Agent Skill
+### Agent Skills
 
-Install the [Agent Skill](./skills/typescript-style-guide):
+Install either the [complete guide](./skills/typescript-style-guide):
 
 ```sh
-npx skills add mkosir/typescript-style-guide
+npx skills add mkosir/typescript-style-guide --skill typescript-style-guide
 ```
 
-The skill loads only the guide sections relevant to the task, not the entire guide, keeping the coding agent's context focused.
+Or the focused [Discriminated Unions skill](./skills/discriminated-unions):
+
+```sh
+npx skills add mkosir/typescript-style-guide --skill discriminated-unions
+```
+
+The complete guide loads only the sections relevant to the task, keeping the coding agent's context focused. Focused skills provide individual guide topics independently.
 
 ### Why
 
