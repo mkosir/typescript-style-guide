@@ -7,7 +7,7 @@ You may encounter discriminated unions under different names, such as tagged uni
 
 Advantages of discriminated unions:
 
-- As mentioned in [Required & Optional Object Properties](#required--optional-object-properties), [Args as Discriminated Type](#args-as-discriminated-type), and [Props as Discriminated Type](#props-as-discriminated-type), discriminated unions remove optional object properties, reducing complexity.
+- As mentioned in [Required & Optional Object Properties](#required--optional-object-properties), [Function Arguments](#function-arguments), and [Props as Discriminated Type](#props-as-discriminated-type), discriminated unions remove optional object properties, reducing complexity.
 - Exhaustiveness check - TypeScript can ensure that all possible variants of a type are implemented, catching unhandled cases during type checking.
 
   <Rule href="https://typescript-eslint.io/rules/switch-exhaustiveness-check/">{`"@typescript-eslint/switch-exhaustiveness-check": "error"`}</Rule>
@@ -37,3 +37,42 @@ Advantages of discriminated unions:
 - TypeScript can narrow down union types, ensuring code correctness at compile time.
 - Discriminated unions make refactoring and maintenance easier by providing a centralized definition of related types. When adding or modifying types within the union, the compiler reports any inconsistencies throughout the codebase.
 - IDEs can leverage discriminated unions to provide better autocompletion and type inference.
+
+### Practical Applications
+
+#### Function Arguments
+
+When applicable, use a **discriminated union type** to eliminate optional properties. This decreases complexity in a function's API and ensures that only the required properties are passed for each use case.
+
+```ts
+// ❌ Avoid optional properties as they increase complexity and ambiguity in function APIs
+type StatusParams = {
+  data?: Products;
+  title?: string;
+  time?: number;
+  error?: string;
+};
+
+// ✅ Prefer required properties. If optional properties are unavoidable,
+// use a discriminated union to represent distinct use cases with required properties.
+type StatusSuccessParams = {
+  status: 'success';
+  data: Products;
+  title: string;
+};
+
+type StatusLoadingParams = {
+  status: 'loading';
+  time: number;
+};
+
+type StatusErrorParams = {
+  status: 'error';
+  error: string;
+};
+
+// Discriminated union 'StatusParams' ensures predictable function arguments with no optional properties
+type StatusParams = StatusSuccessParams | StatusLoadingParams | StatusErrorParams;
+
+export const parseStatus = (params: StatusParams) => {...
+```

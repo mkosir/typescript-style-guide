@@ -43,42 +43,7 @@ transformUserInput({
  If the function becomes too complex, it probably should be broken into smaller pieces.  
  An exaggerated example: implementing 10 focused functions with 5 required arguments each is preferable to implementing one "do-it-all" function with 50 optional arguments.
 
-### Args as Discriminated Type
-
-When applicable, use a **discriminated union type** to eliminate optional properties. This decreases complexity in a function's API and ensures that only the required properties are passed for each use case.
-
-```ts
-// ❌ Avoid optional properties as they increase complexity and ambiguity in function APIs
-type StatusParams = {
-  data?: Products;
-  title?: string;
-  time?: number;
-  error?: string;
-};
-
-// ✅ Prefer required properties. If optional properties are unavoidable,
-// use a discriminated union to represent distinct use cases with required properties.
-type StatusSuccessParams = {
-  status: 'success';
-  data: Products;
-  title: string;
-};
-
-type StatusLoadingParams = {
-  status: 'loading';
-  time: number;
-};
-
-type StatusErrorParams = {
-  status: 'error';
-  error: string;
-};
-
-// Discriminated union 'StatusParams' ensures predictable function arguments with no optional properties
-type StatusParams = StatusSuccessParams | StatusLoadingParams | StatusErrorParams;
-
-export const parseStatus = (params: StatusParams) => {...
-```
+When function arguments represent mutually exclusive cases, use [discriminated unions](#function-arguments).
 
 ### Return Types
 
