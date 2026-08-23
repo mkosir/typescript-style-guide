@@ -168,7 +168,7 @@ type UserStatus = 'pending' | 'processing' | 'confirmed' | 'expired';
 const userStatus: UserStatus;
 ```
 
-Use a literal union when only the state value changes. When each state requires different data, use a [discriminated union](#discriminated-unions) to represent the valid states explicitly.
+Use a literal union when only the state value changes. When each state requires different data, use a [discriminated union](#application-state) to represent the valid states explicitly.
 
 ### Null & Undefined
 

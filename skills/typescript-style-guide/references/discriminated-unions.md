@@ -32,7 +32,7 @@ Advantages of discriminated unions:
   };
   ```
 
-- Avoid code complexity introduced by [flag variables](#type-union--boolean-flags).
+- Avoid code complexity introduced by [flag variables](#application-state).
 - Clear code intent, as it becomes easier to read and understand by explicitly indicating the possible cases for a given type.
 - TypeScript can narrow down union types, ensuring code correctness at compile time.
 - Discriminated unions make refactoring and maintenance easier by providing a centralized definition of related types. When adding or modifying types within the union, the compiler reports any inconsistencies throughout the codebase.
@@ -98,6 +98,26 @@ const regularUser: User = {
   rewardsPoints: 1500,
   dashboardAccess: false, // Error: 'dashboardAccess' property does not exist
 };
+```
+
+#### Application State
+
+When application states require different data, model the state and its data together with a discriminated union. This prevents invalid combinations, such as loading while holding both data and an error.
+
+```ts
+// ❌ Boolean flags and optional properties allow invalid state combinations
+type RequestState = {
+  isLoading: boolean;
+  data?: Products;
+  error?: string;
+};
+
+// ✅ Each state contains only the data valid for that state
+type RequestState =
+  | { status: 'idle' }
+  | { status: 'loading' }
+  | { status: 'success'; data: Products }
+  | { status: 'error'; error: string };
 ```
 
 #### Function Arguments
