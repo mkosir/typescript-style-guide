@@ -126,35 +126,39 @@ When applicable, use a **discriminated union type** to eliminate optional proper
 
 ```ts
 // ❌ Avoid optional properties as they increase complexity and ambiguity in function APIs
-type StatusParams = {
-  data?: Products;
-  title?: string;
-  time?: number;
-  error?: string;
+type NotificationParams = {
+  channel: 'email' | 'sms';
+  email?: string;
+  phoneNumber?: string;
+  subject?: string;
+  message: string;
 };
 
 // ✅ Prefer required properties. If optional properties are unavoidable,
 // use a discriminated union to represent distinct use cases with required properties.
-type StatusSuccessParams = {
-  status: 'success';
-  data: Products;
-  title: string;
+type EmailNotificationParams = {
+  channel: 'email';
+  email: string;
+  subject: string;
+  message: string;
 };
 
-type StatusLoadingParams = {
-  status: 'loading';
-  time: number;
+type SmsNotificationParams = {
+  channel: 'sms';
+  phoneNumber: string;
+  message: string;
 };
 
-type StatusErrorParams = {
-  status: 'error';
-  error: string;
+type NotificationParams = EmailNotificationParams | SmsNotificationParams;
+
+export const sendNotification = (params: NotificationParams) => {
+  switch (params.channel) {
+    case 'email':
+      return sendEmail(params.email, params.subject, params.message);
+    case 'sms':
+      return sendSms(params.phoneNumber, params.message);
+  }
 };
-
-// Discriminated union 'StatusParams' ensures predictable function arguments with no optional properties
-type StatusParams = StatusSuccessParams | StatusLoadingParams | StatusErrorParams;
-
-export const parseStatus = (params: StatusParams) => {...
 ```
 
 #### React Props
@@ -173,44 +177,36 @@ An exaggerated example: implementing 10 React components with 5 required props e
 
 When applicable, use **discriminated union types** to eliminate optional props. This approach reduces complexity in the component API and ensures that only the required props are passed based on the specific use case.
 
-```ts
+```tsx
 // ❌ Avoid optional props as they increase complexity and ambiguity in component APIs
-type StatusProps = {
-  data?: Products;
-  title?: string;
-  time?: number;
-  error?: string;
+type AvatarProps = {
+  variant: 'image' | 'initials';
+  src?: string;
+  alt?: string;
+  initials?: string;
 };
 
 // ✅ Prefer required props. If optional props are unavoidable,
 // use a discriminated union to represent distinct use cases with required props.
-type StatusSuccess = {
-  status: 'success';
-  data: Products;
-  title: string;
+type ImageAvatarProps = {
+  variant: 'image';
+  src: string;
+  alt: string;
 };
 
-type StatusLoading = {
-  status: 'loading';
-  time: number;
+type InitialsAvatarProps = {
+  variant: 'initials';
+  initials: string;
 };
 
-type StatusError = {
-  status: 'error';
-  error: string;
-};
+type AvatarProps = ImageAvatarProps | InitialsAvatarProps;
 
-// Discriminated union 'StatusProps' ensures predictable component props with no optionals
-type StatusProps = StatusSuccess | StatusLoading | StatusError;
-
-export const Status = (props: StatusProps) => {
-  switch (props.status) {
-    case 'success':
-      return <div>Title {props.title}</div>;
-    case 'loading':
-      return <div>Loading {props.time}</div>;
-    case 'error':
-      return <div>Error {props.error}</div>;
+export const Avatar = (props: AvatarProps) => {
+  switch (props.variant) {
+    case 'image':
+      return <img src={props.src} alt={props.alt} />;
+    case 'initials':
+      return <span>{props.initials}</span>;
   }
 };
 ```
