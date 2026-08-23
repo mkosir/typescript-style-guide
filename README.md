@@ -6,13 +6,21 @@
 
 ### Agent Skills
 
-Install either the [complete guide](./skills/typescript-style-guide):
+Install and choose a skill interactively:
+
+```sh
+npx skills add mkosir/typescript-style-guide
+```
+
+Or install a specific skill:
+
+[Complete guide](./skills/typescript-style-guide):
 
 ```sh
 npx skills add mkosir/typescript-style-guide --skill typescript-style-guide
 ```
 
-Or the focused [Discriminated Unions skill](./skills/typescript-discriminated-unions):
+[Discriminated Unions](./skills/typescript-discriminated-unions):
 
 ```sh
 npx skills add mkosir/typescript-style-guide --skill typescript-discriminated-unions
