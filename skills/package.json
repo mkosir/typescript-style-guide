@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "eval:typescript-style-guide": "node evals/typescript-style-guide/run-codex.ts"
+    "eval:typescript-style-guide": "node evals/typescript-style-guide/run-codex.ts",
+    "sync:guide": "node scripts/sync-guide.ts"
   },
   "devDependencies": {
     "@openai/codex-sdk": "0.149.0"

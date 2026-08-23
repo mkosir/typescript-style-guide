@@ -1,0 +1,239 @@
+---
+name: discriminated-unions
+description: Apply, review, and explain discriminated unions in TypeScript. Use automatically for tasks involving mutually exclusive variants, invalid state prevention, exhaustiveness checking, variant-specific object properties, application state, function arguments, or React props.
+---
+
+# Discriminated Unions
+
+Apply the TypeScript Style Guide's discriminated-union conventions in the context of the current task.
+
+## Workflow
+
+1. Inspect the consuming repository's conventions and configuration.
+2. Let explicit repository conventions take precedence over this opinionated guidance.
+3. Apply, review, or explain only the guidance relevant to the task.
+4. State important tradeoffs when the appropriate model depends on context or judgment.
+
+## Boundaries
+
+- Use discriminated unions for mutually exclusive variants that require different data.
+- Do not force a discriminated union when properties may independently be absent or when only a value changes.
+- Keep TypeScript and ESLint responsible for checks they can enforce automatically.
+- Do not introduce unrelated TypeScript Style Guide conventions merely because this skill is active.
+
+<!-- BEGIN CANONICAL GUIDE CONTENT -->
+
+## Discriminated Unions {#discriminated-unions}
+
+If there's only one TypeScript feature to choose from, embrace discriminated unions.
+
+A discriminated union is a union of object types that share a property with distinct literal values. Checking that property narrows the value to the matching variant.
+
+Use discriminated unions when variants are mutually exclusive and each variant requires different data. Keep properties optional when they may independently be absent, and use a literal union when only the value changes.
+
+Discriminated unions are a powerful concept to model complex data structures and improve type safety, leading to clearer and less error-prone code.  
+You may encounter discriminated unions under different names, such as tagged unions or sum types, in languages such as C, Haskell, and Rust (in conjunction with pattern-matching).
+
+Advantages of discriminated unions:
+
+- As mentioned in [Required & Optional Object Properties](#required--optional-object-properties), [Function Arguments](#function-arguments), and [Props as Discriminated Type](#props-as-discriminated-type), discriminated unions replace optional properties that depend on a variant with required properties for that variant, reducing complexity.
+- Exhaustiveness Checking - The configured ESLint rule reports when a switch does not handle every variant of a discriminated union.
+
+  <Rule href="https://typescript-eslint.io/rules/switch-exhaustiveness-check/">{`"@typescript-eslint/switch-exhaustiveness-check": "error"`}</Rule>
+
+  ```ts
+  type Circle = { kind: 'circle'; radius: number };
+  type Square = { kind: 'square'; size: number };
+  type Triangle = { kind: 'triangle'; base: number; height: number };
+
+  // Create a discriminated union 'Shape', with the 'kind' property to discriminate the type of object.
+  type Shape = Circle | Square | Triangle;
+
+  const calculateArea = (shape: Shape) => {
+    // ESLint reports that the switch is missing the 'triangle' case
+    switch (shape.kind) {
+      case 'circle':
+        return Math.PI * shape.radius ** 2;
+      case 'square':
+        return shape.size ** 2;
+    }
+  };
+  ```
+
+- Avoid code complexity introduced by multiple [boolean flags](#application-state) that represent mutually exclusive states.
+- Clear code intent, as it becomes easier to read and understand by explicitly indicating the possible cases for a given type.
+- TypeScript can narrow down union types, ensuring code correctness at compile time.
+- Discriminated unions make refactoring and maintenance easier by providing a centralized definition of related types. When adding or modifying types within the union, the compiler reports any inconsistencies throughout the codebase.
+- IDEs can leverage discriminated unions to provide better autocompletion and type inference.
+
+### Practical Applications
+
+#### Required & Optional Object Properties {#required--optional-object-properties}
+
+**Strive to have the majority of object properties required and use optional properties sparingly.**
+
+This approach reflects designing type-safe and maintainable code:
+
+- Clarity and Predictability - Required properties make it explicit which data is always expected. This reduces ambiguity for developers using or consuming the object, as they know exactly what must be present.
+- Type Safety - When properties are required, TypeScript can enforce their presence and catch missing properties during type checking.
+- Avoids Overuse of Optional Chaining - If too many properties are optional, it often leads to extensive use of optional chaining (`?.`) to handle potential undefined values. This clutters the code and obscures its intent.
+
+Use optional properties when values may independently be absent. When property presence depends on the object's variant, use a **discriminated union type**.
+
+```ts
+// ❌ Avoid optional properties when their presence depends on the variant
+type User = {
+  id?: number;
+  email?: string;
+  dashboardAccess?: boolean;
+  adminPermissions?: ReadonlyArray<string>;
+  subscriptionPlan?: 'free' | 'pro' | 'premium';
+  rewardsPoints?: number;
+  temporaryToken?: string;
+};
+
+// ✅ Use a discriminated union so each variant has only its required properties
+type AdminUser = {
+  role: 'admin';
+  id: number;
+  email: string;
+  dashboardAccess: boolean;
+  adminPermissions: ReadonlyArray<string>;
+};
+
+type RegularUser = {
+  role: 'regular';
+  id: number;
+  email: string;
+  subscriptionPlan: 'free' | 'pro' | 'premium';
+  rewardsPoints: number;
+};
+
+type GuestUser = {
+  role: 'guest';
+  temporaryToken: string;
+};
+
+// Discriminated union type 'User' ensures clear intent with no optional properties
+type User = AdminUser | RegularUser | GuestUser;
+
+const regularUser: User = {
+  role: 'regular',
+  id: 212,
+  email: 'lea@user.com',
+  subscriptionPlan: 'pro',
+  rewardsPoints: 1500,
+  dashboardAccess: false, // Error: 'dashboardAccess' property does not exist
+};
+```
+
+#### Application State
+
+When application states require different data, model the state and its data together with a discriminated union. This prevents invalid combinations, such as loading while holding both data and an error.
+
+```ts
+// ❌ Boolean flags and optional properties allow invalid state combinations
+type RequestState = {
+  isLoading: boolean;
+  data?: Products;
+  error?: string;
+};
+
+// ✅ Each state contains only the data valid for that state
+type RequestState =
+  | { status: 'idle' }
+  | { status: 'loading' }
+  | { status: 'success'; data: Products }
+  | { status: 'error'; error: string };
+```
+
+#### Function Arguments
+
+When a function accepts mutually exclusive variants that require different properties, use a **discriminated union type**. This decreases complexity in the function's API and ensures that only the required properties are passed for each use case.
+
+```ts
+// ❌ Avoid optional properties that allow invalid combinations in the function API
+type NotificationParams = {
+  channel: 'email' | 'sms';
+  email?: string;
+  phoneNumber?: string;
+  subject?: string;
+  message: string;
+};
+
+// ✅ Use a discriminated union so each variant requires only its valid properties
+type EmailNotificationParams = {
+  channel: 'email';
+  email: string;
+  subject: string;
+  message: string;
+};
+
+type SmsNotificationParams = {
+  channel: 'sms';
+  phoneNumber: string;
+  message: string;
+};
+
+type NotificationParams = EmailNotificationParams | SmsNotificationParams;
+
+export const sendNotification = (params: NotificationParams) => {
+  switch (params.channel) {
+    case 'email':
+      return sendEmail(params.email, params.subject, params.message);
+    case 'sms':
+      return sendSms(params.phoneNumber, params.message);
+  }
+};
+```
+
+#### React Props
+
+##### Required & Optional Props
+
+**Strive to have the majority of props required and use optional props sparingly.**
+
+Especially when creating a new component for its first or single use case, the majority of props should be required. When the component starts covering more use cases, introduce optional props only for values that may genuinely be absent across those use cases.  
+There are potential exceptions where a component API needs to implement optional props from the start (e.g. shared components covering multiple use cases, UI design system components - button `isDisabled` etc.)
+
+If a component or hook becomes too complex, it should probably be broken into smaller pieces.  
+An exaggerated example: implementing 10 React components with 5 required props each is better than implementing one "can do it all" component that accepts 50 optional props.
+
+##### Props as Discriminated Type
+
+When component variants require different props, use a **discriminated union type**. This approach reduces complexity in the component API and ensures that only the required props are passed for each variant.
+
+```tsx
+// ❌ Avoid optional props that allow invalid combinations in the component API
+type AvatarProps = {
+  variant: 'image' | 'initials';
+  src?: string;
+  alt?: string;
+  initials?: string;
+};
+
+// ✅ Use a discriminated union so each variant requires only its valid props
+type ImageAvatarProps = {
+  variant: 'image';
+  src: string;
+  alt: string;
+};
+
+type InitialsAvatarProps = {
+  variant: 'initials';
+  initials: string;
+};
+
+type AvatarProps = ImageAvatarProps | InitialsAvatarProps;
+
+export const Avatar = (props: AvatarProps) => {
+  switch (props.variant) {
+    case 'image':
+      return <img src={props.src} alt={props.alt} />;
+    case 'initials':
+      return <span>{props.initials}</span>;
+  }
+};
+```
+
+<!-- END CANONICAL GUIDE CONTENT -->
