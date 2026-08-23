@@ -2,62 +2,6 @@
 
 Since React components and hooks are also functions, the respective [function conventions](#functions) apply.
 
-### Required & Optional Props
-
-**Strive to have the majority of props required and use optional props sparingly.**
-
-Especially when creating a new component for its first or single use case, the majority of props should be required. When the component starts covering more use cases, introduce optional props.  
-There are potential exceptions where a component API needs to implement optional props from the start (e.g. shared components covering multiple use cases, UI design system components - button `isDisabled` etc.)
-
-If a component or hook becomes too complex, it should probably be broken into smaller pieces.  
-An exaggerated example: implementing 10 React components with 5 required props each is better than implementing one "can do it all" component that accepts 50 optional props.
-
-### Props as Discriminated Type
-
-When applicable, use **discriminated union types** to eliminate optional props. This approach reduces complexity in the component API and ensures that only the required props are passed based on the specific use case.
-
-```ts
-// ❌ Avoid optional props as they increase complexity and ambiguity in component APIs
-type StatusProps = {
-  data?: Products;
-  title?: string;
-  time?: number;
-  error?: string;
-};
-
-// ✅ Prefer required props. If optional props are unavoidable,
-// use a discriminated union to represent distinct use cases with required props.
-type StatusSuccess = {
-  status: 'success';
-  data: Products;
-  title: string;
-};
-
-type StatusLoading = {
-  status: 'loading';
-  time: number;
-};
-
-type StatusError = {
-  status: 'error';
-  error: string;
-};
-
-// Discriminated union 'StatusProps' ensures predictable component props with no optionals
-type StatusProps = StatusSuccess | StatusLoading | StatusError;
-
-export const Status = (props: StatusProps) => {
-  switch (props.status) {
-    case 'success':
-      return <div>Title {props.title}</div>;
-    case 'loading':
-      return <div>Loading {props.time}</div>;
-    case 'error':
-      return <div>Error {props.error}</div>;
-  }
-};
-```
-
 ### Props To State
 
 In general, avoid using props as initial state because the state will not update when the props change. This can lead to bugs that are hard to track, unintended side effects, and difficulty testing.  
