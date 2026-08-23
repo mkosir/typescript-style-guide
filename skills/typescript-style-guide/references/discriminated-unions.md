@@ -33,7 +33,7 @@ Advantages of discriminated unions:
   };
   ```
 
-- Avoid code complexity introduced by [flag variables](#application-state).
+- Avoid code complexity introduced by multiple [boolean flags](#application-state) that represent mutually exclusive states.
 - Clear code intent, as it becomes easier to read and understand by explicitly indicating the possible cases for a given type.
 - TypeScript can narrow down union types, ensuring code correctness at compile time.
 - Discriminated unions make refactoring and maintenance easier by providing a centralized definition of related types. When adding or modifying types within the union, the compiler reports any inconsistencies throughout the codebase.
