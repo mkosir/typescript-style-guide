@@ -31,6 +31,10 @@ const GUIDE_SECTIONS = [
     source: 'typescript-naming/SKILL.md',
     target: 'typescript-style-guide/references/naming.md',
   },
+  {
+    source: 'typescript-source-organization/SKILL.md',
+    target: 'typescript-style-guide/references/source-organization.md',
+  },
 ] as const satisfies ReadonlyArray<GuideSection>
 
 for (const { source, target } of GUIDE_SECTIONS) {
