@@ -4,6 +4,16 @@
 
 ### Go to 👉 [TypeScript Style Guide](https://mkosir.github.io/typescript-style-guide/)
 
+### Agent Skill
+
+Install the [Agent Skill](./skills/typescript-style-guide):
+
+```sh
+npx skills add mkosir/typescript-style-guide
+```
+
+The skill loads only the guide sections relevant to the task, not the entire guide, keeping the coding agent's context focused.
+
 ### Why
 
 - As project grow in size and complexity, maintaining code quality and ensuring consistent practices become increasingly challenging.
