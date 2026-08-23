@@ -1,4 +1,4 @@
-## Discriminated Unions {#discriminated-union}
+## Discriminated Unions {#discriminated-unions}
 
 If there's only one TypeScript feature to choose from, embrace discriminated unions.
 
