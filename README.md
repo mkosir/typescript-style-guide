@@ -14,17 +14,15 @@ npx skills add mkosir/typescript-style-guide
 
 Or install a specific skill:
 
-[Complete guide](./skills/typescript-style-guide):
-
-```sh
-npx skills add mkosir/typescript-style-guide --skill typescript-style-guide
-```
-
-[Discriminated Unions](./skills/typescript-discriminated-unions):
-
-```sh
-npx skills add mkosir/typescript-style-guide --skill typescript-discriminated-unions
-```
+- [Complete guide](./skills/typescript-style-guide): `npx skills add mkosir/typescript-style-guide --skill typescript-style-guide`
+- [Types](./skills/typescript-types): `npx skills add mkosir/typescript-style-guide --skill typescript-types`
+- [Discriminated Unions](./skills/typescript-discriminated-unions): `npx skills add mkosir/typescript-style-guide --skill typescript-discriminated-unions`
+- [Functions](./skills/typescript-functions): `npx skills add mkosir/typescript-style-guide --skill typescript-functions`
+- [Variables](./skills/typescript-variables): `npx skills add mkosir/typescript-style-guide --skill typescript-variables`
+- [Naming](./skills/typescript-naming): `npx skills add mkosir/typescript-style-guide --skill typescript-naming`
+- [Source Organization](./skills/typescript-source-organization): `npx skills add mkosir/typescript-style-guide --skill typescript-source-organization`
+- [React](./skills/typescript-react): `npx skills add mkosir/typescript-style-guide --skill typescript-react`
+- [Tests](./skills/typescript-tests): `npx skills add mkosir/typescript-style-guide --skill typescript-tests`
 
 The complete guide loads only the sections relevant to the task, keeping the coding agent's context focused. Focused skills provide individual guide topics independently.
 
