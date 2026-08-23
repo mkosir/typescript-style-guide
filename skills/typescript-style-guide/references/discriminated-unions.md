@@ -2,6 +2,8 @@
 
 If there's only one TypeScript feature to choose from, embrace discriminated unions.
 
+A discriminated union is a union of object types that share a property with distinct literal values. Checking that property narrows the value to the matching variant.
+
 Discriminated unions are a powerful concept to model complex data structures and improve type safety, leading to clearer and less error-prone code.  
 You may encounter discriminated unions under different names, such as tagged unions or sum types, in languages such as C, Haskell, and Rust (in conjunction with pattern-matching).
 
