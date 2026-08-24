@@ -82,6 +82,8 @@ const runCodex = async (task: string, cwd: string, installedSkills: ReadonlyArra
 }
 
 const formatList = (values: ReadonlyArray<string>) => values.join(', ') || 'none'
+const containsSameValues = (first: ReadonlyArray<string>, second: ReadonlyArray<string>) =>
+  first.length === second.length && first.every((value) => second.includes(value))
 
 const runCodexCase = async () => {
   const workspaceRoot = await mkdtemp(join(tmpdir(), 'typescript-style-guide-eval-'))
@@ -118,16 +120,24 @@ const runCodexCase = async () => {
     const startedAt = Date.now()
 
     const result = await runCodex(TEST_CASE.task, workspaceRoot, TEST_CASE.installedSkills)
+    const expectedSkills = TEST_CASE.expected.usedSkill ? [TEST_CASE.expected.usedSkill] : []
     const expectedReferences =
       'loadedReferences' in TEST_CASE.expected ? TEST_CASE.expected.loadedReferences : []
+    const skillRoutingPassed = containsSameValues(result.usedSkills, expectedSkills)
+    const referenceLoadingPassed = containsSameValues(result.references, expectedReferences)
 
     console.log(`\nCompleted in ${((Date.now() - startedAt) / 1000).toFixed(1)}s`)
     console.log(`Expected skill: ${TEST_CASE.expected.usedSkill ?? 'none'}`)
     console.log(`Actual skills: ${formatList(result.usedSkills)}`)
     console.log(`Expected references: ${formatList(expectedReferences)}`)
     console.log(`Actual references: ${formatList(result.references)}`)
+    console.log(`Skill routing: ${skillRoutingPassed ? 'PASS' : 'FAIL'}`)
+    console.log(`Reference loading: ${referenceLoadingPassed ? 'PASS' : 'FAIL'}`)
+    console.log('Outcome: NOT GRADED')
     console.log(`Expected outcome: ${TEST_CASE.expected.outcome}`)
     console.log(`\nFinal response:\n${result.finalResponse}`)
+
+    if (!skillRoutingPassed || !referenceLoadingPassed) process.exitCode = 1
   } finally {
     await rm(workspaceRoot, { recursive: true, force: true })
   }
