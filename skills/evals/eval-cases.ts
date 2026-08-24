@@ -94,32 +94,40 @@ createUser('Lea', 'lea@example.com', false, true)
     },
   },
   {
-    id: 'variables-enum-alternative',
+    id: 'variables-union-over-boolean-flags',
     installedSkills: ['typescript-variables'],
-    task: 'Review how user roles are represented in src/userRole.ts.',
+    task: 'Review how order status is represented in src/orderStatus.ts.',
     workspace: {
-      'src/userRole.ts': `export enum UserRole {
-  Guest = 'guest',
-  Admin = 'admin',
+      'src/orderStatus.ts': `type OrderStatus = {
+  isPending: boolean
+  isProcessing: boolean
+  isConfirmed: boolean
+  isExpired: boolean
 }
 `,
     },
     expected: {
       usedSkill: 'typescript-variables',
-      outcome: 'Recommends a literal union or const assertion instead of an enum.',
+      outcome: 'Recommends one literal-union status instead of multiple boolean flags that can represent conflicting states.',
     },
   },
   {
-    id: 'naming-descriptive-generic-parameters',
+    id: 'naming-expressive-code',
     installedSkills: ['typescript-naming'],
-    task: 'Review the generic parameter names in src/createPair.ts.',
+    task: 'Review the readability of src/average.ts.',
     workspace: {
-      'src/createPair.ts': `export const createPair = <T, K>(first: T, second: K): [T, K] => [first, second]
+      'src/average.ts': `export const calculate = (u: number, s: number) => {
+  // Convert seconds to minutes
+  const m = s / 60
+
+  // Calculate average users per minute
+  return u / m
+}
 `,
     },
     expected: {
       usedSkill: 'typescript-naming',
-      outcome: 'Recommends descriptive generic parameter names with a T prefix instead of single-letter names.',
+      outcome: 'Recommends expressive names for the function, parameters, and local value instead of comments that restate unclear code.',
     },
   },
   {
@@ -163,20 +171,20 @@ export const ProfileEditor = ({ displayName }: ProfileEditorProps) => {
     },
   },
   {
-    id: 'tests-description-convention',
+    id: 'tests-public-behavior',
     installedSkills: ['typescript-tests'],
-    task: 'Review the test description in src/formatPrice.test.ts.',
+    task: 'Review what src/formatPrice.test.ts is testing.',
     workspace: {
       'src/formatPrice.test.ts': `import { expect, it } from 'vitest'
 
-it('formats euros', () => {
+it('should format euros when currency is EUR', () => {
   expect(new Intl.NumberFormat('en', { style: 'currency', currency: 'EUR' }).format(12)).toBe('€12.00')
 })
 `,
     },
     expected: {
       usedSkill: 'typescript-tests',
-      outcome: "Recommends an it('should ... when ...') description that states the behavior and condition.",
+      outcome: "Identifies that the test retests Intl and recommends testing the project's public behavior or removing the test.",
     },
   },
   {
