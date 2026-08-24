@@ -7,6 +7,7 @@
     "sync:guide": "node scripts/sync-guide.ts"
   },
   "devDependencies": {
-    "@openai/codex-sdk": "0.149.0"
+    "@openai/codex-sdk": "0.149.0",
+    "@types/node": "26.2.0"
   }
 }
