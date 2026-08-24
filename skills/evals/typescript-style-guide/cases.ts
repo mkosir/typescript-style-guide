@@ -9,16 +9,23 @@ type SkillName =
   | 'typescript-react'
   | 'typescript-tests'
 
+type ExpectedResult =
+  | {
+      usedSkill: 'typescript-style-guide'
+      loadedReferences: ReadonlyArray<string>
+      outcome: string
+    }
+  | {
+      usedSkill: Exclude<SkillName, 'typescript-style-guide'> | null
+      outcome: string
+    }
+
 type EvalCase = {
   id: string
   installedSkills: ReadonlyArray<SkillName>
   task: string
   workspace: Readonly<Record<string, string>>
-  expected: {
-    usedSkills: ReadonlyArray<SkillName>
-    loadedReferences: ReadonlyArray<string>
-    outcome: string
-  }
+  expected: ExpectedResult
 }
 
 export const EVAL_CASES = [
@@ -34,8 +41,7 @@ export const EVAL_CASES = [
 `,
     },
     expected: {
-      usedSkills: ['typescript-types'],
-      loadedReferences: [],
+      usedSkill: 'typescript-types',
       outcome: 'Identifies the unchecked assertion and recommends runtime narrowing before comparing status as a number.',
     },
   },
@@ -54,8 +60,7 @@ export const cleanupDetails: ReadonlyArray<CleanupDetail> = []
 `,
     },
     expected: {
-      usedSkills: ['typescript-discriminated-unions'],
-      loadedReferences: [],
+      usedSkill: 'typescript-discriminated-unions',
       outcome: 'Models deleted and failed as separate variants so error is required only for the failed outcome.',
     },
   },
@@ -75,8 +80,7 @@ createUser('Lea', 'lea@example.com', false, true)
 `,
     },
     expected: {
-      usedSkills: ['typescript-functions'],
-      loadedReferences: [],
+      usedSkill: 'typescript-functions',
       outcome: 'Recommends a single object parameter because the related positional arguments make the call difficult to understand.',
     },
   },
@@ -92,8 +96,7 @@ createUser('Lea', 'lea@example.com', false, true)
 `,
     },
     expected: {
-      usedSkills: ['typescript-variables'],
-      loadedReferences: [],
+      usedSkill: 'typescript-variables',
       outcome: 'Recommends a literal union or const assertion instead of an enum.',
     },
   },
@@ -106,8 +109,7 @@ createUser('Lea', 'lea@example.com', false, true)
 `,
     },
     expected: {
-      usedSkills: ['typescript-naming'],
-      loadedReferences: [],
+      usedSkill: 'typescript-naming',
       outcome: 'Recommends descriptive generic parameter names with a T prefix instead of single-letter names.',
     },
   },
@@ -124,8 +126,7 @@ export const orderTitle = formatOrder('123')
 `,
     },
     expected: {
-      usedSkills: ['typescript-source-organization'],
-      loadedReferences: [],
+      usedSkill: 'typescript-source-organization',
       outcome: 'Recommends a relative import because both files belong to the same nearby feature.',
     },
   },
@@ -148,8 +149,7 @@ export const ProfileEditor = ({ displayName }: ProfileEditorProps) => {
 `,
     },
     expected: {
-      usedSkills: ['typescript-react'],
-      loadedReferences: [],
+      usedSkill: 'typescript-react',
       outcome: 'Warns that state initialized from a prop will not follow later prop changes and recommends an initial-prefixed prop when the behavior is intentional.',
     },
   },
@@ -166,8 +166,7 @@ it('formats euros', () => {
 `,
     },
     expected: {
-      usedSkills: ['typescript-tests'],
-      loadedReferences: [],
+      usedSkill: 'typescript-tests',
       outcome: "Recommends an it('should ... when ...') description that states the behavior and condition.",
     },
   },
@@ -184,7 +183,7 @@ it('formats euros', () => {
 `,
     },
     expected: {
-      usedSkills: ['typescript-style-guide'],
+      usedSkill: 'typescript-style-guide',
       loadedReferences: ['references/discriminated-unions.md'],
       outcome: 'Recommends mutually exclusive request-state variants and loads no unrelated guide reference.',
     },
@@ -202,8 +201,7 @@ it('formats euros', () => {
 `,
     },
     expected: {
-      usedSkills: [],
-      loadedReferences: [],
+      usedSkill: null,
       outcome: 'Reviews only the requested styling and does not activate the TypeScript Style Guide.',
     },
   },
