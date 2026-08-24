@@ -127,7 +127,7 @@ createUser('Lea', 'lea@example.com', false, true)
     installedSkills: ['typescript-source-organization'],
     task: 'Review the import path in src/features/orders/index.ts.',
     workspace: {
-      'src/features/orders/formatOrder.ts': `export const formatOrder = (id: string) => \`Order ${id}\`
+      'src/features/orders/formatOrder.ts': `export const formatOrder = (id: string) => \`Order \${id}\`
 `,
       'src/features/orders/index.ts': `import { formatOrder } from '@features/orders/formatOrder'
 
