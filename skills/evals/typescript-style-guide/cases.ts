@@ -12,7 +12,16 @@ type SkillName =
 type ExpectedResult =
   | {
       usedSkill: 'typescript-style-guide'
-      loadedReferences: ReadonlyArray<string>
+      loadedReferences: ReadonlyArray<
+        | 'references/types.md'
+        | 'references/discriminated-unions.md'
+        | 'references/functions.md'
+        | 'references/variables.md'
+        | 'references/naming.md'
+        | 'references/source-organization.md'
+        | 'references/react.md'
+        | 'references/tests.md'
+      >
       outcome: string
     }
   | {
