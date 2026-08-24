@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url'
 
 import { Codex } from '@openai/codex-sdk'
 
-import { EVAL_CASES } from './cases.ts'
+import { EVAL_CASES } from './eval-cases.ts'
 
 const execFileAsync = promisify(execFile)
 const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
