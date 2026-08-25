@@ -15,16 +15,23 @@ const SKILLS_ROOT = join(REPOSITORY_ROOT, 'skills')
 
 const { values: options } = parseArgs({
   options: {
+    all: { type: 'boolean', default: false },
     case: { type: 'string' },
     verbose: { type: 'boolean', default: false },
   },
 })
 
-const TEST_CASE = options.case ? EVAL_CASES.find(({ id }) => id === options.case) : EVAL_CASES[0]
+if (options.all && options.case) {
+  throw new Error('Use either --all or --case, not both.')
+}
 
-if (!TEST_CASE) {
+const selectedCase = options.case ? EVAL_CASES.find(({ id }) => id === options.case) : EVAL_CASES[0]
+
+if (!selectedCase) {
   throw new Error(`Unknown case "${options.case}". Available cases: ${EVAL_CASES.map(({ id }) => id).join(', ')}`)
 }
+
+const testCases = options.all ? EVAL_CASES : [selectedCase]
 
 const LOCAL_SKILL_REPORTING = `## Local Skill Reporting
 
@@ -85,7 +92,7 @@ const formatList = (values: ReadonlyArray<string>) => values.join(', ') || 'none
 const containsSameValues = (first: ReadonlyArray<string>, second: ReadonlyArray<string>) =>
   first.length === second.length && first.every((value) => second.includes(value))
 
-const runCodexCase = async () => {
+const runCodexCase = async (testCase: (typeof EVAL_CASES)[number]) => {
   const workspaceRoot = await mkdtemp(join(tmpdir(), 'typescript-style-guide-eval-'))
 
   try {
@@ -95,23 +102,23 @@ const runCodexCase = async () => {
     const skillsTarget = join(workspaceRoot, '.agents/skills')
     await mkdir(skillsTarget, { recursive: true })
 
-    for (const skill of TEST_CASE.installedSkills) {
+    for (const skill of testCase.installedSkills) {
       await cp(join(SKILLS_ROOT, skill), join(skillsTarget, skill), { recursive: true })
     }
 
-    for (const [filePath, content] of Object.entries(TEST_CASE.workspace)) {
+    for (const [filePath, content] of Object.entries(testCase.workspace)) {
       const targetPath = getTargetPath(workspaceRoot, filePath)
       await mkdir(dirname(targetPath), { recursive: true })
       await writeFile(targetPath, content)
     }
 
-    console.log(`Case: ${TEST_CASE.id}`)
-    console.log(`Task: ${TEST_CASE.task}`)
-    console.log(`Installed skills: ${formatList(TEST_CASE.installedSkills)}`)
-    console.log(`Fixtures: ${formatList(Object.keys(TEST_CASE.workspace))}`)
+    console.log(`Case: ${testCase.id}`)
+    console.log(`Task: ${testCase.task}`)
+    console.log(`Installed skills: ${formatList(testCase.installedSkills)}`)
+    console.log(`Fixtures: ${formatList(Object.keys(testCase.workspace))}`)
 
     if (options.verbose) {
-      for (const [filePath, content] of Object.entries(TEST_CASE.workspace)) {
+      for (const [filePath, content] of Object.entries(testCase.workspace)) {
         console.log(`\nFixture: ${filePath}\n${content}`)
       }
     }
@@ -119,28 +126,47 @@ const runCodexCase = async () => {
     console.log('Running Codex...')
     const startedAt = Date.now()
 
-    const result = await runCodex(TEST_CASE.task, workspaceRoot, TEST_CASE.installedSkills)
-    const expectedSkills = TEST_CASE.expected.usedSkill ? [TEST_CASE.expected.usedSkill] : []
+    const result = await runCodex(testCase.task, workspaceRoot, testCase.installedSkills)
+    const expectedSkills = testCase.expected.usedSkill ? [testCase.expected.usedSkill] : []
     const expectedReferences =
-      'loadedReferences' in TEST_CASE.expected ? TEST_CASE.expected.loadedReferences : []
+      'loadedReferences' in testCase.expected ? testCase.expected.loadedReferences : []
     const skillRoutingPassed = containsSameValues(result.usedSkills, expectedSkills)
     const referenceLoadingPassed = containsSameValues(result.references, expectedReferences)
 
     console.log(`\nCompleted in ${((Date.now() - startedAt) / 1000).toFixed(1)}s`)
-    console.log(`Expected skill: ${TEST_CASE.expected.usedSkill ?? 'none'}`)
+    console.log(`Expected skill: ${testCase.expected.usedSkill ?? 'none'}`)
     console.log(`Actual skills: ${formatList(result.usedSkills)}`)
     console.log(`Expected references: ${formatList(expectedReferences)}`)
     console.log(`Actual references: ${formatList(result.references)}`)
     console.log(`Skill routing: ${skillRoutingPassed ? 'PASS' : 'FAIL'}`)
     console.log(`Reference loading: ${referenceLoadingPassed ? 'PASS' : 'FAIL'}`)
     console.log('Outcome: NOT GRADED')
-    console.log(`Expected outcome: ${TEST_CASE.expected.outcome}`)
+    console.log(`Expected outcome: ${testCase.expected.outcome}`)
     console.log(`\nFinal response:\n${result.finalResponse}`)
 
-    if (!skillRoutingPassed || !referenceLoadingPassed) process.exitCode = 1
+    return {
+      id: testCase.id,
+      passed: skillRoutingPassed && referenceLoadingPassed,
+    }
   } finally {
     await rm(workspaceRoot, { recursive: true, force: true })
   }
 }
 
-await runCodexCase()
+const results = []
+
+for (const [index, testCase] of testCases.entries()) {
+  if (index > 0) console.log('\n')
+  results.push(await runCodexCase(testCase))
+}
+
+if (options.all) {
+  const passedCount = results.filter(({ passed }) => passed).length
+
+  console.log('\nSummary:')
+  for (const { id, passed } of results) console.log(`${passed ? 'PASS' : 'FAIL'} ${id}`)
+  console.log(`Deterministic checks: ${passedCount}/${results.length} cases passed`)
+  console.log('Outcomes: NOT GRADED')
+}
+
+if (results.some(({ passed }) => !passed)) process.exitCode = 1
