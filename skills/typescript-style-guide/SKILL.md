@@ -1,6 +1,6 @@
 ---
 name: typescript-style-guide
-description: Apply, review, and explain the opinionated conventions in the TypeScript Style Guide. Use automatically only when TypeScript conventions are part of the requested task, including type modelling, discriminated unions, function APIs, variables and state, naming, source organization, React props, component APIs, state management, data flow, or tests.
+description: Apply, review, and explain the opinionated conventions in the TypeScript Style Guide. Use automatically only when TypeScript conventions are part of the requested task, including type modelling, discriminated unions, function APIs, variables and state, naming, source organization, React props, component APIs, state management, data flow, or tests. Do not use for styling or layout alone.
 ---
 
 # TypeScript Style Guide
