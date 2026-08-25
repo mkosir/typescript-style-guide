@@ -173,7 +173,7 @@ export const ProfileEditor = ({ displayName }: ProfileEditorProps) => {
   {
     id: 'tests-public-behavior',
     installedSkills: ['typescript-tests'],
-    task: 'Review what src/formatPrice.test.ts is testing.',
+    task: 'Review whether src/formatPrice.test.ts provides meaningful confidence in project-owned behavior.',
     workspace: {
       'src/formatPrice.test.ts': `import { expect, it } from 'vitest'
 
