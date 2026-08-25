@@ -55,22 +55,22 @@ export const EVAL_CASES = [
     },
   },
   {
-    id: 'discriminated-unions-mutually-exclusive-outcomes',
+    id: 'discriminated-unions-explicit-discriminator',
     installedSkills: ['typescript-discriminated-unions'],
-    task: 'Review the cleanup result model in src/cleanup.ts.',
+    task: 'Review how success and error page props are modelled in src/pageProps.ts.',
     workspace: {
-      'src/cleanup.ts': `type CleanupDetail = {
-  fileName: string
-  status: 'deleted' | 'failed'
-  error?: string
+      'src/pageProps.ts': `type UserProfile = {
+  name: string
 }
 
-export const cleanupDetails: ReadonlyArray<CleanupDetail> = []
+export type PageProps =
+  | { errorCode: number; userProfile?: never }
+  | { errorCode?: never; userProfile: UserProfile }
 `,
     },
     expected: {
       usedSkill: 'typescript-discriminated-unions',
-      outcome: 'Models deleted and failed as separate variants so error is required only for the failed outcome.',
+      outcome: 'Recommends a shared literal discriminator for the named success and error states instead of optional never properties.',
     },
   },
   {

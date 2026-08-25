@@ -31,6 +31,8 @@ A discriminated union is a union of object types that share a property with dist
 
 Use discriminated unions when variants are mutually exclusive and each variant requires different data. Keep properties optional when they may independently be absent, and use a literal union when only the value changes.
 
+Prefer a shared literal discriminator when variants represent named states or modes and you control their shape. Use optional `never` properties only when property presence is itself the natural distinction and adding a discriminator would make the API less clear.
+
 Discriminated unions are a powerful concept to model complex data structures and improve type safety, leading to clearer and less error-prone code.  
 You may encounter discriminated unions under different names, such as tagged unions or sum types, in languages such as C, Haskell, and Rust (in conjunction with pattern-matching).
 
