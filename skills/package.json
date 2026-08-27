@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "clean": "rm -rf node_modules",
     "eval:codex": "node evals/run-codex.ts",
     "sync:guide": "node scripts/sync-guide.ts",
-    "tsc": "tsc -p tsconfig.json"
+    "tsc": "tsc -p tsconfig.json",
+    "clean": "rm -rf node_modules"
   },
   "devDependencies": {
     "@openai/codex-sdk": "0.150.1",
