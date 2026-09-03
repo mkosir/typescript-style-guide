@@ -9,8 +9,8 @@
     "clean": "rm -rf node_modules"
   },
   "devDependencies": {
-    "@openai/codex-sdk": "0.150.1",
-    "@types/node": "26.4.0",
+    "@openai/codex-sdk": "0.153.0",
+    "@types/node": "26.4.1",
     "typescript": "6.0.3"
   },
   "engines": {
